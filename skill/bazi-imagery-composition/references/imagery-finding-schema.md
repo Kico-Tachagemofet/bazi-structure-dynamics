@@ -6,7 +6,7 @@
 2. Pillar Composite
 3. Topic Finding
 4. Full-chart Sweep
-5. Calibration Map
+5. Experience and Validation Maps
 
 ## 1. Imagery Coverage
 
@@ -127,7 +127,7 @@
 
 ### Verifiable Judgments
 
-列出 2 至 6 条命主可核对的具体判断。不要把术语改写成同义术语；每条应能回答“是／否／有条件”。
+列出 2 至 6 条命主可核对的具体判断。不要把术语改写成同义术语；每条应包含机制、条件或竞争载体，避免只有“忙、压力、变化、敏感”等高基率词。静态判断即使可回答“是／否／有条件”，也不自动具备证据验证资格。
 
 ### Boundaries
 
@@ -140,12 +140,14 @@
 
 列出最终文字不可删除的：核心画面、条件、代价、反证、技术依据与需要交叉引用的其他 finding。
 
-family-home finding 另加：
+每条 blind finding 另加：
 
 - `blind_generation: true`
-- `family_context_read_before_audit: false`
-- `calibration_eligible_after_audit: true`
-- `calibration_prompt_candidates`：只可引用本 finding 的 2 至 6 条 verifiable judgments
+- `subject_context_read_before_audit: false`
+- `manifestation_mapping_eligible_after_audit: true`
+- `validation_candidate`：true／false
+- `validation_discriminators`：若为 true，列时间差／顺序／竞争载体／失败条件中已具备的部分
+- `known_prior_exposure`：none／partial／contaminated
 
 ## 4. Full-chart Sweep
 
@@ -158,23 +160,27 @@ Full-chart sweep 不是重断全盘，而是防止局部象遮住全局。至少
 - 显而易见的相反证据；
 - 内部能力、现实载体与外部成果是否被错误等同。
 
-## 5. Calibration Map
+## 5. Experience and Validation Maps
 
-`calibration-map.md` 逐 finding 记录：
+`manifestation-map.md` 逐 finding 记录：
 
 - `finding_id`
 - `context_item_id`
-- `match_state`：confirmed／conditional／disconfirmed／new-question／structural-challenge
+- `mapping_state`：matched／conditional／carrier-shift／disconfirmed／new-question／structural-challenge
 - `affected_expression_band`
-- `allowed_change`：priority／wording／domain carrier／confidence cap
+- `allowed_change`：priority／wording／domain carrier／next question
 - `forbidden_change`：node／edge／route／pattern／universal rule
+- `non-evidentiary: true`
 - `next_action`
 
-经历不能填补 source gap，也不能把低通量路线改成高通量。
+经历不能填补 source gap，也不能把低通量路线改成高通量或提高结构 confidence。历史兼容文件 `calibration-map.md` 只有在显式写入 `non-evidentiary: true` 时才可继续使用。
 
-家庭校准另记录：
+流运验证不写入 manifestation map，按 [Validation Protocol](../../bazi-structure-dynamics/references/validation-protocol.md) 单独产出并冻结。至少记录：
 
-- `family_blind_finding_audit_id`
-- `calibration_response_ref`
-- `family_calibration_state`：completed／declined／uncalibrated／contaminated
-- `contamination_check`
+- `validation_plan_ref`
+- `timing_overlay_freeze_ref`
+- `hypothesis_freeze_ref`
+- `verbatim_response_ref`
+- `scorecard_ref`
+- `score_audit_ref`
+- `validation_state`：scored／unscored／declined／contaminated

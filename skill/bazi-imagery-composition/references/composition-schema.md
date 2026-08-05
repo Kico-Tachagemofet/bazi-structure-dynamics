@@ -11,7 +11,7 @@
 - delivery mode 与 reading center
 - 已审计 topic findings 清单
 - imagery source packet 清单
-- calibration 是否存在及其边界
+- manifestation mapping 与 evidence validation 是否存在，以及各自边界
 - 未覆盖、可供后续追问的象意范围
 
 ### 2. 一句话主轴
@@ -90,7 +90,8 @@ full-reading 的 Topic Order 必须先核对：
 - composition 中每个实质判断必须至少引用一个 finding ID。
 - 不得以“为了整体流畅”为由合并掉独立 finding。
 - 不得只保留结论而删除它的形成层次。
-- calibration 只能改变呈现顺序、语气或领域载体，不得改变结构方向。
-- family calibration 必须引用已通过审计的 blind finding；提前读取家庭事实为污染，不得由 composition 自行圆回。
+- manifestation mapping 只能改变呈现顺序、语气、领域载体或后续问题，必须标 `non-evidentiary`，不得改变结构方向或 confidence。
+- evidence validation 必须引用冻结 timing hypotheses、verbatim response、scorecard 与 score audit；其 verdict 与 structure audit 分栏，不得混成“已校准所以结构正确”。
+- 经历提前进入 blind finding，或年史提前进入 timing hypothesis 时属于污染，不得由 composition 自行圆回。
 - full-reading 缺基础四板块、太极中心或已选专题时不得进入 Render。
 - 后续追问可以新增经审计 finding；首次 composition 不代表全盘象意已经穷尽。

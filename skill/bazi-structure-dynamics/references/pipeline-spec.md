@@ -9,6 +9,7 @@
 5. 分析模式
 6. 完成条件
 7. 标准原局断局协议
+8. 经历映射与验证入口
 
 ## 1. 总原则
 
@@ -41,9 +42,10 @@
 | 4B | core timing／synastry mode | diff／overlay structure | 仅相关 topic 运行；不改写 natal |
 | 4C | bazi-source-lookup | imagery-source-packet | 读取完整展开，不用缩略口诀 |
 | 4D | bazi-imagery-composition | imagery-coverage、pillar-composites、topic-findings | 分段生产，不读 context |
-| 4.5 | bazi-finding-audit | finding-audit | 通过后才可校准 |
-| 4.6 | bazi-render family-calibration | family-calibration-prompt、calibration-response | 只展示已审计家庭判断；此前不得读取家庭经历 |
-| 5A | bazi-imagery-composition | calibration-map、composition | 经历只校准已有分支 |
+| 4.5 | bazi-finding-audit | finding-audit | 通过后才可呈现或读取经历做映射 |
+| 4.6（可选） | orchestrator + timing core + audit | validation-plan、timing hypotheses、hypothesis audit／freeze | 声称验证时必须先于相关年史完成并冻结 |
+| 4.7（可选） | bazi-render + bazi-finding-audit | quick feedback，或 opt-in verbatim response／scorecard／score audit | 默认低负担；详细模式须用户主动启用；不得事后改假设 |
+| 5A | bazi-imagery-composition | manifestation-map（可选）、composition | 经历只映射已有分支；非验证不得增置信度 |
 | 5.5 | bazi-finding-audit | composition-audit | 不新增 finding、不丢限制 |
 | 6 | bazi-render | report 或 Q&A answer | Render 自身不新增 finding |
 | 6.5 | bazi-finding-audit | render／conversation audit | 防压缩与聊天越界 |
@@ -52,7 +54,7 @@
 
 发现输入缺失时固定回退：
 
-process notice → case-manifest → Reader → Structure Source Packet → Node Ledger → Interaction Census → Branch Relation Census → Branch State → Post-Branch Node Ledger → Edge Map → System State → Problem State → Pattern／Structured Routes → Conditions Matrix → Structure Kernel → Audit → Freeze → Report Scope Intake → Topic Lens Index／per-topic Lens →〔必要时 Timing／Synastry diff／overlay + audit〕→ Imagery Source Packet → Pillar Composites → Topic Findings → Finding Audit → Family Calibration Gate → Calibration Map → Composition → Composition Audit → Render。
+process notice → case-manifest → Reader → Structure Source Packet → Node Ledger → Interaction Census → Branch Relation Census → Branch State → Post-Branch Node Ledger → Edge Map → System State → Problem State → Pattern／Structured Routes → Conditions Matrix → Structure Kernel → Audit → Freeze → Report Scope Intake → Topic Lens Index／per-topic Lens →〔必要时 Timing／Synastry diff／overlay + audit〕→ Imagery Source Packet → Pillar Composites → Topic Findings → Finding Audit →〔可选：Manifestation Mapping，或 Validation Plan → Timing Hypotheses → Audit → Freeze → Verbatim Response → Scorecard → Score Audit〕→ Composition → Composition Audit → Render。
 
 不得为了回答快而跳过缺失阶段。用户只问一个术语时可以缩小 question scope，但不能伪装成完整断局。
 
@@ -63,9 +65,10 @@ process notice → case-manifest → Reader → Structure Source Packet → Node
 - source-packet：只存来源规则和边界。
 - core artifacts：只存技术结构。
 - report-scope：只存求测中心、范围与问题，不存用于证明结论的生活故事。
-- family blind findings：必须在未询问、未读取详细家庭经历的新鲜上下文中生成并审计；若既有上下文已污染且无法隔离，只能标 `contaminated`，不得声称盲校准。
-- calibration：structure 与 blind findings 均审计通过后才允许读取校准回应或 subject-context。
-- composition：只组合通过审计的 findings，可引用 calibration 调整顺序和语气。
+- blind findings：必须在未读取会参与本轮判断的详细经历时生成并审计；既有经历不得反向进入 finding。
+- manifestation mapping：structure 与 findings 均审计通过后才允许读取 subject-context；只调整表达带、领域载体、顺序或后续问题，明确 `non-evidentiary`。
+- evidence validation：相关年史必须晚于 timing hypotheses 的审计与冻结；已知先验逐项登记并排除／降权，无法隔离时标 `contaminated`。
+- composition：只组合通过审计的 findings，可引用 manifestation map 调整顺序和语气；validation verdict 与结构 verdict 分栏记录。
 - render：只能翻译已有 finding；对话中新问题须按 routing 回到对应上游。
 
 ## 5. 分析模式
@@ -78,7 +81,7 @@ process notice → case-manifest → Reader → Structure Source Packet → Node
 
 ### Timing
 
-先锁定 natal。按大运、流年、流月逐层做 before／after diff，记录新增根、关系补齐、边状态变化和触发路线。
+先锁定 natal。按大运、流年、流月逐层做 before／after diff，记录新增根、关系补齐、边状态变化和触发路线。若用于经历验证，另完整执行 [Validation Protocol](validation-protocol.md)：先选对照窗、审计冻结复杂假设，再读年史和计分。
 
 ### Synastry
 
@@ -113,7 +116,7 @@ process notice → case-manifest → Reader → Structure Source Packet → Node
 - full-reading 已有 `report-scope.yaml`，命盘主人、求测者关系、默认太极中心和逐 topic 中心均明确；
 - full-reading 的 family-home、education-learning、wealth-resource、career-work 四个基础 topic 均有独立 lens、完整 imagery source、finding 与 render section；
 - 求测者已选专题没有被漏掉；
-- 家庭校准只发生在家庭 blind findings 审计之后；拒绝校准时明确标 `uncalibrated`，既有上下文污染时标 `contaminated`；
+- 已明确记录 `manifestation_mapping_state` 与 `validation_state`；两者均可为 `none`，且不阻塞完整报告；若声称验证，则预注册、冻结、原始回应、scorecard 与 score audit 齐全；
 - 具体问题已有完整 imagery source、逐柱复合、full-chart sweep 和 finding audit；
 - 最终文字没有新增、压缩或反向改写 finding；追问新增内容已经走过增量 finding 流程。
 
@@ -134,6 +137,12 @@ process notice → case-manifest → Reader → Structure Source Packet → Node
 
 用户无需理解“太极点”术语。Render 把自然语言写入 `report-scope.yaml`，Topic Lens 再转换为技术中心。
 
-### 家庭校准门
+## 8. 经历映射与验证入口
 
-家庭是标准报告的一部分，也是首个校准锚点。先完成家庭 blind findings 与审计，再展示其中 2 至 6 条可核验判断，请求求测者标记 `confirmed`、`conditional` 或 `disconfirmed`。不得在 blind finding 之前索取详细家庭事实；不得用校准回应重写 node、edge、route、pattern 或通用规则。
+家庭只是基础报告领域之一，不再承担强制校准锚点。默认不索取逐条“符合／不符合”；这类回应若只有宽泛认同，区分度不足。
+
+- 用户只是补充经历时：在 findings 审计后写 `manifestation-map.md`，说明它更常落在哪个现实载体，以及哪些结构部分仍未被证明。
+- 用户只想告诉 AI 准不准时：默认收 `准／部分准／不准／记不清`，允许补一句，不追问、不计分；说明用户可随时说“展开验证”。
+- 用户主动要求展开验证时：优先选择跨领域流运对照，完整读取并执行 [经历映射与流运验证协议](validation-protocol.md)。详细叙述有助于分辨时间、顺序、机制与领域载体，但不是完成报告的义务。
+- 原局静态验证只有在命题同时具备复合机制、竞争载体、条件和反事实时才允许；否则跳过，不为完成流程制造低价值问题。
+- 用户拒绝、没有年史或记不清时记录 `declined`／`unscored`，继续报告，不得伪造验证。

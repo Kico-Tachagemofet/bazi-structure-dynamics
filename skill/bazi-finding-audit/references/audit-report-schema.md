@@ -18,7 +18,7 @@
 | Structure Freeze |  |  |  |
 | Report Scope／Reading Center |  |  |  |
 | 基础四板块／已选专题 |  |  |  |
-| Family Blind Calibration Gate |  |  |  |
+| Experience Mapping／Validation Integrity |  |  |  |
 | 取象单元与逐柱复合 |  |  |  |
 | Findings／Composition／Render |  |  |  |
 
@@ -41,7 +41,9 @@
 - source receipt verdict
 - framework separation verdict
 - subject-context isolation verdict
-- calibration boundary verdict
+- manifestation mapping boundary verdict
+- hypothesis preregistration／freeze verdict
+- verbatim response／scorecard fidelity verdict
 - conversational routing verdict
 
 ## Verdict

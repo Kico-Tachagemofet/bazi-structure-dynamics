@@ -6,7 +6,7 @@
 
 这套流水线同时区分“技术结构已经分析完”和“面向求测者的断盘已经交付完”。Structure Freeze 只是生活断局的起点；完整原局还必须确认求测中心，分别完成家庭、学业、财运、事业四个基础板块，并把用户另选的专题逐题生产、审计和呈现。
 
-当前版本：**1.0.0**
+当前版本：**1.1.0**
 
 ## 为什么要拆成流水线
 
@@ -17,9 +17,9 @@
 - 五行有箭头不等于通关，图上成环也不等于真实周流；
 - 实际通量最大的路线，可能正在加重主问题，而不是救应；
 - 系统能够自行运转，不等于日主能够主动启动、停止或改道；
-- 已发生经历能校准显化方式，却不能倒推格局或替代原典规则。
+- 已发生经历可以映射显化方式，却不能倒推格局或替代原典规则；若要称证据验证，必须先冻结流运假设，再读年史并固定计分。
 
-单次长回答很容易漏掉其中一层，然后在后文用贴切故事掩盖结构缺口。1.0.0 的核心变化，就是把这些判断变成必须逐阶段完成、能够退回修复的工作流。
+单次长回答很容易漏掉其中一层，然后在后文用贴切故事掩盖结构缺口。1.0.0 把这些判断变成必须逐阶段完成、能够退回修复的工作流；1.1.0 进一步把经历显化映射、低负担反馈和正式证据验证拆成三层。
 
 ## 总体架构
 
@@ -36,8 +36,10 @@ flowchart TD
     H -- "否" --> J["Per-topic Imagery Source"]
     I --> J
     J --> K["Topic Findings + Audit"]
-    K --> L["Stage 4.6<br/>Family Blind Calibration"]
-    L --> M["Composition + Audit"]
+    K --> L{"Optional feedback / validation?"}
+    L -- "None / quick feedback" --> M["Composition + Audit"]
+    L -- "Expanded validation" --> V["Hypothesis Freeze<br/>Verbatim Response<br/>Score Audit"]
+    V --> M
     M --> N["Render + Delivery Audit"]
     N -- "新取象或新领域" --> G
     N -- "结构争议" --> D
@@ -57,9 +59,10 @@ flowchart TD
 | 3.6 | `bazi-render` scope intake | `report-scope.yaml` | 确认命盘主人、求测者角色、太极中心、报告模式、四个基础板块与附加专题；不产断语 |
 | 4A | `bazi-topic-lens` | `topic-lens-index`、逐题 Lens | 每个板块单独定太极；full-reading 强制家庭、学业、财运、事业四镜头 |
 | 4B–4D | Core timing／synastry、`bazi-source-lookup`、`bazi-imagery-composition` | diff／overlay、逐题完整取象包、逐柱复合、topic findings | 只映射冻结结构，不在取象阶段重算旺衰和格局；每个 topic 独立覆盖 |
-| 4.5 | `bazi-finding-audit` | finding audit | finding 通过后才可进入事实校准 |
-| 4.6 | `bazi-render` family calibration | 家庭盲校准题与回应状态 | 先生成并审计家庭判断，后读取家庭经历；污染、拒答或未答必须如实标记 |
-| 5–5.5 | `bazi-imagery-composition`、`bazi-finding-audit` | calibration map、composition 与审计 | 同柱互染不伪造作用边；经历只校准已有分支，不得反写结构 |
+| 4.5 | `bazi-finding-audit` | finding audit | finding 通过后才可进入经历映射；未合参也可继续 composition |
+| 4.6 | orchestrator、Timing Core、Audit（可选） | validation plan、timing hypotheses、hypothesis freeze | 声称验证时必须先于相关年史完成；quick feedback 不走正式计分 |
+| 4.7 | `bazi-render`、`bazi-finding-audit`（可选） | quick feedback，或 opt-in verbatim response、scorecard 与审计 | 默认低负担；详细模式由用户主动启用；冻结后不得修改假设 |
+| 5–5.5 | `bazi-imagery-composition`、`bazi-finding-audit` | manifestation map（可选）、composition 与审计 | 显化映射固定 non-evidentiary；经历不得反写结构 |
 | 6–6.5 | `bazi-render`、`bazi-finding-audit` | 报告或对话回答 | 每个必选和已选 topic 恰好覆盖一次；Render 不得新增 finding |
 
 ## Structure Core 具体做什么
@@ -150,11 +153,11 @@ Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些�
 
 完整断盘的关键不是把同一个结构核扩写四遍，而是每个生活板块都重新确定太极中心和现实载体。求测者只需用自然语言说明“看谁、看什么关系或看什么事”；`report-scope.yaml` 保存范围合同，`bazi-topic-lens` 再把它转换为技术中心，并为每个 topic 建立独立 Lens、Source Packet、finding 和报告小节。四个基础板块可以互相引用，但不能被一段泛化的“综合性格”替代。
 
-家庭板块另设盲校准门：先在未读取详细家庭经历的上下文中生成并审计 2–6 条可核判断，再询问求测者确认、补条件或否认。反馈只能调节已有表达分支的置信度与排序；不能反向创造节点、作用边或格局。用户拒绝或尚未回应时继续交付并标记 `declined`／`uncalibrated`；上下文已经污染且无法隔离时标记 `contaminated`，不得宣称完成了盲验证。
+家庭只是基础报告领域之一，不再承担强制校准锚点。普通经历合参写入 `manifestation-map.md`，只调整表达带、呈现顺序和家庭／职场／关系等领域载体，固定标记 `non-evidentiary`。默认反馈只需回答“准／部分准／不准／记不清”；用户主动说“展开验证”后，才进入详细流运模式。没有合参或验证不阻塞完整报告，也不得伪称已经回验。
 
 最终报告必须让 `report-scope.yaml` 中的每个必选和已选 topic 恰好出现一次，并与通过审计的 findings 一一对应。缺了基础板块、漏了用户选题、没有逐题 Lens，或把结构核直接改写成生活故事，都不满足完整断局的完成条件。
 
-## 取象、事实校准与对话
+## 取象、经历映射、验证与对话
 
 结构回答“什么力量能够怎样运行”，取象回答“它在当前领域可能表现成什么”。两层不得互相替代。
 
@@ -165,7 +168,7 @@ Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些�
 - `bazi-finding-audit` 检查反向表现、非显化条件、现实载体和证据边界；
 - `bazi-render` 只把通过审计的 findings 写成人能读懂的报告，并机械核对范围覆盖。
 
-用户经历在盲结构与盲 finding 通过后才进入 calibration。家庭校准遵循更严格的先问后读隔离；其他领域也只能提高某个表达分支的置信度，不能修改 node、edge、route 或格局。
+用户经历在盲结构与 blind finding 通过后才进入显化映射。它只能说明同一机制主要落在哪个现实载体，不能提高结构置信度或修改 node、edge、route 与格局。若要做证据验证，先选择对照时间窗，完成 timing overlay、复杂假设、独立审计与 hash 冻结，再读取年史；“说得通”和通用关键词不计分。
 
 对话追问也有路由：
 
@@ -186,8 +189,8 @@ Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些�
 | `bazi-structure-core` | 节点、地支裁决、作用边、系统状态、主问题、格局与路线 |
 | `bazi-finding-audit` | 结构、逐题 finding、composition、范围覆盖、render 与对话边界审计 |
 | `bazi-topic-lens` | 把每个自然语言专题分别映射到冻结结构，并维护 Topic Lens Index |
-| `bazi-imagery-composition` | 按 topic 完成逐柱复合、领域载体、finding、校准与 composition |
-| `bazi-render` | Report Scope Intake、家庭盲校准、范围完整性检查、报告和受约束的 Q&A 呈现 |
+| `bazi-imagery-composition` | 按 topic 完成逐柱复合、领域载体、finding、可选显化映射与 composition |
+| `bazi-render` | Report Scope Intake、quick feedback、opt-in 验证回应、范围完整性检查、报告和受约束的 Q&A 呈现 |
 
 ## 仓库结构
 
@@ -211,7 +214,7 @@ skill/
 2. 将 `skill/` 下的 **八个目录全部复制** 到 Codex 的个人 skills 目录。
 3. 重启 Codex。
 
-不要只安装 orchestrator：1.0.0 的总 skill 会显式调用七个 sibling skills。
+不要只安装 orchestrator：1.1.0 的总 skill 会显式调用七个 sibling skills。
 
 仓库继续保存现有的原典路由、整理文本与课程转写，供 Source Lookup 使用。新增私人书籍或课程时，应使用摄取脚本生成本地 Source Pack；不要把出生资料、`subject-context`、盲测产物或本机绝对路径提交到仓库。
 
@@ -241,7 +244,7 @@ Use $bazi-structure-dynamics to analyze this 八字. Complete the audited natal 
 - 关系枚举覆盖检查；
 - 路线端点完整性检查；
 - Structure Freeze hash 生成与测试；
-- `report-scope.yaml`、四个基础板块、已选专题和家庭校准状态检查；
+- `report-scope.yaml`、四个基础板块、已选专题、经历映射与验证状态检查；
 - Render finding 与报告小节一一覆盖检查；
 - 回归预期与测试入口。
 

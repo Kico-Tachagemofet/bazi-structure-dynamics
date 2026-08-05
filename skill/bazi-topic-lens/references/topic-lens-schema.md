@@ -88,11 +88,24 @@ topic-lens.md 至少包含以下部分。
 - `omitted_baseline_sections`
 - `completeness_verdict`
 
-`family-home` lens 另含：
+每个 lens 另含：
 
-- `blind_calibration_anchor: true`
-- `family_context_available_to_finding: false`
-- `calibration_allowed_after_audit: true`
+- `subject_context_available_to_finding: false`
+- `manifestation_mapping_allowed_after_audit: true`
+- `validation_role`：none／primary-carrier／secondary-carrier／excluded-prior
+- `validation_plan_ref`（若存在）
+- `known_prior_discount`（若存在）
+
+timing validation lens 还含：
+
+- `contrast_window`
+- `observation_cutoff`
+- `expected_sequence_slots`
+- `candidate_route_mechanisms`
+- `carrier_priority`
+- `counterfactual_requirements`
+
+这些字段只为后续预注册提供结构索引，不在 Topic Lens 阶段产事件假设或读取年史。家庭镜头没有默认验证特权。
 
 Topic Lens 不得重算旺衰、成局或格局。发现上游缺失时退回 Structure Core。
 

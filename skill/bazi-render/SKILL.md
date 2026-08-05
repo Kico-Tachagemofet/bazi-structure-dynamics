@@ -1,6 +1,6 @@
 ---
 name: bazi-render
-description: 在结构冻结后向求测者确认命盘中心与报告范围，强制完整原局覆盖家庭、学业、财运、事业，并把已审计的 composition 与 topic findings 写成不压缩原始象意、可由命主核验的中文解读；同时负责家庭盲 finding 后的校准入口和受约束追问。用户要求完整断盘、选择要看的板块、生成八字报告、解释断语、继续聊干支十神、把经历与原局对照、追问职业关系健康神秘学象意，或质疑前后判断时使用。Render 只负责范围入口、校准提问与翻译，不得自行创造上游没有的结构、路线、finding 或事件结论。
+description: 在结构冻结后向求测者确认命盘中心与报告范围，强制完整原局覆盖家庭、学业、财运、事业，并把已审计的 composition 与 topic findings 写成不压缩原始象意、可由命主核验的中文解读；同时负责非证据性的经历显化映射、冻结后的流运验证回应收集和受约束追问。用户要求完整断盘、选择板块、生成报告、解释断语、把经历与原局对照、做准确性验证，或追问职业关系健康神秘学象意时使用。Render 只负责范围入口、回应收集与翻译，不得自行创造上游没有的结构、路线、finding、验证假设或事件结论。
 ---
 
 # 八字解读与追问
@@ -15,12 +15,15 @@ description: 在结构冻结后向求测者确认命盘中心与报告范围，�
 - [Conversation Routing](references/conversation-routing.md)
 - [Report Scope Schema](references/report-scope-schema.md)
 
+涉及经历合参、校准或验证时另完整读取 [经历映射与流运验证协议](../bazi-structure-dynamics/references/validation-protocol.md)。
+
 报告模式必须读取：
 
 - `report-scope.yaml`；
 - `composition.md` 及通过的 composition audit；
 - 对应 `topic-findings/*.md`；
-- `calibration-map.md`（若存在）；
+- `manifestation-map.md` 或标明 `non-evidentiary` 的 legacy `calibration-map.md`（若存在）；
+- validation verdict、scorecard 与 score audit（若报告声称做过验证）；
 - `topic-lens.md`；
 - `structure-freeze-receipt.yaml`。
 
@@ -44,7 +47,7 @@ description: 在结构冻结后向求测者确认命盘中心与报告范围，�
 5. 确认只看原局还是涉及时间／合盘；后者只做范围标记并退回对应上游。
 6. 按 [Report Scope Schema](references/report-scope-schema.md) 产出 `report-scope.yaml`，随后调用 `$bazi-topic-lens`。本模式不得输出任何生活断语。
 
-若用户没有附加专题，记录 `selected_optional_sections: []` 后继续基础四板块；不得反复逼问。不得在此时索取详细家庭经历。
+若用户没有附加专题，记录 `selected_optional_sections: []` 后继续基础四板块；不得反复逼问。不得在此时索取可能污染后续盲 finding 或流运验证的详细经历。
 
 ### Mode A：完整报告
 
@@ -80,17 +83,31 @@ full-reading 报告必须逐节覆盖 `family-home`、`education-learning`、`we
 
 这正是“天干象意无法一次穷尽”的正常扩展路径。不得因首次报告没写便回答“盘里没有”。
 
-### Mode C：Family Calibration Gate
+### Mode C：Experience Mapping／Validation Intake
 
-只在 `family-home` 的 blind findings 通过 imagery-finding audit 后运行：
+先根据上游状态二选一，不得混称：
 
-1. 从已审计 finding 的 `verifiable judgments` 选取 2 至 6 条，不补充新判断；
-2. 请命主逐条标记“符合／只在某条件下符合／不符合”，可补一句关键事实；
-3. 将原始回应写入独立 `calibration-response-family.md` 或对应 context item，不回写 finding；
-4. 用户拒绝或暂无回应时把 `family_calibration_state` 记为 `declined`／`uncalibrated`，继续报告，不得假装已验证；
-5. 回应交给 `$bazi-imagery-composition` 生成 calibration map，再进入 composition。
+#### C1：显化映射
 
-家庭经历若在 blind finding 审计前已经进入当前上下文，优先改用新鲜隔离上下文生产 blind findings；做不到时标记 `contaminated`，不得把家庭板块当盲回验。若这些事实实际参与生成却仍声称 blind，则交给 `$bazi-finding-audit` 判 FAIL；不得用“我没有主动引用”代替隔离。
+只在相关 findings 已通过审计后运行。让命主自由说明经历，把原话写入独立 response 文件，再交给 `$bazi-imagery-composition` 生成 `manifestation-map.md`。它只能调整表达带、呈现顺序、措辞、领域载体或后续问题；必须标注 `non-evidentiary: true`，不得增加结构置信度。
+
+家庭、职场、关系等都是候选载体。不得因为 finding 放在家庭章节，就把反馈限定为家庭场景；若同一机制实际主要落在职场，记录 carrier shift，不把它算成结构命中或失败。
+
+#### C2：流运验证回应收集
+
+只在 `timing-hypothesis-freeze-receipt.yaml` 有效且 hash 一致后运行：
+
+1. 不改写、不扩充已冻结假设；
+2. 默认只邀请用户回复整体或逐条“准／部分准／不准／记不清”，可自愿补一句；写 `timing-validation-quick-feedback.md`，标 `non-evidentiary`，不自动追问、不正式计分；
+3. 同时用一句话说明：若用户想更细地定位时间、先后、机制和实际领域，可以说“展开验证”，不启用也不影响报告；
+4. 只有用户明确选择详细模式后，才按一个时间窗一句自然问题请求自由叙事；允许“没有／记不清”，不抛多项填写清单；
+5. 将详细模式的用户原话完整写入 `timing-validation-response.md`，另做 evidence extraction 时保留原文引用；
+6. “说得通”或宽泛认同记 `indeterminate／non-discriminating`，不加分；记不清记 `unscored`；
+7. 把足够详细的回应交给固定 rubric 生成 scorecard，再由 `$bazi-finding-audit` 审计。Render 不自行打圆场或修改假设。
+
+详细模式中，只有评分所需的关键缺口才允许补一个短追问。禁止默认要求用户逐项填写“事件数量、月份、顺序、领域、返工”等表格。
+
+若相关经历在假设冻结前已经进入生成上下文，须引用 `validation-plan.yaml` 的排除／降权处理；无法隔离时标 `contaminated`，不得声称盲验证。仍可继续做 C1 显化映射。
 
 #### 必须退回上游
 
@@ -100,16 +117,17 @@ full-reading 报告必须逐节覆盖 `family-home`、`education-learning`、`we
 - 前后回答方向冲突：先做 contradiction audit，不得现场圆成“两种都对”。
 - 完整取象来源缺失：补 Source Packet；补不到则明确 source gap。
 
-## 经历与回验
+## 经历、显化映射与验证
 
 用户说“这很像我的经历”时：
 
-- 把经历映射到已有 finding 的表达带或领域载体；
-- 说明它支持哪一部分、不能证明哪一部分；
+- 先声明本轮属于显化映射还是已预注册验证；
+- 显化映射把经历对应到已有 finding 的表达带或领域载体，并说明它不能证明结构；
+- 验证只按冻结假设和固定 scorecard 说明支持、未支持或未计分的部分；
 - 若经历提示新领域，开增量 Topic Lens；
 - 若经历与 finding 相反，记录为 disconfirmed 或 structural challenge。
 
-禁止用回验创造新的格局、路线或通用命理规则。
+禁止用经历创造新的格局、路线或通用命理规则；禁止把“说得通”、通用关键词或事后换领域计作验证命中。
 
 ## 文字纪律
 
@@ -130,11 +148,14 @@ full-reading 报告必须逐节覆盖 `family-home`、`education-learning`、`we
 - 可选汇总报告
 - `render-audit.md`
 
-范围／校准模式：
+范围／经历映射／验证模式：
 
 - `report-scope.yaml`
-- `family-calibration-prompt.md`
-- `calibration-response-family.md` 或拒绝／未校准状态
+- `manifestation-response.md` 与 `manifestation-map.md`（若运行显化映射）
+- `timing-validation-quick-feedback.md`（默认低负担入口，非证据性）
+- `timing-validation-response.md`（若已有有效假设冻结）
+- `timing-validation-scorecard.md` 与 score audit（若完成验证）
+- 拒绝、未验证、污染或未计分状态
 
 对话模式：
 

@@ -77,29 +77,40 @@ selected_optional_sections: []
 3. 除基础四板块外还想看什么；
 4. 每个附加板块最想问清楚什么。
 
-不得用“请选择太极点”要求普通求测者掌握术语。不得在此阶段索取详细家庭经历；家庭事实只在家庭 blind findings 审计后进入校准。
+不得用“请选择太极点”要求普通求测者掌握术语。不得在此阶段索取可能参与后续盲 finding 或流运验证的详细经历。
 
-## Family Calibration Gate
+## Experience and Validation State
 
-`report-scope.yaml` 只记录门状态，不保存回答正文：
+`report-scope.yaml` 只记录意图和状态，不保存回答正文。完整报告不强制经历映射或验证：
 
-- `family_calibration_required`：full-reading 默认为 true
-- `family_blind_finding_audit_id`
-- `family_calibration_state`：not-ready／awaiting-user／completed／declined／uncalibrated／contaminated
-- `calibration_response_ref`
+- `manifestation_mapping_requested`：true／false
+- `manifestation_mapping_state`：none／not-ready／awaiting-user／completed／declined／contaminated
+- `manifestation_response_ref`
+- `manifestation_map_ref`
+- `validation_requested`：true／false
+- `validation_mode`：none／timing-preregistered／natal-discriminative
+- `validation_response_mode`：quick-feedback／expanded-opt-in／none
+- `validation_state`：none／ineligible／planning／hypotheses-frozen／awaiting-user／scored／unscored／declined／contaminated
+- `validation_plan_ref`
+- `hypothesis_freeze_ref`
+- `validation_response_ref`
+- `quick_feedback_ref`
+- `validation_scorecard_ref`
+- `validation_score_audit_ref`
 
 状态约束：
 
-- finding audit 前只能是 `not-ready`；
-- 审计通过后才可变为 `awaiting-user`；
-- 用户拒绝时记 `declined`，报告标未校准并继续；
-- 用户在 blind finding 前已主动提供详细家庭事实且无法使用新鲜隔离上下文时记 `contaminated`，不得把家庭板块当盲回验，但仍可完成未校准报告；
-- 回应只能校准 expression band、优先级、措辞或领域载体，不得修改结构。
+- finding audit 前不得运行 manifestation mapping；
+- timing 假设冻结前不得索取或读取对应年史；
+- 默认使用 quick-feedback，用户未明确选择时不得启动 expanded-opt-in；quick feedback 不计分、不自动追问；
+- 用户拒绝时记 `declined`，报告继续；缺失历史或记不清记 `unscored`，不当作反证；
+- 已知经历必须在 validation plan 登记并排除／降权；无法隔离时记 `contaminated`，不得声称盲验证；
+- 显化映射不得改结构或增置信度；验证结果也只能支持／削弱冻结的时间假设，不能反向改写 natal。
 
 ## Completeness Rules
 
 - full-reading 缺任一 mandatory section：FAIL。
 - 任一 selected optional section 没有下游 Topic Lens／finding／render：FAIL。
 - reading center 未定义且无法默认到 chart-owner：FAIL。
-- 把家庭校准回答写入 blind finding：FAIL。
+- 把经历写入 blind finding，或在 hypothesis freeze 前读取年史却声称盲验证：FAIL。
 - structure-only 不得创建伪完整 report-scope；交付必须明确只到结构层。
