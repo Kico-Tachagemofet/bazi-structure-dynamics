@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字盘面事实校验"
+  short_description: "校验八字事实，并记录命盘主人、求测关系、交付模式与隔离边界"
+  default_prompt: "Use $bazi-reader to structure and audit the Bazi chart facts, chart owner, querent role, and delivery mode without making interpretations."

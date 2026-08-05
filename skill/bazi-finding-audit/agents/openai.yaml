@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字结构与断局审计"
+  short_description: "审计八字结构、基础板块、家庭盲校准、报告渲染与追问边界"
+  default_prompt: "Use $bazi-finding-audit to audit Bazi structure, scoped topic coverage, family calibration integrity, composition, render, or conversation boundaries."

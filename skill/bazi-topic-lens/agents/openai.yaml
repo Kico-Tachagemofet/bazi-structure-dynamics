@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字问题镜头"
+  short_description: "把报告范围拆成基础四板块与专项太极镜头，并完整索引结构证据"
+  default_prompt: "Use $bazi-topic-lens to turn the confirmed Bazi report scope into separate taiji-centered lenses for the four baseline domains and selected topics."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字解读与追问"
+  short_description: "确认太极中心和报告范围，完成家庭盲校准与完整断局渲染交付"
+  default_prompt: "Use $bazi-render to confirm the Bazi reading center and report scope, run the family calibration gate, and render audited findings without adding new claims."

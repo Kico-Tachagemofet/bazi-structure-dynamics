@@ -3,3 +3,9 @@ __pycache__/
 .pytest_cache/
 .venv/
 .DS_Store
+forward-tests/
+case-artifacts/
+private/
+*.local.md
+*.local.yaml
+**/subject-context.md
