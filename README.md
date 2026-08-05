@@ -6,7 +6,7 @@
 
 这套流水线同时区分“技术结构已经分析完”和“面向求测者的断盘已经交付完”。Structure Freeze 只是生活断局的起点；完整原局还必须确认求测中心，分别完成家庭、学业、财运、事业四个基础板块，并把用户另选的专题逐题生产、审计和呈现。
 
-当前版本：**1.1.0**
+当前版本：**1.2.0**
 
 ## 为什么要拆成流水线
 
@@ -19,7 +19,7 @@
 - 系统能够自行运转，不等于日主能够主动启动、停止或改道；
 - 已发生经历可以映射显化方式，却不能倒推格局或替代原典规则；若要称证据验证，必须先冻结流运假设，再读年史并固定计分。
 
-单次长回答很容易漏掉其中一层，然后在后文用贴切故事掩盖结构缺口。1.0.0 把这些判断变成必须逐阶段完成、能够退回修复的工作流；1.1.0 进一步把经历显化映射、低负担反馈和正式证据验证拆成三层。
+单次长回答很容易漏掉其中一层，然后在后文用贴切故事掩盖结构缺口。1.0.0 把这些判断变成必须逐阶段完成、能够退回修复的工作流；1.1.0 进一步把经历显化映射、低负担反馈和正式证据验证拆成三层；1.2.0 在结构冻结之前加入用神太极核，并在逐题阶段用实际关系轴和 axis scene 保证断语有足够颗粒度。
 
 ## 总体架构
 
@@ -28,7 +28,8 @@ flowchart TD
     A["Stage 0<br/>Case Manifest"] --> B["Stage 1<br/>Reader"]
     B --> C["Stage 1.2<br/>Source Packet"]
     C --> D["Stage 1.5–3<br/>Structure Core"]
-    D --> E["Stage 3.5<br/>Audit + Freeze"]
+    D --> U["Stage 3C<br/>Use Kernel"]
+    U --> E["Stage 3.5<br/>Audit + Freeze"]
     E --> F["Stage 3.6<br/>Report Scope Intake"]
     F --> G["Stage 4A<br/>Topic Index + Per-topic Lens"]
     G --> H{"Timing / Synastry?"}
@@ -54,11 +55,11 @@ flowchart TD
 | 1.2 | `bazi-source-lookup` | `source-packet` | 记录实际读取的完整章节、来源身份、冲突与证据缺口 |
 | 1.5 | `bazi-structure-core` | `node-ledger`、`interaction-census` | 所有天干和逐位置藏干覆盖 100%，关系先枚举后裁决 |
 | 2 | `bazi-structure-core` | 地支关系专表、`branch-state`、关系后节点、`qualified-edge-map`、系统与主问题 | 地支竞争已写回每个节点；作用边只能从关系后状态起算 |
-| 3 | `bazi-structure-core` | 格局候选、路线、端点锁、条件矩阵、`structure-kernel` | 通量、净作用和治疗优先级分开；路线端点与 Edge Map 一致 |
-| 3.5 | `bazi-finding-audit` | 审计报告、`structure-freeze-receipt` | BLOCKER 必须返工；通过 hash 冻结结构 |
+| 3 | `bazi-structure-core` | 格局候选、路线、端点锁、条件矩阵、`structure-kernel`、`use-kernel` | 通量、净作用和治疗优先级分开；先锁主问题，再锁主用／辅用／备用及其可用条件 |
+| 3.5 | `bazi-finding-audit` | 审计报告、`structure-freeze-receipt` | BLOCKER 必须返工；通过 hash 同时冻结结构核和用神太极核 |
 | 3.6 | `bazi-render` scope intake | `report-scope.yaml` | 确认命盘主人、求测者角色、太极中心、报告模式、四个基础板块与附加专题；不产断语 |
-| 4A | `bazi-topic-lens` | `topic-lens-index`、逐题 Lens | 每个板块单独定太极；full-reading 强制家庭、学业、财运、事业四镜头 |
-| 4B–4D | Core timing／synastry、`bazi-source-lookup`、`bazi-imagery-composition` | diff／overlay、逐题完整取象包、逐柱复合、topic findings | 只映射冻结结构，不在取象阶段重算旺衰和格局；每个 topic 独立覆盖 |
+| 4A | `bazi-topic-lens` | `topic-lens-index`、逐题 Lens | 每个板块以自然语言问题定领域体，再建立领域体—用神枢纽—实际关系轴 |
+| 4B–4D | Core timing／synastry、`bazi-source-lookup`、`bazi-imagery-composition` | diff／overlay、逐题完整取象包、逐柱复合、axis scenes、topic findings | 只映射冻结结构，不重算旺衰格局；每条实际关系轴都要形成场景和 finding |
 | 4.5 | `bazi-finding-audit` | finding audit | finding 通过后才可进入经历映射；未合参也可继续 composition |
 | 4.6 | orchestrator、Timing Core、Audit（可选） | validation plan、timing hypotheses、hypothesis freeze | 声称验证时必须先于相关年史完成；quick feedback 不走正式计分 |
 | 4.7 | `bazi-render`、`bazi-finding-audit`（可选） | quick feedback，或 opt-in verbatim response、scorecard 与审计 | 默认低负担；详细模式由用户主动启用；冻结后不得修改假设 |
@@ -135,15 +136,19 @@ Structure Core 是 1.0.0 的核心。它不是“算完旺衰再套格局”，�
 
 例如食神制杀与食神生财再生杀可以同时存在，但必须说明它们争夺的是哪一枚甲木、各自能分到多少，以及哪条会把药重新导回病处。
 
-### 8. Conditions、Kernel 与 Freeze
+### 8. Conditions、Structure Kernel 与 Use Kernel
 
 `conditions-matrix` 保存每条路线的成立先后、必要条件、反转节点及岁运接口；它不是预测本身。`structure-kernel` 只收束主组织、有效支援、瓶颈、出口、反馈、控制权和关键开关。
 
-独立审计通过后，`structure-freeze-receipt` 对结构输入生成 hash。后续职业、关系、健康、神秘学、岁运和合盘只能引用这份冻结结构；任何结构文件改变，都必须重新审计。
+`use-kernel` 是后置的用神太极核，不重算结构，也不把一个十神宣布为所有领域的万能答案。它根据已经锁定的主问题与路线，分别记录主用、辅用和备用，区分扶抑、调候、通关、制化、承载和输出功能，并写明每一项在哪些条件下可用、会被谁截断、可能把药重新导回什么病处。
+
+### 9. Freeze：结构与用神一起冻结
+
+独立审计通过后，`structure-freeze-receipt` 对结构输入生成 hash。后续职业、关系、健康、神秘学、岁运和合盘只能引用这份冻结结构及用神太极核；任何结构文件或 `use-kernel` 改变，都必须重新审计。
 
 ## 从结构分析到合格断盘
 
-Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些作用边真的能跑，主问题是什么，哪些路线缓解、加重或只是提供条件。它不会自动回答这些结构在家庭、求学、挣钱、工作或某个特殊问题中怎样落地。因此，`structure-kernel` 再完整，也只能称“原局结构分析”，不能单独称为“完整断局”。
+Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些作用边真的能跑，主问题是什么，哪些路线缓解、加重或只是提供条件；Use Kernel 再回答解决主问题时真正以谁为主用、谁负责保护或补桥。两者仍不会自动回答这些结构在家庭、求学、挣钱、工作或某个特殊问题中怎样落地。因此，`structure-kernel` 与 `use-kernel` 再完整，也只能称“原局结构分析”，不能单独称为“完整断局”。
 
 本项目把交付分成三种模式：
 
@@ -151,7 +156,7 @@ Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些�
 - `structure-only`：止于 Stage 3.5，只交付技术结构、主问题、路线和条件，不冒充完整断盘；
 - `limited-topic`：只为约定专题生产 finding 和报告，必须明确哪些基础板块没有覆盖。
 
-完整断盘的关键不是把同一个结构核扩写四遍，而是每个生活板块都重新确定太极中心和现实载体。求测者只需用自然语言说明“看谁、看什么关系或看什么事”；`report-scope.yaml` 保存范围合同，`bazi-topic-lens` 再把它转换为技术中心，并为每个 topic 建立独立 Lens、Source Packet、finding 和报告小节。四个基础板块可以互相引用，但不能被一段泛化的“综合性格”替代。
+完整断盘的关键不是把同一个结构核扩写四遍，而是每个生活板块都重新确定领域体和现实载体。求测者只需用自然语言说明“看谁、看什么关系或看什么事”；`report-scope.yaml` 保存范围合同，`bazi-topic-lens` 再把它转换为领域体—用神枢纽—实际关系轴，并为每个 topic 建立独立 Lens、Source Packet、axis scene、finding 和报告小节。四个基础板块可以互相引用，但不能被一段泛化的“综合性格”替代。
 
 家庭只是基础报告领域之一，不再承担强制校准锚点。普通经历合参写入 `manifestation-map.md`，只调整表达带、呈现顺序和家庭／职场／关系等领域载体，固定标记 `non-evidentiary`。默认反馈只需回答“准／部分准／不准／记不清”；用户主动说“展开验证”后，才进入详细流运模式。没有合参或验证不阻塞完整报告，也不得伪称已经回验。
 
@@ -162,9 +167,9 @@ Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些�
 结构回答“什么力量能够怎样运行”，取象回答“它在当前领域可能表现成什么”。两层不得互相替代。
 
 - `bazi-render` 先收集报告范围和自然语言太极中心，不让求测者替模型选择十神或柱位；
-- `bazi-topic-lens` 为每个板块分别确定需要哪些柱、节点、路线和完整象义单元；
+- `bazi-topic-lens` 为每个板块建立领域体、用神枢纽和实际关系轴，再确定需要哪些柱、节点、路线和完整象义单元；
 - `bazi-source-lookup` 读取完整展开版本，不用一句口诀补故事；
-- `bazi-imagery-composition` 组合天干本象、地支本象、十神功能、柱位、藏干和全局修正；
+- `bazi-imagery-composition` 沿每条关系轴组合天干本象、地支本象、十神功能、柱位、藏干和全局修正，先写 axis scene，再收束 finding；
 - `bazi-finding-audit` 检查反向表现、非显化条件、现实载体和证据边界；
 - `bazi-render` 只把通过审计的 findings 写成人能读懂的报告，并机械核对范围覆盖。
 
@@ -186,10 +191,10 @@ Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些�
 | `bazi-structure-dynamics` | 总编排、恢复顺序、报告模式与完整断局完成标准 |
 | `bazi-reader` | 事实结构化、司令与十神校验、context 隔离 |
 | `bazi-source-lookup` | 原典、评注、课程与取象材料的完整来源包 |
-| `bazi-structure-core` | 节点、地支裁决、作用边、系统状态、主问题、格局与路线 |
+| `bazi-structure-core` | 节点、地支裁决、作用边、系统状态、主问题、格局、路线与用神太极核 |
 | `bazi-finding-audit` | 结构、逐题 finding、composition、范围覆盖、render 与对话边界审计 |
-| `bazi-topic-lens` | 把每个自然语言专题分别映射到冻结结构，并维护 Topic Lens Index |
-| `bazi-imagery-composition` | 按 topic 完成逐柱复合、领域载体、finding、可选显化映射与 composition |
+| `bazi-topic-lens` | 把自然语言专题映射为领域体—用神枢纽—实际关系轴，并维护 Topic Lens Index |
+| `bazi-imagery-composition` | 按 topic 和关系轴完成逐柱复合、axis scene、finding、可选显化映射与 composition |
 | `bazi-render` | Report Scope Intake、quick feedback、opt-in 验证回应、范围完整性检查、报告和受约束的 Q&A 呈现 |
 
 ## 仓库结构
@@ -214,7 +219,7 @@ skill/
 2. 将 `skill/` 下的 **八个目录全部复制** 到 Codex 的个人 skills 目录。
 3. 重启 Codex。
 
-不要只安装 orchestrator：1.1.0 的总 skill 会显式调用七个 sibling skills。
+不要只安装 orchestrator：1.2.0 的总 skill 会显式调用七个 sibling skills。
 
 仓库继续保存现有的原典路由、整理文本与课程转写，供 Source Lookup 使用。新增私人书籍或课程时，应使用摄取脚本生成本地 Source Pack；不要把出生资料、`subject-context`、盲测产物或本机绝对路径提交到仓库。
 

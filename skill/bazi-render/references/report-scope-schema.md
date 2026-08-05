@@ -19,7 +19,7 @@
 - `user_language_center`：求测者用自然语言说的“围绕谁／哪段关系／哪件事”
 - `center_type`：self／person／relationship／family-system／event／organization／object
 - `center_relation_to_chart_owner`
-- `technical_taiji_assignment_status`：固定为 `pending-topic-lens`；实际技术锚点写入 per-topic lens，不回写求测者的范围原话
+- `technical_taiji_assignment_status`：固定为 `pending-topic-lens`；实际领域体、用神枢纽与关系轴写入 per-topic lens，不回写求测者的范围原话
 - `center_uncertainty`
 
 若求测者没有另行指定，使用 `default_center: chart-owner`，不得因此阻塞标准原局。
@@ -77,7 +77,7 @@ selected_optional_sections: []
 3. 除基础四板块外还想看什么；
 4. 每个附加板块最想问清楚什么。
 
-不得用“请选择太极点”要求普通求测者掌握术语。不得在此阶段索取可能参与后续盲 finding 或流运验证的详细经历。
+不得用“请选择太极点／用神”要求普通求测者掌握术语。求测者只确认自然语言问题中心；用神枢纽由冻结 `use-kernel.md` 与 Topic Lens 选择。不得在此阶段索取可能参与后续盲 finding 或流运验证的详细经历。
 
 ## Experience and Validation State
 

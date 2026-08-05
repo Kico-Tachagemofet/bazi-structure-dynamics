@@ -4,9 +4,10 @@
 
 1. Imagery Coverage
 2. Pillar Composite
-3. Topic Finding
-4. Full-chart Sweep
-5. Experience and Validation Maps
+3. Use-Axis Scene
+4. Topic Finding
+5. Full-chart Sweep
+6. Experience and Validation Maps
 
 ## 1. Imagery Coverage
 
@@ -19,6 +20,9 @@
 - `report_scope_ref`
 - `topic_lens_ref`
 - `taiji_center`
+- `use_kernel_ref`
+- `use_pivot_ids`
+- `body_use_axis_ids`
 - `baseline_required`：true／false
 - `required_anchors`：柱、节点、边、路线
 - `required_imagery_units`：干、支、十神、柱位、藏干、关系、领域
@@ -63,7 +67,38 @@
 - 地支藏财库不等于资源已到账；必须读取 visibility、participation scope、route 和 trigger。
 - 同柱双方都要解释，但力度可以明显不对称。
 
-## 3. Topic Finding
+## 3. Use-Axis Scene
+
+`axis-scenes.yaml` 每条 scene 至少含：
+
+- `axis_scene_id`
+- `topic_id`／`question_slice_id`
+- `relation_axis_id`
+- `topic_body_refs`
+- `use_pivot_ref`
+- `focal_question`
+- `endpoint_anatomy`：逐端列干支本象、十神、柱位、相关藏干与关系后状态
+- `audited_mechanism`：只引用 node／edge／route／condition
+- `source_to_use_scene`
+- `damage_diversion_or_occupation_scene`
+- `destination_and_feedback_scene`
+- `daymaster_agency_scene`
+- `competing_allocation`
+- `baseline_scene`
+- `activated_or_supported_scene`
+- `diverted_or_pressured_scene`
+- `failure_or_reversal_scene`
+- `candidate_domain_carrier_properties`
+- `external_result_requirements`
+- `main_scene`
+- `secondary_scene`
+- `switch_scene`
+- `do_not_infer`
+- `technical_refs`／`source_refs`／`confidence`
+
+一条 scene 只处理一条主关系轴；不得在此重新计算作用边，也不得用用户经历补画面。
+
+## 4. Topic Finding
 
 每条 finding 使用独立小节，标题包含稳定 ID，例如 `## F-CAREER-001`。至少填写：
 
@@ -75,6 +110,11 @@
 - `confidence`
 - `scope`：natal／timing／synastry／relationship-field
 - `taiji_center`
+- `topic_body`
+- `use_kernel_ref`
+- `use_pivot_id`
+- `relation_axis_id`
+- `axis_scene_id`
 - `report_section_slug`
 - `baseline_required`
 
@@ -99,6 +139,15 @@
 5. 藏干内部结构；
 6. 旺衰、关系后状态和路线如何修正；
 7. 以上内容怎样收束成一个可验证判断。
+
+### Use Relation
+
+- `what_the_use_does`
+- `what_supports_the_use`
+- `what_damages_diverts_or_occupies_it`
+- `where_the_use_goes_after_action`
+- `whether_the_daymaster_can_start_carry_redirect_or_stop_it`
+- `how_this_relation_changes_in_the_current_topic_body`
 
 ### Full-chart Sweep
 
@@ -127,7 +176,14 @@
 
 ### Verifiable Judgments
 
-列出 2 至 6 条命主可核对的具体判断。不要把术语改写成同义术语；每条应包含机制、条件或竞争载体，避免只有“忙、压力、变化、敏感”等高基率词。静态判断即使可回答“是／否／有条件”，也不自动具备证据验证资格。
+列出 3 至 6 条命主可核对的具体判断。不要把术语改写成同义术语；每条应包含动作、对象、条件、结果或竞争载体，避免只有“忙、压力、变化、敏感”等高基率词。静态判断即使可回答“是／否／有条件”，也不自动具备证据验证资格。
+
+### Interpretive Kernel
+
+- `main_scene`：最主要、可直接写入正文的生活过程；
+- `secondary_scene`：支持、损用、去处或日主能动性带来的第二层；
+- `switch_scene`：条件改变时画面怎样切换；
+- `do_not_render`：最强误读、未证实结果与 source gap。
 
 ### Boundaries
 
@@ -138,7 +194,7 @@
 
 ### Render Obligations
 
-列出最终文字不可删除的：核心画面、条件、代价、反证、技术依据与需要交叉引用的其他 finding。
+列出最终文字不可删除的：领域体、用神做功、支持／损用、去处、日主能动性、核心画面、切换条件、代价、反证、技术依据与需要交叉引用的其他 finding。
 
 每条 blind finding 另加：
 
@@ -149,7 +205,7 @@
 - `validation_discriminators`：若为 true，列时间差／顺序／竞争载体／失败条件中已具备的部分
 - `known_prior_exposure`：none／partial／contaminated
 
-## 4. Full-chart Sweep
+## 5. Full-chart Sweep
 
 Full-chart sweep 不是重断全盘，而是防止局部象遮住全局。至少检查：
 
@@ -160,7 +216,7 @@ Full-chart sweep 不是重断全盘，而是防止局部象遮住全局。至少
 - 显而易见的相反证据；
 - 内部能力、现实载体与外部成果是否被错误等同。
 
-## 5. Experience and Validation Maps
+## 6. Experience and Validation Maps
 
 `manifestation-map.md` 逐 finding 记录：
 

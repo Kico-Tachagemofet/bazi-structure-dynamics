@@ -12,7 +12,7 @@ description: 为四柱八字建立可追溯的结构规则包与完整取象包�
 - case-manifest.yaml
 - chart-stage1.yaml
 - 待判断的问题或来自 Structure Core 的 source_queries
-- 取象阶段另需 `report-scope.yaml`、`topic-lens-index.yaml` 与对应 per-topic lens
+- 取象阶段另需 `use-kernel.md`、`report-scope.yaml`、`topic-lens-index.yaml` 与对应 per-topic lens
 
 缺少 Stage 1 时停止，先调用 $bazi-reader。
 
@@ -41,7 +41,7 @@ description: 为四柱八字建立可追溯的结构规则包与完整取象包�
 4. 记录本轮实际读取的文件、章节或时间段、来源身份和版本。
 5. 原典冲突时建立分流矩阵；不得私自拼成一条“综合古法”。
 6. 缺少完整取象展开时标 SOURCE_GAP，禁止凭缩略口诀补故事。
-7. full-reading 按 topic-lens-index 分别生成 family-home、education-learning、wealth-resource、career-work 与全部 selected optional topics 的 imagery packet；允许共享同一完整来源读取收据，但每个 packet 的 coverage registry 必须独立，不能用一个 general packet 伪装覆盖全部领域。
+7. full-reading 按 topic-lens-index 分别生成 family-home、education-learning、wealth-resource、career-work 与全部 selected optional topics 的 imagery packet；逐条读取 `body_use_axis` 两端及生用、损用、去处、日主关系所需的完整 imagery units。允许共享同一完整来源读取收据，但每个 packet 的 coverage registry 必须独立，不能用一个 general packet 伪装覆盖全部领域。
 
 ### Packet roles
 
@@ -64,7 +64,7 @@ description: 为四柱八字建立可追溯的结构规则包与完整取象包�
 - conflicts and unresolved gaps
 - allowed claims and forbidden overreach
 - packet role、imagery unit registry 与 deferred coverage
-- full-reading 另记录 report-scope ref、topic slug、taiji center、baseline required 与 topic-lens ref
+- full-reading 另记录 report-scope ref、topic slug、topic body、use pivot、relation axis IDs、baseline required 与 topic-lens ref
 
 ## 硬门槛
 

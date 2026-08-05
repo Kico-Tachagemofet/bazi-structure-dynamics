@@ -24,6 +24,7 @@ description: 将已经通过结构审计的四柱八字转成可追溯、可验�
 - `route-candidates.yaml`
 - `conditions-matrix.md`
 - `structure-kernel.md`
+- `use-kernel.md`
 - `structure-freeze-receipt.yaml`
 - 通过的 structure audit
 - `report-scope.yaml`
@@ -46,6 +47,7 @@ description: 将已经通过结构审计的四柱八字转成可追溯、可验�
 - 已加载、缺失、暂不相关的象意范围；
 - 被排除但容易误取的符号及排除理由；
 - 后续追问可以增量加载的未穷尽范围。
+- 每条 `body_use_axis` 的两端及生用、损用、去处、日主关系所需象意。
 
 “本轮没展开”不得写成“此字没有该象”。缺完整来源时标 `SOURCE_GAP`，不得用一句口诀补齐。
 
@@ -68,16 +70,33 @@ full-reading 先建立总 `imagery-coverage-index.yaml`：逐项列出 family-ho
 
 每个藏干都要列出，但必须区分：库存、根气、环境供给、直接做功、格用资格和岁运待引动。不得因“藏在库中”自动判可用，也不得因“不透”自动判无效。
 
-### Mode C：领域 Finding
+### Mode B2：用神关系轴场景
 
-产出 `topic-findings/<slug>.md`。每条 finding 必须完成：
+在逐柱复合后，逐条处理 Topic Lens 的 primary／supporting axes，产出 `axis-scenes.yaml`。这是八字断局的主要思考单位；finding 只是它的输出接口。
+
+每次只处理一条关系轴：
+
+1. 读取领域体和用神枢纽；
+2. 展开两端干支本象、十神功能、柱位、相关地支与全部藏干；
+3. 继承已审计的生用、损用、占用、竞争分配、去处和日主能动性；
+4. 合成基线、被触发、被改道、失败／反转四幅场景；
+5. 给出可承载该过程的现实性质，不直接宣布唯一事件或行业；
+6. 写明不能从本轴推出什么。
+
+同一节点的两种方向必须分别成 scene。例如“制病”和“生出回病旁路”不能糊成一条“既好又坏”。本技能不照搬紫微的词条全列与语义交叉；八字直接在完整干支—十神—柱位—藏干—路线关系上合成场景。
+
+### Mode C：轴驱动领域 Finding
+
+产出 `topic-findings/<slug>.md`。每条 primary finding 必须对应一个 `body_use_axis` 和一个 `axis_scene`；supporting axis 可进入同一 finding 的修正层，但不得取代主轴。每条 finding 必须完成：
 
 - `anchor set`：柱、节点、边、路线和来源单元；
 - `full-chart sweep`：检查其他柱和竞争路线是加强、改写、反转还是无关；
 - `composition trace`：原象、十神、柱位、同柱互染、藏干、结构修正如何逐层合成；
+- `use relation`：领域体、用神枢纽、处理对象、支持／损用、去处和日主能动性；
 - `expression bands`：基线／受压／条件良好／反向或未显化；
 - `manifestation layers`：内部机制／领域载体／外部结果／时间条件／反向代价；
-- 可由命主回答“符合／不符合／只在某条件下符合”的生活判断；
+- 3 至 6 条可由命主回答“符合／不符合／只在某条件下符合”的生活判断；
+- `interpretive kernel`：主场景、次场景、切换场景与禁止渲染项；
 - 最强替代解释与禁止渲染项。
 
 不能只从十神标签跳故事，也不能只讲干支本象而漏掉十神和全局。A 带 B 的特性时，同时检查 B 如何承载或限制 A；但两者权重不要求相等。
@@ -89,7 +108,7 @@ full-reading 的四个基础 topic 必须分别拥有独立 finding 文件和稳
 - `wealth-resource`：资源、收入、积累、支出、流动性、可见度与变现。
 - `career-work`：任务、岗位、组织环境、责任压力、职业发展与成果。
 
-相同结构可跨 topic 引用，但不得用一条“综合性格 finding”代替四个领域。每个 selected optional topic 也必须有独立 finding。
+相同结构可跨 topic 引用，但必须说明领域体或体—用关系怎样改变了场景；若完全相同则交叉引用，不复制泛化段落。不得用一条“综合性格 finding”代替四个领域。每个 selected optional topic 也必须有独立 finding。
 
 ### Mode D：Finding 审计、显化映射与验证接口
 
@@ -112,6 +131,7 @@ full-reading 的四个基础 topic 必须分别拥有独立 finding 文件和稳
 - 全盘一句话主轴；
 - 主问题、主要救应与日主能动性的生活化总框架；
 - 各 topic 的 finding 顺序；
+- 用神关系轴场景及其跨领域差异；
 - 同一结构跨领域的共通点与差异；
 - 必须保留的条件、代价、反证和 source gap；
 - 后续 Q&A 可继续展开的象意索引。
@@ -137,10 +157,12 @@ full-reading 的 `composition.md` 必须按照 `report-scope.yaml` 建立基础�
 
 - 结构未冻结或审计未过：停止。
 - full-reading 缺 report-scope、topic-lens-index、基础四镜头或任一已选专题镜头：FAIL。
+- use-kernel 缺失、Topic Lens 未锁定用神枢纽，或 primary axis 没有 axis scene／finding／deferred 收据：FAIL。
 - 相关柱漏一天干、地支或任一藏干：FAIL。
 - 同柱互染被当成 active edge：FAIL。
 - 只列符号、不做组合：FAIL。
 - 只讲局部而未做 full-chart sweep：FAIL。
+- 把多条用神关系轴压成一条泛化机制 finding：FAIL。
 - 完整取象来源缺失却写高置信生活故事：FAIL。
 - 用户经历创造新 finding：FAIL。
 - 经历在 blind findings 审计前参与生成，或年史在 timing hypotheses 冻结前参与验证命题：FAIL。

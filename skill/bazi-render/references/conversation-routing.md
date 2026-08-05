@@ -30,6 +30,9 @@
 - `intent_type`
 - `topic_scope`
 - `candidate_anchor_ids`
+- `candidate_topic_body`
+- `candidate_use_pivot_ids`
+- `candidate_relation_axis_ids`
 - `existing_finding_ids`
 - `imagery_coverage_state`
 - `required_upstream_action`
@@ -43,6 +46,7 @@
 
 - 问题所需结构已经冻结；
 - 至少一个通过审计的 finding 覆盖问题；
+- finding 的领域体、用神枢纽与关系轴确实覆盖当前问法；
 - 所需原始象意单元已加载；
 - 没有新时间层、跨盘层或结构争议；
 - 答案不会新增上游没有的生活判断。
@@ -53,7 +57,7 @@
 
 ### 只需补取象
 
-结构中的柱、节点、路线和主问题不变；只是问题换了领域、载体或要求展开某个原象。新增的是 `source unit → composite → finding`。
+结构中的柱、节点、路线、主问题和 use-kernel 不变；只是问题换了领域、载体或要求展开某个原象。新增的是 `topic body → body-use axis → source unit → composite → axis scene → finding`。
 
 ### 必须重算／重审
 
@@ -73,9 +77,11 @@
 
 1. 直接结论；
 2. 当前涉及的干支／十神／柱位复合画面；
-3. 全局为什么会加强、堵塞或改道；
-4. 基线、受压、良性或反向版本；
-5. 现实领域载体；
-6. 技术依据与尚未证明的部分。
+3. 当前领域体与哪条用神关系轴在起作用；
+4. 谁生用、损用、占用或把用导向哪里；
+5. 日主能否启动、承接、改道或停止；
+6. 基线、受压、良性或反向版本；
+7. 现实领域载体与外部成果条件；
+8. 技术依据与尚未证明的部分。
 
 对话可以短，但不能删掉会改变答案方向的条件。

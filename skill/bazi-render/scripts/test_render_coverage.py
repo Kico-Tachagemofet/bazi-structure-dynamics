@@ -47,7 +47,8 @@ mandatory_sections:
   - wealth-resource
   - career-work
 selected_optional_sections: []
-family_calibration_state: uncalibrated
+manifestation_mapping_state: none
+validation_state: none
 """
 
 BAD_SCOPE = """
@@ -57,7 +58,8 @@ mandatory_sections:
   - education-learning
 selected_optional_sections:
   - love-relationship
-family_calibration_state: awaiting-user
+manifestation_mapping_state: none
+validation_state: none
 """
 
 
@@ -71,9 +73,8 @@ def main() -> None:
     assert any("F-TEST-002" in item for item in bad["blockers"]), bad
     assert any("条件与代价" in item for item in bad["blockers"]), bad
     assert any("baseline" in item.lower() for item in bad_scope["blockers"]), bad_scope
-    assert any("calibration" in item.lower() for item in bad_scope["blockers"]), bad_scope
     assert any("love-relationship" in item for item in bad_scope["blockers"]), bad_scope
-    print("PASS: render coverage enforces findings, topics, baseline, and calibration gates")
+    print("PASS: render coverage enforces findings, topics, and baseline scope without a family-calibration gate")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
 interface:
   display_name: "八字结构动力核心"
-  short_description: "分阶段建立节点、主问题、端点锁定路线、条件矩阵与结构核"
+  short_description: "分阶段建立节点、主问题、路线、结构核与后置用神太极核"
   default_prompt: "Use $bazi-structure-core to build the staged structural model for this 八字."
