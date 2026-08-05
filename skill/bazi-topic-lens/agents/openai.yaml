@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字问题镜头"
+  short_description: "把具体问题映射到冻结结构，并列出本轮完整取象需求"
+  default_prompt: "Use $bazi-topic-lens to scope this 八字 question to audited structural carriers."

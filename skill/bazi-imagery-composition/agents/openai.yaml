@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字取象与组合"
+  short_description: "把审计结构合成为分层取象、领域判断与完整叙事骨架"
+  default_prompt: "Use $bazi-imagery-composition to turn an audited Bazi structure into layered imagery findings and a composition."

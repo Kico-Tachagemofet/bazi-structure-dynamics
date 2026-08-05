@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字判断审计"
+  short_description: "审计八字结构端点、取象组合、报告保真与对话越界"
+  default_prompt: "Use $bazi-finding-audit to audit these 八字 findings before rendering."

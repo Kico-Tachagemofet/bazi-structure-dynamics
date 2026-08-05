@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字盘面读取与审计"
+  short_description: "结构化校验四柱、司令、十神、藏干与历法边界并隔离背景"
+  default_prompt: "Use $bazi-reader to structure and audit this 八字 chart before interpretation."

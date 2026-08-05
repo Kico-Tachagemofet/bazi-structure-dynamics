@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字解读与追问"
+  short_description: "把完整取象写成可验证解读，并在结构边界内灵活承接追问"
+  default_prompt: "Use $bazi-render to render audited Bazi findings or answer a follow-up question without crossing structural boundaries."

@@ -1,4 +1,4 @@
 interface:
-  display_name: "八字结构动力分析"
-  short_description: "以原典、全局旺衰、月令格局、作用链与完整取象分析八字"
-  default_prompt: "Use $bazi-structure-dynamics to analyze this 八字 through source-grounded strength, 格局, competing 生克制化 pathways, and full-context 象义."
+  display_name: "八字结构动力总编排"
+  short_description: "分阶段编排八字事实、结构、取象、报告、追问、岁运与合盘"
+  default_prompt: "Use $bazi-structure-dynamics to run a staged, source-grounded 八字 analysis with auditable intermediate artifacts."

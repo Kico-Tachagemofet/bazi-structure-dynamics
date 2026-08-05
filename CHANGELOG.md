@@ -1,5 +1,63 @@
 # Changelog
 
+## [1.0.0] - 2026-08-05
+
+### Summary
+
+将 0.1.0 的单体断盘流程重构为八个 sibling skills 组成的可审计流水线。新版要求事实、来源、节点、地支裁决、作用边、主问题、路线、结构冻结、取象、校准和渲染分别落盘，禁止模型在一次生成中跳过中间裁决。
+
+### Added
+
+- 新增 `bazi-reader`：确定性枚举四柱、十神、藏干、旬空与关系候选，记录带来源和节气偏移的司令事实，并隔离 `subject-context`。
+- 新增 `bazi-source-lookup`：按问题生成结构或取象 Source Packet，记录完整读取范围、来源层、流派冲突、OCR 风险与禁止越界。
+- 新增 `bazi-structure-core`：实现 Node Ledger、Interaction Census、Branch Relation Census、Branch Arbitration、Post-Branch Node Ledger、Edge Qualification、System State、Primary Problem、Structured Routes、Conditions Matrix 和 Structure Kernel。
+- 新增 `bazi-finding-audit`：审计结构、端点、取象、composition、render 和对话路由；BLOCKER 必须返工，禁止 force pass。
+- 新增 `bazi-topic-lens`：将职业、关系、健康、神秘学、创作、岁运和合盘问题映射到冻结结构。
+- 新增 `bazi-imagery-composition`：保存完整象义覆盖、逐柱双向着色、领域载体、full-chart sweep、表达带、校准图和 composition。
+- 新增 `bazi-render`：只把审计后的 findings 翻译为报告或 Q&A，并对新取象、新领域、岁运、合盘和结构争议执行不同回退路线。
+- 新增 Structure Freeze hash、路线端点完整性、枚举覆盖、Render 覆盖与回归测试脚本。
+- 新增详细 Pipeline Spec、artifact schemas、状态词表、审计清单、领域载体和对话路由规范。
+
+### Changed
+
+- `bazi-structure-dynamics` 从一口气执行全盘的单体 skill 改为总编排器。
+- 完整原局必须先通过 Structure Audit 并生成 `structure-freeze-receipt`，之后才能进入具体取象、岁运或合盘。
+- 重复地支和同五行藏干按位置保留独立节点，不再提前聚合。
+- 三会、三合、半合、六合、六冲、刑、自刑、害、破、重复支和共享支改为独立关系专表，并要求无命中类别保留 negative scan。
+- 地支裁决必须逐节点写回；`qualified-edge-map` 只能引用关系后状态，不能绕回原始节点。
+- 藏干的存在、根气、环境供给、直接做功和格用资格分层记录；不透不自动等于无效，冲也不自动等于开库。
+- 作用边新增 `direct-action`、`root-support`、`environmental-feed`、`branch-relation` 和 `composition-only` 分层。
+- 在比较救应前新增 `problem-state`；路线分别记录 actual throughput、net effect 和 therapeutic priority。
+- 路线只能引用 Edge Map 的 edge ID，并由端点展开脚本检查 source、target、action、layer 与 distance 漂移。
+- 系统库存、实际吞吐、蓄积、瓶颈、启动权、控制权、停机能力和自治子系统分开，不再用“身强／身弱”一项覆盖。
+- 经历、旧解读、杯卦或其他反馈只能在盲结构与盲 finding 通过后用于 calibration，不能改写节点、边、路线或普遍规则。
+- 取象必须读取完整展开材料，并逐层组合天干、地支、十神、柱位、藏干与全局修正；同柱互染不得伪造成结构 active edge。
+- 行业、名声、资源、可见度和收入改为不同现实载体，不再由单一十神标签直接等同。
+
+### Fixed
+
+- 修复已知司令仍被重复写成 unknown、或司令修正后只改最终断语而不重跑下游的问题。
+- 修复只检查醒目合局而遗漏自刑、共享支、重复支及其他地支关系的问题。
+- 修复“旬空所以不算开库”“冲则藏干全部释放”和同支藏干自动生克等层级混淆。
+- 修复有根、有箭头、五行齐全或图上闭环被误判为真实流通。
+- 修复把实际通量最大的加重路线误叫成救应或出口。
+- 修复把系统能够自行运行误写成日主能够主动调用和停止。
+- 修复路线端点在 Kernel 中漂移，例如局部土→金接口被扩写为远距离全局通关。
+- 修复结构 finding 被经历污染，以及贴切故事反向决定格局、用神和作用边。
+- 修复 Render 压缩掉条件、代价、反证，或在聊天追问中自由新增上游没有的判断。
+
+### Breaking changes
+
+- 1.0.0 必须安装 `skill/` 下全部八个目录；只安装 `bazi-structure-dynamics` 将无法运行完整流程。
+- 0.1.0 的一次性输出不等同于 1.0.0 的阶段产物，不能直接伪装为已经通过 Structure Freeze。
+- 岁运与合盘必须建立在审计通过的 natal 上；直接叠盘需要在 case manifest 中显式声明。
+
+### Source compatibility
+
+- 保留 0.1.0 已公开的原典、评注、课程路由和完整材料。
+- 本地全文头部的绝对路径不覆盖远端脱敏版本。
+- 新增 Source Packet 与完整取象包的证据收据要求，不改变各来源的署名和权利边界。
+
 ## [0.1.0] - 2026-08-03
 
 ### Added

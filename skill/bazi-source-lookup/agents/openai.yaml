@@ -1,0 +1,4 @@
+interface:
+  display_name: "八字原典证据路由"
+  short_description: "按问题加载结构规则与完整取象资料包，并记录来源和缺口"
+  default_prompt: "Use $bazi-source-lookup to build a source packet for this 八字 question."
