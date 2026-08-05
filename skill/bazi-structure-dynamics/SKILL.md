@@ -1,6 +1,6 @@
 ---
 name: bazi-structure-dynamics
-description: 编排以结构动力和原典证据分析四柱八字的分阶段流水线：先校验四柱、司令、十神、藏干与旬空，完成节点、地支裁决、作用边、主问题、端点锁定路线、条件矩阵、结构冻结与审计，再由求测者确认太极中心和报告范围，至少完成家庭、学业、财运、事业四个基础板块，之后扩展爱情、健康、神秘学、岁运或合盘。用户询问完整原局、旺衰、格局、通关制化、刑冲合害、用神、藏干、具体取象、职业关系健康神秘学、合盘，或要求审计和继续追问时使用。禁止一口气跳过中间产物，也禁止把只有结构核的分析称为完整断局。
+description: 编排以结构动力和原典证据分析四柱八字的分阶段流水线：先校验四柱、司令、十神、藏干与旬空，完成节点、地支裁决、作用边、主问题、端点锁定路线、条件矩阵、结构冻结与审计，再由求测者确认太极中心和报告范围，至少完成家庭、学业、财运、事业四个基础板块，之后扩展爱情、健康、神秘学、岁运、合盘或跨领域流运预注册验证。用户询问完整原局、旺衰、格局、通关制化、刑冲合害、用神、藏干、具体取象、职业关系健康神秘学、合盘、经历校准或验证时使用。禁止一口气跳过中间产物，也禁止把只有结构核的分析称为完整断局。
 ---
 
 # 八字结构动力总编排
@@ -20,14 +20,16 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
 
 开始完整分析前读取 [Pipeline Spec](references/pipeline-spec.md)。
 
+涉及经历合参、校准或验证时另完整读取 [经历映射与流运验证协议](references/validation-protocol.md)。
+
 首次完整原局分析必须先向求测者说明：
 
 - 先盲跑盘面事实、全盘结构、刑冲合害、旺衰格局、主问题与制化路线；该阶段不使用个人经历倒推；
 - 结构审计并冻结后，才确认本次以谁／哪件事为中心以及报告范围；
 - 完整原局的基础交付固定包含家庭、学业、财运、事业，爱情、健康、神秘学、创作等由求测者后置加选；
-- 家庭情况先形成盲 finding，再邀请求测者核验，核验只做显化校准。
+- 领域 findings 先在经历隔离状态下完成并审计；经历合参默认只作显化映射，若要称为验证则优先采用先审计冻结、后读取年史的跨领域流运预注册。
 
-不得在启动说明时提前索取详细家庭经历或专项故事。Reader 只确认命盘主人、本人／代看关系与必要排盘资料。
+不得在启动说明时提前索取可能参与本轮验证的详细经历或专项故事。Reader 只确认命盘主人、本人／代看关系与必要排盘资料。
 
 根据请求进入：
 
@@ -62,10 +64,10 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
    若 Topic Lens 属于岁运或合盘，先由 Structure Core 在冻结 natal 上建立 diff／overlay，完成对应审计；普通 natal topic 跳过。本阶段不得回写 natal。
 
 8. $bazi-source-lookup → $bazi-imagery-composition
-   为本 topic 加载完整取象资料，按象意覆盖 → 逐柱复合 → topic findings → finding audit → 体验校准 → composition → composition audit 分段完成。取象组合不得伪造成新的结构作用边。
+   为本 topic 加载完整取象资料，按象意覆盖 → 逐柱复合 → topic findings → finding audit → composition → composition audit 分段完成。经历显化映射是可选层，不是 finding 成立的门槛；取象组合不得伪造成新的结构作用边。
 
-9. $bazi-render — Family Calibration Gate
-   完整原局的家庭 finding 先在未读取家庭经历的状态下通过审计，再向求测者展示可核验判断并收集 confirmed／conditional／disconfirmed 回应。求测者拒绝或暂无回应时标为 `uncalibrated`，不得伪造校准。
+9. Optional Manifestation Mapping／Validation Gate
+   不强制家庭校准。默认只提供“准／部分准／不准／记不清”的快速反馈入口，不自动追问，也不计作证据；用户主动说“展开验证”后才进入详细模式。若只需把已审计 finding 对应到现实载体，读取经历后写 `manifestation-map.md`，明确其不增加结构置信度。若要正式验证，优先运行跨领域流运对照：在读取相关年史前完成 timing diff／overlay、复杂假设、独立审计和 hash 冻结，再收集自由叙事、固定计分并审计 scorecard。流程与产物严格遵循 [经历映射与流运验证协议](references/validation-protocol.md)。没有合格条件时记 `validation_mode: none`，继续报告。
 
 10. $bazi-render
    生成完整报告，或以对话模式承接追问。已有 finding 可直接解释；首次未展开的象意允许增量回到 Topic／Source／Imagery 生产新 finding；涉及新岁运、合盘或结构争议时必须退回相应上游。Render 自身不得添加 finding。
@@ -109,7 +111,7 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
 - Structure audit FAIL：不得进入 Topic、Timing、Synastry 或 Render。
 - Structure 未冻结或下游引用的结构版本与 freeze receipt 不一致：停止。
 - 完整原局缺少 `report-scope.yaml`、太极中心或四个基础板块中的任一项：停止；不得改称完整报告后继续。
-- 家庭经历在家庭盲 finding 审计前被用于写 finding，或在已污染上下文中仍声称完成盲回验：FAIL；若只是已进入上下文，须转新鲜隔离上下文，做不到则标 `contaminated` 并放弃校准资格。
+- 用户经历在 blind findings 或预注册假设审计冻结前参与生成，或已污染仍声称盲验证：FAIL；须明确列出已知先验并排除／降权，无法隔离则标 `contaminated` 并放弃验证资格，但可继续做非证据性的显化映射。
 - 路线端点与 qualified-edge-map 不一致、把实际通量排名当治疗优先级、或把加重主问题的路线叫出口：FAIL。
 - 取象 finding 漏掉相关柱的天干、地支、藏干、同柱互染或 full-chart sweep：FAIL。
 - Render 出现上游没有的新判断：退回 composition；若属合理新追问，则新开增量 Topic／Source／Imagery 回合。
@@ -128,7 +130,9 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
 - 同支藏干不得仅凭五行关系自动生成 active 边；须有来源规则与 post-branch direct-action gate。
 - 藏干未透不自动等于 weak／conditional／forbidden；须把 direct action、root support 和 environmental feed 分层。禁止伪直接边不得反向抹掉有来源的人元作用或根气供给。
 - 系统能自行运行不等于日主能主动调用或停止。
-- 回验只能校准显化领域，不能用故事倒推格局。
+- 显化映射不能冒充证据验证；验证必须先冻结复杂假设，包含时间窗、顺序、路线机制、领域竞争和失败条件。
+- “说得通”、宽泛关键词或单一领域命中不得增加置信度；记不清为 `unscored`，不得按反证处理。
+- 经历不能用来倒推格局、路线或通用规则。
 - 同柱互染属于 composition-only，不得反向生成结构 active edge。
 - 行业必须先由工作性质推导，再给例子；名声、资源、可见度和收入不得自动合并。
 - 杯卦、灵体反馈或其他术数只能提示待检假设，不能代替八字原典和结构证据。
@@ -146,7 +150,7 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
 - Structure Kernel；
 - 独立 audit verdict；
 - `report-scope.yaml`、命主／求测者／太极中心与完整／限定分析模式；
-- 完整原局必须附家庭、学业、财运、事业四个基础 Topic Lens、完整取象 Source Packet、逐柱复合、topic findings、family calibration 状态、composition 与不越界 Render；
+- 完整原局必须附家庭、学业、财运、事业四个基础 Topic Lens、完整取象 Source Packet、逐柱复合、topic findings、经历映射／验证状态、composition 与不越界 Render；未做验证不影响完整断局，但不得声称已经回验；
 - 求测者加选的专项必须同样经过 Topic／Source／Imagery／Audit；岁运／合盘先附受审计 diff／overlay。
 
 只有技术结构而未进入基础四板块时，只能称“结构分析完成”，不能称“完整断局”。限定问题模式只交付约定范围，并须显式列出未覆盖板块。

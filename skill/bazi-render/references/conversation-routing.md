@@ -5,12 +5,16 @@
 | 类型 | 例子 | 处理 |
 |---|---|---|
 | report-scope-intake | “结构看完了，接下来完整断盘” | Render Mode 0 确认中心、基础四板块与附加专题，再退回 Topic Lens |
-| family-calibration | “这些家庭判断哪些符合？” | 只展示已审计家庭 judgments，收集校准，不新增 finding |
+| manifestation-mapping | “这条其实主要在公司发生” | 映射到已有 finding 的领域载体；标 non-evidentiary，不新增 finding |
+| validation-intake | “按流运验证一下” | 检查 hypothesis freeze；冻结前退回 validation planning，冻结后只收自由年史 |
+| validation-quick-feedback | “整体部分准，2024 不太准” | 保存低负担主观反馈；不计分、不追问，等待用户主动选择是否展开 |
+| validation-expand | “展开验证／我想详细说发生了什么” | 启用 detailed opt-in；每次一个时间窗、一句自然问题 |
+| validation-scoring | “这些年份能支持多少？” | 引用冻结假设、verbatim response 与固定 rubric；交 audit 复核 |
 | clarification | “你说庚戌难用具体是什么意思？” | 直接解释已有 finding |
 | comparison | “这是财制枭还是食神制杀？” | 引用已有路线比较；缺路线则退回 Core |
 | new-imagery | “丁火在视觉上还能怎么取？” | 同锚点增量 Source + Imagery Composition |
 | new-domain | “这个结构放到亲密关系会怎样？” | 新 Topic Lens + 增量 finding |
-| verification | “我确实换过专业，这算哪一条？” | calibration map；不倒推结构 |
+| verification | “我确实换过专业，这算哪一条？” | 先分流为 manifestation mapping 或 preregistered validation；不倒推结构 |
 | counterexample | “但我实际并不懒。” | 检查表达带、条件与替代解释；必要时审计 |
 | timing | “28 年会怎样？” | timing diff，不由 Render 猜 |
 | synastry | “他来了以后为什么变了？” | 双盘 audit + overlay／关系场 |
@@ -29,7 +33,7 @@
 - `existing_finding_ids`
 - `imagery_coverage_state`
 - `required_upstream_action`
-- `route_verdict`：report-scope-intake／family-calibration／direct-render／supplement-imagery／new-topic／timing-diff／synastry-overlay／structure-audit／blocked
+- `route_verdict`：report-scope-intake／manifestation-mapping／validation-planning／validation-quick-feedback／validation-expand／validation-intake／validation-scoring／direct-render／supplement-imagery／new-topic／timing-diff／synastry-overlay／structure-audit／blocked
 - `reason`
 - `forbidden_shortcut`
 

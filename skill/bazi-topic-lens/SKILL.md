@@ -56,7 +56,7 @@ description: 把完整原局报告范围或追问中的具体八字问题限定�
 2. 分别产出 `topic-lens-family-home.md`、`topic-lens-education-learning.md`、`topic-lens-wealth-resource.md`、`topic-lens-career-work.md`；
 3. 再为 `selected_optional_sections` 逐项建独立 lens；
 4. 四个基础板块可以共享结构锚点，但不得合并成一个 general lens；
-5. 家庭镜头必须预先声明 `blind_calibration_anchor: true`，且 `family_context_available_to_finding: false`。
+5. 每个镜头都声明 `subject_context_available_to_finding: false`；若存在 validation plan，再标记该 topic 是 primary carrier、secondary carrier、excluded prior 还是不参与验证。家庭镜头没有默认验证特权。
 
 limited-topic 只建立约定镜头，同时记录未覆盖基础板块和“不得称完整断局”。
 
@@ -86,6 +86,7 @@ limited-topic 只建立约定镜头，同时记录未覆盖基础板块和“不
 - 锁定原局后再叠加大运、流年、流月。
 - 输出前后差分：新增根、补齐关系、加强或阻断哪条边、激活何种潜伏路线。
 - 时间层负责触发与改道，不反过来改写原局事实。
+- 若用于验证，先读取 `validation-plan.yaml`，为对照窗分别建立镜头；领域载体按竞争优先级排列，并为每条候选假设保留时间差、事件顺序和失败条件。不得读取对应年史后再选窗口。
 
 ## 合盘镜头
 

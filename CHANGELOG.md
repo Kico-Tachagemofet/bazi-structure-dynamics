@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.1.0] - 2026-08-05
+
+### Summary
+
+将家庭专属、逐条问答式的强制校准门改为可选的跨领域经历协议。默认只收“准／部分准／不准／记不清”的低负担反馈；只有求测者主动要求“展开验证”时，才进入受冻结、反事实和固定计分约束的详细流运验证。经历显化映射与证据验证不再混称。
+
+### Added
+
+- 新增 `validation-protocol.md`，定义 validation plan、timing overlay／hypothesis freeze、verbatim response、固定 0–8 计分和 score audit。
+- 新增 `manifestation-map.md`：只记录表达带和家庭／职场／关系等现实载体，固定标记 `non-evidentiary`。
+- 新增 quick feedback：允许整体或逐条回复 `accurate／partly-accurate／inaccurate／unclear-memory`，不自动追问、不进入正式计分。
+- 新增 opt-in 详细验证：每次只用一个自然问题处理一个时间窗，用户可随时跳过或回答记不清。
+- 新增验证审计模式：检查年史泄漏、缺少反事实、宽泛词计分、已知先验未降权、回应被重写、不完整窗口超前计分和强制详细回填。
+
+### Changed
+
+- 家庭不再承担默认或强制校准锚点；家庭、职场、学业、关系、资源和健康均作为竞争领域载体。
+- 完整断局可以在 `manifestation_mapping_state: none`、`validation_state: none` 下完成；未验证不降低结构审计结论，但不得声称已经回验。
+- 默认交互从多字段年份问卷改为低负担 quick feedback；只有用户主动说“展开验证”后才收详细年史。
+- “说得通”、忙、压力、变化等高基率表述不增加置信度；记不清记为 `unscored`，不作为反证。
+- 已知经历必须在 validation plan 中登记、排除或降权；假设冻结后不得换机制、扩领域或改措辞贴合回应。
+- `calibration-map.md` 作为历史兼容文件继续可读，但必须标记 `non-evidentiary: true`；新产物优先使用 `manifestation-map.md`。
+
+### Fixed
+
+- 修复家庭 finding 缺少家庭场景时被误判，而同一机制在职场等其他载体中明显显化的问题。
+- 修复逐条“符合／有条件／不符合”过于宽泛，既增加用户负担又无法提供区分性证据的问题。
+- 修复为了填满评分维度一次性要求事件数量、月份、顺序、领域和返工情况，导致验证体验像填写问卷的问题。
+- 修复普通经历合参被表述为证据验证，以及宽泛认同被计入命中分的问题。
+
+### Migration notes
+
+- 旧 `family_calibration_*` 字段迁移为 `manifestation_mapping_*` 与 `validation_*` 两组状态。
+- 只需要用户体验反馈时使用 quick feedback；需要正式验证时才建立完整 timing validation 产物集。
+- 已有冻结假设可继续使用，但必须保留原始 hash；若补建 validation plan，需要标记为行政性重建且不得改动窗口或假设。
+
 ## [1.0.0] - 2026-08-05
 
 ### Summary

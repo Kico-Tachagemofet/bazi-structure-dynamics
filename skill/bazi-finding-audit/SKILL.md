@@ -1,6 +1,6 @@
 ---
 name: bazi-finding-audit
-description: 以独立检察官模式审计八字结构、格局、路线、取象、composition、render、对话追问、岁运和合盘判断：验证上游产物与结构冻结，检查司令事实、节点关系覆盖、路线端点漂移、通量与治疗优先级混淆、合化开库、支局竞争、伪闭环、同柱取象漏层、完整来源、经历污染、报告压缩和聊天越界。用户要求复核命理解读、Structure Core 或取象阶段完成、前后说法矛盾、或历史判断反复漏项时使用。发现 BLOCKER 必须返工，不作圆场。
+description: 以独立检察官模式审计八字结构、格局、路线、取象、composition、render、对话追问、岁运、合盘及流运预注册验证：验证上游产物与冻结状态，检查司令事实、节点关系覆盖、路线端点漂移、通量与治疗优先级混淆、合化开库、支局竞争、伪闭环、同柱取象漏层、完整来源、经历污染、宽泛命中计分、报告压缩和聊天越界。用户要求复核命理解读、Structure Core 或取象阶段完成、验证准确性、前后说法矛盾、或历史判断反复漏项时使用。发现 BLOCKER 必须返工，不作圆场。
 ---
 
 # 八字 Finding Audit
@@ -30,12 +30,14 @@ description: 以独立检察官模式审计八字结构、格局、路线、取�
 
 Topic、timing、synastry、composition 或 render 审计还必须读取对应上游文件。
 
+验证假设或 scorecard 审计必须完整读取 [经历映射与流运验证协议](../bazi-structure-dynamics/references/validation-protocol.md)，并读取 validation plan、timing overlay audit／freeze、假设 audit／freeze、verbatim response 和 scorecard 中本阶段已存在的全部文件。
+
 full-reading 的 topic／composition／render 审计另必须读取：
 
 - `report-scope.yaml`；
 - `topic-lens-index.yaml` 与全部 per-topic lens；
 - 基础四板块和已选专题的 imagery coverage、source packets、findings；
-- family blind finding audit、family calibration state 与回应引用（若有）。
+- manifestation mapping／validation state 与引用（若有）；若声称验证，检查最低产物集完整。
 
 ## A 层：程序完整性
 
@@ -56,7 +58,7 @@ full-reading 的 topic／composition／render 审计另必须读取：
 - subject context 是否在结构审计前被隔离。
 - full-reading 是否先交付启动说明，结构冻结后才生成 report-scope；
 - report-scope 是否明确 chart owner、querent role、reading center、基础四板块与已选专题；
-- family blind findings 是否在详细家庭事实与校准回应进入生成上下文前完成。
+- blind findings 是否在相关详细经历进入生成上下文前完成；若声称流运验证，timing hypotheses 是否在对应年史进入前审计并冻结。
 
 任一缺失为 BLOCKER。
 
@@ -99,7 +101,11 @@ full-reading 的 topic／composition／render 审计另必须读取：
 - render 不得删掉关键原象、限制、代价和反证；
 - 取象必须读取完整来源展开；
 - 职业行业是否先推导性质，再给行业／岗位／任务／收入／可见度例子；
-- 回验是否只校准已有分支；
+- 显化映射是否明确 non-evidentiary，且只调整已有分支的表达带或领域载体；
+- 验证是否先冻结复杂假设，逐条具备时间窗、顺序、路线机制、领域竞争和失败条件；
+- scorecard 是否忠于 verbatim response，且没有给“说得通”、通用关键词、记不清或事后换领域加分；
+- 已知先验是否登记并排除／降权，不完整时间窗是否保留 observation cutoff；
+- quick feedback 是否明确 non-evidentiary、未进入正式计分，详细模式是否由用户主动启用且没有默认表格化追问；
 - 健康、精神和超自然断语必须标明边界，不替代现实诊断或本体论证明。
 
 ## D 层：报告入口与对话边界
@@ -113,7 +119,7 @@ full-reading 的 topic／composition／render 审计另必须读取：
 - 前后矛盾是否先审计；
 - conversation state 是否把用户叙述误写成结构事实。
 - 首次完整原局缺 report-scope 时是否错误 direct-render；
-- 家庭校准提示是否只引用已审计判断，拒绝校准时是否明确 uncalibrated。
+- 经历问题是否先分流为 manifestation mapping、quick feedback 或 preregistered validation；详细验证是否由用户主动启用；验证回应是否只在 hypothesis freeze 后收集；拒绝或记不清是否分别标 declined／unscored。
 
 ## 裁决
 

@@ -100,11 +100,20 @@
 - full-reading 是否分别覆盖家庭、学业、财运、事业四个基础板块。
 - 求测者加选专题是否全部进入 Topic／Source／Imagery／Render。
 - 每个 topic 是否有独立太极中心；是否错误地要求普通用户自选十神／柱位。
-- 家庭 blind finding 是否先于详细家庭事实和 calibration response 生成并审计。
-- 家庭回应是否只校准表达带，而未回写结构或创造 finding。
+- blind finding 是否先于相关详细经历生成并审计。
+- 家庭、职场、关系等是否被当作竞争载体，而非把家庭设成唯一强制校准锚点。
+- 显化映射是否明确 `non-evidentiary`，只调整表达带、领域载体或后续问题，未回写结构或提高 confidence。
 - 具体取象是否引用已审计路线。
 - 内部机制、领域载体和外部结果是否区分。
 - 岁运是否以前后差分表达，而非重写原局。
+- 若声称流运验证，是否先有 validation plan、受审计 timing overlay、复杂假设、hypothesis audit 与 freeze，随后才读取年史。
+- 每条验证假设是否包含时间窗／对照、事件顺序、路线机制、有限的领域排序、失败条件和 observation cutoff。
+- 已知经历或先验是否登记并排除／降权；已知领域的 domain hit 是否按协议限分。
+- verbatim response 是否独立保存；evidence extraction 与 scorecard 是否未改写用户原话。
+- 默认入口是否允许只答准／部分准／不准／记不清；quick feedback 是否标 non-evidentiary、没有被计分或触发自动追问。
+- 详细模式是否由用户主动启用；是否避免把事件数量、月份、顺序、领域、返工等字段一次性全部丢给用户填写。
+- “说得通”、宽泛关键词、单一领域命中或记不清是否被错误加分；缺失历史是否正确标 `unscored`。
+- 冻结后假设是否被改写、扩充领域或更换机制以贴合回应。
 - 双盘是否分别审计。
 - 跨盘节点是否被错误写成本命永久根。
 - 直接叠盘是否标为案例前提。
@@ -117,8 +126,8 @@
 - 反证、限制、条件是否在最终文字中保留。
 - render 是否添加上游没有的新断语。
 - 完整取象是否被压缩到丢失关键分支。
-- 回验是否只校准显化领域，而未篡改普遍规则。
-- 杯卦、灵体反馈是否只作假设提示或案例校准。
+- 经历显化映射与证据验证是否分开；两者均未篡改普遍规则或 natal 结构。
+- 杯卦、灵体反馈是否只作待检假设提示或非证据性显化映射，而未冒充八字结构／流运验证。
 - 相关柱是否合成天干本象、十神、柱位、地支、全部藏干与同柱双向着色。
 - 同柱互染是否被误写成 active 生克边。
 - 每条 finding 是否有 full-chart sweep、基线／受压／良性／反向表达带。
@@ -166,11 +175,23 @@
 - TAIJI_CENTER_UNSET：topic 没有命盘中心／领域中心，或把太极点技术选择推给求测者。
 - BASELINE_TOPIC_OMITTED：完整原局缺家庭、学业、财运、事业任一板块。
 - SELECTED_TOPIC_OMITTED：求测者已选专题没有完整走到报告。
-- FAMILY_CALIBRATION_LEAK：家庭事实或校准回应在 blind family finding 审计前参与生成，或已污染却仍声称完成盲回验。
+- EXPERIENCE_LEAKS_INTO_FINDING：经历在 blind finding 审计前参与生成。
+- MANIFESTATION_AS_VALIDATION：显化映射或普通经历讨论被表述为证据验证。
+- VALIDATION_WITHOUT_FREEZE：相关年史在 timing hypothesis 审计与冻结前已读取，或缺 freeze 仍声称盲验证。
+- HYPOTHESIS_WITHOUT_COUNTERFACTUAL：验证命题缺时间差、顺序、机制或失败条件，因而不可证伪。
+- GENERIC_AGREEMENT_SCORED：给“说得通”、忙／压力／变化等宽泛词或单一关键词重合加分。
+- PRIOR_EXPOSURE_UNDISCOUNTED：已知经历、已知年份或已知领域未登记、排除或降权。
+- RESPONSE_REINTERPRETED：scorecard 改写原始回应、跨假设拼接零散命中或事后换机制／领域。
+- INCOMPLETE_WINDOW_OVERSCORED：未结束时间窗的未来部分被提前计分，或缺 observation cutoff。
+- FORCED_DETAILED_VALIDATION：用户未主动展开时即进入多字段详细回填，或为填满 rubric 连续追问。
 - STRUCTURE_ONLY_MISLABELED_COMPLETE：只有技术结构却声称完成断局。
 
 命中 `BRANCH_STATE_NOT_PROPAGATED` 或 `RAW_NODE_REUSE` 一律 BLOCKER。`HIDDEN_ALWAYS_WEAK`、`SUPPORT_ERASED_WITH_EDGE` 或 `DIRECT_ONLY_SYSTEM` 若改变主路线、日主承载力、自治子系统或格局，也为 BLOCKER；其余模式改变主结构时为 BLOCKER，否则至少 WARNING。
 
 `ROUTE_ENDPOINT_DRIFT`、`THROUGHPUT_EQUALS_RESCUE`、`AGGRAVATION_AS_OUTLET`、`MUTUAL_COLORING_AS_EDGE`、`CHAT_SCOPE_CREEP` 或 `CONTEXT_CREATES_CLAIM` 一律 BLOCKER。`PARTIAL_PILLAR_READING` 或 `SYMBOL_LIST_WITHOUT_COMPOSITION` 改变 finding 方向时为 BLOCKER，否则至少 WARNING。
 
-`MISSING_REPORT_SCOPE`、`TAIJI_CENTER_UNSET`、`BASELINE_TOPIC_OMITTED`、`SELECTED_TOPIC_OMITTED`、`FAMILY_CALIBRATION_LEAK` 或 `STRUCTURE_ONLY_MISLABELED_COMPLETE` 在 full-reading 中一律 BLOCKER。limited-topic 必须显式声明范围，否则按误标完整处理。
+`EXPERIENCE_LEAKS_INTO_FINDING` 在 blind finding 中一律 BLOCKER。`VALIDATION_WITHOUT_FREEZE`、`MANIFESTATION_AS_VALIDATION`、`GENERIC_AGREEMENT_SCORED`、`PRIOR_EXPOSURE_UNDISCOUNTED` 或 `RESPONSE_REINTERPRETED` 在声称完成验证时一律 BLOCKER。`HYPOTHESIS_WITHOUT_COUNTERFACTUAL` 必须在读取回应前退回重写；`INCOMPLETE_WINDOW_OVERSCORED` 至少 WARNING，改变总 verdict 时为 BLOCKER。
+
+`FORCED_DETAILED_VALIDATION` 在用户未 opt in 时为 BLOCKER；用户已展开但问题过密时至少 WARNING，必须改为一次一个时间窗的一句自然问题。
+
+`MISSING_REPORT_SCOPE`、`TAIJI_CENTER_UNSET`、`BASELINE_TOPIC_OMITTED`、`SELECTED_TOPIC_OMITTED` 或 `STRUCTURE_ONLY_MISLABELED_COMPLETE` 在 full-reading 中一律 BLOCKER。limited-topic 必须显式声明范围，否则按误标完整处理。
