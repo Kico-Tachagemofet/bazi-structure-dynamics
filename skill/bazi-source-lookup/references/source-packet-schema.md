@@ -15,6 +15,10 @@ source-packet.md 是本轮分析的读书收据，不是书目清单。
 - topic_slug
 - topic_lens_ref
 - taiji_center
+- topic_body_refs
+- use_kernel_ref
+- use_pivot_ids
+- relation_axis_ids
 - baseline_required：true／false
 
 ## Source Queries
@@ -79,6 +83,7 @@ source-packet.md 是本轮分析的读书收据，不是书目清单。
 ## Coverage Registry
 
 - 本轮 Topic Lens 要求的 imagery units
+- 逐条 relation axis 已覆盖的两端、支持／损用／去处／日主关系 units
 - 已完整加载的 units
 - missing units
 - deferred units：首次未展开、后续追问可增量加载

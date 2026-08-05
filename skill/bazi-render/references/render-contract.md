@@ -27,11 +27,17 @@ full-reading 必须且只能各出现一次：
 
 **[直接、可核验的核心判断]**
 
-[原象 + 十神 + 柱位的复合解释]
+[第 1 句群：本节具体在看什么，命主会怎样体验；展开 verifiable judgments]
 
-[同柱互染 + 藏干 + 全局结构修正]
+[第 2 句群：领域体与用神枢纽分别是什么，用神正在处理什么]
 
-[基线／受压／良性／反向版本]
+[第 3 句群：干支原象 + 十神 + 柱位 + 地支 + 全部相关藏干如何组成主场景]
+
+[第 4 句群：谁生用／助用，谁损用／占用／改道；同一节点的竞争用途怎样影响过程]
+
+[第 5 句群：用神做功后流向哪里，日主能否启动、承接、改道或停止；基线与切换条件]
+
+[第 6 句群：现实载体性质、外部成果所需条件、反向表现、最强替代解释与边界]
 
 生活判断：……
 
@@ -40,13 +46,17 @@ full-reading 必须且只能各出现一次：
 技术依据：finding ID；pillar/node/edge/route IDs；source unit IDs；confidence
 ```
 
-不设机械字数下限。详细度以 finding 的 `render obligations` 是否 100% 保留为准；复杂 finding 可以很长，简单 finding 不为凑字数灌水。
+相邻句群可以合并为自然段，但上述信息角色不能省略。若某一角色在上游明确为 `not-applicable`，正文说明其不参与；不能用空泛的“有帮助／有压力”占位。
+
+不设机械字数下限。详细度以 finding 的 `render obligations` 和 3 至 6 条 verifiable judgments 是否 100% 保留为准；复杂 finding 可以很长，简单 finding 不为凑字数灌水。
 
 ## 一一覆盖
 
 - 一条 finding 不得与另一条合并后只留一个标题。
+- 一个 primary relation axis 必须有一个完整展开位置；supporting axis 可作修正层，但不得吞掉主轴。
 - 同一 finding 可在别处交叉引用，但完整展开只保留一处，避免重复。
 - finding 中的 mandatory imagery、conditions、costs、counterevidence、source gap 必须进入正文或明确的技术依据。
+- finding 中的 topic body、use pivot、relation axis、main／secondary／switch scene 必须进入正文。
 - `do_not_render` 不得泄漏到正文。
 
 ## 生活语言与术语
@@ -93,6 +103,8 @@ full-reading 必须且只能各出现一次：
 - finding 覆盖是否一一对应；
 - 形成层次是否被压成十神标签；
 - 同柱互染是否双向且未伪造成作用边；
+- 是否把领域体、用神做功、生用／损用、去处和日主能动性写成了完整过程；
+- 是否把多条关系轴重新压成一个泛化机制；
 - 藏干的可用条件是否保留；
 - 全局修正、反向表现和最强替代解释是否保留；
 - 行业是否先性质后例子；

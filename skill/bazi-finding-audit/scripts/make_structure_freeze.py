@@ -30,6 +30,7 @@ REQUIRED = [
     "route-edge-endpoint-map.yaml",
     "conditions-matrix.md",
     "structure-kernel.md",
+    "use-kernel.md",
 ]
 
 
@@ -90,6 +91,7 @@ def main() -> int:
         "problem_state_ref": "problem-state.yaml",
         "edge_map_ref": "qualified-edge-map.yaml",
         "route_map_ref": "route-candidates.yaml",
+        "use_kernel_ref": "use-kernel.md",
         "files": files,
         "invalidates_when": "Any listed file hash changes.",
     }

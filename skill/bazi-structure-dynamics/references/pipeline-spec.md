@@ -36,12 +36,13 @@
 | 2D | bazi-structure-core | problem-state | 主问题与判定依据先锁定 |
 | 3A | bazi-structure-core | pattern-candidates、route-candidates.yaml、conditions-matrix | 端点只引用 Edge Map；通量与治疗优先级分开 |
 | 3B | bazi-structure-core | structure-kernel | 只写技术结构 |
-| 3.5 | bazi-finding-audit | audit-report、structure-freeze-receipt | BLOCKER 必修；hash 冻结 |
+| 3C | bazi-structure-core | use-kernel | 分开用神框架；锁定主用／辅用／备用与实际关系轴 |
+| 3.5 | bazi-finding-audit | audit-report、structure-freeze-receipt | BLOCKER 必修；use-kernel 与其他结构一起 hash 冻结 |
 | 3.6 | bazi-render scope-intake | report-scope.yaml | 确认太极中心、完整／限定模式、基础四板块与附加专题；不产断语 |
-| 4A | bazi-topic-lens | topic-lens-index、topic-lens-*.md | 只引用冻结结构；完整原局强制家庭／学业／财运／事业四镜头 |
+| 4A | bazi-topic-lens | topic-lens-index、topic-lens-*.md | 只引用冻结结构；逐 topic 建领域体、用神枢纽与实际关系轴 |
 | 4B | core timing／synastry mode | diff／overlay structure | 仅相关 topic 运行；不改写 natal |
 | 4C | bazi-source-lookup | imagery-source-packet | 读取完整展开，不用缩略口诀 |
-| 4D | bazi-imagery-composition | imagery-coverage、pillar-composites、topic-findings | 分段生产，不读 context |
+| 4D | bazi-imagery-composition | imagery-coverage、pillar-composites、axis-scenes、topic-findings | 逐轴分段生产，不读 context |
 | 4.5 | bazi-finding-audit | finding-audit | 通过后才可呈现或读取经历做映射 |
 | 4.6（可选） | orchestrator + timing core + audit | validation-plan、timing hypotheses、hypothesis audit／freeze | 声称验证时必须先于相关年史完成并冻结 |
 | 4.7（可选） | bazi-render + bazi-finding-audit | quick feedback，或 opt-in verbatim response／scorecard／score audit | 默认低负担；详细模式须用户主动启用；不得事后改假设 |
@@ -54,7 +55,7 @@
 
 发现输入缺失时固定回退：
 
-process notice → case-manifest → Reader → Structure Source Packet → Node Ledger → Interaction Census → Branch Relation Census → Branch State → Post-Branch Node Ledger → Edge Map → System State → Problem State → Pattern／Structured Routes → Conditions Matrix → Structure Kernel → Audit → Freeze → Report Scope Intake → Topic Lens Index／per-topic Lens →〔必要时 Timing／Synastry diff／overlay + audit〕→ Imagery Source Packet → Pillar Composites → Topic Findings → Finding Audit →〔可选：Manifestation Mapping，或 Validation Plan → Timing Hypotheses → Audit → Freeze → Verbatim Response → Scorecard → Score Audit〕→ Composition → Composition Audit → Render。
+process notice → case-manifest → Reader → Structure Source Packet → Node Ledger → Interaction Census → Branch Relation Census → Branch State → Post-Branch Node Ledger → Edge Map → System State → Problem State → Pattern／Structured Routes → Conditions Matrix → Structure Kernel → Use-God Kernel → Audit → Freeze → Report Scope Intake → Topic Lens Index／per-topic Body-Use Axes →〔必要时 Timing／Synastry diff／overlay + audit〕→ Imagery Source Packet → Pillar Composites → Axis Scenes → Axis-driven Topic Findings → Finding Audit →〔可选：Manifestation Mapping，或 Validation Plan → Timing Hypotheses → Audit → Freeze → Verbatim Response → Scorecard → Score Audit〕→ Composition → Composition Audit → Render。
 
 不得为了回答快而跳过缺失阶段。用户只问一个术语时可以缩小 question scope，但不能伪装成完整断局。
 
@@ -64,6 +65,7 @@ process notice → case-manifest → Reader → Structure Source Packet → Node
 - subject-context：用户经历、旧解读、杯卦、灵体反馈；Structure Core 盲结构阶段禁读。
 - source-packet：只存来源规则和边界。
 - core artifacts：只存技术结构。
+- use-kernel：只存用神框架、功能枢纽和实际关系轴；不得提前写生活故事。
 - report-scope：只存求测中心、范围与问题，不存用于证明结论的生活故事。
 - blind findings：必须在未读取会参与本轮判断的详细经历时生成并审计；既有经历不得反向进入 finding。
 - manifestation mapping：structure 与 findings 均审计通过后才允许读取 subject-context；只调整表达带、领域载体、顺序或后续问题，明确 `non-evidentiary`。
@@ -111,13 +113,15 @@ process notice → case-manifest → Reader → Structure Source Packet → Node
 - 每条主路线有最弱环和反证；
 - 主问题已独立锁定；每条路线的端点与 Edge Map 一致，并分开 actual throughput、net effect 与 therapeutic priority；
 - conditions matrix 与 structure freeze receipt 存在且下游版本一致；
+- use-kernel 已区分格局、病药／制化、扶身与调候口径，并列出可追溯的实际关系轴；
 - 格局候选按流派分开；
-- Structure Kernel 审计 PASS；
-- full-reading 已有 `report-scope.yaml`，命盘主人、求测者关系、默认太极中心和逐 topic 中心均明确；
+- Structure Kernel 与 Use-God Kernel 审计 PASS；
+- full-reading 已有 `report-scope.yaml`，命盘主人、求测者关系和自然语言问题中心均明确；逐 topic 的领域体、用神枢纽与体—用关系轴均由 Topic Lens 锁定；
 - full-reading 的 family-home、education-learning、wealth-resource、career-work 四个基础 topic 均有独立 lens、完整 imagery source、finding 与 render section；
 - 求测者已选专题没有被漏掉；
 - 已明确记录 `manifestation_mapping_state` 与 `validation_state`；两者均可为 `none`，且不阻塞完整报告；若声称验证，则预注册、冻结、原始回应、scorecard 与 score audit 齐全；
 - 具体问题已有完整 imagery source、逐柱复合、full-chart sweep 和 finding audit；
+- 每条 primary 体—用关系轴已有 axis scene 与 finding，或明确 deferred／source-gap；
 - 最终文字没有新增、压缩或反向改写 finding；追问新增内容已经走过增量 finding 流程。
 
 ## 7. 标准原局断局协议

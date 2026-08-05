@@ -1,6 +1,6 @@
 ---
 name: bazi-structure-core
-description: 分阶段建立四柱八字的结构动力模型：逐位置评估天干与藏干，完整枚举生克合冲刑害方会合局，裁决地支状态和节点占用，限定作用边通量，再锁定主问题、实际吞吐、日主承载、自治子系统、格局候选、只引用 Edge Map 的结构化路线、治疗优先级、条件矩阵及结构核。用户询问旺衰、通关、格局、用神、藏干起效、合化、墓库、路线或既有结构遗漏时使用。必须接收 Reader 和 Source Packet，不直接写生活故事。
+description: 分阶段建立四柱八字的结构动力模型：逐位置评估天干与藏干，完整枚举生克合冲刑害方会合局，裁决地支状态和节点占用，限定作用边通量，再锁定主问题、实际吞吐、日主承载、自治子系统、格局候选、端点一致的结构化路线、条件矩阵、结构核与后置用神太极核。用户询问旺衰、通关、格局、用神、藏干起效、合化、墓库、路线或既有结构遗漏时使用。必须接收 Reader 和 Source Packet，不直接写生活故事。
 ---
 
 # 八字 Structure Core
@@ -18,7 +18,7 @@ Stage 1 为 FAIL 时停止。Source Packet 有缺口时，允许枚举事实，�
 
 ## 固定执行顺序
 
-详细字段见 [Core artifact schemas](references/core-artifact-schemas.md)，状态词见 [State vocabulary](references/state-vocabulary.md)。
+详细字段见 [Core artifact schemas](references/core-artifact-schemas.md)，用神太极核见 [Use Kernel Schema](references/use-kernel-schema.md)，状态词见 [State vocabulary](references/state-vocabulary.md)。
 
 ### Mode A：Node Ledger
 
@@ -148,7 +148,22 @@ Stage 1 为 FAIL 时停止。Source Packet 有缺口时，允许枚举事实，�
 6. 启动与控制；
 7. 条件开关和最强反证。
 
-每项须引用 `problem-state`、node、edge、route 和 source rule ID。产出 structure-kernel.md，然后调用 $bazi-finding-audit。审计通过并生成 structure freeze 前不得进入具体取象、岁运或合盘结论。
+每项须引用 `problem-state`、node、edge、route 和 source rule ID。产出 structure-kernel.md；此时技术结构已收束，但尚未完成后置用神太极锁定。
+
+### Mode H：Use-God Kernel／用神太极核
+
+读取 `problem-state.yaml`、`pattern-candidates.md`、`route-candidates.yaml`、`conditions-matrix.md` 与 `structure-kernel.md`，按 [Use Kernel Schema](references/use-kernel-schema.md) 产出 `use-kernel.md`。
+
+本模式必须：
+
+1. 分开格局用神、病药／制化主用、扶身辅用和调候需要；不静默混派；
+2. 先按主问题确定“最需要解决什么”，再判断主用当前是否真能起效；
+3. 分开主用、辅用、备用路线与损用／占用／改道因素；
+4. 把主用与病神、生用、损用、去处、日主能动性及备用路线之间的**实际关系轴**逐条列出；
+5. 同一节点的竞争用途分别成轴，记录分配冲突，不用一句“有利有弊”代替；
+6. 只引用冻结前的 node、edge、route 与 condition，不新增生活故事或行业结论。
+
+用神太极核是后续 Topic Lens 的结构中心，不是最后一句“喜某五行”。完成后调用 `$bazi-finding-audit`；`use-kernel.md` 必须与其他结构文件一起审计并冻结。
 
 ## 不可跨越的边界
 
@@ -159,6 +174,8 @@ Stage 1 为 FAIL 时停止。Source Packet 有缺口时，允许枚举事实，�
 - 不让 Edge Map 绕过 Branch Arbitration 回读原始节点。
 - 不在 route 中重写 edge 的 source／target／action；Edge Map 是端点唯一事实源。
 - 不把 actual throughput 排名当 therapeutic priority，也不把加重主问题的通道叫出口。
+- 不把格局用神、病药用神、扶抑喜神与调候需要静默合并为一个“喜用”。
+- 不在用神太极核里直接写领域故事；用神关系轴只写结构过程，生活显化留给 Topic Lens 与 Imagery Composition。
 - 不把同支藏干的组成关系自动改写成持续发生的生克边。
 - 不把“删除伪直接边”扩大成“所有藏干只剩库存”；混合路线必须同时保留可证的根气与环境供给层。
 - 不把系统能运行等同于日主能主动控制。

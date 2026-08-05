@@ -63,7 +63,7 @@ def scope_values(scope_text: str) -> dict[str, object]:
                 if raw_value == "[]":
                     values[key] = []
                     active_list = None
-            elif key in ("delivery_mode", "family_calibration_state"):
+            elif key in ("delivery_mode", "manifestation_mapping_state", "validation_state"):
                 values[key] = raw_value
             continue
         stripped = raw_line.strip()
@@ -119,13 +119,6 @@ def check(
                     "Full-reading scope omits mandatory baseline topics: "
                     f"{missing_baseline_contract}"
                 )
-            calibration_state = scope.get("family_calibration_state")
-            if calibration_state not in ("completed", "declined", "uncalibrated", "contaminated"):
-                blockers.append(
-                    "Full-reading family calibration gate is not closed: "
-                    f"{calibration_state or 'missing'}"
-                )
-
         missing_topics = [item for item in required_topics if item not in rendered_topics]
         if missing_topics:
             blockers.append(f"Required report topics are not rendered: {missing_topics}")

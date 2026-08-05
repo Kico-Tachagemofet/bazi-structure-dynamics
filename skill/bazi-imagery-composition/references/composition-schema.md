@@ -8,6 +8,7 @@
 
 - case ID 与 structure freeze ID
 - report-scope 与 topic-lens-index refs
+- use-kernel 与各 topic 用神枢纽／关系轴 refs
 - delivery mode 与 reading center
 - 已审计 topic findings 清单
 - imagery source packet 清单
@@ -20,23 +21,26 @@
 
 ### 3. 核心复合画面
 
-列出 2 至 5 个跨 finding 的复合画面。每个画面必须引用 finding IDs，说明：
+列出 2 至 5 个跨 finding 的复合画面。每个画面必须引用 relation axis 与 finding IDs，说明：
 
 - 哪些柱／路线共同构成；
 - 它的基线、受压和良性版本；
 - 哪些条件使它改道；
 - 哪些领域只是同一结构的不同载体。
+- 同一用神在不同领域体上为什么形成不同结果，或为什么只能交叉引用而不应重复。
 
 ### 4. Topic Order
 
 每个 topic 记录：
 
 - finding 顺序；
+- relation axis 顺序与每轴回答的具体问题；
 - 开场 hook；
 - 必须展开的原始象意；
 - 不得丢失的条件、代价和反证；
 - 交叉引用位置；
 - 可见成果需要的额外现实条件。
+- 主场景、次场景与切换场景。
 
 full-reading 的 Topic Order 必须先核对：
 
@@ -69,6 +73,9 @@ full-reading 的 Topic Order 必须先核对：
 
 - reader section ID
 - verifiable judgments
+- topic body／use pivot／relation axis
+- main scene／secondary scene／switch scene
+- cause → process → result expansion order
 - mandatory imagery
 - mandatory condition and cost
 - inline technical refs

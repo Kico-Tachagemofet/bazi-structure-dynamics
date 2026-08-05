@@ -45,6 +45,7 @@ def main() -> None:
         assert all(len(item["sha256"]) == 64 for item in receipt["files"])
         assert all("schema_version" in item for item in receipt["files"])
         assert receipt["commander_fact_ref"] == "chart-stage1.yaml#chart.month_command"
+        assert receipt["use_kernel_ref"] == "use-kernel.md"
     print("PASS: structure freeze hashes every required artifact and audit report")
 
 

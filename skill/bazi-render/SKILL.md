@@ -20,6 +20,7 @@ description: 在结构冻结后向求测者确认命盘中心与报告范围，�
 报告模式必须读取：
 
 - `report-scope.yaml`；
+- `use-kernel.md`；
 - `composition.md` 及通过的 composition audit；
 - 对应 `topic-findings/*.md`；
 - `manifestation-map.md` 或标明 `non-evidentiary` 的 legacy `calibration-map.md`（若存在）；
@@ -41,7 +42,7 @@ description: 在结构冻结后向求测者确认命盘中心与报告范围，�
 只在 natal 结构审计通过并冻结后、Topic Lens 之前运行。
 
 1. 先告诉求测者：“全盘结构已经完成并冻结，下面才开始具体断局。”
-2. 用自然语言确认默认是否以命主本人为中心；若不是，询问围绕谁、哪段关系或哪件事。
+2. 用自然语言确认默认是否以命主本人为中心；若不是，询问围绕谁、哪段关系或哪件事。这里只确认问题中心，不让求测者选择技术用神。
 3. full-reading 固定列明家庭、学业、财运、事业四个基础板块，不让用户误以为必须四选一。
 4. 询问是否增加感情、健康、神秘学、创作、人际、子女或任意自定义专题，以及每个专题的具体问题。
 5. 确认只看原局还是涉及时间／合盘；后者只做范围标记并退回对应上游。
@@ -53,11 +54,12 @@ description: 在结构冻结后向求测者确认命盘中心与报告范围，�
 
 1. 以 `composition.md` 为总骨架，不重新综合结构。
 2. 每条 finding 独立成节，不把数条 finding 压成概述。
-3. 保留原象、十神功能、柱位、同柱互染、藏干、全局修正、条件、代价和反证。
-4. 把技术词翻译成生活过程；八字术语可以出现，但首次出现须说明它在本盘具体做什么。
-5. 每节写可验证生活判断、条件与代价、inline 技术依据。
-6. 先给领域性质，再给行业或现实例子。
-7. 调用 `$bazi-finding-audit` 的 render 模式；FAIL 必须重写。
+3. 先读 finding 的 `topic body → use pivot → relation axis → interpretive kernel`，不得从 topic 标题自由发挥。
+4. 每节按以下顺序完整展开：直接生活判断；领域体与用神在处理什么；原象／十神／柱位／藏干怎样组成该过程；谁生用、损用、占用或使其改道；做功后去向、日主能否启动／承接／停止；基线与切换条件；现实载体与外部成果条件；反向表现和边界。
+5. 把技术词翻译成有起因、动作、对象、结果和开关的生活过程。八字术语可以出现，但首次出现须说明它在本盘具体做什么。
+6. 每节逐条展开上游 3 至 6 条 verifiable judgments，不得把它们重新压成一个摘要句。
+7. 先给领域性质，再给行业或现实例子；例子不能代替过程。
+8. 调用 `$bazi-finding-audit` 的 render 模式；FAIL 必须重写。
 
 full-reading 报告必须逐节覆盖 `family-home`、`education-learning`、`wealth-resource`、`career-work`，并覆盖 `selected_optional_sections` 的全部专题。四个基础板块可以互相引用，但不能合并成一段“综合性格”。
 
@@ -75,7 +77,7 @@ full-reading 报告必须逐节覆盖 `family-home`、`education-learning`、`we
 
 若结构锚点已存在，但用户问了首次报告未展开的象意或新领域：
 
-1. 调用 `$bazi-topic-lens` 生成增量 lens；
+1. 调用 `$bazi-topic-lens` 为当前问题定义领域体，从冻结 use-kernel 选择用神枢纽并建立增量关系轴；
 2. 调用 `$bazi-source-lookup` 加载本轮完整 imagery units；
 3. 调用 `$bazi-imagery-composition` 生成并审计增量 finding；
 4. 写 `qa/<turn-id>/qa-composition.md`；
@@ -132,6 +134,7 @@ full-reading 报告必须逐节覆盖 `family-home`、`education-learning`、`we
 ## 文字纪律
 
 - 先给问题的直接答案，再展开形成过程。
+- 每个回答先定位领域体与用神关系轴；找不到已有轴时不得用泛化十神故事补答。
 - 不以“某十神所以某性格”结束；要把干支、柱位、藏干和全局条件合起来。
 - 不把内部能力、现实载体、外部成果混成一层。
 - 不把名声、注意力、资源和收入混成“财”。

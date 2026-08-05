@@ -36,7 +36,8 @@
 - `qualified-edge-map` 每条实际边必须引用 post-state；不得直接使用 pre-branch availability。
 - 每条边必须标 edge layer；同支 composition-only 不得 active，但有来源的 hidden direct-action、root-support 与 environmental-feed 必须分别裁决。
 - 系统层必须重新比较“木提供背景供给、明丙直接生戊”的混合层木火土子系统，不得因缺一条 active 甲→丙边便自动删除整段木供给。
-- `problem-state`、结构化 route、conditions matrix 与 structure freeze 必须齐全；route 只保存 edge refs。
+- `problem-state`、结构化 route、conditions matrix、use-kernel 与 structure freeze 必须齐全；route 只保存 edge refs。
+- `use-kernel` 必须把“食神制杀”与“食神生财、财再生杀”拆成两条关系轴，并把庚印生身与庚印制食的竞争用途分开；不得用一句“木火土可运行”代替。
 - 取象测试若解释壬寅或庚戌，必须覆盖同柱干支双向着色和该支全部藏干，并把互染保持为 composition-only。
 
 ## Fixture A

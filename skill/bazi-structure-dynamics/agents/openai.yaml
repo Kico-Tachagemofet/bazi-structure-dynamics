@@ -1,4 +1,4 @@
 interface:
   display_name: "八字结构动力总编排"
-  short_description: "先冻结审计结构，再完成分领域断局与可选流运预注册验证"
-  default_prompt: "Use $bazi-structure-dynamics to run a staged Bazi reading: freeze and audit the natal structure first, complete the four baseline domains plus selected topics, and use preregistered timing validation only when evidence validation is requested and eligible."
+  short_description: "先冻结结构与用神太极核，再按体用关系轴完成分领域断局"
+  default_prompt: "Use $bazi-structure-dynamics to freeze the natal structure and use-god kernel first, then build topic-body/use-pivot relation axes and render the four baseline domains plus selected topics."

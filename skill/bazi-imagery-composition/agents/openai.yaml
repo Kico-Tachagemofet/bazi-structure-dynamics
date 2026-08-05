@@ -1,4 +1,4 @@
 interface:
   display_name: "八字取象与组合"
-  short_description: "把冻结结构组合成家庭、学业、财运、事业及专项完整 findings"
-  default_prompt: "Use $bazi-imagery-composition to turn the frozen Bazi structure into audited, full-layer findings for the four baseline domains and selected topics."
+  short_description: "逐条合成用神关系轴场景，再产出可展开的领域 findings"
+  default_prompt: "Use $bazi-imagery-composition to compose each frozen body-use relation axis into an audited scene and a concrete topic finding."

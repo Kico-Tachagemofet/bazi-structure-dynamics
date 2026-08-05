@@ -27,6 +27,7 @@ description: 以独立检察官模式审计八字结构、格局、路线、取�
 - route-edge-endpoint-map.yaml
 - conditions-matrix.md
 - structure-kernel.md
+- use-kernel.md
 
 Topic、timing、synastry、composition 或 render 审计还必须读取对应上游文件。
 
@@ -53,6 +54,8 @@ full-reading 的 topic／composition／render 审计另必须读取：
 - Reader 已知司令是否被结构化记录；司令修正后是否重跑全部下游；
 - route 是否只引用 Edge Map 的 edge ID，端点、action、layer 和 distance 是否完全继承；
 - problem state 是否先于救应／出口；actual throughput、net effect 与 therapeutic priority 是否分开；
+- use-kernel 是否在 Structure Kernel 之后生成，分开格局、病药／制化、扶身与调候口径，并只引用已存在的 node／edge／route／condition；
+- 用神太极核是否把“最需要”与“当前可用”分开，并把同一节点的竞争用途拆成实际关系轴；
 - conditions matrix 是否覆盖每条主路线；
 - 本轮声称使用的原文是否出现在 Source Packet；
 - subject context 是否在结构审计前被隔离。
@@ -94,11 +97,13 @@ full-reading 的 topic／composition／render 审计另必须读取：
 - full-reading 是否分别覆盖 family-home、education-learning、wealth-resource、career-work；
 - selected optional topics 是否逐项有 lens、source、finding、composition 与 render；
 - 每个 topic 是否有明确 taiji center，且技术中心由 Topic Lens 选择而非要求求测者自选十神；
+- 每个 topic 是否分开领域体与用神枢纽；primary relation axis 是否逐条对应 axis scene 与 finding，或有明确 deferred／source-gap 收据；
 - 取象覆盖是否包含相关柱的天干、地支、十神、柱位和全部藏干；
 - 是否逐层完成同柱双向着色，并明确其为 composition-only；
-- 每条 finding 是否做 full-chart sweep、表达带和显化层；
+- 每条 finding 是否做 full-chart sweep、表达带和显化层，并保留领域体、用神做功、生用／损用、去处与日主能动性；
 - composition 不得加入 finding 没有的新判断，也不得压掉形成层次；
 - render 不得删掉关键原象、限制、代价和反证；
+- render 是否把每条主关系轴展开成有起因、动作、对象、结果和切换条件的生活过程，而非重新压成泛化机制；
 - 取象必须读取完整来源展开；
 - 职业行业是否先推导性质，再给行业／岗位／任务／收入／可见度例子；
 - 显化映射是否明确 non-evidentiary，且只调整已有分支的表达带或领域载体；

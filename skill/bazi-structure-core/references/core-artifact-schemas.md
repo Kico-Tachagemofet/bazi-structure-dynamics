@@ -14,6 +14,7 @@
 10. Structured Route Candidates
 11. Conditions Matrix
 12. Structure Kernel
+13. Use-God Kernel
 
 ## 1. Node Ledger
 
@@ -303,3 +304,15 @@ structure-kernel.md 只写以下七项：
 7. Switches：最小改变条件与最强反证。
 
 每项必须引用 problem ID、node ID、edge ID、route ID 和 source rule ID。禁止直接写职业、性格、关系或灵异故事。
+
+## 13. Use-God Kernel
+
+`use-kernel.md` 在 Structure Kernel 之后生成，并与全部结构产物一起冻结。完整字段、流派分层和关系轴规则见 [用神太极核 Schema](use-kernel-schema.md)。
+
+最低要求：
+
+- 格局用神、病药／制化主用、扶身辅用、调候需要与备用路线分栏；
+- “治疗优先级”与“当前可用度／实际通量”分栏；
+- 主用与病神、生用、损用、去处、日主能动性及备用路线中的实际关系逐轴列出；
+- 每条关系轴只回答一个主过程，并引用现有 node／edge／route／condition；
+- 不写生活故事，不用一个五行标签替代关系过程。

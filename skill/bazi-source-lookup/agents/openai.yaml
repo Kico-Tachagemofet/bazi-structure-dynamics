@@ -1,4 +1,4 @@
 interface:
   display_name: "八字原典与取象检索"
-  short_description: "为结构阶段及各个报告板块加载完整原典与展开取象证据包"
-  default_prompt: "Use $bazi-source-lookup to build traceable structure or imagery source packets for each scoped Bazi topic from complete routed source sections."
+  short_description: "按结构与体用关系轴加载完整原典和展开取象证据"
+  default_prompt: "Use $bazi-source-lookup to build traceable source packets for each scoped Bazi topic and each body-use relation axis from complete routed sections."
