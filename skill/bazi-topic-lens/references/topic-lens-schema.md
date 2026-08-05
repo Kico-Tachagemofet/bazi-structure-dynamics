@@ -12,6 +12,21 @@ topic-lens.md 至少包含以下部分。
 - request_mode：initial-report／follow-up
 - follow_up_type：clarification／new-imagery／new-domain／verification／counterexample／timing／synastry／structural-challenge／contradiction
 - structure_freeze_id
+- report_scope_id／report-scope path
+- delivery_mode：full-reading／limited-topic
+- baseline_required：true／false
+
+## Taiji Center
+
+- chart_subject
+- default_center
+- user_language_center
+- center_type：self／person／relationship／family-system／event／organization／object
+- relation_to_chart_subject
+- technical_anchor：pillar／node／edge／route refs
+- why_this_center
+- alternative_center
+- center_confidence
 
 ## Structural Index
 
@@ -58,6 +73,26 @@ topic-lens.md 至少包含以下部分。
 - forbidden overreach
 - strongest alternative explanation
 - real-world verification needed
+
+## Full-reading Index
+
+`topic-lens-index.yaml` 至少包含：
+
+- `case_id`
+- `structure_freeze_id`
+- `report_scope_ref`
+- `mandatory_topics`：family-home／education-learning／wealth-resource／career-work
+- `selected_optional_topics`
+- `produced_lenses`
+- `missing_lenses`
+- `omitted_baseline_sections`
+- `completeness_verdict`
+
+`family-home` lens 另含：
+
+- `blind_calibration_anchor: true`
+- `family_context_available_to_finding: false`
+- `calibration_allowed_after_audit: true`
 
 Topic Lens 不得重算旺衰、成局或格局。发现上游缺失时退回 Structure Core。
 

@@ -7,6 +7,8 @@
 ### 1. Freeze and Coverage
 
 - case ID 与 structure freeze ID
+- report-scope 与 topic-lens-index refs
+- delivery mode 与 reading center
 - 已审计 topic findings 清单
 - imagery source packet 清单
 - calibration 是否存在及其边界
@@ -35,6 +37,16 @@
 - 不得丢失的条件、代价和反证；
 - 交叉引用位置；
 - 可见成果需要的额外现实条件。
+
+full-reading 的 Topic Order 必须先核对：
+
+1. family-home
+2. education-learning
+3. wealth-resource
+4. career-work
+5. report-scope 中全部 selected optional topics
+
+顺序可以为叙事调整，但清单不得缺项，也不得把四个基础 topic 合并为 general。
 
 ### 5. 张力与反向表现
 
@@ -79,4 +91,6 @@
 - 不得以“为了整体流畅”为由合并掉独立 finding。
 - 不得只保留结论而删除它的形成层次。
 - calibration 只能改变呈现顺序、语气或领域载体，不得改变结构方向。
+- family calibration 必须引用已通过审计的 blind finding；提前读取家庭事实为污染，不得由 composition 自行圆回。
+- full-reading 缺基础四板块、太极中心或已选专题时不得进入 Render。
 - 后续追问可以新增经审计 finding；首次 composition 不代表全盘象意已经穷尽。

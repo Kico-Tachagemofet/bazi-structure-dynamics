@@ -1,6 +1,6 @@
 ---
 name: bazi-topic-lens
-description: 把首次或追问中的具体八字问题限定到已审计并冻结的结构载体：为职业、学习、财务、关系、健康、神秘学、创作、岁运或合盘选择相关柱、节点、作用链、领域载体、时间层，并列出必须加载的完整干支十神藏干取象单元、同柱双向着色和 full-chart sweep。用户需要避免从十神标签直接跳故事，或后续聊天要判断该直接解释、补取象还是退回结构层时使用。本技能不重算原局，也不产生活断语。
+description: 把完整原局报告范围或追问中的具体八字问题限定到已审计并冻结的结构载体：读取 report-scope，把求测者自然语言中的中心转换为逐专题太极点，完整原局至少为家庭、学业、财运、事业建立四个独立镜头，再为关系、健康、神秘学、创作、岁运或合盘选择相关柱、节点、作用链、领域载体、时间层与完整取象单元。用户需要从结构进入正常断局、避免从十神标签直接跳故事，或后续聊天要判断该直接解释、补取象还是退回结构层时使用。本技能不重算原局，也不产生活断语。
 ---
 
 # 八字 Topic Lens
@@ -15,21 +15,50 @@ description: 把首次或追问中的具体八字问题限定到已审计并冻�
 - problem-state.yaml、route-candidates.yaml、conditions-matrix.md
 - structure-freeze-receipt.yaml
 - 已通过的 bazi-finding-audit
-- 用户的具体问题
+- `report-scope.yaml` 或用户的限定具体问题
 
 缺少结构核、结构冻结或审计未通过时停止。若本轮结构文件版本晚于 freeze receipt，先退回结构审计。
 
 ## 镜头类型
 
-- career-learning
-- money-resource
-- relationship
+- family-home
+- education-learning
+- wealth-resource
+- career-work
+- love-relationship
 - health-body
 - occult-perception
 - creation-expression
+- social-collaboration
+- children-parenting
 - timing
 - synastry
 - general
+
+## 太极中心转换
+
+每个 topic 都必须有独立 `taiji_center`，至少记录：
+
+- `chart_subject`：命盘主人；
+- `user_language_center`：求测者所说的具体人、关系、事件或组织；
+- `center_type`：self／person／relationship／family-system／event／organization／object；
+- `relation_to_chart_subject`；
+- `technical_anchor`：本 topic 实际采用的柱位、十神功能、节点与路线；
+- `why_this_center` 与替代中心。
+
+完整原局默认以命主本人为总中心，但四个基础领域仍分别建立领域中心。不要要求求测者自己选择十神或柱位；技术太极由本技能依据冻结结构完成。
+
+## 完整原局批量镜头
+
+当 `delivery_mode: full-reading` 时：
+
+1. 先产出 `topic-lens-index.yaml`，列明全部 mandatory 与 selected topics；
+2. 分别产出 `topic-lens-family-home.md`、`topic-lens-education-learning.md`、`topic-lens-wealth-resource.md`、`topic-lens-career-work.md`；
+3. 再为 `selected_optional_sections` 逐项建独立 lens；
+4. 四个基础板块可以共享结构锚点，但不得合并成一个 general lens；
+5. 家庭镜头必须预先声明 `blind_calibration_anchor: true`，且 `family_context_available_to_finding: false`。
+
+limited-topic 只建立约定镜头，同时记录未覆盖基础板块和“不得称完整断局”。
 
 ## 强制区分
 

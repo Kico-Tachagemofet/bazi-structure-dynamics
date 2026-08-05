@@ -1,6 +1,6 @@
 ---
 name: bazi-imagery-composition
-description: 将已经通过结构审计的四柱八字转成可追溯、可验证且不损失原始象意层次的柱象、节点象、路线象与领域 findings：同时合成天干本象、十神功能、柱位、地支场景、全部藏干、同柱双向着色、旺衰通量、全局主问题、条件开关和现实载体，并建立 composition 骨架。用户要求详细断盘、解释某柱某干支、职业或神秘学取象、把技术结构翻译成生活表现，或为后续可追问 Render 补充新领域象意时使用。不得凭用户经历倒推结构，也不得把取象组合冒充新的生克作用边。
+description: 将已经通过结构审计的四柱八字转成可追溯、可验证且不损失原始象意层次的柱象、节点象、路线象与领域 findings：完整原局按 report-scope 至少分别完成家庭、学业、财运、事业四个基础板块，再处理求测者加选专题；同时合成天干本象、十神功能、柱位、地支场景、全部藏干、同柱双向着色、旺衰通量、全局主问题、条件开关和现实载体，并建立 composition 骨架。用户要求正常完整断盘、解释某柱某干支、职业或神秘学取象、把技术结构翻译成生活表现，或为后续可追问 Render 补充新领域象意时使用。不得凭用户经历倒推结构，也不得把取象组合冒充新的生克作用边。
 ---
 
 # 八字取象与组合
@@ -26,7 +26,8 @@ description: 将已经通过结构审计的四柱八字转成可追溯、可验�
 - `structure-kernel.md`
 - `structure-freeze-receipt.yaml`
 - 通过的 structure audit
-- `topic-lens.md`
+- `report-scope.yaml`
+- `topic-lens-index.yaml` 与本轮全部 `topic-lens-*.md`
 - 本 topic 的完整 `imagery-source-packet-<topic>.md`
 - timing／synastry topic 另需对应 diff／overlay artifacts、审计报告与 overlay freeze receipt
 
@@ -47,6 +48,8 @@ description: 将已经通过结构审计的四柱八字转成可追溯、可验�
 - 后续追问可以增量加载的未穷尽范围。
 
 “本轮没展开”不得写成“此字没有该象”。缺完整来源时标 `SOURCE_GAP`，不得用一句口诀补齐。
+
+full-reading 先建立总 `imagery-coverage-index.yaml`：逐项列出 family-home、education-learning、wealth-resource、career-work 和所有 selected optional topics 的 lens、source packet、pillar coverage 与状态。任一基础 topic 缺失时停止，不得先写其他章节后补。
 
 ### Mode B：逐柱复合
 
@@ -79,11 +82,20 @@ description: 将已经通过结构审计的四柱八字转成可追溯、可验�
 
 不能只从十神标签跳故事，也不能只讲干支本象而漏掉十神和全局。A 带 B 的特性时，同时检查 B 如何承载或限制 A；但两者权重不要求相等。
 
+full-reading 的四个基础 topic 必须分别拥有独立 finding 文件和稳定 topic ID：
+
+- `family-home`：家庭系统、父母／家庭资源压力、家庭角色、居住和生活环境维持；不自动代替爱情或子女。
+- `education-learning`：学习输入、理解与输出、考试资格、专业和教育路径。
+- `wealth-resource`：资源、收入、积累、支出、流动性、可见度与变现。
+- `career-work`：任务、岗位、组织环境、责任压力、职业发展与成果。
+
+相同结构可跨 topic 引用，但不得用一条“综合性格 finding”代替四个领域。每个 selected optional topic 也必须有独立 finding。
+
 ### Mode D：Finding 审计与校准
 
 先调用 `$bazi-finding-audit` 的 imagery-finding 模式。FAIL 必须退回对应 finding 或 source packet。
 
-审计通过后才可读取 `subject-context.md`，产出 `calibration-map.md`：
+审计通过后才可读取 `subject-context.md`，产出 `calibration-map.md`。full-reading 的 family-home 另有强制先后：先完成并审计 family blind findings，再调用 `$bazi-render` 的 Family Calibration Gate，收到回应后才允许读取该回应并校准：
 
 - `confirmed`：经历与已有表达带相符；
 - `conditional`：只在特定领域或时间成立；
@@ -92,6 +104,8 @@ description: 将已经通过结构审计的四柱八字转成可追溯、可验�
 - `structural-challenge`：与结构矛盾，退回 audit，不得用故事改盘。
 
 校准可以调优先级、语气和领域载体，不能创造新的结构、路线或普遍规则。
+
+若用户拒绝家庭校准，记录 `family_calibration_state: declined` 或 `uncalibrated` 并继续；不得补写“根据反馈验证”。若详细家庭事实在 blind finding 审计前已经进入当前生成上下文，优先转交新鲜隔离上下文；无法隔离时记录 `contaminated` 并放弃盲回验资格。若仍把既有事实写入 finding 或声称盲验证，退回 `$bazi-finding-audit`。
 
 ### Mode E：Composition
 
@@ -105,6 +119,8 @@ description: 将已经通过结构审计的四柱八字转成可追溯、可验�
 - 后续 Q&A 可继续展开的象意索引。
 
 完成后再次调用 `$bazi-finding-audit` 的 composition 模式。Render 不得绕过该审计。
+
+full-reading 的 `composition.md` 必须按照 `report-scope.yaml` 建立基础四板块和全部已选专题的 topic order；缺任一项不得进入 Render。
 
 ## 职业与行业推导
 
@@ -122,12 +138,15 @@ description: 将已经通过结构审计的四柱八字转成可追溯、可验�
 ## 硬门槛
 
 - 结构未冻结或审计未过：停止。
+- full-reading 缺 report-scope、topic-lens-index、基础四镜头或任一已选专题镜头：FAIL。
 - 相关柱漏一天干、地支或任一藏干：FAIL。
 - 同柱互染被当成 active edge：FAIL。
 - 只列符号、不做组合：FAIL。
 - 只讲局部而未做 full-chart sweep：FAIL。
 - 完整取象来源缺失却写高置信生活故事：FAIL。
 - 用户经历创造新 finding：FAIL。
+- 家庭事实或校准回应在 family blind findings 审计前参与生成：FAIL。
+- 用一条 general finding 代替家庭、学业、财运、事业任一基础板块：FAIL。
 - 行业名先于工作性质：退回改写。
 - composition 压掉 finding 的条件、代价或反证：FAIL。
 

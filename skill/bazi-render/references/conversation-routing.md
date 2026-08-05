@@ -4,6 +4,8 @@
 
 | 类型 | 例子 | 处理 |
 |---|---|---|
+| report-scope-intake | “结构看完了，接下来完整断盘” | Render Mode 0 确认中心、基础四板块与附加专题，再退回 Topic Lens |
+| family-calibration | “这些家庭判断哪些符合？” | 只展示已审计家庭 judgments，收集校准，不新增 finding |
 | clarification | “你说庚戌难用具体是什么意思？” | 直接解释已有 finding |
 | comparison | “这是财制枭还是食神制杀？” | 引用已有路线比较；缺路线则退回 Core |
 | new-imagery | “丁火在视觉上还能怎么取？” | 同锚点增量 Source + Imagery Composition |
@@ -27,7 +29,7 @@
 - `existing_finding_ids`
 - `imagery_coverage_state`
 - `required_upstream_action`
-- `route_verdict`：direct-render／supplement-imagery／new-topic／timing-diff／synastry-overlay／structure-audit／blocked
+- `route_verdict`：report-scope-intake／family-calibration／direct-render／supplement-imagery／new-topic／timing-diff／synastry-overlay／structure-audit／blocked
 - `reason`
 - `forbidden_shortcut`
 
@@ -40,6 +42,8 @@
 - 所需原始象意单元已加载；
 - 没有新时间层、跨盘层或结构争议；
 - 答案不会新增上游没有的生活判断。
+
+首次完整原局在没有 `report-scope.yaml` 时不得 direct-render；先走 `report-scope-intake`。完整报告缺基础四板块或已选专题时不得用“已有部分足够”放行。
 
 ## 4. 增量取象与结构重算的边界
 

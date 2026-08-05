@@ -1,4 +1,4 @@
 interface:
   display_name: "八字结构动力总编排"
-  short_description: "分阶段编排八字事实、结构、取象、报告、追问、岁运与合盘"
-  default_prompt: "Use $bazi-structure-dynamics to run a staged, source-grounded 八字 analysis with auditable intermediate artifacts."
+  short_description: "先冻结并审计八字结构，再按太极中心完成基础四板块与专项断局"
+  default_prompt: "Use $bazi-structure-dynamics to run a full staged Bazi reading: freeze and audit the natal structure first, then confirm the reading center and render the four baseline domains plus selected topics."

@@ -30,6 +30,13 @@ description: 以独立检察官模式审计八字结构、格局、路线、取�
 
 Topic、timing、synastry、composition 或 render 审计还必须读取对应上游文件。
 
+full-reading 的 topic／composition／render 审计另必须读取：
+
+- `report-scope.yaml`；
+- `topic-lens-index.yaml` 与全部 per-topic lens；
+- 基础四板块和已选专题的 imagery coverage、source packets、findings；
+- family blind finding audit、family calibration state 与回应引用（若有）。
+
 ## A 层：程序完整性
 
 - Stage 1 是否 PASS 或明确 PARTIAL；
@@ -47,6 +54,9 @@ Topic、timing、synastry、composition 或 render 审计还必须读取对应�
 - conditions matrix 是否覆盖每条主路线；
 - 本轮声称使用的原文是否出现在 Source Packet；
 - subject context 是否在结构审计前被隔离。
+- full-reading 是否先交付启动说明，结构冻结后才生成 report-scope；
+- report-scope 是否明确 chart owner、querent role、reading center、基础四板块与已选专题；
+- family blind findings 是否在详细家庭事实与校准回应进入生成上下文前完成。
 
 任一缺失为 BLOCKER。
 
@@ -79,6 +89,9 @@ Topic、timing、synastry、composition 或 render 审计还必须读取对应�
 ## C 层：输出保真
 
 - topic finding 必须引用已审计结构路线；
+- full-reading 是否分别覆盖 family-home、education-learning、wealth-resource、career-work；
+- selected optional topics 是否逐项有 lens、source、finding、composition 与 render；
+- 每个 topic 是否有明确 taiji center，且技术中心由 Topic Lens 选择而非要求求测者自选十神；
 - 取象覆盖是否包含相关柱的天干、地支、十神、柱位和全部藏干；
 - 是否逐层完成同柱双向着色，并明确其为 composition-only；
 - 每条 finding 是否做 full-chart sweep、表达带和显化层；
@@ -89,9 +102,9 @@ Topic、timing、synastry、composition 或 render 审计还必须读取对应�
 - 回验是否只校准已有分支；
 - 健康、精神和超自然断语必须标明边界，不替代现实诊断或本体论证明。
 
-## D 层：对话边界
+## D 层：报告入口与对话边界
 
-对 Q&A 额外检查：
+对首次报告入口与 Q&A 额外检查：
 
 - qa-route 是否先识别 clarification、new imagery、new domain、timing、synastry、structural challenge 或 contradiction；
 - 直接回答是否确有已审计 finding 与完整 imagery unit；
@@ -99,6 +112,8 @@ Topic、timing、synastry、composition 或 render 审计还必须读取对应�
 - 新时间层、合盘接口或结构争议是否退回对应上游；
 - 前后矛盾是否先审计；
 - conversation state 是否把用户叙述误写成结构事实。
+- 首次完整原局缺 report-scope 时是否错误 direct-render；
+- 家庭校准提示是否只引用已审计判断，拒绝校准时是否明确 uncalibrated。
 
 ## 裁决
 

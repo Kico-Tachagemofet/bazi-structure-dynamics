@@ -2,6 +2,22 @@
 
 ## 报告结构
 
+完整原局先读取 `report-scope.yaml`。报告一级领域章节使用稳定 topic marker：
+
+```markdown
+## 家庭与生活环境
+<!-- topic_id: family-home -->
+```
+
+full-reading 必须且只能各出现一次：
+
+- `family-home`
+- `education-learning`
+- `wealth-resource`
+- `career-work`
+
+`selected_optional_sections` 中每个 slug 也必须各有一个 topic marker。限定问题报告可以不含基础四项，但标题与交付说明必须明确“限定问题分析”，并列出未覆盖板块。
+
 每条 finding 对应一个独立小节，并含：
 
 ```markdown
@@ -60,6 +76,13 @@
 - Q&A 若新增经审计 finding，应写入增量 composition 与 conversation state，供后续继续引用。
 - Q&A 不得因追求即时性跳过必要的 Source、Topic 或 Audit 回退。
 
+## 家庭校准边界
+
+- 家庭 blind findings 必须先于详细家庭经历生成并通过审计。
+- 校准提示只能逐条展示 finding 已有的可核验判断，不能现场补故事。
+- `confirmed／conditional／disconfirmed` 只可调整表达带、呈现顺序、措辞或领域载体。
+- 用户不校准时报告写“家庭板块未做经历校准”，不得降低结构审计结论，也不得声称已经回验。
+
 ## Render Audit
 
 至少检查：
@@ -73,3 +96,5 @@
 - 经历是否只作校准；
 - 对话是否发生 scope creep；
 - 前后结论冲突时是否先审计。
+- report-scope、基础四板块、已选专题与 topic markers 是否完整；
+- 家庭事实是否在 blind finding 审计前污染生成。

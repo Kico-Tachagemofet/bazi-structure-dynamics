@@ -1,6 +1,6 @@
 ---
 name: bazi-render
-description: 把已审计的八字 composition 与 topic findings 写成不压缩原始象意、可由命主核验的中文解读，并以受约束的对话模式承接后续追问：识别问题所属领域和结构锚点，判断可直接解释、需要补取象、新开 Topic Lens、重算岁运合盘或退回结构审计。用户要求生成八字报告、解释某句断语、继续聊某干支十神、把经历与原局对照、追问职业关系健康神秘学象意，或质疑前后判断时使用。Render 可增量扩展象意，但不得自行创造上游没有的结构、路线或事件结论。
+description: 在结构冻结后向求测者确认命盘中心与报告范围，强制完整原局覆盖家庭、学业、财运、事业，并把已审计的 composition 与 topic findings 写成不压缩原始象意、可由命主核验的中文解读；同时负责家庭盲 finding 后的校准入口和受约束追问。用户要求完整断盘、选择要看的板块、生成八字报告、解释断语、继续聊干支十神、把经历与原局对照、追问职业关系健康神秘学象意，或质疑前后判断时使用。Render 只负责范围入口、校准提问与翻译，不得自行创造上游没有的结构、路线、finding 或事件结论。
 ---
 
 # 八字解读与追问
@@ -13,9 +13,11 @@ description: 把已审计的八字 composition 与 topic findings 写成不压�
 
 - [Render Contract](references/render-contract.md)
 - [Conversation Routing](references/conversation-routing.md)
+- [Report Scope Schema](references/report-scope-schema.md)
 
 报告模式必须读取：
 
+- `report-scope.yaml`；
 - `composition.md` 及通过的 composition audit；
 - 对应 `topic-findings/*.md`；
 - `calibration-map.md`（若存在）；
@@ -29,7 +31,20 @@ description: 把已审计的八字 composition 与 topic findings 写成不压�
 - 已交付报告或前一轮回答；
 - Q&A Expansion Index。
 
-## 两种模式
+## 四种模式
+
+### Mode 0：Report Scope Intake
+
+只在 natal 结构审计通过并冻结后、Topic Lens 之前运行。
+
+1. 先告诉求测者：“全盘结构已经完成并冻结，下面才开始具体断局。”
+2. 用自然语言确认默认是否以命主本人为中心；若不是，询问围绕谁、哪段关系或哪件事。
+3. full-reading 固定列明家庭、学业、财运、事业四个基础板块，不让用户误以为必须四选一。
+4. 询问是否增加感情、健康、神秘学、创作、人际、子女或任意自定义专题，以及每个专题的具体问题。
+5. 确认只看原局还是涉及时间／合盘；后者只做范围标记并退回对应上游。
+6. 按 [Report Scope Schema](references/report-scope-schema.md) 产出 `report-scope.yaml`，随后调用 `$bazi-topic-lens`。本模式不得输出任何生活断语。
+
+若用户没有附加专题，记录 `selected_optional_sections: []` 后继续基础四板块；不得反复逼问。不得在此时索取详细家庭经历。
 
 ### Mode A：完整报告
 
@@ -40,6 +55,8 @@ description: 把已审计的八字 composition 与 topic findings 写成不压�
 5. 每节写可验证生活判断、条件与代价、inline 技术依据。
 6. 先给领域性质，再给行业或现实例子。
 7. 调用 `$bazi-finding-audit` 的 render 模式；FAIL 必须重写。
+
+full-reading 报告必须逐节覆盖 `family-home`、`education-learning`、`wealth-resource`、`career-work`，并覆盖 `selected_optional_sections` 的全部专题。四个基础板块可以互相引用，但不能合并成一段“综合性格”。
 
 报告不需要假装穷尽每个天干地支的所有象意。结尾说明哪些方向已有结论、哪些可在追问时增量展开。
 
@@ -62,6 +79,18 @@ description: 把已审计的八字 composition 与 topic findings 写成不压�
 5. 再回答。
 
 这正是“天干象意无法一次穷尽”的正常扩展路径。不得因首次报告没写便回答“盘里没有”。
+
+### Mode C：Family Calibration Gate
+
+只在 `family-home` 的 blind findings 通过 imagery-finding audit 后运行：
+
+1. 从已审计 finding 的 `verifiable judgments` 选取 2 至 6 条，不补充新判断；
+2. 请命主逐条标记“符合／只在某条件下符合／不符合”，可补一句关键事实；
+3. 将原始回应写入独立 `calibration-response-family.md` 或对应 context item，不回写 finding；
+4. 用户拒绝或暂无回应时把 `family_calibration_state` 记为 `declined`／`uncalibrated`，继续报告，不得假装已验证；
+5. 回应交给 `$bazi-imagery-composition` 生成 calibration map，再进入 composition。
+
+家庭经历若在 blind finding 审计前已经进入当前上下文，优先改用新鲜隔离上下文生产 blind findings；做不到时标记 `contaminated`，不得把家庭板块当盲回验。若这些事实实际参与生成却仍声称 blind，则交给 `$bazi-finding-audit` 判 FAIL；不得用“我没有主动引用”代替隔离。
 
 #### 必须退回上游
 
@@ -96,9 +125,16 @@ description: 把已审计的八字 composition 与 topic findings 写成不压�
 
 报告模式：
 
+- `report-scope.yaml`
 - `reader/<NN>-<topic>.md`
 - 可选汇总报告
 - `render-audit.md`
+
+范围／校准模式：
+
+- `report-scope.yaml`
+- `family-calibration-prompt.md`
+- `calibration-response-family.md` 或拒绝／未校准状态
 
 对话模式：
 
@@ -111,4 +147,4 @@ description: 把已审计的八字 composition 与 topic findings 写成不压�
 
 ## 自查
 
-正式报告运行 `scripts/check_render_coverage.py` 检查 finding 与小节的一一覆盖。脚本只查机械完整性，不能代替 `$bazi-finding-audit` 的语义审计。
+正式报告运行 `scripts/check_render_coverage.py --scope report-scope.yaml`，同时检查 finding 与小节的一一覆盖、基础四板块和已选专题是否齐全。脚本只查机械完整性，不能代替 `$bazi-finding-audit` 的语义审计。

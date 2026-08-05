@@ -16,6 +16,10 @@
 - `topic_id`
 - `exact_question`
 - `structure_freeze_id`
+- `report_scope_ref`
+- `topic_lens_ref`
+- `taiji_center`
+- `baseline_required`：true／false
 - `required_anchors`：柱、节点、边、路线
 - `required_imagery_units`：干、支、十神、柱位、藏干、关系、领域
 - `loaded_units`
@@ -70,6 +74,9 @@
 - `exact_question_part`
 - `confidence`
 - `scope`：natal／timing／synastry／relationship-field
+- `taiji_center`
+- `report_section_slug`
+- `baseline_required`
 
 ### Anchor Set
 
@@ -133,6 +140,13 @@
 
 列出最终文字不可删除的：核心画面、条件、代价、反证、技术依据与需要交叉引用的其他 finding。
 
+family-home finding 另加：
+
+- `blind_generation: true`
+- `family_context_read_before_audit: false`
+- `calibration_eligible_after_audit: true`
+- `calibration_prompt_candidates`：只可引用本 finding 的 2 至 6 条 verifiable judgments
+
 ## 4. Full-chart Sweep
 
 Full-chart sweep 不是重断全盘，而是防止局部象遮住全局。至少检查：
@@ -157,3 +171,10 @@ Full-chart sweep 不是重断全盘，而是防止局部象遮住全局。至少
 - `next_action`
 
 经历不能填补 source gap，也不能把低通量路线改成高通量。
+
+家庭校准另记录：
+
+- `family_blind_finding_audit_id`
+- `calibration_response_ref`
+- `family_calibration_state`：completed／declined／uncalibrated／contaminated
+- `contamination_check`

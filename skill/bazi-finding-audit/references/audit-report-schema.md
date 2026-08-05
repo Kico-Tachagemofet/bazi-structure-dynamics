@@ -16,6 +16,9 @@
 | 主问题与路线端点锁 |  |  |  |
 | Conditions Matrix |  |  |  |
 | Structure Freeze |  |  |  |
+| Report Scope／Reading Center |  |  |  |
+| 基础四板块／已选专题 |  |  |  |
+| Family Blind Calibration Gate |  |  |  |
 | 取象单元与逐柱复合 |  |  |  |
 | Findings／Composition／Render |  |  |  |
 

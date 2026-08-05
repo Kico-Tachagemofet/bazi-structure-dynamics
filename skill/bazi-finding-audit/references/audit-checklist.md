@@ -96,6 +96,12 @@
 
 ## 7. 领域、时间与合盘
 
+- 完整原局是否有 report-scope、命盘主人、求测者关系和 reading center。
+- full-reading 是否分别覆盖家庭、学业、财运、事业四个基础板块。
+- 求测者加选专题是否全部进入 Topic／Source／Imagery／Render。
+- 每个 topic 是否有独立太极中心；是否错误地要求普通用户自选十神／柱位。
+- 家庭 blind finding 是否先于详细家庭事实和 calibration response 生成并审计。
+- 家庭回应是否只校准表达带，而未回写结构或创造 finding。
 - 具体取象是否引用已审计路线。
 - 内部机制、领域载体和外部结果是否区分。
 - 岁运是否以前后差分表达，而非重写原局。
@@ -119,6 +125,8 @@
 - 内部机制、领域载体、外部结果、时间条件和反向代价是否齐全。
 - 行业与现实例子是否先由工作性质推导，且区分岗位、任务、收入、可见度和名声。
 - 对话追问是否先路由；新象意是否增量走 Topic／Source／Imagery；新结构是否退回 Core。
+- 只有 structure kernel 的交付是否被误称为“完整断局”。
+- report-scope 的 mandatory 与 selected topics 是否各有唯一 topic marker。
 
 ## 已知高风险模式
 
@@ -154,7 +162,15 @@
 - INDUSTRY_NAME_FIRST：先报行业，再反向拼性质。
 - CHAT_SCOPE_CREEP：Render 在追问中越权新增结构或 finding。
 - CONTEXT_CREATES_CLAIM：用户经历直接创造新断语或结构。
+- MISSING_REPORT_SCOPE：完整原局没有结构冻结后的报告范围入口。
+- TAIJI_CENTER_UNSET：topic 没有命盘中心／领域中心，或把太极点技术选择推给求测者。
+- BASELINE_TOPIC_OMITTED：完整原局缺家庭、学业、财运、事业任一板块。
+- SELECTED_TOPIC_OMITTED：求测者已选专题没有完整走到报告。
+- FAMILY_CALIBRATION_LEAK：家庭事实或校准回应在 blind family finding 审计前参与生成，或已污染却仍声称完成盲回验。
+- STRUCTURE_ONLY_MISLABELED_COMPLETE：只有技术结构却声称完成断局。
 
 命中 `BRANCH_STATE_NOT_PROPAGATED` 或 `RAW_NODE_REUSE` 一律 BLOCKER。`HIDDEN_ALWAYS_WEAK`、`SUPPORT_ERASED_WITH_EDGE` 或 `DIRECT_ONLY_SYSTEM` 若改变主路线、日主承载力、自治子系统或格局，也为 BLOCKER；其余模式改变主结构时为 BLOCKER，否则至少 WARNING。
 
 `ROUTE_ENDPOINT_DRIFT`、`THROUGHPUT_EQUALS_RESCUE`、`AGGRAVATION_AS_OUTLET`、`MUTUAL_COLORING_AS_EDGE`、`CHAT_SCOPE_CREEP` 或 `CONTEXT_CREATES_CLAIM` 一律 BLOCKER。`PARTIAL_PILLAR_READING` 或 `SYMBOL_LIST_WITHOUT_COMPOSITION` 改变 finding 方向时为 BLOCKER，否则至少 WARNING。
+
+`MISSING_REPORT_SCOPE`、`TAIJI_CENTER_UNSET`、`BASELINE_TOPIC_OMITTED`、`SELECTED_TOPIC_OMITTED`、`FAMILY_CALIBRATION_LEAK` 或 `STRUCTURE_ONLY_MISLABELED_COMPLETE` 在 full-reading 中一律 BLOCKER。limited-topic 必须显式声明范围，否则按误标完整处理。

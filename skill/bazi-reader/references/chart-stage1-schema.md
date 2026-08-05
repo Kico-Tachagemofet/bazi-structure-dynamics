@@ -13,12 +13,18 @@ case-manifest.yaml 至少记录：
 
 - case_id：匿名、稳定的案例标识。
 - mode：pillars-confirmed／birth-data／uncertain-time／timing／synastry。
+- delivery_mode：full-reading／structure-only／limited-topic。用户说“完整看盘／断原局”时默认为 full-reading；只问一个限定问题时才用 limited-topic。
+- chart_owner：命盘主人匿名标识；不得与求测者自动视为同一人。
+- querent_role：self／proxy／unknown；proxy 时记录与命盘主人的关系，但不把代问者经历写进盘主事实。
+- default_reading_center：通常为 chart-owner；若用户明确以某人、关系或事件为中心，在结构冻结后的 report-scope 再细化。
 - question_scope：本轮用户真正询问的范围。
 - framework_lock：韦千里／沈孝瞻／徐乐吾／课程／其他；允许多选但不得混写。
 - input_source：用户文字、排盘软件、截图、出生数据或旧档案。
 - uncertainty：日期、时间、地点、节气、真太阳时、司令和起运口径的不确定项。
 - permitted_claims：natal-only／timing-enabled／synastry-enabled。
 - subject_context_isolated：true／false。
+- process_notice_delivered：是否已说明“先盲结构、后选板块、完整原局含基础四板块”。
+- early_context_policy：默认 `do-not-solicit-detailed-family-or-topic-history-before-blind-findings`。
 
 ## 2. Chart Stage 1
 

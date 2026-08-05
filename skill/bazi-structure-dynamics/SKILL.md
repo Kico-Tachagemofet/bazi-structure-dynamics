@@ -1,6 +1,6 @@
 ---
 name: bazi-structure-dynamics
-description: 编排以结构动力和原典证据分析四柱八字的分阶段流水线：校验四柱、司令、十神、藏干与旬空，建立 Source Packet，逐阶段完成节点、地支裁决、作用边、主问题、端点锁定路线、条件矩阵、结构冻结、完整取象、composition、报告与受约束追问，再进入岁运或合盘。用户询问八字原局、旺衰、格局、通关制化、刑冲合害、用神、藏干、具体取象、职业关系健康神秘学、合盘，或要求审计和继续追问时使用。禁止一口气跳过中间产物。
+description: 编排以结构动力和原典证据分析四柱八字的分阶段流水线：先校验四柱、司令、十神、藏干与旬空，完成节点、地支裁决、作用边、主问题、端点锁定路线、条件矩阵、结构冻结与审计，再由求测者确认太极中心和报告范围，至少完成家庭、学业、财运、事业四个基础板块，之后扩展爱情、健康、神秘学、岁运或合盘。用户询问完整原局、旺衰、格局、通关制化、刑冲合害、用神、藏干、具体取象、职业关系健康神秘学、合盘，或要求审计和继续追问时使用。禁止一口气跳过中间产物，也禁止把只有结构核的分析称为完整断局。
 ---
 
 # 八字结构动力总编排
@@ -19,6 +19,15 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
 ## 启动协议
 
 开始完整分析前读取 [Pipeline Spec](references/pipeline-spec.md)。
+
+首次完整原局分析必须先向求测者说明：
+
+- 先盲跑盘面事实、全盘结构、刑冲合害、旺衰格局、主问题与制化路线；该阶段不使用个人经历倒推；
+- 结构审计并冻结后，才确认本次以谁／哪件事为中心以及报告范围；
+- 完整原局的基础交付固定包含家庭、学业、财运、事业，爱情、健康、神秘学、创作等由求测者后置加选；
+- 家庭情况先形成盲 finding，再邀请求测者核验，核验只做显化校准。
+
+不得在启动说明时提前索取详细家庭经历或专项故事。Reader 只确认命盘主人、本人／代看关系与必要排盘资料。
 
 根据请求进入：
 
@@ -43,16 +52,22 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
 4. $bazi-finding-audit
    检查覆盖、逻辑、来源和 context 隔离。出现 BLOCKER 必须退回对应阶段，修复后重审。通过后生成 `structure-freeze-receipt.yaml`，冻结 structure inputs 与 hashes。
 
-5. $bazi-topic-lens
-   审计和冻结通过后，才把职业、学习、财务、关系、健康、神秘学、创作、岁运或合盘问题映射到已经成立的结构，并列出本轮必须展开的干支、十神、柱位、藏干与领域取象单元。
+5. $bazi-render — Report Scope Intake
+   审计和冻结通过后，先以用户语言确认命盘主人、默认以命主本人为中心的太极点、需要围绕的具体人／关系／事件、时间范围和附加板块，产出 `report-scope.yaml`。完整原局固定保留家庭、学业、财运、事业四个基础板块；Render 此时只收范围，不产断语。
 
-6. Timing／Synastry conditional stage
+6. $bazi-topic-lens
+   根据 `report-scope.yaml` 为四个基础板块和已选专项分别建立镜头，并列出本轮必须展开的干支、十神、柱位、藏干与领域取象单元。限定问题模式可以只建相关镜头，但必须明确不称完整断局。
+
+7. Timing／Synastry conditional stage
    若 Topic Lens 属于岁运或合盘，先由 Structure Core 在冻结 natal 上建立 diff／overlay，完成对应审计；普通 natal topic 跳过。本阶段不得回写 natal。
 
-7. $bazi-source-lookup → $bazi-imagery-composition
+8. $bazi-source-lookup → $bazi-imagery-composition
    为本 topic 加载完整取象资料，按象意覆盖 → 逐柱复合 → topic findings → finding audit → 体验校准 → composition → composition audit 分段完成。取象组合不得伪造成新的结构作用边。
 
-8. $bazi-render
+9. $bazi-render — Family Calibration Gate
+   完整原局的家庭 finding 先在未读取家庭经历的状态下通过审计，再向求测者展示可核验判断并收集 confirmed／conditional／disconfirmed 回应。求测者拒绝或暂无回应时标为 `uncalibrated`，不得伪造校准。
+
+10. $bazi-render
    生成完整报告，或以对话模式承接追问。已有 finding 可直接解释；首次未展开的象意允许增量回到 Topic／Source／Imagery 生产新 finding；涉及新岁运、合盘或结构争议时必须退回相应上游。Render 自身不得添加 finding。
 
 ## 原典资料路由
@@ -93,6 +108,8 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
 - Source Packet 未加载相关原文：相关结论不得标高置信度。
 - Structure audit FAIL：不得进入 Topic、Timing、Synastry 或 Render。
 - Structure 未冻结或下游引用的结构版本与 freeze receipt 不一致：停止。
+- 完整原局缺少 `report-scope.yaml`、太极中心或四个基础板块中的任一项：停止；不得改称完整报告后继续。
+- 家庭经历在家庭盲 finding 审计前被用于写 finding，或在已污染上下文中仍声称完成盲回验：FAIL；若只是已进入上下文，须转新鲜隔离上下文，做不到则标 `contaminated` 并放弃校准资格。
 - 路线端点与 qualified-edge-map 不一致、把实际通量排名当治疗优先级、或把加重主问题的路线叫出口：FAIL。
 - 取象 finding 漏掉相关柱的天干、地支、藏干、同柱互染或 full-chart sweep：FAIL。
 - Render 出现上游没有的新判断：退回 composition；若属合理新追问，则新开增量 Topic／Source／Imagery 回合。
@@ -128,6 +145,8 @@ description: 编排以结构动力和原典证据分析四柱八字的分阶段�
 - 分流派格局候选与竞争路线；
 - Structure Kernel；
 - 独立 audit verdict；
-- 如有具体问题，再附 Topic Lens；岁运／合盘先附受审计 diff／overlay，然后附完整取象 Source Packet、逐柱复合、topic findings、composition 与不越界 Render。
+- `report-scope.yaml`、命主／求测者／太极中心与完整／限定分析模式；
+- 完整原局必须附家庭、学业、财运、事业四个基础 Topic Lens、完整取象 Source Packet、逐柱复合、topic findings、family calibration 状态、composition 与不越界 Render；
+- 求测者加选的专项必须同样经过 Topic／Source／Imagery／Audit；岁运／合盘先附受审计 diff／overlay。
 
-缺少任一上游产物时，只能称阶段性分析，不能称完整断局。
+只有技术结构而未进入基础四板块时，只能称“结构分析完成”，不能称“完整断局”。限定问题模式只交付约定范围，并须显式列出未覆盖板块。

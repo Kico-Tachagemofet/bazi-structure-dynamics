@@ -11,6 +11,11 @@ source-packet.md 是本轮分析的读书收据，不是书目清单。
 - source_coverage：complete／partial／blocked
 - packet_role：structure／imagery／supplemental-imagery
 - structure_freeze_id：imagery packet 必填
+- report_scope_ref：full-reading imagery packet 必填
+- topic_slug
+- topic_lens_ref
+- taiji_center
+- baseline_required：true／false
 
 ## Source Queries
 
