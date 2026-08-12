@@ -1,0 +1,288 @@
+schema_version: "0.4"
+index_id: bazi-deep-card-index
+purpose: >-
+  为五行、十天干、十二地支与十神关系提供可推导、按需加载的取象底座；
+  不承担旺衰、合化、格局、用神或事件裁决。
+
+schema_ref: deep-card-schema.md
+
+load_policy:
+  mode: lazy_scoped
+  order:
+    - reader_facts
+    - structural_source_lookup_without_deep_cards
+    - structure_core_audit_and_freeze
+    - topic_lens
+    - five_elements_core
+    - earthly_branches_core_when_a_branch_is_queried
+    - relevant_stem_and_branch_cards
+    - ten_gods_core_when_relation_or_carrier_is_needed
+    - source_lookup_builds_source_only_manifest_and_compiled_runtime_packet
+    - imagery_composition
+    - audit
+    - render_reads_audited_envelopes_only
+  guards:
+    - deep_cards_are_imagery_packets_only_after_structure_freeze
+    - deep_cards_must_not_create_structure_edges
+    - planned_cards_must_not_be_filled_from_model_memory
+    - cross_system_material_is_symbolic_context_only
+    - imagery_examples_require_a_chart_and_topic_bridge_before_verdict
+    - branch_visibility_participation_function_and_result_must_not_be_collapsed
+    - raw_deep_cards_are_source_lookup_only
+    - composition_reads_compiled_activated_units_only
+    - context_only_payload_is_not_forwarded
+    - render_has_no_raw_card_or_runtime_packet_access
+    - single_symbol_card_cannot_support_a_specific_role_job_or_event
+    - render_must_follow_self_contained_render_use_envelope
+
+runtime_policy:
+  authoring_master_access: source_lookup_only
+  composition_access: compiled_units_only
+  render_access: none
+  runtime_packet_schema: source-packet-schema.md#deep-card-runtime-packet
+  default_deny_unrequested_units: true
+  source_claim_ceiling:
+    - mechanism
+    - candidate
+
+runtime_enablement:
+  status: production_enabled
+  reviewed_by: human_maintainer
+  reviewed_at: '2026-08-10'
+  approved_scope: all_indexed_deep_cards_and_earthly_branch_shared_layer
+  client_finding_use: allowed_after_structure_freeze_topic_query_runtime_compilation_and_audit
+  unchanged_guards:
+    - raw_cards_remain_source_lookup_only
+    - single_symbol_cards_cannot_directly_assert_specific_roles_jobs_diseases_or_events
+    - composition_receives_selected_units_only
+    - render_receives_audited_findings_only
+
+runtime_migration:
+  compiled_pilot:
+    - DC-FIVE-ELEMENTS-CORE
+    - DC-STEM-JIA
+    - DC-STEM-YI
+    - DC-STEM-BING
+    - DC-STEM-DING
+    - DC-STEM-WU
+    - DC-STEM-JI
+    - DC-STEM-GENG
+    - DC-STEM-XIN
+    - DC-STEM-REN
+    - DC-STEM-GUI
+    - DC-BRANCH-ZI
+    - DC-BRANCH-CHOU
+    - DC-BRANCH-HAI
+    - DC-BRANCH-YIN
+    - DC-BRANCH-MAO
+    - DC-BRANCH-CHEN
+    - DC-BRANCH-SI
+    - DC-BRANCH-WU
+    - DC-BRANCH-WEI
+    - DC-BRANCH-SHEN
+    - DC-BRANCH-YOU
+    - DC-BRANCH-XU
+    - DC-TEN-GODS-CORE
+  shared_protocol_ready:
+    - DC-EARTHLY-BRANCHES-CORE
+  legacy_authoring_only_until_unitized: []
+  planned_on_new_runtime_contract: []
+
+shared_layers:
+  - layer_id: DC-EARTHLY-BRANCHES-CORE
+    scope: all_earthly_branch_cards
+    status: approved
+    path: deep-cards/earthly-branches-core.md
+    load_when: any_earthly_branch_or_hidden_stem_imagery_query
+    authority: imagery_handoff_only
+
+source_layers:
+  - bazi_primary
+  - bazi_course
+  - cross_system_common_symbol
+  - current_synthesis
+
+cross_system_source_pool:
+  - source_id: QIMEN-NOTE-03-FIVE-ELEMENTS
+    path: 'external-source://qimen-note-03-five-elements'
+    read_status: fully_read
+    portable_scope:
+      - five_elements_as_operating_processes
+      - 曲直_炎上_稼穑_从革_润下
+      - examples_derived_from_properties
+    excluded_scope:
+      - qimen_palace_star_door_spirit
+      - qimen_strength_and_divination_verdicts
+      - fixed_personality_appearance_industry_lists
+
+  - source_id: QIMEN-NOTE-04-HEAVENLY-STEMS
+    path: 'external-source://qimen-note-04-heavenly-stems'
+    read_status: fully_read
+    portable_scope:
+      - stem_as_yinyang_times_five_element_process
+      - paired_stem_contrast_candidates
+      - state_dependent_imagery
+    excluded_scope:
+      - qimen_stem_deities_and_palaces
+      - moralized_personality_labels
+      - qimen_five_combinations_clashes_and_transformation_rules
+
+  - source_id: QIMEN-NOTE-05-EARTHLY-BRANCHES
+    path: 'external-source://qimen-note-05-earthly-branches'
+    read_status: fully_read
+    portable_scope:
+      - branch_as_seasonal_field_and_container
+      - twelve_stage_growth_decline_sequence_as_imagery_candidate
+      - yinyang_five_element_and_hidden_stem_dimensions_for_source_queries
+    excluded_scope:
+      - qimen_branch_verdicts_and_palace_relations
+      - qimen_击刑_and_合五行_rules
+      - 六合无合化_as_bazi_rule
+    authority_note: >-
+      藏干、司令、六合三合刑冲墓库等八字事实与裁决必须回到项目内八字原典和结构来源；
+      本笔记只为后续十二地支卡提供共同符号候选与检索线索。
+
+cards:
+  - card_id: DC-FIVE-ELEMENTS-CORE
+    family: foundation
+    symbol: 五行
+    status: approved
+    path: deep-cards/five-elements-core.md
+
+  - card_id: DC-STEM-JIA
+    family: heavenly_stem
+    symbol: 甲
+    status: approved
+    path: deep-cards/stem-jia.md
+  - card_id: DC-STEM-YI
+    family: heavenly_stem
+    symbol: 乙
+    status: approved
+    path: deep-cards/stem-yi.md
+  - card_id: DC-STEM-BING
+    family: heavenly_stem
+    symbol: 丙
+    status: approved
+    path: deep-cards/stem-bing.md
+  - card_id: DC-STEM-DING
+    family: heavenly_stem
+    symbol: 丁
+    status: approved
+    path: deep-cards/stem-ding.md
+  - card_id: DC-STEM-WU
+    family: heavenly_stem
+    symbol: 戊
+    status: approved
+    path: deep-cards/stem-wu.md
+  - card_id: DC-STEM-JI
+    family: heavenly_stem
+    symbol: 己
+    status: approved
+    path: deep-cards/stem-ji.md
+  - card_id: DC-STEM-GENG
+    family: heavenly_stem
+    symbol: 庚
+    status: approved
+    path: deep-cards/stem-geng.md
+  - card_id: DC-STEM-XIN
+    family: heavenly_stem
+    symbol: 辛
+    status: approved
+    path: deep-cards/stem-xin.md
+  - card_id: DC-STEM-REN
+    family: heavenly_stem
+    symbol: 壬
+    status: approved
+    path: deep-cards/stem-ren.md
+  - card_id: DC-STEM-GUI
+    family: heavenly_stem
+    symbol: 癸
+    status: approved
+    path: deep-cards/stem-gui.md
+
+  - card_id: DC-BRANCH-ZI
+    family: earthly_branch
+    symbol: 子
+    status: approved
+    path: deep-cards/branch-zi.md
+  - card_id: DC-BRANCH-CHOU
+    family: earthly_branch
+    symbol: 丑
+    status: approved
+    path: deep-cards/branch-chou.md
+  - card_id: DC-BRANCH-YIN
+    family: earthly_branch
+    symbol: 寅
+    status: approved
+    path: deep-cards/branch-yin.md
+  - card_id: DC-BRANCH-MAO
+    family: earthly_branch
+    symbol: 卯
+    status: approved
+    path: deep-cards/branch-mao.md
+  - card_id: DC-BRANCH-CHEN
+    family: earthly_branch
+    symbol: 辰
+    status: approved
+    path: deep-cards/branch-chen.md
+  - card_id: DC-BRANCH-SI
+    family: earthly_branch
+    symbol: 巳
+    status: approved
+    path: deep-cards/branch-si.md
+  - card_id: DC-BRANCH-WU
+    family: earthly_branch
+    symbol: 午
+    status: approved
+    path: deep-cards/branch-wu.md
+  - card_id: DC-BRANCH-WEI
+    family: earthly_branch
+    symbol: 未
+    status: approved
+    path: deep-cards/branch-wei.md
+  - card_id: DC-BRANCH-SHEN
+    family: earthly_branch
+    symbol: 申
+    status: approved
+    path: deep-cards/branch-shen.md
+  - card_id: DC-BRANCH-YOU
+    family: earthly_branch
+    symbol: 酉
+    status: approved
+    path: deep-cards/branch-you.md
+  - card_id: DC-BRANCH-XU
+    family: earthly_branch
+    symbol: 戌
+    status: approved
+    path: deep-cards/branch-xu.md
+  - card_id: DC-BRANCH-HAI
+    family: earthly_branch
+    symbol: 亥
+    status: approved
+    path: deep-cards/branch-hai.md
+
+  - card_id: DC-TEN-GODS-CORE
+    family: relational_operator
+    symbol: 十神
+    status: approved
+    path: deep-cards/ten-gods-core.md
+
+review_sequence:
+  - DC-FIVE-ELEMENTS-CORE
+  - DC-EARTHLY-BRANCHES-CORE
+  - DC-STEM-JIA
+  - DC-STEM-YI
+  - DC-TEN-GODS-CORE
+  - remaining_heavenly_stems_in_pairs
+  - DC-BRANCH-ZI
+  - DC-BRANCH-CHOU
+  - DC-BRANCH-HAI
+  - DC-BRANCH-YIN
+  - DC-BRANCH-MAO
+  - DC-BRANCH-CHEN
+  - DC-BRANCH-SI
+  - DC-BRANCH-WU
+  - DC-BRANCH-WEI
+  - DC-BRANCH-SHEN
+  - DC-BRANCH-YOU
+  - DC-BRANCH-XU

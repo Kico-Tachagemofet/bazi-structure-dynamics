@@ -1,6 +1,6 @@
 # 《子平真诠》原本全文
 
-> 来源文件：《子平真诠》原本 EPUB
+> 来源文件：`external-source://ziping-zhenquan-original-epub`
 > 本文件为机械全文抽取，不是摘要；章节次序按 EPUB spine 保留。
 
 <!-- EPUB entry: titlepage.xhtml -->

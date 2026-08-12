@@ -1,4 +1,4 @@
 interface:
   display_name: "八字解读与追问"
-  short_description: "确认范围，并把用神关系轴 findings 展开成具体生活过程"
-  default_prompt: "Use $bazi-render to confirm the natural-language scope and expand each audited body-use relation finding into a complete, concrete life process without adding claims."
+  short_description: "把已审计象核写成少标题的连贯断命散文"
+  default_prompt: "Use $bazi-render to follow the audited narrative composition and scene kernels, write coherent Chinese Bazi prose around complete causal storylines, preserve coverage invisibly, and close only genuine user questions without inventing imagery or conclusions."

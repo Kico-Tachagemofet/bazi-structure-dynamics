@@ -1,4 +1,4 @@
 interface:
   display_name: "八字结构与断局审计"
-  short_description: "审计八字结构、分领域断局、流运预注册验证与追问边界"
-  default_prompt: "Use $bazi-finding-audit to audit Bazi structure, scoped topic coverage, manifestation-mapping boundaries, preregistered timing validation, composition, render, or conversation integrity."
+  short_description: "独立检查十神干支象核、现实断语与流程循环"
+  default_prompt: "Use $bazi-finding-audit to independently audit Bazi structure, ten-god–stem/branch scene kernels, coverage, genuine question closures, and final prose; reject prefilled-lens circularity, generic packets, personality substitutes, length-based passes, and producer self-pass."

@@ -1,13 +1,16 @@
 # 八字经历映射与流运验证协议
 
-## 1. 两种不同任务
+## 1. 三种不同任务
 
 先判断本轮是在做哪一种事，不得混称：
 
 - **显化映射（manifestation mapping）**：结构与 findings 已审计后，读取经历，判断同一机制主要落在家庭、职场、关系、学习、资源或身体节律等哪个载体。它可以调整呈现顺序、措辞、领域载体和后续问题，但不增加结构置信度。
 - **证据验证（evidence validation）**：在读取相关经历前，先形成有时间窗、顺序、机制、领域竞争和失败条件的复杂假设，审计并冻结；读取原始回应后按固定量表计分。只有满足完整流程时才称验证。
+- **结构争议辨别（structural ambiguity discrimination）**：只在 Core 已穷尽来源、位置、力量和竞争裁决后仍保留两个以上结构分支时使用。先冻结全部分支及各自的盲 finding，再收一段不带术语提示的自由叙述，只形成 `case-specific preference`，不得证明通用规则或改写 natal 事实。
 
 完整原局不强制做验证。没有合格验证条件时，交付已审计但未验证的报告，比使用宽泛问题制造命中更合格。
+
+“不强制正式验证”不等于可以省略反馈入口。`feedback_offer_state` 与 `validation_state` 分开记录：报告交付时默认把前者记为 `offered`；用户预先拒绝则记 `declined`。`validation_mode: none` 只说明没有启动正式证据验证，不得让快速反馈邀请静默消失。
 
 ## 2. 默认选择
 
@@ -22,6 +25,8 @@
 - 至少能构造两个有真实差异的时间窗，或一个具有明确阶段顺序和失败条件的时间窗。
 
 不满足时选择 `manifestation-mapping` 或 `none`，不得降低标准强行计分。
+
+若 natal 存在已登记且会实质改变关系轴的 `structural-ambiguity`，可在完成双分支 blind finding 与 finding audit 后进入结构争议辨别；不得为了制造校准问题，把本可由原文、位置或强弱裁定的关系故意留成争议。
 
 ## 3. 预注册步骤
 
@@ -67,11 +72,66 @@
 
 PASS 后产出 `timing-hypothesis-freeze-receipt.yaml`，记录假设文件、审计报告和上游 timing imagery／overlay 的 SHA-256。冻结后不得修改措辞来贴合回应；需要新增假设时建立新版本，并与原版本分开计分。
 
-## 4. 两档回应模式
+## 4. 结构争议辨别
+
+### 4.1 启动条件
+
+只有全部满足时才允许启动：
+
+- `structural-ambiguity-register.yaml` 已由 Structure Core 生成，并随 natal 结构审计、冻结；
+- 每个候选分支有独立 edge／route／condition refs，不能只是“也可能合、也可能克”的口头两可；
+- Topic Lens 已确定当前事情的太极中心，两个分支在同一 topic 下会产生可区分的过程；
+- 两个分支的 imagery、axis scene、finding 已在不读取相关经历时分别生成、审计并冻结；
+- 已知经历与旧解读已登记污染等级；若命主早已看过分支差异，必须标 `hypothesis_exposure: partial／full`；
+- 用户主动同意回答；拒绝、没有对应经历或记不清均记 `unscored`，不阻塞报告。
+
+若争议会改变基础结构但无法形成可区分的盲 finding，保留 `unresolved`，不得用宽泛生活问题强行选边。
+
+### 4.2 预注册产物
+
+产出并审计冻结：
+
+- `structural-ambiguity-plan.yaml`：ambiguity ID、structure freeze、topic lens、分支 refs、已知先验与 eligibility；
+- `structural-ambiguity-hypotheses.md`：每个分支分别写过程顺序、最终仍能做功者、主要载体、失败条件和与其他分支的真正差异；
+- `structural-ambiguity-hypothesis-audit.md`；
+- `structural-ambiguity-freeze-receipt.yaml`。
+
+冻结文本不得展示给命主后再修改。六爻或其他术数只能提供“可以设计辨别问题”的方法启发，不得作为八字分支的来源证据。
+
+### 4.3 提问与原话
+
+由 `$bazi-render` 每次只问一个自然问题，优先请求自由叙事，例如：
+
+> 请讲一个这类事情最清楚的实际过程：从开始到结束发生了什么，谁先起作用，后来谁还能继续，中间若有明显转折也可以带上；没有或记不清可以直接说。
+
+第一问不得出现“合、克、牵绊、压制、哪一种更像”等分支关键词，也不得把冻结假设拆成核对清单。只有原话缺少一个会实质改变辨别结果的关键顺序时，才允许补一个短追问。
+
+把用户原话逐字写入 `structural-ambiguity-response.md`，与 evidence extraction 分离。不能把命主对术语的选择当证据，也不能因为叙述同时包含两种常见现象便判两支都中。
+
+### 4.4 结果权限
+
+产出 `case-ambiguity-overlay.yaml` 与独立 audit，结果只能是：
+
+- `combine-like-preferred`；
+- `control-like-preferred`；
+- `mixed`；
+- `unresolved`；
+- `unscored`。
+
+overlay 必须记录原话 refs、分支支持／反证、先验污染、提示暴露和置信等级。它可以决定 Render 先呈现哪一支及本次事情采用哪套表达，但不得：
+
+- 修改规则注册表；
+- 反向改写 natal node、edge、route、pattern、problem 或 use-kernel；
+- 删除未被偏好的冻结分支；
+- 把单次个案升级为“合克应按现实决定”的普遍规则。
+
+若原话同时推翻全部分支，登记 `structural-challenge` 并退回 Source／Core／Audit；不得在 overlay 中临时创造第三套解释。
+
+## 5. 两档回应模式
 
 冻结完成后才由 `$bazi-render` 提问，但详细回填必须由用户主动选择，不得作为默认负担。
 
-### 4.1 默认：快速反馈
+### 5.1 默认：快速反馈
 
 默认只给一个低负担入口：
 
@@ -87,7 +147,7 @@ PASS 后产出 `timing-hypothesis-freeze-receipt.yaml`，记录假设文件、�
 
 快速反馈不进入 0–8 计分，不提高结构或时间假设置信度，也不触发自动追问。它的用途是让用户方便地表达体验、指出最明显的偏差，并决定是否值得继续展开。
 
-### 4.2 可选：详细验证模式
+### 5.2 可选：详细验证模式
 
 只在用户主动说“展开验证”“详细说说”“继续回填”等明确意图后启用。说明一次价值即可：详细叙述可以帮助区分时间是否命中、事件先后是否吻合、同一结构实际落在哪个领域，以及哪条路线只是可能性。
 
@@ -110,7 +170,7 @@ PASS 后产出 `timing-hypothesis-freeze-receipt.yaml`，记录假设文件、�
 
 “不一定明确意识到，但说得通”记为 `indeterminate`；只有通用词重合记为 `non-discriminating`；二者均不加分。缺失或记不清记为 `unscored`，不能按反证扣成零分。
 
-## 5. 固定计分
+## 6. 固定计分
 
 每条已冻结假设默认满分 8 分：
 
@@ -128,15 +188,16 @@ PASS 后产出 `timing-hypothesis-freeze-receipt.yaml`，记录假设文件、�
 
 随后调用 `$bazi-finding-audit` 产出 `timing-validation-score-audit.md`。审计器只检查计分是否忠于冻结文本与原始回应，不替分析者寻找更好解释。
 
-## 6. 结果用途
+## 7. 结果用途
 
 - 验证结果可以支持、削弱或保留某条**时间假设**及其领域载体优先级。
 - 单次验证不能证明通用命理规则，也不能反向改写 natal node、edge、route、pattern 或司令事实。
 - 结构性反例应登记为 `structural-challenge`，另开审计；不得在 scorecard 中圆回。
 - 显化映射使用 `manifestation-map.md`；历史兼容文件 `calibration-map.md` 必须显式标注 `non-evidentiary: true`。
+- 结构争议辨别只形成 case overlay；不使用流运验证的 0–8 分量表，也不与 timing score 合并。
 - 最终报告分别写明：结构审计状态、经历映射状态、验证状态与验证强度。不得用“已校准”模糊合并三者。
 
-## 7. 最低产物集
+## 8. 最低产物集
 
 若只收快速反馈，只需 `timing-validation-quick-feedback.md`，且不得声称完成正式验证。若声称完成流运验证，必须存在：
 
@@ -150,3 +211,5 @@ PASS 后产出 `timing-hypothesis-freeze-receipt.yaml`，记录假设文件、�
 - `timing-validation-score-audit.md`
 
 任一缺失时只能说“进行了经历讨论”或“完成显化映射”，不得称盲验证、回验通过或验证命中。
+
+若声称完成结构争议辨别，必须存在第 4.2 至 4.4 所列的 plan、双分支假设、audit、freeze、verbatim response、case overlay 与 overlay audit；缺一项只能保留 `unresolved` 或作为非证据性的显化映射。

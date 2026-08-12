@@ -1,4 +1,4 @@
 interface:
   display_name: "八字结构动力总编排"
-  short_description: "先冻结结构与用神太极核，再按体用关系轴完成分领域断局"
-  default_prompt: "Use $bazi-structure-dynamics to freeze the natal structure and use-god kernel first, then build topic-body/use-pivot relation axes and render the four baseline domains plus selected topics."
+  short_description: "冻结结构后逐个现实问题完成可审计断局闭环"
+  default_prompt: "Use $bazi-structure-dynamics to freeze natal structure and timing process facts, then carry every concrete Reader Answer Contract through source, finding, composition, prose, receipts, and independent audit."
