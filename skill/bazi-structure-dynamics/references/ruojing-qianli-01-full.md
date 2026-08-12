@@ -1,6 +1,6 @@
 # 若境清《千里命稿》讲解 01：五行、天干、地支（讲义全文）
 
-> 来源文件：若境清《千里命稿讲解》`01 五行、天干、地支.docx`
+> 来源文件：`external-source://ruojing-qianli-course/01`
 > 本文件按 Word 正文顺序机械抽取；不删节、不摘要。原段落序号用于回查。
 
 <!-- paragraph 1; style: Heading 2 -->

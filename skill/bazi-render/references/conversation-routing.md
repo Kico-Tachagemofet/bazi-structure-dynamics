@@ -20,6 +20,7 @@
 | synastry | “他来了以后为什么变了？” | 双盘 audit + overlay／关系场 |
 | structural-challenge | “你是不是漏了戊癸合绊？” | 退回 structure audit |
 | contradiction | “你前后说法相反。” | contradiction audit，先解决再答 |
+| delivery-quality-challenge | “太抽象／这不算详批／为什么一句带过／藏干显不显没讲” | 先运行独立 delivery scan 与 render audit；若缺 core finding、judgment、scope atom 或 timing census，退回对应 Topic／Core／Composition，不在聊天里临时加长圆场 |
 
 ## 2. qa-route.yaml
 
@@ -36,7 +37,7 @@
 - `existing_finding_ids`
 - `imagery_coverage_state`
 - `required_upstream_action`
-- `route_verdict`：report-scope-intake／manifestation-mapping／validation-planning／validation-quick-feedback／validation-expand／validation-intake／validation-scoring／direct-render／supplement-imagery／new-topic／timing-diff／synastry-overlay／structure-audit／blocked
+- `route_verdict`：report-scope-intake／manifestation-mapping／validation-planning／validation-quick-feedback／validation-expand／validation-intake／validation-scoring／direct-render／supplement-imagery／new-topic／timing-diff／synastry-overlay／structure-audit／delivery-audit／blocked
 - `reason`
 - `forbidden_shortcut`
 

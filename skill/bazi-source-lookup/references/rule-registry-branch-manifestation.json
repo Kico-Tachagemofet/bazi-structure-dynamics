@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.2",
+  "registry_id": "branch-manifestation-v2",
+  "release_state": "seed_pending_review",
+  "source_policy": {
+    "evidence_layer_remains_authoritative": true,
+    "pending_cards_are_advisory_only": true,
+    "automatic_chart_verdicts_forbidden": true,
+    "cross_taiji_reuse_requires_argument": true,
+    "visibility_participation_function_and_result_are_separate": true,
+    "natal_state_and_overlay_activation_are_separate": true,
+    "trigger_match_requires_requalification": true
+  },
+  "cards": [
+    {
+      "rule_id": "QL-RENYUAN-HIDDEN-PARTICIPATION",
+      "title": "藏干未透仍须保留参与层与待时重算入口",
+      "rule_type": "conditional-principle",
+      "source": {
+        "file": "千里命稿（高保真整理版）.md",
+        "line_start": 1584,
+        "line_end": 1622,
+        "excerpt_sha256": "c9f7f861d0fed92c63f997e8dced2f7409171e1c9ca1390f5c54acd0f0442101",
+        "provenance_layer": "原典逐页底稿／扫描本已复核",
+        "framework": "韦千里·人元篇"
+      },
+      "taiji_of_source": "地支所藏人元对全局力量与不足的参与方式",
+      "applicable_taiji": [
+        "逐个藏干在关系裁决后的库存、根气与环境供给资格",
+        "月支本气、月支其他藏气与年月日时藏气的证据权重比较"
+      ],
+      "question_answered": "地支所藏人元在没有直接作为明干出现时，是否仍可能补充全局不足或增加其他干支力量，以及其基础权重如何区分？",
+      "questions_not_answered": [
+        "某藏干是否获得 direct-action gate",
+        "某藏干是否成为格局用神或病药用神",
+        "某藏干实际沿哪条边做功及容量多少",
+        "某气是否已经形成现实载体或外部结果",
+        "受合冲刑害后的具体保留比例",
+        "哪一个具体岁运或哪一个人会触发该气",
+        "触发后哪些作用边最终通过重算"
+      ],
+      "rule_summary": "本段把人元视为可以辅助天干地支之不逮、也可以增加其力量的结构资源，并区分月支本气、月支其他藏气与年日时藏气的轻重。因此未透不能单独成为删除库存、根气或环境供给的理由；为避免把当前不透误写成永久消失，pipeline 还须保留待时重算入口。但原文没有指定具体岁运／人物触发条件；接口内容须由交叉来源与本盘状态另裁，本卡不放行直接作用、喜忌或结果。",
+      "preserved_qualifiers": ["可以", "例如", "最重", "次重", "稍轻"],
+      "effect_dimensions": {
+        "material_damage": {"status": "not-answered", "default": "no-inference"},
+        "functional_restraint": {"status": "partly-answered", "default": "non-direct-support-may-remain-weight-and-state-separate"},
+        "protective_effect": {"status": "not-answered", "default": "no-inference"},
+        "relation_form": {"status": "not-answered", "default": "no-inference"}
+      },
+      "conditions": {
+        "required_state_refs": ["node-ledger", "branch-state", "post-branch-node-ledger.participation_scope", "post-branch-node-ledger.activation_interfaces"],
+        "applicability_conditions": [
+          "逐位置、逐藏干保留人元身份，不聚合成一个地支总分",
+          "区分本气、中气、余气及月令／司令层级",
+          "在 Branch Arbitration 后重新检查受损、占用、改道、空亡与竞争",
+          "hidden／latent／timing-only 节点须有待时重算接口或明确的不适用收据"
+        ],
+        "override_conditions": [
+          "关系后状态显示库存、根气或供给已受实质削弱时，按 branch-state 下调或关闭对应层，不机械保留",
+          "另有合格来源与本盘条件支持直接做功时，另过 direct-action gate；本卡只提供参与底线，不负责放行",
+          "不同流派对根型或人元权重有差异时分栏记录",
+          "关系后状态已令该气不再保留待时可能时，可关闭接口，但必须记录来源和反证"
+        ],
+        "failure_conditions": [
+          "只因不透便把人元写成不存在或无效",
+          "只因藏干存在便建立 direct-action edge",
+          "把本气、中气、余气或四支人元视为等量",
+          "把辅助或增力直接翻译成喜用、能力或外部成果",
+          "把登记待时接口写成当前已经激活",
+          "把当前不透写成今后永远不会透清或被会动"
+        ]
+      },
+      "prohibited_shortcuts": [
+        "不透＝无气",
+        "藏干存在＝直接做功",
+        "人元增力＝本盘得用",
+        "月支藏干＝全部同权",
+        "有根＝已有外部结果",
+        "待时接口＝当前激活",
+        "当前不透＝永不透清"
+      ],
+      "cross_refs": ["ZPZ-BRANCH-WAITING-USE-MANIFESTATION"],
+      "pipeline_hooks": {
+        "hooks": [
+          {
+            "hook": "stage-1.2-source-route",
+            "role": "route",
+            "reads": ["chart-stage1", "source-query"],
+            "writes": ["source-packet.decision-rule-candidate"]
+          },
+          {
+            "hook": "stage-1.5C-post-branch-node-ledger",
+            "role": "guard",
+            "reads": ["node-ledger", "branch-state", "post-branch-node-ledger.participation_scope", "source-packet"],
+            "writes": [
+              "post-branch-node-ledger.activation_interfaces.required_node_refs",
+              "post-branch-node-ledger.activation_interfaces.guard_receipts"
+            ]
+          },
+          {
+            "hook": "stage-3.5-structure-audit",
+            "role": "audit",
+            "reads": ["source-packet", "post-branch-node-ledger", "qualified-edge-map"],
+            "writes": ["audit-state.hidden-stem-participation-finding"]
+          }
+        ],
+        "depends_on": [],
+        "may_not_decide": [
+          "direct-action-gate",
+          "edge-capacity",
+          "pattern-use",
+          "therapeutic-use",
+          "external-result",
+          "specific-activation-trigger",
+          "overlay-visibility",
+          "triggered-effect"
+        ]
+      },
+      "curation": {
+        "status": "pending_human_review",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "confidence_cap": "medium"
+      },
+      "auto_application": false
+    },
+    {
+      "rule_id": "ZPZ-BRANCH-WAITING-USE-MANIFESTATION",
+      "title": "支中待用、透清与会动只提供显化依据，不等于结果已显",
+      "rule_type": "conditional-principle",
+      "source": {
+        "file": ".agents/skills/bazi-structure-dynamics/references/ziping-zhenquan-original-full.md",
+        "line_start": 482,
+        "line_end": 498,
+        "excerpt_sha256": "dd87b195d7a082db0459b2c4821b5bc4ee51dd0dae3dc3233ec1d8ea67a7eb45",
+        "provenance_layer": "《子平真诠》原本完整章节",
+        "framework": "沈孝瞻·论喜忌干支有别／论支中喜忌逢运透清"
+      },
+      "taiji_of_source": "支中复合之气从静待用转为较明确发用的接口与条件",
+      "applicable_taiji": [
+        "干支作用方式的结构区分",
+        "原局支局经裁定后是否形成会动证据",
+        "岁运透清或命运会局时支中某气的发用候选",
+        "支作为干之根地与干作为支之发用接口的上下统看"
+      ],
+      "question_answered": "支中之气在什么条件下可能从静待用转为较清楚的发用候选，以及干支应怎样上下配合观察？",
+      "questions_not_answered": [
+        "原局同气透出是否会启动所有匹配藏干",
+        "透清之神是否符合本盘需要或成为用神",
+        "会局是否成立、合化为何物及成员怎样分配",
+        "被引动节点的 direct-action 容量、目标与最终去处",
+        "内部功能是否已经取得现实载体或外部结果",
+        "岁运状态能否回写为原局永久属性",
+        "另一人的同字或同五行是否会自动激活本命节点"
+      ],
+      "rule_summary": "原文把干的动而有为与支的静以待用分开，并说明地支在经会而动、岁运透清或命运二支会局时，可以出现较清楚的发用与应验；同时要求逐干逐支上下统看，以支为干之生地、干为支之发用接口。本卡据此登记透清／会动的触发签名与重算范围：原局只保留接口，岁运或合盘 overlay 命中后仍须重裁支局、节点、作用边、承接与去处。它不把匹配改写成自动得用，也不把另一人的同字写成自动激活或本命永久属性。",
+      "preserved_qualifiers": ["虽", "亦", "然必", "若", "则", "不甚相悬"],
+      "effect_dimensions": {
+        "material_damage": {"status": "not-answered", "default": "no-inference"},
+        "functional_restraint": {"status": "answered-conditionally", "default": "exposure-or-adjudicated-meeting-may-clarify-function-but-capacity-separate"},
+        "protective_effect": {"status": "not-answered", "default": "no-inference"},
+        "relation_form": {"status": "partly-answered", "default": "meeting-must-be-adjudicated-before-mobilization-is-inherited"}
+      },
+      "conditions": {
+        "required_state_refs": [
+          "branch-state",
+          "post-branch-node-ledger",
+          "post-branch-node-ledger.participation_scope",
+          "post-branch-node-ledger.activation_interfaces",
+          "visibility-after",
+          "natal-or-timing-scope",
+          "source-packet"
+        ],
+        "applicability_conditions": [
+          "明确当前讨论原局还是岁运，不把时间触发回写为本命永久状态",
+          "会局先通过 Branch Arbitration，再读取聚拢、发动、改道、受损与共享节点分配",
+          "逐个确认支中人元与透出接口的对应、位置、可用度和竞争",
+          "另查实际接收者、作用边、容量与去处",
+          "岁运／合盘只在冻结 natal 上匹配预登记接口并建立有期限的 overlay"
+        ],
+        "override_conditions": [
+          "透出接口受制、被合绊、被占用或无承接时，只保留可见／发用候选，不升级为实际结果",
+          "会局被冲损、竞争、改道或未达到所采流派条件时，按 branch-state 的实际状态继承",
+          "没有透清或会动时，若得令本气、近身根气或其他合格人元证据成立，仍可保留支持层并另审 direct-action",
+          "本题以环境或场所为体时，地支场可直接桥接领域载体，不要求藏干先透",
+          "合盘外来节点只有在双方 natal 分别冻结、跨盘关系成立且本题调用该关系场时才可进入重算"
+        ],
+        "failure_conditions": [
+          "把透清写成透出即得用或即为喜",
+          "把会局写成全部藏干同时发动或自动合化",
+          "把不透写成没有实质参与",
+          "把支中有动直接写成现实事件或成果已经兑现",
+          "把岁运触发改写为原局固定属性",
+          "只翻转 active 开关而不重算受影响的支局、竞争、分配与作用边",
+          "只因对方盘有同字／同五行便自动激活本命节点"
+        ]
+      },
+      "prohibited_shortcuts": [
+        "透＝用＝显",
+        "不透＝无",
+        "会局＝全部藏干发动",
+        "会动＝外部事件已发生",
+        "冲＝释放藏干",
+        "岁运透清＝本命永久外显",
+        "登记接口＝当前激活",
+        "触发匹配＝直接做功",
+        "对方有同字＝自动激活",
+        "overlay visibility＝natal visibility"
+      ],
+      "cross_refs": ["QL-RENYUAN-HIDDEN-PARTICIPATION"],
+      "pipeline_hooks": {
+        "hooks": [
+          {
+            "hook": "stage-1.2-source-route",
+            "role": "route",
+            "reads": ["chart-stage1", "source-query"],
+            "writes": ["source-packet.decision-rule-candidate"]
+          },
+          {
+            "hook": "stage-1.5C-post-branch-node-ledger",
+            "role": "decide",
+            "reads": ["branch-state", "post-branch-node-ledger.participation_scope", "source-packet"],
+            "writes": [
+              "post-branch-node-ledger.manifestation_basis_bundle",
+              "post-branch-node-ledger.direct_action_basis",
+              "post-branch-node-ledger.activation_interfaces.trigger_signature",
+              "post-branch-node-ledger.activation_interfaces.if_matched_recompute_from",
+              "post-branch-node-ledger.activation_interfaces.projected_effect_candidates",
+              "post-branch-node-ledger.branch_manifestation_handoffs"
+            ]
+          },
+          {
+            "hook": "stage-3.5-structure-audit",
+            "role": "audit",
+            "reads": ["source-packet", "post-branch-node-ledger", "qualified-edge-map"],
+            "writes": ["audit-state.branch-manifestation-finding"]
+          },
+          {
+            "hook": "stage-4B-timing-synastry-overlay",
+            "role": "decide",
+            "reads": ["natal-structure-freeze", "post-branch-node-ledger.activation_interfaces", "timing-or-synastry-temporary-nodes", "topic-lens"],
+            "writes": [
+              "activation-overlay.matched_activation_interfaces",
+              "activation-overlay.branch-manifestation-diff",
+              "activation-overlay.affected-edges-to-requalify",
+              "activation-overlay.scope-and-expiry"
+            ]
+          },
+          {
+            "hook": "stage-4B.5-overlay-audit",
+            "role": "audit",
+            "reads": ["natal-structure-freeze", "activation-overlay", "overlay-qualified-edge-diff"],
+            "writes": ["overlay-audit.activation-interface-finding"]
+          }
+        ],
+        "depends_on": [],
+        "may_not_decide": [
+          "combination-transformation",
+          "exact-allocation-share",
+          "pattern-or-therapeutic-use",
+          "unique-domain-carrier",
+          "external-result",
+          "life-event",
+          "natal-visibility-backwrite",
+          "automatic-synastry-activation"
+        ]
+      },
+      "curation": {
+        "status": "pending_human_review",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "confidence_cap": "medium"
+      },
+      "auto_application": false
+    }
+  ]
+}

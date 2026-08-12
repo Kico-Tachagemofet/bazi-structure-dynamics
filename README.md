@@ -1,268 +1,250 @@
 # Bazi Structure Dynamics
 
-一套以结构动力、原典证据和阶段审计分析四柱八字的 Codex skills。
+一套面向 Codex 的四柱八字多 skill 流水线。它把“盘面结构算对”与“现实人生断开”分成不同阶段：先冻结事实、旺衰承载、格局、作用边和制化过程，再用完整十神链与天干、地支、藏干、柱位合成现实场景，最后才写成读者报告。
 
-它不要求模型在一次生成里同时完成排盘校验、旺衰、格局、刑冲合害、通关、取象和成文。相反，它把分析拆成八个职责独立的 skill，每一阶段产生可检查的中间产物；下游只能引用已经通过审计的上游结论。
+当前版本：**2.0.0-rc.1**
 
-这套流水线同时区分“技术结构已经分析完”和“面向求测者的断盘已经交付完”。Structure Freeze 只是生活断局的起点；完整原局还必须确认求测中心，分别完成家庭、学业、财运、事业四个基础板块，并把用户另选的专题逐题生产、审计和呈现。
+> 这是 2.0 架构的预发布版。结构、取象、审计和 Render 合同已经落地；复杂象核启用了干净上下文 producer／auditor 隔离。正式 2.0.0 仍需更多全新命例的前向盲测。
 
-当前版本：**1.2.0**
+## 它要解决什么
 
-## 为什么要拆成流水线
+常见的 AI 八字解读容易落入两种失败：
 
-八字判断的困难不只在于规则多，而在于很多规则会争夺同一个字：
+- 只报身强身弱、格局、喜忌和十神标签，技术词很多，却没有断出学习层级、职业性质、权责、收入、关系角色、变动与代价；
+- 直接从一个十神或一个干支写性格和职业故事，语言很像断盘，但中间没有可追溯的结构链。
 
-- 同一藏干既可能提供根气，也可能参与制化，但两种作用不是同一层；
-- 同一个寅可能参与方会、三合、冲刑与食神路线，不能被每条路线重复满额使用；
-- 五行有箭头不等于通关，图上成环也不等于真实周流；
-- 实际通量最大的路线，可能正在加重主问题，而不是救应；
-- 系统能够自行运转，不等于日主能够主动启动、停止或改道；
-- 已发生经历可以映射显化方式，却不能倒推格局或替代原典规则；若要称证据验证，必须先冻结流运假设，再读年史并固定计分。
+本项目要求每条重要判断能回答：
 
-单次长回答很容易漏掉其中一层，然后在后文用贴切故事掩盖结构缺口。1.0.0 把这些判断变成必须逐阶段完成、能够退回修复的工作流；1.1.0 进一步把经历显化映射、低负担反馈和正式证据验证拆成三层；1.2.0 在结构冻结之前加入用神太极核，并在逐题阶段用实际关系轴和 axis scene 保证断语有足够颗粒度。
+1. 哪条冻结的五行过程正在运行；
+2. 哪些十神在当前专题中分别扮演体、用、竞争者或结果端；
+3. 天干如何形成显性动作，地支如何限定场景和根基，藏干在哪一层参与，柱位把它落到谁与什么事；
+4. 这个组合更支持什么现实结果，较不支持什么；
+5. 优势如何成事，代价落在哪里，需要什么现实门槛，何时会反转；
+6. 哪些只是候选载体，哪些已达到可下结论的强度。
 
-## 总体架构
+目标不是让报告更长，而是让“为什么这样断”与“现实中到底是什么”同时清楚。
+
+## 快速开始
+
+1. 克隆本仓库。
+2. 把 `skill/` 下八个目录全部复制到 Codex 的个人 skills 目录。
+3. 重启 Codex，然后从总入口调用：
+
+```text
+Use $bazi-structure-dynamics to run a detailed natal reading for this chart.
+Freeze and audit natal structure before imagery, timing, or render.
+```
+
+中文也可以：
+
+```text
+用 $bazi-structure-dynamics 完整分析这个八字。先盲跑并冻结原局结构，
+再做家庭、学业、财运、事业和我选择的专题；争议点用校准问题处理。
+```
+
+不要只安装总入口。八个 sibling skills 互相路由，缺任意一个都会造成流程断档。
+
+### 输入至少需要什么
+
+完整原局至少需要年月日时四柱。若要校验真太阳时、月令司令、大运起运或具体应期，还需要出生地、历法／节气来源和起运资料。已有报告可以作为待审对象，但默认先隔离，不作为结构答案源。
+
+## 交付模式
+
+| 模式 | 交付内容 | 不会冒充什么 |
+|---|---|---|
+| `full-reading` / `detailed-natal` | 原局八章、家庭、学业、财运、事业、全部加选专题及约定岁运 | 不用几个专题拼成“完整原局” |
+| `structure-only` | 事实、旺衰、格局、节点、关系、作用边、主问题、路线、用神与过程冻结 | 不称为完整断盘 |
+| `limited-topic` | 只生产约定专题的 Lens、象核、finding 和报告 | 明确列出未覆盖范围 |
+| timing / synastry | 在已冻结 natal 上做临时 overlay、process diff、保留量与到期撤销 | 不把流运或对方回写为原局永久结构 |
+
+`detailed-natal` 默认包含原局八章：
+
+1. 事实与边界；
+2. 系统发动机；
+3. 四柱分工；
+4. 藏干显化；
+5. 关系网络；
+6. 十神功能；
+7. 格局、用神与能动性；
+8. 整体张力。
+
+随后才进入家庭、学业、财运、事业，以及感情、健康、神秘学／直觉、创作、人际、子女或自定义专题。用户要求逐年时，每一年必须有独立关系枚举、overlay diff、process diff、finding 与正文，不以大运综述代替。
+
+## 流水线
 
 ```mermaid
 flowchart TD
-    A["Stage 0<br/>Case Manifest"] --> B["Stage 1<br/>Reader"]
-    B --> C["Stage 1.2<br/>Source Packet"]
-    C --> D["Stage 1.5–3<br/>Structure Core"]
-    D --> U["Stage 3C<br/>Use Kernel"]
-    U --> E["Stage 3.5<br/>Audit + Freeze"]
-    E --> F["Stage 3.6<br/>Report Scope Intake"]
-    F --> G["Stage 4A<br/>Topic Index + Per-topic Lens"]
-    G --> H{"Timing / Synastry?"}
-    H -- "是" --> I["Diff / Overlay + Audit"]
-    H -- "否" --> J["Per-topic Imagery Source"]
-    I --> J
-    J --> K["Topic Findings + Audit"]
-    K --> L{"Optional feedback / validation?"}
-    L -- "None / quick feedback" --> M["Composition + Audit"]
-    L -- "Expanded validation" --> V["Hypothesis Freeze<br/>Verbatim Response<br/>Score Audit"]
-    V --> M
-    M --> N["Render + Delivery Audit"]
-    N -- "新取象或新领域" --> G
-    N -- "结构争议" --> D
+    A["Reader\n事实与隔离"] --> B["Source Lookup\n结构规则包"]
+    B --> C["Structure Core\n节点、关系、作用边、格局与过程"]
+    C --> D["Independent Audit\n结构冻结"]
+    D --> E["Report Scope\n命盘中心与交付范围"]
+    E --> F["Topic Lens v4.1\n专题太极点、待判断维度与锚点"]
+    F --> G{"岁运／合盘？"}
+    G -- "是" --> H["Overlay + Process Diff\n独立审计与冻结"]
+    G -- "否" --> I["Source Runtime\n逐专题开放候选材料"]
+    H --> I
+    I --> J["Fresh Producer\n十神—干支 Scene Kernels"]
+    J --> K["Fresh Auditor\n象核语义验收"]
+    K --> L["Findings + Composition\n主象、次象、反转与全盘叙事"]
+    L --> M["Independent Audit\n覆盖与方向冻结"]
+    M --> N["Render\n少标题因果散文"]
+    N --> O["Delivery Scan\nReader、receipt 与最终审计"]
 ```
 
-### 阶段与硬门槛
+### 1. 事实不能和判断混在一起
 
-| 阶段 | 负责 skill | 主要产物 | 不能跳过的门槛 |
-|---|---|---|---|
-| 0 | `bazi-structure-dynamics` | `case-manifest` | 明确问题、模式、流派和允许范围 |
-| 1 | `bazi-reader` | `chart-stage1`、事实审计、`subject-context` | 四柱、十神、藏干、司令、旬空与时间边界通过校验 |
-| 1.2 | `bazi-source-lookup` | `source-packet` | 记录实际读取的完整章节、来源身份、冲突与证据缺口 |
-| 1.5 | `bazi-structure-core` | `node-ledger`、`interaction-census` | 所有天干和逐位置藏干覆盖 100%，关系先枚举后裁决 |
-| 2 | `bazi-structure-core` | 地支关系专表、`branch-state`、关系后节点、`qualified-edge-map`、系统与主问题 | 地支竞争已写回每个节点；作用边只能从关系后状态起算 |
-| 3 | `bazi-structure-core` | 格局候选、路线、端点锁、条件矩阵、`structure-kernel`、`use-kernel` | 通量、净作用和治疗优先级分开；先锁主问题，再锁主用／辅用／备用及其可用条件 |
-| 3.5 | `bazi-finding-audit` | 审计报告、`structure-freeze-receipt` | BLOCKER 必须返工；通过 hash 同时冻结结构核和用神太极核 |
-| 3.6 | `bazi-render` scope intake | `report-scope.yaml` | 确认命盘主人、求测者角色、太极中心、报告模式、四个基础板块与附加专题；不产断语 |
-| 4A | `bazi-topic-lens` | `topic-lens-index`、逐题 Lens | 每个板块以自然语言问题定领域体，再建立领域体—用神枢纽—实际关系轴 |
-| 4B–4D | Core timing／synastry、`bazi-source-lookup`、`bazi-imagery-composition` | diff／overlay、逐题完整取象包、逐柱复合、axis scenes、topic findings | 只映射冻结结构，不重算旺衰格局；每条实际关系轴都要形成场景和 finding |
-| 4.5 | `bazi-finding-audit` | finding audit | finding 通过后才可进入经历映射；未合参也可继续 composition |
-| 4.6 | orchestrator、Timing Core、Audit（可选） | validation plan、timing hypotheses、hypothesis freeze | 声称验证时必须先于相关年史完成；quick feedback 不走正式计分 |
-| 4.7 | `bazi-render`、`bazi-finding-audit`（可选） | quick feedback，或 opt-in verbatim response、scorecard 与审计 | 默认低负担；详细模式由用户主动启用；冻结后不得修改假设 |
-| 5–5.5 | `bazi-imagery-composition`、`bazi-finding-audit` | manifestation map（可选）、composition 与审计 | 显化映射固定 non-evidentiary；经历不得反写结构 |
-| 6–6.5 | `bazi-render`、`bazi-finding-audit` | 报告或对话回答 | 每个必选和已选 topic 恰好覆盖一次；Render 不得新增 finding |
+Reader 只校验四柱、日主、十神、藏干、月令、司令来源、旬空和时间边界。它不判断旺衰、格局、用神或事件；命主经历、旧报告和已知答案进入隔离区。
 
-## Structure Core 具体做什么
+### 2. 结构按位置、容量和竞争计算
 
-Structure Core 是 1.0.0 的核心。它不是“算完旺衰再套格局”，而是依次建立一张有位置、有容量和有条件的网络。
+Structure Core 先为每个天干和每枚藏干建独立节点，再完整枚举天干关系、六合、六冲、刑、自刑、害、破、三合、半合、方会、重复支和共享支。地支裁决必须写回每个节点，作用边只能从关系后状态建立。
 
-### 1. Node Ledger：先保留每个位置
+它分开：
 
-四个天干和每一枚藏干分别建账。两个寅中的甲、两个午中的丁不能先合并，因为它们的柱位、距离、冲合、根型和可作用对象不同。
+- 库存与实际吞吐；
+- 根气支持、环境供给与直接做功；
+- 主问题、实际通量、净作用与治疗优先级；
+- 日主承载、客观产出、社会兑现和持续代价；
+- 系统能自行运转与命主能启动、改道、停止。
 
-每个节点记录得令、根气、透藏、受生、受克泄耗、旬空、燥湿、关系候选、当前占用及最强反证。这个阶段只说明“有什么”，不抢先宣布哪条路线已经成立。
+因此“有印”“有食神”“五行齐全”或“图上成环”都不能自动变成学历、职业或吉凶结论。
 
-### 2. Interaction Census：关系必须全枚举
+### 3. Structure Freeze 是断盘起点
 
-先检查天干生克合、同柱干支、六合、六冲、刑、自刑、害、破、三合、半合、方会、重复支、共享支和藏干候选关系。没有命中的类别也保留 negative scan，防止模型只看到最醒目的一个合局。
+独立审计通过后才生成 Structure Freeze。下游只能引用冻结节点、作用边、路线、用神太极核和 `structure-process-handoff`。任何方向性修改都必须重新派生并传播，不能只改最终一句话。
 
-### 3. Branch Arbitration：地支关系必须改写成员
+### 4. Topic Lens 负责“这一题到底要断什么”
 
-地支关系不能停留在“有辰戌冲”或“有寅午戌”。每组关系都要裁定：
+Topic Lens v4.1 不预写答案。它为每个专题登记：
 
-- 形式成立度与实际通量；
-- 合绊、集中、改道、冲动、受损或转化；
-- 共享支被多条关系占用时的容量限制；
-- 每个成员支和逐枚藏干的关系后状态；
-- 旬空降低兑现度与“冲不自动开库”两个独立问题；
-- 原局潜伏与岁运补齐后的不同状态。
+- 专题太极点与完整 coverage facets；
+- 必须分别下方向结论的维度；
+- 冻结 process、完整十神链计划；
+- 天干、地支、藏干和柱位锚点；
+- 开放的现实载体候选池；
+- 只有用户真正问过的问题才建立 Reader Answer Contract。
 
-裁决结果写入 `post-branch-node-ledger`。没有被关系改变的节点也要明确标记 retained，而不是从账上消失。
+内部覆盖维度不是问卷，也不会被 Render 机械写成“问题一、问题二”。
 
-### 4. Edge Qualification：有关系不等于能起效
+### 5. 象核不是十神标签扩写
 
-作用边只能从关系后节点建立，并区分：
+Imagery Composition 固定执行：
 
-- `direct-action`：能够直接参与生克制化；
-- `root-support`：提供根气或承载；
-- `environmental-feed`：维持某个接收端的环境供给；
-- `branch-relation`：由地支关系产生的集中、合绊或改道；
-- `composition-only`：只用于取象组合，不能倒灌为结构作用。
+```text
+spread → intersect → differentiate → rank → synthesize
+```
 
-每条边检查上游容量、距离、先后、中间阻断、下游承接、竞争路线和回病旁路。由此避免“有根就是畅通”“同支藏干自动互生”“被冲就全部出库”等常见跳步。
+- `spread`：把相关 process、十神、干支、藏干、柱位和 runtime units 全部摊开；
+- `intersect`：寻找它们实际交会的关系链；
+- `differentiate`：把学历、专业技术、权责、名声、收入、变动和代价等不同结果端拆开；
+- `rank`：比较支持强度和现实载体，不把候选直接升格为身份；
+- `synthesize`：再把已经分清的主张合成一个连续现实画面。
 
-### 5. System State：旺衰只是系统的一项
+单个十神或单个干支没有独立直断权。L5 具体身份需要高门槛，但 L1–L3 已有组合支持时，也不得因为不敢断具体职业而退回性格测试或空泛流程描述。
 
-节点和边稳定后，才聚合五行与十神库存、真实吞吐、蓄积点、最弱环、日主承载力、启动权、控制权、停机能力、自治子系统和正负反馈。
+### 6. 复杂象核必须隔离生产与审计
 
-因此“身弱”不会自动抹掉已经发生的食神制杀，“五行齐全”也不会自动得到闭环。系统可以有一条很响的木火土通道，同时金水救援仍然低通量。
+2.0 RC 新增强制 Agent 隔离协议。以下情况命中任一项，就不能由总 session 直接写象核：
 
-### 6. Primary Problem：先锁病，再谈药
+- 完整报告或复杂专题；
+- timing／synastry；
+- L4 现实载体竞争；
+- 批量 scene kernels；
+- 当前上下文已知命主经历、预期答案或用户纠错。
 
-在比较用神、救应和出口前，单独生成 `problem-state`，列出主问题、次问题、非问题、维持主问题的反馈、最强反证与改判条件。
+总编排只生成不含答案的 job packet；全新上下文 producer 每次只处理一个 topic；另一个全新上下文 auditor 独立验收。环境没有可创建干净 agent 的能力时，复杂象核停止并标记 `AGENT_ISOLATION_UNAVAILABLE`，不会让已被答案污染的主 session 代写。
 
-之后每条路线必须回答它对这个主问题究竟是：
+详细协议见 [`scene-kernel-agent-protocol.md`](skill/bazi-imagery-composition/references/scene-kernel-agent-protocol.md)。
 
-- 缓解；
-- 加重；
-- 混合；
-- 只提供条件；
-- 或者与本题无关。
+### 7. Composition 和 Render 分权
 
-这一步防止把“最强通道”误叫成“最佳用神”。
+Composition 保存完整判断：过程、关系链、现实画面、优势、代价、兑现门、反转、替代解释和 claim strength。Render 只做语言性综合：
 
-### 7. Structured Routes：端点锁定，路线不许手改
+- 先立主场景，再沿十神链和干支组合展开；
+- 使用少量有意义的标题，不按 artifact、facet 或 judgment 列目录；
+- 可以把多个已分清的结果写进连续散文，但不能丢掉任一已冻结方向；
+- 不打开 Deep Card、Source manifest 或原始 runtime packet；
+- 材料不足时登记 render gap，退回上游，不能现场补断。
 
-格局与制化路线只能引用 `qualified-edge-map` 中已经存在的 edge ID。每条路线分别记录：
-
-- actual throughput：原局实际能跑多少；
-- net effect：对主问题的净作用；
-- therapeutic priority：若要解决主问题，理论上优先补哪一段；
-- 最弱环、代价、旁路、反馈和触发条件。
-
-例如食神制杀与食神生财再生杀可以同时存在，但必须说明它们争夺的是哪一枚甲木、各自能分到多少，以及哪条会把药重新导回病处。
-
-### 8. Conditions、Structure Kernel 与 Use Kernel
-
-`conditions-matrix` 保存每条路线的成立先后、必要条件、反转节点及岁运接口；它不是预测本身。`structure-kernel` 只收束主组织、有效支援、瓶颈、出口、反馈、控制权和关键开关。
-
-`use-kernel` 是后置的用神太极核，不重算结构，也不把一个十神宣布为所有领域的万能答案。它根据已经锁定的主问题与路线，分别记录主用、辅用和备用，区分扶抑、调候、通关、制化、承载和输出功能，并写明每一项在哪些条件下可用、会被谁截断、可能把药重新导回什么病处。
-
-### 9. Freeze：结构与用神一起冻结
-
-独立审计通过后，`structure-freeze-receipt` 对结构输入生成 hash。后续职业、关系、健康、神秘学、岁运和合盘只能引用这份冻结结构及用神太极核；任何结构文件或 `use-kernel` 改变，都必须重新审计。
-
-## 从结构分析到合格断盘
-
-Structure Core 回答的是：命局里有哪些节点，关系裁决后哪些作用边真的能跑，主问题是什么，哪些路线缓解、加重或只是提供条件；Use Kernel 再回答解决主问题时真正以谁为主用、谁负责保护或补桥。两者仍不会自动回答这些结构在家庭、求学、挣钱、工作或某个特殊问题中怎样落地。因此，`structure-kernel` 与 `use-kernel` 再完整，也只能称“原局结构分析”，不能单独称为“完整断局”。
-
-本项目把交付分成三种模式：
-
-- `full-reading`：结构冻结后继续执行 Stage 3.6–6.5；固定包含家庭、学业、财运、事业，并覆盖求测者选择的全部附加专题；
-- `structure-only`：止于 Stage 3.5，只交付技术结构、主问题、路线和条件，不冒充完整断盘；
-- `limited-topic`：只为约定专题生产 finding 和报告，必须明确哪些基础板块没有覆盖。
-
-完整断盘的关键不是把同一个结构核扩写四遍，而是每个生活板块都重新确定领域体和现实载体。求测者只需用自然语言说明“看谁、看什么关系或看什么事”；`report-scope.yaml` 保存范围合同，`bazi-topic-lens` 再把它转换为领域体—用神枢纽—实际关系轴，并为每个 topic 建立独立 Lens、Source Packet、axis scene、finding 和报告小节。四个基础板块可以互相引用，但不能被一段泛化的“综合性格”替代。
-
-家庭只是基础报告领域之一，不再承担强制校准锚点。普通经历合参写入 `manifestation-map.md`，只调整表达带、呈现顺序和家庭／职场／关系等领域载体，固定标记 `non-evidentiary`。默认反馈只需回答“准／部分准／不准／记不清”；用户主动说“展开验证”后，才进入详细流运模式。没有合参或验证不阻塞完整报告，也不得伪称已经回验。
-
-最终报告必须让 `report-scope.yaml` 中的每个必选和已选 topic 恰好出现一次，并与通过审计的 findings 一一对应。缺了基础板块、漏了用户选题、没有逐题 Lens，或把结构核直接改写成生活故事，都不满足完整断局的完成条件。
-
-## 取象、经历映射、验证与对话
-
-结构回答“什么力量能够怎样运行”，取象回答“它在当前领域可能表现成什么”。两层不得互相替代。
-
-- `bazi-render` 先收集报告范围和自然语言太极中心，不让求测者替模型选择十神或柱位；
-- `bazi-topic-lens` 为每个板块建立领域体、用神枢纽和实际关系轴，再确定需要哪些柱、节点、路线和完整象义单元；
-- `bazi-source-lookup` 读取完整展开版本，不用一句口诀补故事；
-- `bazi-imagery-composition` 沿每条关系轴组合天干本象、地支本象、十神功能、柱位、藏干和全局修正，先写 axis scene，再收束 finding；
-- `bazi-finding-audit` 检查反向表现、非显化条件、现实载体和证据边界；
-- `bazi-render` 只把通过审计的 findings 写成人能读懂的报告，并机械核对范围覆盖。
-
-用户经历在盲结构与 blind finding 通过后才进入显化映射。它只能说明同一机制主要落在哪个现实载体，不能提高结构置信度或修改 node、edge、route 与格局。若要做证据验证，先选择对照时间窗，完成 timing overlay、复杂假设、独立审计与 hash 冻结，再读取年史；“说得通”和通用关键词不计分。
-
-对话追问也有路由：
-
-- 已有 finding 的澄清：直接 Render；
-- 同一结构的新取象：增量 Source + Imagery；
-- 新生活领域：新 Topic Lens；
-- 新流年／大运：Timing diff；
-- 合盘或直接叠盘：双方 natal 通过后建立 overlay；
-- 对合化、开库、司令或作用边的质疑：退回 Structure Core 与 Audit。
+这保证报告近似人类断盘散文，同时保留后台可追溯性。
 
 ## 八个 skills 的职责
 
-| Skill | 职责 |
+| Skill | 只负责什么 |
 |---|---|
-| `bazi-structure-dynamics` | 总编排、恢复顺序、报告模式与完整断局完成标准 |
-| `bazi-reader` | 事实结构化、司令与十神校验、context 隔离 |
-| `bazi-source-lookup` | 原典、评注、课程与取象材料的完整来源包 |
-| `bazi-structure-core` | 节点、地支裁决、作用边、系统状态、主问题、格局、路线与用神太极核 |
-| `bazi-finding-audit` | 结构、逐题 finding、composition、范围覆盖、render 与对话边界审计 |
-| `bazi-topic-lens` | 把自然语言专题映射为领域体—用神枢纽—实际关系轴，并维护 Topic Lens Index |
-| `bazi-imagery-composition` | 按 topic 和关系轴完成逐柱复合、axis scene、finding、可选显化映射与 composition |
-| `bazi-render` | Report Scope Intake、quick feedback、opt-in 验证回应、范围完整性检查、报告和受约束的 Q&A 呈现 |
+| `bazi-structure-dynamics` | 总编排、阶段恢复、硬门槛和完成标准 |
+| `bazi-reader` | 排盘事实、司令与十神校验、时间边界和经历隔离 |
+| `bazi-source-lookup` | 原典规则、Deep Cards、逐专题 runtime units 与开放载体材料 |
+| `bazi-structure-core` | 节点、地支裁决、作用边、旺衰承载、格局、路线、用神与过程 diff |
+| `bazi-topic-lens` | 专题太极点、coverage、必须判断维度、十神链和干支锚点；不下结论 |
+| `bazi-imagery-composition` | scene kernels、领域 findings、跨专题 composition 与显化映射 |
+| `bazi-finding-audit` | 独立审计结构、象核、finding、composition、render、岁运和交付 |
+| `bazi-render` | 范围入口、审计后散文、Reader、receipt、低负担反馈和受约束追问 |
 
-## 仓库结构
+## 关键产物与审计门
 
-```text
-skill/
-├── bazi-structure-dynamics/   # orchestrator
-├── bazi-reader/
-├── bazi-source-lookup/
-├── bazi-structure-core/
-├── bazi-finding-audit/
-├── bazi-topic-lens/
-├── bazi-imagery-composition/
-└── bazi-render/
-```
+| 层 | 代表产物 | 通过标准 |
+|---|---|---|
+| Reader | `chart-stage1`、fact audit、`subject-context` | 四柱事实和时间边界闭合，经历隔离 |
+| Structure | node／branch ledgers、edge map、routes、use kernel、process handoff | 全节点覆盖、关系全枚举、端点一致、过程四面裁决 |
+| Scope / Lens | `report-scope`、natal-core index、per-topic Lens | 交付范围完整，无预写答案，无维度静默合并 |
+| Imagery | runtime packets、material disposition、scene kernels、findings | selected units 全量处置，十神链与干支柱位合成，方向可证伪 |
+| Composition | process spine、claim registry、coverage receipt、composition | 判断不被压平，跨专题复用可追溯 |
+| Render | `reader/`、full reading、render receipts | judgment／coverage／年份唯一覆盖，正文无新结论 |
+| Delivery | independent scan、audit state、active manifest | 生产者自报 PASS 不算证据，独立审计无开放 BLOCKER |
 
-每个 skill 包含自己的 `SKILL.md`、`agents/openai.yaml`，以及按需加载的 `references/` 和确定性 `scripts/`。
+机械 validator 只证明集合、引用、路径和 schema 闭合；它不能替代语义审计。字数、标题数、字段齐全或 finding 数都不能自动代表“断开了”。
 
-## 安装
+## 校准、经历与盲测
 
-1. 克隆本仓库。
-2. 将 `skill/` 下的 **八个目录全部复制** 到 Codex 的个人 skills 目录。
-3. 重启 Codex。
+- 普通经历合参只生成 `manifestation-map`，标记 `non-evidentiary`；它能调整同一结构主要落在哪个现实载体，不能回写 natal。
+- 默认反馈是“准／部分准／不准／记不清”，不自动追问，也不计作证据。
+- 只有用户主动要求展开验证，才在读取相关年史前冻结 timing hypotheses，随后按原话和固定 rubric 计分。
+- 已经知道命主经历、错误方向或期望答案的 session 只能做故障复现和回归修复，不能冒充 blind first pass。
+- 真正的前向盲测必须使用未讨论的新命例、全新 producer、独立 auditor，并在第一次输出冻结后才解封 known facts。
 
-不要只安装 orchestrator：1.2.0 的总 skill 会显式调用七个 sibling skills。
+## 来源与可移植性
 
-仓库继续保存现有的原典路由、整理文本与课程转写，供 Source Lookup 使用。新增私人书籍或课程时，应使用摄取脚本生成本地 Source Pack；不要把出生资料、`subject-context`、盲测产物或本机绝对路径提交到仓库。
+仓库内保留原典路由、公开整理文本和部分转录。未随仓库分发的外部材料使用稳定的 `external-source://...` ID，而不是维护者电脑上的绝对路径；使用者可在自己的 Source Lookup 环境中把这些 ID 映射到合法取得的本地来源。
 
-## 使用示例
+Deep Cards 是取象候选材料，不是结构规则，也没有单符号直达职业、疾病或事件的权限。其他术数的材料只允许保留可回接阴阳五行、季节与形态的共同符号层，不能把另一体系的专属规则带入八字裁决。
 
-```text
-Use $bazi-structure-dynamics to analyze this 八字. Complete the audited natal structure before imagery or timing.
-```
+出生资料、`subject-context`、命例报告、盲测答案、本机绝对路径和私有课程原文件不应提交。`.gitignore` 已覆盖常见私有产物，但发布前仍应做独立敏感信息扫描。
 
-完整断盘会先盲跑并冻结结构，再向求测者确认报告中心和附加专题；家庭、学业、财运、事业是默认不可省略的四个基础板块。若只需要技术结构，请明确要求 `structure-only`。
-
-```text
-用 $bazi-structure-dynamics 审计这份旧解读，逐条检查它是否漏了地支关系、共享节点、回病路线或主问题。
-```
-
-```text
-继续追问这个命局的神秘学取象。先判断是已有 finding、增量取象，还是需要退回结构审计。
-```
-
-完整原局至少需要年月日时四柱。涉及真太阳时、月令司令、大运或应期时，还需核对出生地、节气和起运资料。
+权利与来源说明见 [NOTICE](NOTICE.md)。仓库目前没有统一开源许可证；除非文件另有许可，不应假定可以复制、再发布或商用全部内容。
 
 ## 验证
 
-仓库提供：
+每个 skill 都应先运行 Codex `skill-creator` 的 `quick_validate.py`。随后按修改范围运行各 skill `scripts/` 中的确定性测试，包括但不限于：
 
-- Stage 1 确定性事实枚举器；
-- 关系枚举覆盖检查；
-- 路线端点完整性检查；
-- Structure Freeze hash 生成与测试；
-- `report-scope.yaml`、四个基础板块、已选专题、经历映射与验证状态检查；
-- Render finding 与报告小节一一覆盖检查；
-- 回归预期与测试入口。
+- Reader 事实与地支关系枚举；
+- route endpoint、process handoff 和 freeze hash；
+- Topic Lens、runtime diversity、carrier resolution；
+- scene-kernel selected-unit 集合等值、材料处置和 agent provenance；
+- finding／judgment／coverage closure；
+- Render coverage、Reader 同文、delivery artifacts 与 independent scan。
 
-发布前应对八个 skill 运行 `quick_validate.py`，再运行自带脚本测试和敏感路径扫描。
+发布前还应检查：无 `__pycache__`／`.pyc`、无命例目录、无本机盘符、无 thread ID、无 known facts、无测试答案硬编码。
 
-## 边界
+## 从 1.2.0 升级
 
-- 本项目用于传统命理文本研究与结构化分析，不构成医疗、法律、财务或其他专业建议。
-- 八字象义可以描述传统模型中的体验和领域载体，不能单独证明超自然来源或替代现实诊断。
-- 原文、评注、课程观点和当前结构模型必须分层引用，不得互相冒名。
-- 课程转录存在听写待核内容；关键干支、术语、命例与断语应回听原始材料。
-- 本仓库未授予统一的开源许可证；来源材料的权利归各自作者或权利人所有。详见 [NOTICE.md](NOTICE.md)。
+2.0 RC 不是只增加几个字段：
 
-## 版本记录
+- Topic Lens 升为 v4.1，旧的“一题一答”或通用宽题包不能直接复用；
+- Structure 必须提供完整 process handoff，下游不能只读 use kernel；
+- Scene Kernel 必须重建 selected-unit disposition 和 agent provenance；
+- 完整／复杂象核需要 fresh producer + independent auditor；
+- Render 必须从新 composition 和 coverage receipts 重建，不能续写 1.2 报告；
+- `pending_kico_review` 等维护者专名状态已迁移为 `pending_human_review` 等角色化状态；
+- 外部来源绝对路径改为 `external-source://` ID。
 
-参见 [CHANGELOG.md](CHANGELOG.md)。
+旧 case artifacts 应归档为 inactive，再从新版 scope、Lens、runtime、scene kernels、composition 和 Render 重建。不要把旧 findings 改名后继续使用。
+
+## 已知限制
+
+- 2.0.0-rc.1 已实现新隔离与语义门，但尚未宣称完成足量全新命例的无提示前向盲测。
+- 没有 sub-agent／fresh-context 能力的环境可以运行 Reader、Structure 和部分简单限定专题；命中复杂象核隔离门时会停止。
+- Validator 能发现集合、引用和协议错误，不能证明命理判断为客观事实。
+- 本项目用于传统命理文本研究和结构化分析，不构成医疗、法律、财务或其他专业建议。
+
+完整变更见 [CHANGELOG](CHANGELOG.md)。

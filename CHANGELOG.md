@@ -1,5 +1,139 @@
 # Changelog
 
+## [2.0.0-rc.1] - 2026-08-12
+
+### Summary
+
+2.0 RC 把流水线的验收中心从“步骤和字段是否齐全”改为“是否真正回答现实断局问题”。结构层仍负责可追溯的旺衰、格局、节点、关系、作用边和五行过程；Topic、Imagery 与 Composition 则必须继续完成完整十神关系链、天干地支藏干柱位合成、现实结果分层、载体竞争与反转。Render 只负责把这些已冻结内容写成少标题、因果连续的散文，不能自行补象。
+
+本版同时引入复杂象核的 fresh-context producer／independent auditor 隔离。已经知道命主经历、预期答案或用户纠错的主 session 不再具有盲产资格；缺少干净 agent 时，复杂象核会明确停止，而不是继续生成看似完整的报告。
+
+该版本标记为 RC，是因为新协议、schema、validator 和回归门已经完成，但仍需更多未讨论命例的首次前向盲测，才能证明泛化表现。
+
+### Why this release exists
+
+1.2.0 虽然已经分开 Structure、Use Kernel、Topic Lens、Composition 和 Render，但实盘仍暴露出系统性缺陷：
+
+- 上游只给每个专题一个宽泛问题，Render 只能扩写成更长的性格测试；
+- 十神、天干、地支和柱位名义上都被读取，实际生产时只剩旺衰强弱与通用断语；
+- 学历、专业技术、权责、名声、收入、变动和代价被合成一句，丢失方向差异；
+- timing 的不同年份可以复用同一套八维结论和同一载体排名；
+- coverage receipt 字段齐全，却可能让所有 facet 指向同一条 judgment；
+- 主 session 已经知道修复目标后仍直接生产，导致回归样章不能作为盲测证据；
+- Render 被内部标题、答题模板和审计字段框住，正文不像连续断盘散文。
+
+2.0 RC 针对这些失败重建了从语义目标到独立交付扫描的整条链。
+
+### Added — semantic objective and report scope
+
+- 新增《八字现实断语合同 v1.0》，把终点明确为可区分、可证伪的现实判断，而不是术语解释、性格画像、建议或 artifact 齐全。
+- 为每条重要判断要求形成：对象与事件、方向、形成链、优势、代价、结果门、反转、核验表现与替代解释。
+- 区分 coverage facets 与真实用户问题：前者只保证完整断局不漏面，后者才建立 Reader Answer Contract、direct answer 和独立 answer receipt。
+- `full-reading` 默认固定为 `detailed-natal`；新增原局八章的 Lens、coverage、findings 和 cross-topic registry，生活专题不能替代原局详批。
+- 完整原局固定保留家庭、学业、财运、事业，并允许感情、健康、神秘学／直觉、创作、人际、子女及自定义专题。
+
+### Added — structure-to-composition process spine
+
+- 新增／强化 `structure-process-handoff`，把冻结路线无损交给 Topic 与 Composition。
+- 每条 process 分开日主承载、客观产出、社会兑现、持续代价，避免把“对主问题有治疗作用”误写成“外部成就一定更高”。
+- process handoff 显式保留 start gate、完整 edge／route closure、phase、共享节点分配、日主成本、治疗效果、残余问题、回病旁路和 agency。
+- timing overlay 增加逐窗 process-state diff、传播闭包、natal route retention、overlay function transition、shared-node allocation 与 expiry／no-backwrite 收据。
+- 用户要求逐年时，每年必须有独立 scope atom、关系 census、overlay diff、process diff、finding 和正文。
+
+### Added — Topic Lens v4.1
+
+- Topic Lens 改为“专题太极点 + mandatory judgment dimensions + process + 十神链计划 + 干支柱位锚点 + 开放载体候选池”。
+- mandatory dimensions 必须逐项登记 `pending-directional-verdict`、`not-applicable` 或 `source-gap`，不得静默合并学历、专业性质、权责、名声、收入、变动等结果端点。
+- Lens 不得填写方向答案、预定 finding 数或 preferred carrier；问题表不再承担正文结构。
+- 新增 natal-core lens／coverage index、hidden manifestation matrix、cross-topic claim registry 和逐专题 scene-kernel handoff。
+- timing／synastry 先生成最小 scope seed，Structure overlay 冻结后再回到 Topic Lens 生成正式 typed state，防止 Lens 预造岁运过程。
+
+### Added — Deep Cards and topic runtime compilation
+
+- 扩展五行、十天干、十二地支、地支共通层和十神 Deep Cards，并增加逐 card runtime units。
+- Source Lookup 必须按命盘和专题编译 selected units、context-only／forbidden units、开放 candidate palette 与 carrier leads；通用十神包不能冒充所有专题材料。
+- 新增 material disposition：producer 必须对每个 selected runtime unit 标记 `used`、`counterevidence`、`context-only` 或 `excluded-with-reason`，四类并集必须严格等于输入集合。
+- 外部跨体系材料只能作为共同符号候选，去除另一术数专属组件后才可进入 source-only 层，不能决定八字结构或事件。
+
+### Added — scene-kernel production and agent isolation
+
+- 新增 `scene-kernel-agent-protocol.md`，定义何时强制 fresh producer 与 independent auditor。
+- 隔离触发包括：完整报告、复杂专题、timing／synastry、L4 载体竞争、批量 kernels，或当前上下文已经知道经历／预期答案／纠错方向。
+- 总编排 session 只允许生成不含答案的 job packet；producer 每次只处理一个 topic，不能用 follow-up 连续生产下一题。
+- auditor 与 producer、orchestrator 分离，只读 job packet、允许输入、producer output 和审计规则；FAIL 后必须废弃输出并另开 producer。
+- 新增 producer／auditor 固定任务说明、actual read set、hash、forbidden inputs、prior exposure、script-generated judgment 和 isolation receipt。
+- 环境无 fresh-context agent 时新增 `AGENT_ISOLATION_UNAVAILABLE` 停止状态，不允许主 session 代写复杂象核。
+- Scene Kernel schema 新增：完整十神链、干支柱位组合、selected-unit disposition、spread/intersect/differentiate/rank/synthesize、主象／次象／反转象、现实载体竞争、claim strength 和 agent provenance。
+- Scene Kernel validator 新增集合等值、每 unit 处置、复杂度触发、角色分离、禁止预写方向、禁止脚本／模板生成 judgment text 等检查。
+
+### Changed — imagery and findings
+
+- Imagery Composition 固定采用 `spread → intersect → differentiate → rank → synthesize`。
+- `spread` 必须先摊开 process、十神、天干、地支、藏干、柱位和所有 selected runtime units；不得截取最顺眼的前几项。
+- `intersect` 只在完整关系链交会处形成现实候选；单个十神或干支不再拥有独立直断权。
+- `differentiate` 先拆开学历、训练路径、技术动作、权责、名声、收入、变动与代价，再允许在散文中合写。
+- `rank` 使用多级 specificity：具体身份保持高门槛，但已受组合支持的教育层级、专业性质、技术工作、权责和收入方向不得退回性格或流程套话。
+- 每个 primary finding 必须携带逐 process handoff、phase、closure、strength snapshot、cost、treatment、residual problem、agency、switch／failure，以及 timing diff（若适用）。
+- Formation、advantage、cost、result gate、switch 和 verification 不再允许用一段全盘通用背景替代专题主张。
+- Domain carrier resolution 必须逐专题／逐时间窗比较，不能所有年份复制同一 L4 排名和 comparison reason。
+
+### Changed — composition and render
+
+- Composition 负责全盘主锚、关键人生主线、跨专题张力、独立 judgments、coverage mapping 和自足 render-use envelope；Render 不再从卡片或字段猜答案。
+- Render 入口必须读取合格详批散文 few-shot 与失败问答 negative few-shot。
+- 正文改为主场景驱动的连续散文：标题只按读者真正需要辨认的主线设置，不按 finding、facet、问题、十神或内部字段机械起标题。
+- 覆盖与判断清单留在不可见 receipts；内部维度不再渲染成答题册。
+- 多个判断可以在少量段落中合成，但每个已冻结方向必须实质出现；不能只剩“综合能力”“压力—资源—输出”等抽象流程。
+- Render 只读审计后的 process compositions、scene kernels、findings 与 envelopes；禁止打开 raw Deep Cards、runtime packet 或 Source manifest。
+- 新增 detailed-natal prose few-shot、negative question-ledger few-shot、anti-cliche 规则和 reader／full-reading 同文归一化要求。
+- 最终交付增加 render-card receipt、coverage-render receipt、按需 reader-answer receipt、独立 delivery scan 和 Render audit。
+
+### Changed — audit and freeze
+
+- Audit 以独立检察官模式运行；生产者自报 PASS、字段齐全、字数、标题数或 judgment 数均不构成通过证据。
+- 新增机器 `audit-state` 作为事实源，Markdown audit 只作投影；verdict、计数和 propagation 必须一致。
+- 任何方向性修复都要从首次改变的上游重推，更新依赖 hash 和 active manifest；禁止只 patch 最终报告。
+- 增加 Lens 预写答案、跨专题通用包、process spine 压缩、L4 排名复用、coverage 错绑、经历污染、脚本硬编码答案和 Render 越权检查。
+- Structure、timing、imagery、composition、render 分别冻结；下游必须引用同一 active freeze，旧报告和旧 findings 不得混入。
+
+### Fixed
+
+- 修复“十神都出现了，但实际只在报强弱和一般断语”的假取象。
+- 修复把学业判断写成开放写作、抽象表达等通用能力画像，而没有从印、食伤、官杀、财及干支场景判断具体训练方式和考核适配。
+- 修复高印／长训练结构因防御性措辞被统一下调为“学习不差但学历未必高”。
+- 修复职业专题只写责任感、流程、交付和收尾，没有区分专业技术、制度资格、权责、名声、收入和变动。
+- 修复把一个十神直接等同于同事、上司、配偶、医生、某种疾病或具体事件；现在必须结合原局关系后状态、流运触发、柱位与命主当时位置。
+- 修复流运临时合、冲、刑或比劫触发被写回原局，或因原局保护存在就删除临时阻碍。
+- 修复普通重复支被误报为自刑；自刑仍限定辰、午、酉、亥的同支重复并经关系枚举器裁定。
+- 修复 timing 八个维度实际只复制三四句、不同年份载体排序完全相同的问题。
+- 修复 coverage receipt 把一个专题全部 facets 指向第一条 judgment，导致真实 judgments 未被追踪。
+- 修复回答问题式目录把完整断局压成 42／78 个短答，Render 看似全覆盖却没有围绕太极点铺开。
+- 修复内部“生活判断／条件与代价／技术依据”固定栏位直接泄漏到读者正文。
+- 修复旧报告、known facts、用户纠错或父／本人命例串案后仍声称盲测通过。
+
+### Breaking changes and migration
+
+- 完整／复杂象核现在要求 fresh producer + independent auditor；不支持干净 agent 的运行环境会在 Imagery 前停止。
+- Topic Lens v4.1、process handoff、scene-kernel schema、coverage receipts 和 agent receipts 均与 1.2.0 不兼容；旧 artifacts 不能原地补字段后继续。
+- 旧 `output-contract.md`、旧 `topic-lens-schema.md` 和过期 roadmap 已从公开 skill 包删除；当前合同由现实断语合同、Topic Lens v4.1 和各阶段 schema 共同定义。
+- Deep Card curation 状态从维护者专名迁移为角色化状态：`draft_pending_human_review`、`pending_human_review`、`runtime_approved_by_human_*`。
+- 未随仓库分发的来源从 Windows 绝对路径迁移为 `external-source://...` ID；validator 同时接受现有绝对本地文件或外部来源 URI。
+- 从 1.2 升级的命例应把旧 active report、findings、composition、Lens 与 scope 归档为 inactive，从新版 report scope 开始重建；Structure Freeze 只有在 hash 和 schema 仍兼容时才可复核后继续。
+
+### Privacy and portability
+
+- 公开包删除本机盘符、私有目录、命例路径、thread ID、known facts 和维护者个人名状态。
+- 外部课程／笔记只保留稳定来源 ID、portable scope 与 excluded scope；原文件不随仓库提交。
+- `.gitignore` 继续隔离 forward tests、case artifacts、private、subject context 和本地覆盖文件。
+- 发布扫描明确检查 Windows 用户目录、`E:\My Grimoire`、命例 ID、临时截图、AppData、blind-run answers、`__pycache__` 与 `.pyc`。
+
+### Validation and release status
+
+- 八个 skills 均纳入 `quick_validate.py`。
+- 新增／扩展 Reader 枚举、route endpoint、process handoff、Deep Card index、runtime diversity、Topic Lens、carrier resolution、scene-kernel、coverage、question closure、Render coverage 和 delivery artifact 测试。
+- Scene Kernel validator tests 覆盖 selected-unit 等值、遗漏 unit、伪造全覆盖、agent provenance 和脚本生成判断文本等失败样本。
+- 2.0.0-rc.1 不把已知命例上的修复样章宣称为盲测成果；正式 2.0.0 仍以全新命例、全新 producer、独立 auditor 和解封后对照为发布条件。
+
 ## [1.2.0] - 2026-08-05
 
 ### Summary

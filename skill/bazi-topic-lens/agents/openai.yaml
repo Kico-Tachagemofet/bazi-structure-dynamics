@@ -1,4 +1,4 @@
 interface:
-  display_name: "八字问题镜头"
-  short_description: "把问题拆成领域体、用神枢纽和逐条体用关系轴"
-  default_prompt: "Use $bazi-topic-lens to turn the confirmed Bazi scope into topic bodies, frozen use-pivot locks, and concrete body-use relation axes."
+  display_name: "八字太极场镜头"
+  short_description: "建立领域覆盖、十神链计划与干支锚点"
+  default_prompt: "Use $bazi-topic-lens to build a chart-driven Taiji field, coverage ledger, process axes, ten-god chain plans, and stem-branch anchors; create Reader Answer Contracts only for genuine user questions and never prefill conclusions."

@@ -1,4 +1,4 @@
 interface:
   display_name: "八字原典与取象检索"
-  short_description: "按结构与体用关系轴加载完整原典和展开取象证据"
-  default_prompt: "Use $bazi-source-lookup to build traceable source packets for each scoped Bazi topic and each body-use relation axis from complete routed sections."
+  short_description: "读取本盘十神干支材料并按专题编译"
+  default_prompt: "Use $bazi-source-lookup to fully read the chart-relevant ten-god, stem, branch, hidden-stem, and carrier materials, then compile topic-specific runtime units for ten-god-chain and stem-branch synthesis with explicit gaps and limits."

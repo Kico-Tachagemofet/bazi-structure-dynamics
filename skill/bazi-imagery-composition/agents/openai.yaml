@@ -1,4 +1,4 @@
 interface:
   display_name: "八字取象与组合"
-  short_description: "逐条合成用神关系轴场景，再产出可展开的领域 findings"
-  default_prompt: "Use $bazi-imagery-composition to compose each frozen body-use relation axis into an audited scene and a concrete topic finding."
+  short_description: "把十神链与干支柱位合成可核对象核"
+  default_prompt: "Use $bazi-imagery-composition to preserve frozen processes, build complete ten-god chains, combine them with stems, branches, hidden stems, and pillar roles into auditable scene kernels, then produce kernel-driven findings, coverage receipts, and prose composition."
