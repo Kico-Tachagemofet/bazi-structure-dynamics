@@ -2,10 +2,8 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `role`: 五行、十天干、十二地支 Deep Card 的共同语义底座
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `paired_contrast`: not-applicable；阴阳配对差异在十天干卡内处理
 
 ## 1. 古典语义核
@@ -100,26 +98,13 @@
 
 外形题须比较身体／日主体象和全盘形态；职业题先写工作性质，再由领域载体层比较行业、岗位、工作内容和收益渠道。多个独立锚点一致时可直接说“更可能高挑挺拔”或指出已经胜出的职业载体；不得因为单个五行象意就把行业候选升级为结论。
 
-## 7. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `FE-CORE-WATER` | `semantic_core` | 润下：润泽、趋下、流动、渗透、汇聚 | 全部相关 topic | 水节点在冻结 axis 中实际相关 | 只解释过程；不得重算壬癸、旺衰或吉凶 | `bazi_primary＋current_synthesis` |
-| `FE-CORE-FIRE` | `semantic_core` | 炎上：升温、发散、照明、显现 | 全部相关 topic | 火节点在冻结 axis 中实际相关 | 只解释过程；不得直接推出名声、职业或事件 | `bazi_primary＋current_synthesis` |
-| `FE-CORE-WOOD` | `semantic_core` | 曲直：生长、伸展、柔韧与成形 | 全部相关 topic | 木节点在冻结 axis 中实际相关 | 只解释过程；不得直接推出外形、人格或行业 | `bazi_primary＋current_synthesis` |
-| `FE-CORE-METAL` | `semantic_core` | 从革：改形、精炼、裁切、取舍与成器 | 全部相关 topic | 金节点在冻结 axis 中实际相关 | 只解释过程；不得直接推出制度、金融、审美职业 | `bazi_primary＋current_synthesis` |
-| `FE-CORE-EARTH` | `semantic_core` | 稼穑：承载、培育、转化、积累与完成 | 全部相关 topic | 土节点在冻结 axis 中实际相关 | 只解释过程；不得直接推出房产、照料或运营职业 | `bazi_primary＋current_synthesis` |
-| `FE-STATE-SWITCHES` | `state_modifier` | 得时、受生、受制、过盛、无根／无去处的表达切换 | 全部相关 topic | 引用 Structure Core 的关系后状态 | 只继承状态；不得自行判断边、通量、可用性 | `current_synthesis` |
-| `FE-SYMBOL-CARRIERS` | `symbol_carrier` | 外形、材料、物件与工作性质候选表 | 与列中领域一致 | topic、chart anchor、post-state 与竞争载体均明确 | 最高 candidate；具体职业／人物／事件另过复合领域 gate | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `FE-COURSE-CONTEXT` | `cross_system_context` | 生为发散、克为收敛等课程解释 | 仅明确需要的相关 topic | 与已审计作用维度一致，且不替代结构定义 | source-only context；不得转发为 selected unit或决定生克边、强弱、吉凶、用神 | `cross_system_common_symbol` |
-
 ## 8. Cannot decide
 
 本卡单独不能决定某五行在本盘的旺衰、可用性、合化、通量、格局、吉凶和唯一现实载体，也不能把物理材料的动作重新写成命盘五行事实。
 
 这是一个统一边界，不在每个候选后重复列“不能推出什么”，以免诱导模型过度防御。
 
-## 9. Source receipts
+## 9. Sources
 
 ### S0｜《尚书·洪范》原文
 
@@ -132,7 +117,7 @@
 
 ### S1｜奇门五行课程
 
-- 文件：`external-source://qimen-note-03-five-elements`
+- 文件：`external-source://qimen-five-elements-note`
 - 完整读取：全文；本轮复核第三至第七节完整范围
 - 可迁移：五行不宜缩成材料名；从过程向现实例子推导；划清问题中心
 - 仅作课程解释：火“虚”、土为始终枢纽、生为发散／克为收敛、形貌性格行业表
@@ -141,7 +126,7 @@
 
 ### S2｜奇门天干课程复述
 
-- 文件：`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-heavenly-stems-note`
 - 完整读取：全文；本轮复核第三、第四节完整范围
 - 可迁移：五行过程不应死板；天干可观察阴阳与五行过程的组合
 - 不迁移：阳＝本质／阴＝表象作为普遍公理，奇门天干配神、五合、四冲、宫位与断验
@@ -151,11 +136,4 @@
 
 - 内容：语义核／课程解释／状态开关／现实载体四层分离；统一载体桥接；表达强度分级
 - provenance：`current_synthesis`
-- 审阅：分层原则、从革修正、火虚降级与统一桥接已由人工维护者于 2026-08-08 同意；2026-08-09 接入单元权限与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，五行材料／行业例子仍不得独立升级为复合职业或事件
-
-## 10. Forward-test questions
-
-1. 模型能否用“运行过程”解释同一五行，而不重判 Reader 的五行事实？
-2. 模型能否把从革优先理解为改形成器，而不是一见金就只谈杀伐裁切？
-3. 模型能否在外形锚点充足时直接给出外形偏向；职业题则只在复合领域 gates 闭合后给出行业偏向，而不机械追加空洞转折？
-4. 模型是否仍会把课程中的“生＝发散、克＝收敛”偷渡为结构裁决？
+- 审阅：分层原则、从革修正、火虚降级与统一桥接已由 maintainer 于 2026-08-08 同意；2026-08-09 接入单元权限与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，五行材料／行业例子仍不得独立升级为复合职业或事件

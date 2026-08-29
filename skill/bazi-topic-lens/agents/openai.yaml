@@ -1,4 +1,4 @@
 interface:
-  display_name: "八字太极场镜头"
-  short_description: "建立领域覆盖、十神链计划与干支锚点"
-  default_prompt: "Use $bazi-topic-lens to build a chart-driven Taiji field, coverage ledger, process axes, ten-god chain plans, and stem-branch anchors; create Reader Answer Contracts only for genuine user questions and never prefill conclusions."
+  display_name: "八字专题诊断"
+  short_description: "按需检查某专题还缺哪些十神与干支材料"
+  default_prompt: "Use $bazi-topic-lens only as an optional diagnostic to map a confirmed Bazi topic to the missing structural and imagery material."

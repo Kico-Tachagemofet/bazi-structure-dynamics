@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支丑；五行、月令、节气、藏干、司令、墓库身份及关系事实由 Reader／Structure Core 提供
 - `role`: 季冬寒湿土场、复合容器与己癸辛逐气接口；不负责重算藏干等级、司令、开库、合局、旺衰或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [己, 癸, 辛]
@@ -145,33 +143,15 @@
 7. `carrier_comparison`：泥田、货架、仓储、外壳、材料容器、资源流程等为何当前一个更符合问题；
 8. `timing_boundary`：后天激活命中哪一藏气、重算哪些边、持续到何时。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `CHOU-FIELD-LATEWINTER-EARTH` | `semantic_core` | 季冬、寒湿土、冬令收束、换季过渡、介质与复合容器 | 全部相关 topic | Reader 确认丑节点；query 明确需要场、季节、介质或容器 | 只解释机制；不得重算月令、调候、旺衰、关系或吉凶 | `bazi_primary＋current_synthesis` |
-| `CHOU-ACTION-RECEIVE-LAYER-TRANSFORM` | `semantic_core` | 承接、收纳、分层、混合、培植、前处理、等待条件后转化 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship | 相应人物／领域体与持续路线成立；状态允许承载和转出 | 只说明过程；不得直推老实、迟钝、管理者、仓储业、农业或房产 | `bazi_course＋current_synthesis` |
-| `CHOU-STATE-MANIFESTATION` | `state_modifier` | 场在、逐气在、用起、果显及湿润承载／泥泞／干裂／释放等状态切换 | 全部相关 topic | 引用 branch_manifestation_handoff 与 post-relation state | 只继承状态；不得自行判合冲刑、开库、成局或结果兑现 | `current_synthesis` |
-| `CHOU-QI-JI-MAIN` | `state_modifier` | 己本气的土体承载、调配、混合与转化接口 | 全部相关 topic | Reader 的己节点存在；Structure 给出 gate、边、通量与承接 | 只解释已裁功能；本气不等于独占整支或自动得用 | `bazi_primary＋current_synthesis` |
-| `CHOU-QI-GUI-MIDDLE` | `state_modifier` | 癸中气作为冬水留存、湿润、根气、供给或待时接口 | 全部相关 topic | Reader 的癸节点存在；Structure 给出吸收、受困、导出、透清或待时状态 | 只解释已裁功能；不得直推泥水、暗财、寒湿病或外部结果 | `bazi_primary＋current_synthesis` |
-| `CHOU-QI-XIN-RESIDUAL` | `state_modifier` | 辛余气作为金气收藏、精细材料与待时接口 | 全部相关 topic | Reader 的辛节点存在；Structure 给出墓库身份、可用度、透出／触发与承接 | 只解释已裁功能；不得自动开库、得金、发财、受伤或整体激活三气 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `CHOU-COMMANDER-GUI-XIN-JI` | `state_modifier` | 丑月癸九、辛三、己十八的司令过渡 | 结构冻结后的月令解释／timing | Reader 的 month_command 有节气偏移、来源与采用口径 | 只解释已选司令；不得改写静态 qi_rank，亦不得机械按日数定命 | `bazi_commentary` |
-| `CHOU-STORAGE-ROLE-METAL` | `state_modifier` | 丑作为金墓／库时，金气被收藏、等待条件或改变可用度的方式 | career_work／wealth_resource／object_place | Structure 明确确认墓库身份、关系后状态、涉及节点和释放／承接范围 | 只到 mechanism；不得从金库直推财库、开库、财富、仓储职业或具体金属物件 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `CHOU-SHAPE-WET-LAYERED-CONTAINER` | `symbol_carrier` | 寒湿、低位、厚实、泥土、田地、坑洼、层叠、盒壳与内部隔层 | appearance_body／object_place／career_work | 形态／场所题、位置功能与竞争载体共同支持 | 最高 candidate；不得由一个丑字直断体型、住宅、田产、仓库或身体问题 | `bazi_course＋current_synthesis` |
-| `CHOU-OBJECT-STORAGE-SHELF` | `symbol_carrier` | 货架、仓储、地下储存、容器、材料收纳与维护空间 | object_place／career_work／wealth_resource | 收纳／分层／保存功能、现实接口及同柱／同路线共振成立 | 最高 candidate；不得直接推出仓储业、供应链岗位、房产、金库或有钱 | `bazi_course＋current_synthesis` |
-| `CHOU-CROSS-QIMEN` | `cross_system_context` | 阴土湿土、季冬、扭／纽、被束后弯曲及跨体系藏气顺序分歧 | 仅明确需要的相关 topic | 仅用于追溯或低权重检索；去除奇门专属规则后仍能回接共同符号 | source-only context；不得转发为 selected unit、改写 Reader 藏干、进入结构或具体断验 | `cross_system_common_symbol` |
-
-仓储、农业、土地、材料管理、供应链、房产、财库及正式管理身份，不设为丑卡可独立激活的复合领域结论。它们必须由领域载体模块结合十神功能、柱位、完整路线、控制权、现实条件与竞争候选另行晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定丑是否旺、寒湿是否需火、己癸辛谁实际主事、司令值、丑是否开库、巳酉丑是否成局、丑未冲结果、某人是否老实迟钝、是否有仓库房产财库、是否从事土地仓储行业，或任何疾病与事件。藏干等级争议亦不得由 Deep Card 私自改表，须回到 Reader 的表源与框架锁。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行与地支共同底座
 
-- 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
+- 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`earthly-branches-core.md`
 - 支持：土爰稼穑；承载、容纳、调配、培育和转化；地支四层显化与逐藏气接口
 - provenance：`current_synthesis`（五行核心回溯《尚书·洪范》与本项目已核来源）
 
@@ -202,7 +182,7 @@
 
 ### S4｜奇门共同符号材料
 
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`Note\05_地支地支辨析_note.md`
 - 可迁移：土的承载转化、阴土湿土、季冬场、换季容器及扭／纽的字源检索线索
 - 来源分歧：该笔记本／中／余表列丑为己／辛／癸，与当前 Reader 己／癸／辛不同；仅登记差异，不迁移为八字事实
 - 不迁移：东北宫位断验、六合无合化、三合三会、击刑、开库、固定性格与吉凶结论
@@ -212,12 +192,3 @@
 
 - 内容：把丑整理为季冬寒湿土复合容器；分开静态 qi_rank、癸辛己司令与金墓／库关系后身份；建立逐气四层显化、七轴和 runtime units
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否先把丑理解为季冬寒湿土场与复合容器，而不是直接等同己土或仓库？
-2. 模型能否继承 Reader 的己／癸／辛逐节点事实，同时把奇门资料的顺序分歧留在 source-only？
-3. 模型能否区分静态藏干等级与癸—辛—己司令时序，不用一张表覆盖另一张？
-4. 一气透清或被岁运激活时，模型能否只重算该气及受影响的边，不把三气整体发动？
-5. 模型能否保留“金库、仓库、田地、货架、外壳”等候选，又不跳成财库、房产、职业或事件？
-6. 墓库、冲合与结果未通过时，模型能否仍保留场、库存、根气和待时接口，而不把丑写成无用？

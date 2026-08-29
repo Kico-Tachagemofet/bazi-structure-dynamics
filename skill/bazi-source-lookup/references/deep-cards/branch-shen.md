@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支申；五行、月令、节气、藏干、司令及关系事实由 Reader 提供
 - `role`: 孟秋复合金场、庚壬戊接口与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局、透干激活或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [庚, 壬, 戊]
@@ -131,29 +129,11 @@
 
 每次调用至少记录 Reader 中申、庚壬戊 qi_rank、申月司令和表源；本题使用的是孟秋金场、裁切改制、流通冷却、土石平台、关口还是动物／身体维度；对应藏气处于 field／qi／function／result 哪一层；direct-action gate、对象、力度、通量、承接和出口；再比较工具、机械、道路、司法／医疗空间、动物等载体。使用长生说时必须引用 Reader／Structure 结论，不由卡片自行裁根。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `SHEN-FIELD-EARLYAUTUMN-METAL` | `semantic_core` | 孟秋、收束发动、改形、定界、开路及金水过渡复合场 | 全部相关 topic | Reader 确认申节点；query 需要季节／场机制 | 只解释机制；不得重算旺衰、调候、关系、长生或吉凶 | `bazi_primary＋current_synthesis` |
-| `SHEN-ACTION-CULL-REFORM-CHANNEL` | `semantic_core` | 筛选、裁断、改制、清障、建立边界、开路与输出 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship／object_place | 领域体、对象、权限／工具和出口成立 | 不得直推急躁、肃杀、司法、军警、医生、机械、交通或事故 | `bazi_course＋current_synthesis` |
-| `SHEN-STATE-MANIFESTATION` | `state_modifier` | 四层显化及成器／过切／刚折／受埋／流失／待时状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判旺衰、三气顺生、长生得用或现实结果 | `current_synthesis` |
-| `SHEN-QI-GENG-MAIN` | `state_modifier` | 庚本气的硬质材料、裁断、执行、改制与根气接口 | 全部相关 topic | Reader 庚节点及 Structure gate／边／通量 | 本气不等于刀剑、克木成功、军警司法或自动得用 | `bazi_primary＋current_synthesis` |
-| `SHEN-QI-REN-MIDDLE` | `state_modifier` | 壬中气的水源、冷却、清洗、传递、流通与待时接口 | 全部相关 topic | Reader 壬节点及 Structure 长生／可用度／去处 | 不得因“壬长生申”直推有根有用、水局、物流或成绩 | `bazi_primary＋current_synthesis` |
-| `SHEN-QI-WU-RESIDUAL` | `state_modifier` | 戊余气的土石／矿料、平台、边界、关口与承载接口 | 全部相关 topic | Reader 戊节点及 Structure 可用度／体量／去处 | 不因异表改称 main，不得直推生金、埋金、收费站或土地 | `bazi_primary＋current_synthesis` |
-| `SHEN-COMMANDER-EARTH-REN-GENG` | `state_modifier` | 申月戊己土十、壬三、庚十七司令过渡 | 月令解释／timing | Reader month_command 有节气偏移、戊己口径与表源 | 不把己补进静态藏干，不改 qi_rank，不按日数机械定命 | `bazi_commentary` |
-| `SHEN-OBJECT-BLADE-ROAD-GATE` | `symbol_carrier` | 刀剑铁器、机械、手术刀、道路、关口与收费／检查空间 | object_place／career_work／wealth_resource | 工具／通道／边界功能、尺度和位置共振 | 最高 candidate；不得直推手术、司法、军警、交通、安保职业或事故 | `bazi_course＋current_synthesis` |
-| `SHEN-BODY-LUNG-TEETH-BONE` | `symbol_carrier` | 肺、牙齿、骨骼与收敛／切割功能候选 | appearance_body | 身体专题、位置与多锚点 | 不得诊断肺病、牙病、骨伤或预定手术 | `bazi_course` |
-| `SHEN-ANIMAL-MONKEY-PREDATOR` | `symbol_carrier` | 猴及虎、狮等大型猛兽候选 | object_place／family_relationship | 明确动物／生肖题和场景锚点 | 不得类比出机灵、好动、凶猛、攻击性或人物身份 | `bazi_course＋current_synthesis` |
-| `SHEN-CROSS-QIMEN` | `cross_system_context` | 壬水长生、水神、坤宫、顽钝耐磨、肃杀破坏等跨体系线索 | 仅明确需要的相关 topic | 去除宫卦、奇门关系、旺衰和断验后仍可回接共同符号 | source-only context；不得改写 Reader、结构、人格、职业或事件 | `cross_system_common_symbol` |
-
-司法、军警、医生、手术、机械、交通、物流、安保、收费及任何事故／迁移事件均须另走领域载体或事件审计，不由申卡独立晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定申是否旺、庚壬戊谁主事、异表层级、戊己司令具体取值、壬水是否真正得长生之用、巳申合／寅申冲／寅巳申刑／申亥害／水局与西方会是否成立，也不能决定人格、职业、体貌、疾病、手术、迁移与事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -181,7 +161,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-earthly-branches-note`
 - 可迁移：孟秋、万物成形、金水过渡、庚壬戊接口及材料耐磨／肃杀状态候选
 - 边界：壬水长生、水神、坤宫、破坏力只作来源上下文；不迁移宫卦、旺衰、关系与断验
 - provenance：`cross_system_common_symbol`
@@ -189,11 +169,3 @@
 ### S5｜当前架构归纳
 - 内容：把申整理为材料—加工—流通的孟秋复合金场，分开庚壬戊静态层级、戊己壬庚司令和长生说明
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否区分申场与庚天干，并保留壬、戊接口而不预设顺生完成？
-2. 能否继承 Reader 庚壬戊，同时把《千里命稿》戊庚壬异序留在来源层？
-3. 能否区分静态藏干、戊己壬庚司令和壬水长生，不把己补进藏干？
-4. 面对刀具、道路、关口时，能否按功能和题轴选载体而不直推军警、医生或事故？
-5. 岁运透出壬、庚或戊时，能否只重算对应接口而不整体启动申中三气？

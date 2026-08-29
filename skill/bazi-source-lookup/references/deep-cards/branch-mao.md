@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支卯；五行、月令、节气、藏干、司令及关系事实由 Reader 提供
 - `role`: 仲春专气木场、乙木接口与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [乙]
@@ -125,28 +123,11 @@
 
 每次调用至少记录 Reader 中卯、乙与司令事实；本题使用的仲春／木场／门户维度；乙的参与层与 direct-action gate；现实领域和结果条件；植被、材料、门户、道路、动物等竞争载体。使用人格路线须有人物锚点与稳定重复；使用大树时须另有体量、主干和空间证据，不能由卯单字决定。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `MAO-FIELD-MIDSPRING-WOOD` | `semantic_core` | 仲春、东方木季、专气生长、破土、覆盖与连续木场 | 全部相关 topic | Reader 确认卯节点；query 需要季节／场机制 | 只解释机制；不得重算旺衰、关系或吉凶 | `bazi_primary＋current_synthesis` |
-| `MAO-ACTION-EMERGE-WEAVE` | `semantic_core` | 伸展、分枝、编织、连接、适应支撑、更新与繁衍 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship | 人物／领域体与持续路线成立 | 不得直推温柔、女性、设计师、园艺、药师或网络职业 | `bazi_course＋current_synthesis` |
-| `MAO-STATE-MANIFESTATION` | `state_modifier` | 四层显化及茂密／修整／缠绕／中断状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判关系、成局、门户开启或结果 | `current_synthesis` |
-| `MAO-QI-YI-MAIN` | `state_modifier` | 乙本气的根气、供给、待时与已审计功能 | 全部相关 topic | Reader 乙节点及 Structure gate／边／通量 | 本气不等于柔弱、漂亮、花草或自动得用 | `bazi_primary＋current_synthesis` |
-| `MAO-COMMANDER-JIA-YI` | `state_modifier` | 卯月甲十、乙二十司令过渡 | 月令解释／timing | Reader month_command 有节气偏移与表源 | 不把甲补进静态藏干，不按日数机械定命 | `bazi_commentary` |
-| `MAO-SHAPE-FLEXIBLE-VEGETATION` | `symbol_carrier` | 细长、柔韧、分枝、花草、竹子、作物、灌木、藤纤维与编织物 | appearance_body／object_place／career_work | 形态／材料／场所锚点及竞争载体支持 | 最高 candidate；大树非优先但非禁项，不得直断体貌或行业 | `bazi_course＋current_synthesis` |
-| `MAO-OBJECT-GATEWAY-GREENWAY` | `symbol_carrier` | 门户、出入口、街道边界、草坪、绿带与连续通道 | object_place／career_work／family_relationship | 明确入口／边界／通道功能及位置共振 | 不得直推住宅门户、道路、迁移、合作或开放事件 | `bazi_course＋cross_system_common_symbol` |
-| `MAO-BODY-WOOD-FLEXION` | `symbol_carrier` | 肝胆、筋腱、四肢伸展、头发与纤维功能 | appearance_body | 身体专题、位置和多锚点 | 不得诊断肝胆、筋伤、脱发或固定体型 | `bazi_course＋current_synthesis` |
-| `MAO-ANIMAL-FAST` | `symbol_carrier` | 兔、松鼠、羊、鹿、狐狸等快速动物候选 | object_place／family_relationship | 明确动物／生肖题和场景锚点 | 不得由动物类比推出胆小、机敏、迁移或急躁人格 | `bazi_course` |
-| `MAO-CROSS-QIMEN` | `cross_system_context` | 门户、震动、风、雷电、破土等跨体系线索 | 仅明确需要的相关 topic | 去除卦宫与奇门断验后仍可回接共同形态者 | source-only context；不得进入结构或突发事件判断 | `cross_system_common_symbol` |
-
-园艺、农业、药材、纺织、设计、道路绿化、网络协作及任何门户／迁移事件均须另走领域载体，不由卯卡独立晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定卯是否旺、乙是否得用、甲乙何者司令、卯戌合／卯酉冲／子卯刑／卯辰害／木局是否成立，也不能决定人格、职业、体貌、疾病、门户或迁移事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -154,7 +135,7 @@
 - provenance：`current_synthesis`
 
 ### S1｜《千里命稿》原典
-- 文件：`external-source://qianli-minggao-pdf`；`skill/bazi-structure-dynamics/references/qianli-minggao-fidelity-full.md`
+- 文件：`external-source://qianli-minggao-pdf`；`千里命稿（高保真整理版）.md`
 - 核读：地支篇卯条、人元问答与阴阳体用段
 - 支持：卯属阴木、东方、二月、惊蛰至清明、藏乙
 - 边界：合冲刑害与会局进入 Structure；专气不等于自动外显或唯一物象
@@ -174,7 +155,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-earthly-branches-note`
 - 可迁移：仲春、破土、门户、欣欣向荣、专气及甲—乙气序
 - 不迁移：卦宫、关系、旺衰、固定人格与断验
 - provenance：`cross_system_common_symbol`
@@ -182,11 +163,3 @@
 ### S5｜当前架构归纳
 - 内容：把卯整理为仲春专气木场，保留植物／门户／通道候选并建立七轴与 runtime units
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否区分卯场与乙天干，不直接套用乙木人格职业？
-2. 能否区分卯藏乙与甲乙司令，不把甲补进静态藏干？
-3. 能否把花草竹木作为优先候选而非排除大型林木的死规则？
-4. 能否使用门户、街道、动物、中药等候选而不直断事件与职业？
-5. 能否在不外显时保留木场、根气与待时接口？

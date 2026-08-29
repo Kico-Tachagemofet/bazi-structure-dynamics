@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支戌；五行、月令、节气、藏干、司令、墓库身份及关系事实由 Reader／Structure Core 提供
 - `role`: 季秋燥土收尾场、戊辛丁接口、火库机制与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局、开库、透干激活或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [戊, 辛, 丁]
@@ -141,31 +139,11 @@
 
 每次调用至少记录 Reader 中戌、戊辛丁 qi_rank、戌月司令和表源；本题使用的是季秋燥土、收尾封边、辛金余势、丁火种、火库、干燥／身体还是物件维度；对应藏气处于 field／qi／function／result 哪一层；若用火库，必须引用 Structure 的身份、开合／受损、释放范围、before／after 通量和下游；再比较围护、储存、炉窑、能源、宗教空间与动物等载体。不得调用“戌—虚”谐音补充虚拟、玄学、互联网或人格故事；若调用媒介协作路线，必须另有已经冻结的离火／信息／媒介轴，并把戌限定为载体、实质、规则、存续或归档。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `XU-FIELD-LATEAUTUMN-EARTH` | `semantic_core` | 季秋、燥土、收尾、固结、封边、干燥保存与周期移交 | 全部相关 topic | Reader 确认戌节点；query 需要季节／场机制 | 只解释机制；不得重算旺衰、调候、墓库、死亡或吉凶 | `bazi_primary＋current_synthesis` |
-| `XU-ACTION-CLOSE-CLEAR-PRESERVE` | `semantic_core` | 收束、清理、固结、封边、处理残余、保存火种与阶段移交 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship／object_place | 领域体、材料、容器、边界和出口成立 | 不得直推虚伪、玄学、虚拟、仓储、化工、宗教职业或终止事件 | `bazi_course＋current_synthesis` |
-| `XU-STATE-MANIFESTATION` | `state_modifier` | 四层显化及保存／焦裂／闷热／松散／积压／待时状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判开库、三气齐发、死亡、成果或事件 | `current_synthesis` |
-| `XU-QI-WU-MAIN` | `state_modifier` | 戊本气的燥土、土石、主边界、固结、封存与承载接口 | 全部相关 topic | Reader 戊节点及 Structure gate／边／通量 | 本气不等于城墙、可靠、固执、房地产或能镇水 | `bazi_primary＋current_synthesis` |
-| `XU-QI-XIN-MIDDLE` | `state_modifier` | 依 Reader 口径的辛中气：秋金余势、精整、残余器物与待时接口 | 全部相关 topic | Reader 辛节点及 Structure 可用度／去处 | 不因异表改称 residual，不得直推金被埋、刀具、档案或清理成果 | `bazi_primary＋current_synthesis` |
-| `XU-QI-DING-RESIDUAL` | `state_modifier` | 依 Reader 口径的丁余气：火种、余温、灯火、热加工与待时接口 | 全部相关 topic | Reader 丁节点及 Structure 墓库／可用度／去处 | 不因异表改称 middle，不得直推火灭、文化、寺庙、能源或玄学 | `bazi_primary＋current_synthesis` |
-| `XU-COMMANDER-XIN-DING-WU` | `state_modifier` | 戌月辛九、丁三、戊十八司令过渡 | 月令解释／timing | Reader month_command 有节气偏移与表源 | 不改写 static qi_rank，不按日数机械定命 | `bazi_commentary` |
-| `XU-STORAGE-ROLE-FIRE` | `state_modifier` | 戌作火墓／库时的收藏、保护、闷存、待时、释放与改道机制 | career_work／wealth_resource／family_relationship／object_place | Structure 确认墓库身份、关系后状态、节点与释放范围 | 只到 mechanism；不得直推开库、火灭、能源、寺庙、文化、财库或事件 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `XU-OBJECT-DRY-ENCLOSURE-FIRESTORE` | `symbol_carrier` | 墙垣围护、干燥储存、炉窑、灰烬及燃料／火种容器 | object_place／career_work／wealth_resource | 场所／介质／耐热／封存功能及位置共振 | 最高 candidate；不得直推房产、仓储、化工、冶炼、军工、寺庙或能源职业 | `bazi_course＋current_synthesis` |
-| `XU-MEDIA-CARRIER-GOVERNANCE` | `relational_carrier` | 已成立虚拟／媒介轴背后的载体、实质内容、规则边界、存续、归档与结项机制 | learning_cognition／career_work／object_place | 离火／信息／媒介轴已独立冻结，戌节点实际参与其承载、规则或保存路线 | 只到 mechanism／candidate；不得由戌或谐音启动虚拟、互联网、编辑、平台、玄学职业或界面显像 | `current_synthesis` |
-| `XU-BODY-SKIN-DRY-HEAT` | `symbol_carrier` | 皮肤、体液边界、干燥、燥裂与热量闷存候选 | appearance_body | 身体专题、位置、干湿热状态与多锚点 | 不得诊断皮肤病、炎症、虚弱、脱水或固定体质 | `bazi_course＋current_synthesis` |
-| `XU-ANIMAL-DOG-CANID` | `symbol_carrier` | 狗、豺、狼等犬科动物候选 | object_place／family_relationship | 明确动物／生肖题和场景锚点 | 不得类比出忠诚、凶狠、群居、贫困、犯罪或人物身份 | `bazi_course` |
-| `XU-CROSS-QIMEN` | `cross_system_context` | 万物收尾／凋落、燥烈、水调燥及戊丁辛异序等线索 | 仅明确需要的相关 topic | 去除宫卦、奇门关系、旺衰、断验和“戌—虚”谐音后仍可回接共同符号 | source-only context；不得改写 Reader、结构、人格、虚拟／玄学职业或事件 | `cross_system_common_symbol` |
-
-仓储、档案、能源、化工、石油、冶炼、军工、寺庙／宗教及任何死亡／疾病／房产事件均须另走领域载体或事件审计。虚拟、玄学、互联网、编辑部不作为戌卡的直接 runtime lead；只有上游媒介轴已成立时，才允许 `XU-MEDIA-CARRIER-GOVERNANCE` 解释其落地承载和规则存续。
-
 ## 10. Cannot decide
 
 本卡不能单独决定戌是否旺、戊辛丁谁主事、异表层级、戌是否作为火墓／库及怎样开合释放、卯戌合／辰戌冲／丑未戌刑／酉戌害／火局与西方会是否成立，也不能决定虚拟、玄学、人格、职业、体貌、疾病、房产、能源、宗教、死亡与事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -195,7 +173,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-earthly-branches-note`
 - 可迁移：季秋、生命周期收尾、燥烈、适量水分调节、火库及状态随条件改变
 - 来源分歧：奇门表列戊丁辛，与 Reader 戊辛丁不同；只登记，不迁移为运行事实
 - 不迁移：宫卦、奇门关系、旺衰、固定人格、死亡断验与具体事件
@@ -204,11 +182,3 @@
 ### S5｜当前架构归纳
 - 内容：把戌整理为季秋燥土收尾与火种收藏场，分开戊辛丁静态层级、辛丁戊司令及 Structure 控制的火库身份；移除“戌—虚”直达弱桥，仅保留上游媒介轴成立后的载体／实质／规则协作
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否区分戌场与戊天干，并把收尾理解为条件过程而非死亡／失败判词？
-2. 能否继承 Reader 戊辛丁，同时把奇门戊丁辛异序留在来源层？
-3. 能否区分静态藏干、辛丁戊司令、火库身份和岁运透干激活？
-4. 面对冲合透干时，能否只重算实际节点与释放范围，不整体开库或断火灭？
-5. 能否不从“戌—虚”推虚拟、玄学、虚伪、互联网或编辑职业，同时在离火／媒介轴已成立时只让戌解释载体、实质、规则和存续？

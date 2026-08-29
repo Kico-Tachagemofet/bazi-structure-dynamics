@@ -1,4 +1,4 @@
 interface:
-  display_name: "八字结构动力核心"
-  short_description: "建立节点、路线、用神核与岁运共享节点及原局保留裁决"
-  default_prompt: "Use $bazi-structure-core to build and freeze the staged Bazi structure and process handoff, including timing shared-node competition, retained natal routes, and temporary function transitions."
+  display_name: "八字结构核心"
+  short_description: "一次收束旺衰、格局、十神链和用神"
+  default_prompt: "Use $bazi-structure-core to produce one coherent structure notebook for this verified Bazi chart."

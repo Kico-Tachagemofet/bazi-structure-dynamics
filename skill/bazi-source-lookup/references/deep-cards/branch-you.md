@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支酉；五行、月令、节气、藏干、司令及关系事实由 Reader 提供
 - `role`: 仲秋专气金场、辛金接口与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局、透干激活或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [辛]
@@ -131,29 +129,11 @@
 
 每次调用至少记录 Reader 中酉、辛 qi_rank、酉月司令和表源；本题使用的是仲秋专气、精炼校准、完成封边、门户界面、交易／语言还是物件／身体维度；辛处于 field／qi／function／result 哪一层；direct-action gate、加工对象、尺度、权限、交换平台和出口；再比较珠饰、刀针、镜面、法律／医疗／教学接口、动物等载体。单一酉卡最高只提供具体职业与身份 candidate。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `YOU-FIELD-MIDAUTUMN-METAL` | `semantic_core` | 仲秋、专气金场、精炼、校准、完成、验收与封边 | 全部相关 topic | Reader 确认酉节点；query 需要季节／场机制 | 只解释机制；不得重算旺衰、关系、专旺、门户事件或吉凶 | `bazi_primary＋current_synthesis` |
-| `YOU-ACTION-REFINE-CALIBRATE-FINISH` | `semantic_core` | 精炼、切削、校准、辨别、修整、估值、验收与形成界面 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship／object_place | 领域体、加工对象、尺度、工具／权限和出口成立 | 不得直推漂亮、文雅、珠宝、法律、医学、教师、交易职业或事件 | `bazi_course＋current_synthesis` |
-| `YOU-STATE-MANIFESTATION` | `state_modifier` | 四层显化及成器／过切／过饰／早封／待时状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判旺衰、专旺、辛已得用、门户开启或现实结果 | `current_synthesis` |
-| `YOU-QI-XIN-MAIN` | `state_modifier` | 辛本气的根气、精细材料、锋芒、标准、光泽与待时接口 | 全部相关 topic | Reader 辛节点及 Structure gate／边／通量 | 本气不等于漂亮、珠宝、毒舌、律师、医生或自动得用 | `bazi_primary＋current_synthesis` |
-| `YOU-COMMANDER-GENG-XIN` | `state_modifier` | 酉月庚十、辛二十司令过渡 | 月令解释／timing | Reader month_command 有节气偏移与表源 | 不把庚补进静态藏干，不按日数机械定人格或场景 | `bazi_commentary` |
-| `YOU-OBJECT-JEWEL-MIRROR-TOOL` | `symbol_carrier` | 珠宝首饰、镜面、光滑空间、小刀针具与精密器件 | appearance_body／object_place／career_work／wealth_resource | 材料／形态／加工／估值功能及竞争载体支持 | 最高 candidate；不得直断外貌、财富、珠宝业、手术或住所 | `bazi_course＋current_synthesis` |
-| `YOU-INTERFACE-GATE-EXCHANGE` | `relational_carrier` | 门户、柜台、交易／审核界面、出入口与交换标准 | object_place／career_work／wealth_resource／family_relationship | 明确入口／交换／审核功能、关系轴、位置与现实平台 | 最高 candidate；不得直推开门、搬迁、交易成功、合同或职业 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `YOU-SPEECH-REVIEW-TEACH` | `symbol_carrier` | 声音、说话、校订、审查、说教／教学与专业表达线索 | learning_cognition／career_work／family_relationship | 表达／知识／资格／权责轴及现实接口另有支持 | 最高 candidate；不得直推口才、教师、律师、医生或说教人格 | `bazi_course＋cross_system_common_symbol` |
-| `YOU-BODY-SMALLBONE-THROAT-LUNG` | `symbol_carrier` | 小块骨骼、牙齿、咽喉／发声与肺系候选 | appearance_body | 身体专题、位置与多锚点 | 不得诊断骨病、牙病、咽喉病、肺病或预定手术 | `bazi_course＋current_synthesis` |
-| `YOU-ANIMAL-BIRD` | `symbol_carrier` | 鸡、鸭、鸽及会鸣叫的鸟类候选 | object_place／family_relationship | 明确动物／生肖题和场景锚点 | 不得类比出爱说、文雅、胆小、交易能力或人物身份 | `bazi_course` |
-| `YOU-CROSS-QIMEN` | `cross_system_context` | 兑宫、门户、交易、好静温良、柔中见刚、在天为月等线索 | 仅明确需要的相关 topic | 去除宫卦、奇门关系、旺衰和断验后仍可回接共同符号 | source-only context；不得改写 Reader、结构、人格、能力或职业 | `cross_system_common_symbol` |
-
-珠宝、法律、医学、教师、交易、精密制造、口才及任何搬迁／合同／手术事件均须另走领域载体或事件审计，不由酉卡独立晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定酉是否旺、辛是否得用、庚辛谁司令、酉是否构成门户事件、辰酉合／卯酉冲／酉酉自刑／酉戌害／金局与西方会是否成立，也不能决定人格、外貌、珠宝财富、职业、疾病、交易、口舌与事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -181,7 +161,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-earthly-branches-note`
 - 可迁移：仲秋、成熟完成、金成形、门户、辛专气及内藏锋芒的状态提问
 - 不迁移：兑宫、奇门关系、旺衰、固定人格、母职类比与断验
 - provenance：`cross_system_common_symbol`
@@ -189,11 +169,3 @@
 ### S5｜当前架构归纳
 - 内容：把酉整理为仲秋专气金场，分开辛静态接口、庚辛司令及门户／交易／语言跨体系候选
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否区分酉场与辛天干，不把专气直接等同辛已外显得用？
-2. 能否区分酉藏辛与庚辛司令，不把庚补进静态藏干？
-3. 能否把珠宝、小刀、镜面、门户、交易和语言作为正常候选，而非禁词或唯一结论？
-4. 能否在职业题中先说明精炼、校准、审核／交换性质，再由复合领域模块比较法律、医学、教师、珠宝等载体？
-5. 岁运透辛或出现庚时，能否只重算实际节点而不回写原局？

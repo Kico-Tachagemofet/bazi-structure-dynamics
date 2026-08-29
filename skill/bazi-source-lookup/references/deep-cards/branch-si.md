@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支巳；五行、月令、节气、藏干、司令及关系事实由 Reader 提供
 - `role`: 孟夏复合火场、丙戊庚接口与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局、透干激活或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [丙, 戊, 庚]
@@ -131,30 +129,11 @@
 
 每次调用至少记录 Reader 中巳、丙戊庚 qi_rank、巳月司令和表源；本题使用的是温度、照明、可见性、转化、材料还是形态维度；对应藏气处于 field／qi／function／result 哪一层；direct-action gate、作用边、通量、承接和出口；最后比较图文、信号、电热、加工、盘绕生物、口腔等现实载体。若用体用阴阳，须声明它只解释表达层次，不替代运行阴阳。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `SI-FIELD-EARLYSUMMER-FIRE` | `semantic_core` | 孟夏、升温、照明、蒸腾、显露与复合火场 | 全部相关 topic | Reader 确认巳节点；query 需要季节／场机制 | 只解释机制；不得重算旺衰、调候、关系或吉凶 | `bazi_primary＋current_synthesis` |
-| `SI-POLARITY-BODY-USE` | `state_modifier` | 命理操作作阳支；体阴用阳的另一层描述 | 全部相关 topic | query 明确涉及阴阳表达；同时引用 Reader 口径 | 不得用体用说改写运行阴阳、藏干或作用关系 | `bazi_primary` |
-| `SI-ACTION-HEAT-ILLUMINATE-TRANSFORM` | `semantic_core` | 加热、照明、显影、蒸腾、干燥、炼制与改形 | behavior_personality／learning_cognition／career_work／wealth_resource／object_place | 领域体、材料、能量输入与出口成立 | 不得直推出名、热情、文化、电力、电子、冶炼职业或损伤事件 | `bazi_course＋current_synthesis` |
-| `SI-STATE-MANIFESTATION` | `state_modifier` | 四层显化及适热／过热／不足／待时状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判旺衰、克掉庚、三气齐发或现实结果 | `current_synthesis` |
-| `SI-QI-BING-MAIN` | `state_modifier` | 丙本气的热、光、可见性与能量接口 | 全部相关 topic | Reader 丙节点及 Structure gate／边／通量 | 本气不等于出名、外向、太阳或火已得用 | `bazi_primary＋current_synthesis` |
-| `SI-QI-WU-MIDDLE` | `state_modifier` | 戊中气的土体、平台、隔热、灰烬／产物与承载接口 | 全部相关 topic | Reader 戊节点及 Structure 可用度／去处 | 不得直推土地、建筑、食伤、火库或成品 | `bazi_primary＋current_synthesis` |
-| `SI-QI-GENG-RESIDUAL` | `state_modifier` | 庚余气的金属／硬质材料、待炼、规则与切割接口 | 全部相关 topic | Reader 庚节点及 Structure 接触、通量与出口 | 不得因火克金直推克掉、损伤、锻造成器或庚已显化 | `bazi_primary＋current_synthesis` |
-| `SI-COMMANDER-WU-GENG-BING` | `state_modifier` | 巳月戊五、庚九、丙十六司令过渡 | 月令解释／timing | Reader month_command 有节气偏移与表源 | 不改写 static qi_rank，不按日数机械定命 | `bazi_commentary` |
-| `SI-SHAPE-COLOR-COIL` | `symbol_carrier` | 明亮、彩色、发光、盘绕、细长弯曲与多层材料 | appearance_body／object_place／career_work | 形态／材料／媒介锚点及竞争载体支持 | 最高 candidate；不得直断外貌、行业或性格 | `bazi_course＋current_synthesis` |
-| `SI-BODY-ORAL-CAVITY` | `symbol_carrier` | 唇、齿、口腔及热／电刺激部位候选 | appearance_body | 身体专题、位置与多锚点 | 不得诊断牙病、口腔病、上火或语言争执 | `bazi_course` |
-| `SI-ANIMAL-SNAKE-WORM` | `symbol_carrier` | 蛇、虫、藤蔓与盘绕生物／物件 | object_place／family_relationship | 明确动物、植物或形态题且有场景锚点 | 不得类比出阴险、纠缠、善变或事故 | `bazi_course` |
-| `SI-CROSS-QIMEN` | `cross_system_context` | 阴火称谓、丙庚戊异序、巽宫及相关信息／风象线索 | 仅明确需要的相关 topic | 去除宫卦、奇门关系和断验后仍可回接共同符号 | source-only context；不得改写 Reader、结构、职业或人格 | `cross_system_common_symbol` |
-
-文化、传媒、电力、电子、冶炼、加工、医疗及任何出名／争执／损伤事件均须另走领域载体或事件审计，不由巳卡独立晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定巳是否旺、丙戊庚谁主事、巳作阳还是奇门所谓阴火应覆盖哪个口径、庚是否被克掉或炼成、巳申合／巳亥冲／寅巳申刑／火局是否成立，也不能决定人格、职业、体貌、疾病、争执、名声与事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -182,7 +161,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-earthly-branches-note`
 - 可迁移：炎上、孟夏、万物长成、热／显露／转化与状态随关系改变
 - 来源分歧：奇门称巳阴火、藏序丙庚戊；只保留为来源层，不改 Reader 的阳支与丙戊庚
 - 不迁移：宫卦、奇门关系、旺衰、固定人格与断验
@@ -191,11 +170,3 @@
 ### S5｜当前架构归纳
 - 内容：把巳拆为温度、照明、可见性、转化、材料与结果，建立丙戊庚逐气接口及阴阳口径防火墙
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否区分巳场、丙本气和午月火势中心，不把三者合成“火很旺”？
-2. 能否同时保留运行作阳与体阴用阳，而不让奇门阴火改写 Reader？
-3. 能否区分丙戊庚静态层级与戊庚丙司令，不因透一气便整体开出？
-4. 火与庚相遇时，能否先核对接触、强弱、通量和出口，不直接断克掉或炼成？
-5. 能否使用图文、电光、蛇虫、口腔等候选而不直推人格、职业、疾病或事件？

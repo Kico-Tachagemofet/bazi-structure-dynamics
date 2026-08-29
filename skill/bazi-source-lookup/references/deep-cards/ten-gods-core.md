@@ -2,10 +2,8 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `role`: 把日主与他干支的五行、阴阳关系转成关系功能和现实载体候选
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. 核心立场
 
@@ -166,27 +164,11 @@ Reader 确定十神名称
 - 多个锚点一致：可以直接给出优先判断，不必逐句附加无意义的“但也可能不是”。
 - 有竞争轴或状态开关：明确写何时从 A 切到 B，不用“既……又……”糊在一起。
 
-## 10. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `TG-FACT-RELATION` | `semantic_core` | 同我、我生、我克、克我、生我的确定性关系 | 全部相关 topic | Reader 已计算十神事实 | 只供核对；不得由本卡重算正偏、喜忌或格局 | `bazi_primary` |
-| `TG-FUNC-PEER` | `semantic_core` | 比劫的同类、共同承载、分流与竞争 | 相关 topic | 比劫节点在冻结 axis 中实际参与 | 只解释关系功能；不得直断兄弟、合伙、破财 | `bazi_primary＋bazi_course＋current_synthesis` |
-| `TG-FUNC-OUTPUT` | `semantic_core` | 食伤的输出、延续、表达与泄出 | 相关 topic | 食伤节点在冻结 axis 中实际参与 | 不得直断子女、教学、作品或职业 | `bazi_primary＋bazi_course＋current_synthesis` |
-| `TG-FUNC-WEALTH` | `semantic_core` | 财的调度、经营、交换与成本对象 | 相关 topic | 财节点在冻结 axis 中实际参与 | 不得直断财富、妻、资产或收入 | `bazi_primary＋bazi_course＋current_synthesis` |
-| `TG-FUNC-AUTHORITY` | `semantic_core` | 官杀的规则、职责、压力、边界与资格 | 相关 topic | 官杀节点在冻结 axis 中实际参与 | 不得直断领导、职位、丈夫、机构或吉凶 | `bazi_primary＋bazi_course＋current_synthesis` |
-| `TG-FUNC-INPUT` | `semantic_core` | 印的输入、庇护、承载、恢复与合法性 | 相关 topic | 印节点在冻结 axis 中实际参与 | 不得直断父母、老师、学历、房车或教育行业 | `bazi_primary＋bazi_course＋current_synthesis` |
-| `TG-KINSHIP` | `relational_carrier` | 父母、配偶、兄弟姐妹、子女等六亲 | family_relationship | `kinship_framework`、topic body、宫位、节点状态与参与节点已锁定 | 最高 candidate；不得静默混流派或从星名断亲属命运 | `bazi_primary＋current_synthesis` |
-| `TG-OBJECT-FUNCTION` | `relational_carrier` | 房、车、证书、文件、资产等功能性物件 | object_place／family_relationship／wealth_resource | 题目入口已锁定庇护、资产、授权等所论功能，并分开周边节点 | 最高 candidate；不得因同一物多功能而在裁决中反复改名 | `bazi_course＋current_synthesis` |
-| `TG-PERSON-ROLE` | `relational_carrier` | 上级、老师、照料者、竞争者、合作者等人物角色 | family_relationship／career_work | topic body、关系功能、柱位与实际作用轴共同支持 | 最高 candidate；正式身份另过 Domain Carrier Resolver，不得由十神名称直接定具体身份或人格 | `bazi_course＋current_synthesis` |
-
-具体职业、岗位、正式领导身份、教师身份和事件不在本卡设置可激活 unit。它们由领域载体层组合；本卡只提供关系功能和已锁定人物／物件题的候选入口。
-
 ## 11. Cannot decide
 
 本卡不能从一个十神名称直接决定喜忌、结构用神、能力高低、人物好坏、亲属命运、职业、财富、婚姻或具体事件；也不能静默切换六亲流派，或用周边参与节点改写所论之体。
 
-## 12. Source receipts
+## 12. Sources
 
 ### S0｜《千里命稿》起例问答
 
@@ -229,14 +211,4 @@ Reader 确定十神名称
 - 内容：关系身份／关系功能／现实载体三层；`topic_body` 锁定；一事多节点；房车等现代载体的功能桥接
 - 边界：房车取印或财属于问题入口的当前工作模型，不署为《千里命稿》原说；入口锁定后不以官杀、比劫等周边节点改换本体
 - provenance：`current_synthesis`
-- 审阅：关系算子、功能载体桥接、韦氏六亲来源锁与“财为体、比劫争财”的节点校正，已由人工维护者于 2026-08-08 同意；2026-08-09 接入单元权限与复合领域载体分层；2026-08-10 经人工维护者授权升为 runtime approved，具体岗位／身份仍不由单一十神激活
-
-## 13. Forward-test questions
-
-1. 模型能否先锁定六亲或所论之体，再枚举作用于它的其他节点？
-2. 争产时，模型是否保持房产为财，并把比劫写成争夺者、官杀写成权属规则？
-3. 模型能否按韦氏口径把父母锁为印、子女锁为食伤，同时在切换流派时明确记录来源？
-4. 模型是否会把课程的正偏财收入类型或吉神凶神语言偷渡成确定性事实？
-5. “我生／生我”的核心过程怎样被具体五行、干支、柱位和关系后状态改写？
-6. 锚点充分时能否直接给出优先载体，而不机械添加无信息量的转折？
-7. 模型能否把官杀／印／食伤只作为领导或教育复合载体的一部分，而不从单一十神名称直接报岗位与行业？
+- 审阅：关系算子、功能载体桥接、韦氏六亲来源锁与“财为体、比劫争财”的节点校正，已由 maintainer 于 2026-08-08 同意；2026-08-09 接入单元权限与复合领域载体分层；2026-08-10 经 maintainer 授权升为 runtime approved，具体岗位／身份仍不由单一十神激活

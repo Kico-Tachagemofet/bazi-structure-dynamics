@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阴金；确定性事实由 Reader 提供
 - `role`: 辛的本象与载体候选，不负责判断辛在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -130,28 +128,11 @@
 5. `carrier_rank`：candidate／supported／preferred／assertable；
 6. `alternative_carriers`：珠宝、法律、手术、质检、精密加工等竞争载体中，为什么当前一个更符合本题。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `XIN-CORE-PRECISION-FORM` | `semantic_core` | 从革在具体形质上的切削、校准、精炼、打磨、修饰、组合与完成度形成 | 全部相关 topic | 辛在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、作用边、丙辛合／丁辛作用或把阴金等同弱小／珠宝 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `XIN-STATE-SWITCH` | `state_modifier` | 得清、受热成形、精炼、被埋、失光、过修、寒凝或材料受损时的表达切换 | 全部相关 topic | 引用 post-relation state、材料、温度、承载、输出与 condition | 只继承状态；不得自行裁熔化、埋没、自动喜丁／水、木被切尽或损伤程度 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `XIN-ACTION-CALIBRATE-POLISH` | `semantic_core` | 辨别细微差异、校订、质检、精炼、修复、修饰并提高完成度 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成挑剔、毒舌、完美主义、聪明或爱打扮 | `bazi_commentary＋current_synthesis` |
-| `XIN-SHAPE-FINE-LUSTER` | `symbol_carrier` | 清秀、精细、整洁、小棱角、线条收束、局部光泽、清亮铿锵 | appearance_body／object_place | 身体或物件锚点、形态／声音承载与全盘竞争象明确 | 最高 candidate；不得由一个辛字直断漂亮、白皙、精致、声音好听或首饰偏好 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `XIN-BODY-FINE-BOUNDARY` | `symbol_carrier` | 肺、咽喉、呼吸系统、皮肤、牙齿、细小骨骼及精细操作部位 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个辛字诊断肺病、咽喉病、皮肤病、牙病或手术 | `bazi_course＋current_synthesis` |
-| `XIN-OBJECT-PRECISION-METAL` | `symbol_carrier` | 珠玉首饰、针锥、钟表、精密零件、手术器械、刀具锋口、金属饰面及精密操作空间 | object_place／career_work／wealth_resource | 材料、精度、功能、界面或价值加工与本题直接相关 | 最高 candidate；不得从物件直推珠宝、医学、法律、质检、审计或精密制造行业 | `bazi_course＋current_synthesis` |
-| `XIN-WORK-AUDIT-REFINE` | `semantic_core` | 审查、校订、合规细节、质检、精密加工、技术修复、估值与审美成形 | learning_cognition／career_work／wealth_resource | 辛参与相关 process／axis，且对象、标准、现实接口与持续性成立 | 只提供学习／工作／价值加工性质；不得直接推出律师、医生、审计师、编辑、珠宝师或美容岗位 | `bazi_course＋current_synthesis` |
-| `XIN-CROSS-QIMEN` | `cross_system_context` | 铿锐、铿锵、沉静、如锥处裹、似玉出璞等共同形态加工候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接金形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-珠宝、美容、法律、审计、编辑、质检、医学手术、精密制造及正式律师／医生等身份，不设为辛卡可直接激活的复合职业／身份 unit。它们只能由 Source Lookup 按 `domain_carrier_request` 编成 candidate leads，再由 Domain Carrier Resolver 结合关系功能、位置、路线、专业资格、日主承载、持续性和结果接口比较。
-
-上表的 activation requirements 是本次查询的准入条件，不是固定打分表。清秀精细、珠玉器具、审查校准或价值加工有充分锚点时可以正常升级；气／质只帮助检查作用对象，不得抽成“同阴阳才实克”或“阳克阴只作形式抑制”的普遍规则。
-
 ## 10. Cannot decide
 
 本卡不能单独决定辛是否旺、是否为用、是否漂亮挑剔、是否从事珠宝／法律／医学，也不能单独决定丙辛合、丁辛作用、手术、官司、疾病、财富价值或唯一物件场所。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行共同底座
 
@@ -186,7 +167,7 @@
 
 ### S4｜奇门共同符号材料
 
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-heavenly-stems-note`
 - 完整读取：两份全文；本轮复核从革、庚辛象意与状态范围
 - 可迁移：收杀、变革、装饰、铿锐、铿锵、沉静、如锥处裹、似玉出璞及形貌行业候选
 - 不迁移：白虎、天庭、宫位、治囚吉凶、奇门合化、固定人格和肃杀断验
@@ -196,13 +177,4 @@
 
 - 内容：把辛归纳为具体材料的精细加工、校准、修饰与价值成形；将珠宝、法律、手术、毒舌分别改为须由物件、审查、身体职业和语言人格锚点激活的候选；建立七条 Topic axes
 - provenance：`current_synthesis`
-- 审阅：核心、庚辛配对、强弱非庚辛映射及七轴方向已由人工维护者于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，珠宝／法律／医学等仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否从从革与五金形质解释辛，再选择珠宝、法律、手术、质检或精密加工等载体？
-2. 模型能否理解辛不天然弱小，庚辛也不是刀剑／首饰或强金／弱金的固定二分？
-3. 性格题中是否要求人物锚点与稳定重复证据，而不把辛直接写成漂亮、挑剔、毒舌或完美主义？
-4. 辛与火、水、土、木相遇时，模型是否区分加工温度、材料承载和作用对象，而不机械执行诗诀？
-5. 财富和职业题中是否保留领域体，只让辛解释估值、审查、精加工与价值成形？
-6. 模型是否会误把奇门白虎天庭、宫位、治囚吉凶和合化口径带进八字结构？
+- 审阅：核心、庚辛配对、强弱非庚辛映射及七轴方向已由 maintainer 于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，珠宝／法律／医学等仍只作领域候选线索

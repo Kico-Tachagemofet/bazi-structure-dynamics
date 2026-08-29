@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支午；五行、月令、节气、藏干、司令及关系事实由 Reader 提供
 - `role`: 仲夏火势中心、丁己接口与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局、透干激活或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [丁, 己]
@@ -131,30 +129,11 @@
 
 每次调用至少记录 Reader 中午、丁己 qi_rank、午月司令和表源；本题使用的是热量、照明、信号、中心性、峰值转向还是产物沉降；丁己处于 field／qi／function／result 哪一层；direct-action gate、作用边、持续输入、对象承载、冷却与出口；再比较明亮空间、电热设备、显示媒介、观赏植物、马鹿和身体位置等竞争载体。使用丙司令必须明确它不是午的静态藏干。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `WU-BRANCH-FIELD-MIDSUMMER-FIRE` | `semantic_core` | 仲夏、高温中心、集中照明、持续输出及峰值转向 | 全部相关 topic | Reader 确认午节点；query 需要季节／场机制 | 只解释机制；不得重算旺衰、调候、关系或吉凶 | `bazi_primary＋current_synthesis` |
-| `WU-BRANCH-POLARITY-BODY-USE` | `state_modifier` | 命理操作作阴支；体阳用阴的另一层描述 | 全部相关 topic | query 明确涉及阴阳表达；同时引用 Reader 口径 | 不得用体用说或奇门阳火改写运行阴阳与藏干 | `bazi_primary` |
-| `WU-BRANCH-ACTION-FOCUS-ILLUMINATE-SIGNAL` | `semantic_core` | 聚焦、照明、发信号、持续供能、热加工与定形 | behavior_personality／learning_cognition／career_work／wealth_resource／object_place | 领域体、能量输入、承载对象和出口成立 | 不得直推热情、出名、影视、电力、电子、网络职业或转折事件 | `bazi_course＋current_synthesis` |
-| `WU-BRANCH-STATE-MANIFESTATION` | `state_modifier` | 四层显化及持续／过曝／不足／峰值转向状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判旺衰、阴阳转折结果、丁己齐发或现实事件 | `current_synthesis` |
-| `WU-BRANCH-QI-DING-MAIN` | `state_modifier` | 丁本气的持续热源、聚焦照明、信号与待时接口 | 全部相关 topic | Reader 丁节点及 Structure gate／边／通量 | 本气不等于烛火、微弱、文艺、漂亮或火已得用 | `bazi_primary＋current_synthesis` |
-| `WU-BRANCH-QI-JI-MIDDLE` | `state_modifier` | 己中气的细土、灰烬／熟化产物、吸收与承载接口 | 全部相关 topic | Reader 己节点及 Structure 可用度／去处 | 不得直推食物、地产、胃病、食伤或稳定成果 | `bazi_primary＋current_synthesis` |
-| `WU-BRANCH-COMMANDER-BING-JI-DING` | `state_modifier` | 午月丙十、己九、丁十一司令过渡 | 月令解释／timing | Reader month_command 有节气偏移与表源 | 不把丙补进静态藏干，不按日数机械定命 | `bazi_commentary` |
-| `WU-BRANCH-SHAPE-BRIGHT-CENTER` | `symbol_carrier` | 明亮、红暖、居中、开放、高温、灯光与可见焦点 | appearance_body／object_place／career_work | 形态／场所／媒介锚点及竞争载体支持 | 最高 candidate；不得直断外貌、中心人物、名气或行业 | `bazi_course＋current_synthesis` |
-| `WU-BRANCH-BODY-EYE-HEART-CIRCULATION` | `symbol_carrier` | 眼、心、循环、胸部与热感候选 | appearance_body | 身体专题、位置与多锚点 | 不得诊断红眼、胸热、高血压、心血管或固定体质 | `bazi_course` |
-| `WU-BRANCH-ANIMAL-HORSE-DEER` | `symbol_carrier` | 马、鹿及奔行／观赏动物候选 | object_place／family_relationship | 明确动物／生肖题和场景锚点 | 不得类比出奔波、成功、速度、驯服或人格 | `bazi_course` |
-| `WU-BRANCH-OBJECT-BRIGHT-ELECTRIC` | `symbol_carrier` | 影院、舞台、灯具、供能设施、电子显示、盆景与观赏树 | object_place／career_work／learning_cognition | 明确场所／设备／媒介／植物题并有功能锚点 | 最高 candidate；不得直推具体行业、住所或事件 | `bazi_course＋current_synthesis` |
-| `WU-BRANCH-CROSS-QIMEN` | `cross_system_context` | 阳火称谓、离宫、文学、虚拟、计算机／网络等跨体系线索 | 仅明确需要的相关 topic | 去除宫卦、奇门关系和断验后仍可回接共同符号 | source-only context；不得改写 Reader、结构、能力或职业 | `cross_system_common_symbol` |
-
-影视、文学、电力、电子、计算机、网络、舞台及任何出名／转折／疾病事件均须另走领域载体或事件审计，不由午卡独立晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定午是否旺、丁己谁主事、司令丙是否实质参与、运行阴支与奇门阳火谁覆盖谁、丁己相生是否形成结果、午未合／子午冲／午午自刑／火局是否成立，也不能决定人格、职业、体貌、疾病、名声、关系与转折事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -182,7 +161,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-earthly-branches-note`
 - 可迁移：炎上、仲夏、阴阳交融、盛极转向、火随材料改变形态
 - 来源分歧：奇门称午阳火；只保留为形态／体系坐标，不改 Reader 的阴支及丁己
 - 不迁移：宫卦、奇门关系、旺衰、固定人格与断验
@@ -191,11 +170,3 @@
 ### S5｜当前架构归纳
 - 内容：把午拆为热量、照明、信号、持续输出、峰值转向和产物沉降，分开丁己静态接口与丙己丁司令
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否区分午场与丁天干，也不把午和巳都压成“火旺”？
-2. 能否同时保留运行作阴、体阳用阴及奇门阳火的不同坐标而不混表？
-3. 能否记住午静态只藏丁己，丙仅在司令／外来节点中出现？
-4. 能否把峰值转向理解为条件节奏，而非固定的三分钟热度或事业下滑？
-5. 能否使用影院、电热、网络、马鹿、眼心循环等候选而不直推职业、人格或疾病？

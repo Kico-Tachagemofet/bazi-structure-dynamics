@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阳木；确定性事实由 Reader 提供
 - `role`: 甲的本象与载体候选，不负责判断甲在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -153,25 +151,11 @@
 
 禁止的是没有桥接便把物象绑定成命主身份。高大、栋梁、树木、木材等仍可作为甲的形态／材料候选；领导、教育等则不是甲卡自身候选，只能由复合领域载体层在相关结构成立后激活。没有真实竞争证据时，也不要为显得谨慎机械制造“但是”。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `JIA-CORE-LIFE-QI` | `semantic_core` | 木之生气；发端、流行、推动、伸展 | 全部相关 topic | 甲在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、边和路线 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `JIA-STATE-SWITCH` | `state_modifier` | 有根、无根、受生、受制、受折后的改形 | 全部相关 topic | 引用 post-relation state 与 condition | 只继承状态；不得自行判断成材、漂浮或损伤 | `bazi_commentary＋current_synthesis` |
-| `JIA-SHAPE-LONG` | `symbol_carrier` | 高挑、修长、挺拔、主干、方长 | appearance_body／object_place | 身体或物件锚点、形态承载、全盘竞争象 | 最高 candidate；桥接后由 Composition 升级，不得直断具体身高 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `JIA-MATERIAL-WOOD` | `symbol_carrier` | 树木、梁柱、木材、纤维、纸张、长杆 | object_place／career_work | 材料、形状或功能与 topic 直接相关 | 物件可桥接；不得从材料直接推出唯一行业 | `bazi_course＋current_synthesis` |
-| `JIA-WORK-GROWTH` | `semantic_core` | 发起、培育、研发、建立主线、推动成长 | learning_cognition／career_work | 甲参与相关关系轴且状态可持续 | 只提供工作性质；不得推出教育、领导或具体岗位 | `bazi_course＋current_synthesis` |
-| `JIA-ORDINAL-FIRST` | `symbol_carrier` | 开始、第一、领起、首部 | behavior_personality／career_work／object_place | 序位确与题目和位置相关，并有重复／持续锚点 | 默认 source-only context；不得转发为 selected unit或推出领导品德、职务、凡事居首 | `bazi_course＋current_synthesis` |
-| `JIA-CROSS-QIMEN` | `cross_system_context` | 方长、萌动等共同符号候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接木形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-`教育／教师／教育行业` 与 `领导／管理者／正式负责人` 不设为甲卡 unit。需要这些复合载体时，调用领域载体推导；甲只在载体已由结构证明后贡献培育、领起或主干式风格。
-
 ## 10. Cannot decide
 
 本卡不能单独决定甲是否旺、是否为用、是否被克掉、是否成化、格局吉凶、命主品德、具体身高、疾病、职业、财富或唯一现实载体。它也不能以奇门规则重判八字结构。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜《千里命稿》原典
 
@@ -200,7 +184,7 @@
 
 ### S3｜奇门天干课程
 
-- 文件：`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-heavenly-stems-note`
 - 完整读取：全文；本轮复核甲乙木与状态补充的完整范围
 - 可迁移：劲、方长、萌动，以及得时、失令、克战太过、生旺太过会改换表现的共同符号候选
 - 不迁移：天福之神、寅宫震位、固定品德人格、奇门五合四冲、合化与具体断验
@@ -210,14 +194,4 @@
 
 - 内容：以木之生气为核心；把生气、木形、序位、身体、行业、字形与奇门旁支拆成可追踪路线；统一载体桥接与表达强度
 - provenance：`current_synthesis`
-- 审阅：气／形核心、有效候选保留、禁止无桥接绑定而非禁止出现，已由人工维护者于 2026-08-08 同意；2026-08-09 接入“符号本义／复合领域载体”分层；2026-08-10 经人工维护者授权升为 runtime approved，教育与领导仍不由甲卡单独激活
-
-## 12. Forward-test questions
-
-1. 模型能否先解释甲的生气发动，并把领导、教育留给复合领域载体层，而不是从甲卡直接提出？
-2. 模型能否把甲乙理解为同一木过程的气／形两层，而不是两种固定植物或两类固定人格？
-3. 外形锚点充分时，模型能否明确说高挑挺拔，而不机械加空洞转折？
-4. 甲受制时，模型是否会回读结构状态，区分修整成材、功能抑制和形质损伤？
-5. 模型是否会误把奇门震位、天福之神或课程字形联想带入八字结构裁决？
-6. 性格、学习、财富与家庭题中，模型能否先锁定人物／领域体，再调用甲的发动过程，而不是把甲直接写成固定人格、富贵标签或六亲身份？
-7. 杀印相生等权责路线成立时，模型能否先由领域层比较领导、专业权威、机构／资格岗位，再让甲只负责领起／主干式着色？
+- 审阅：气／形核心、有效候选保留、禁止无桥接绑定而非禁止出现，已由 maintainer 于 2026-08-08 同意；2026-08-09 接入“符号本义／复合领域载体”分层；2026-08-10 经 maintainer 授权升为 runtime approved，教育与领导仍不由甲卡单独激活

@@ -1,4 +1,4 @@
 interface:
-  display_name: "八字解读与追问"
-  short_description: "把已审计象核写成少标题的连贯断命散文"
-  default_prompt: "Use $bazi-render to follow the audited narrative composition and scene kernels, write coherent Chinese Bazi prose around complete causal storylines, preserve coverage invisibly, and close only genuine user questions without inventing imagery or conclusions."
+  display_name: "八字 Fresh Reader-Writer"
+  short_description: "从固定 reading pack 自由取象并写完整断盘"
+  default_prompt: "Use $bazi-render only after a sealed reading-pack exists, then independently analyze and write the complete Chinese Bazi report in a fresh context."

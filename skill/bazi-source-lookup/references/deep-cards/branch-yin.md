@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支寅；五行、月令、节气、藏干、司令及关系事实由 Reader 提供
 - `role`: 孟春发动场、甲丙戊复合接口与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [甲, 丙, 戊]
@@ -130,29 +128,11 @@
 
 每次调用至少记录 Reader 事实；`field_layer` 所用季节／动作；甲丙戊逐气的 `qi_layer`；声称直接作用时的 gate、边、通量与承接；现实领域与 `result_layer`；候选载体比较；若由岁运／合盘触发，注明命中节点、重算范围与 expiry。使用“发展／主线”时还须说明空间、温度、修剪与去处，不能只凭寅字。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `YIN-FIELD-EARLYSPRING-WOOD` | `semantic_core` | 孟春、东方木季、起步、伸展、定向与复合发动场 | 全部相关 topic | Reader 确认寅节点；query 需要季节／场／起步机制 | 只解释机制；不得重算旺衰、调候、关系或吉凶 | `bazi_primary＋current_synthesis` |
-| `YIN-ACTION-INITIATE-EXPAND` | `semantic_core` | 启动、开辟、建立主线、扎根、扩展与资源调动 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship | 人物／领域体及持续路线成立，空间、边界与去处有收据 | 不得直推领导、教育、创业、管理或固定人格 | `bazi_course＋current_synthesis` |
-| `YIN-STATE-MANIFESTATION` | `state_modifier` | 四层显化及发动／停滞／徒长／改道状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判关系、成局或结果兑现 | `current_synthesis` |
-| `YIN-QI-JIA-MAIN` | `state_modifier` | 甲本气的根气、主线、供给、待时或直接功能 | 全部相关 topic | Reader 甲节点及 Structure gate／边／通量 | 本气不等于自动主事、领导或大树 | `bazi_primary＋current_synthesis` |
-| `YIN-QI-BING-MIDDLE` | `state_modifier` | 丙中气的温度、显露、表达与后续火接口 | 全部相关 topic | Reader 丙节点及 Structure 的温度、去处和通量收据 | 不得直推温暖、出名、文化行业或成果 | `bazi_primary＋current_synthesis` |
-| `YIN-QI-WU-RESIDUAL` | `state_modifier` | 戊余气的旧土、地基、承载与阻力接口 | 全部相关 topic | Reader 戊节点及 Structure 可用度／承接 | 余气不等于弱、无用或必然阻碍 | `bazi_primary＋current_synthesis` |
-| `YIN-COMMANDER-WU-BING-JIA` | `state_modifier` | 寅月戊七、丙七、甲十六司令过渡 | 月令解释／timing | Reader month_command 有节气偏移与表源 | 不改写 static qi_rank，不按日数机械定命 | `bazi_commentary` |
-| `YIN-SHAPE-ROOTED-UPWARD` | `symbol_carrier` | 向上、粗直、根系、主干、林木、梁柱与发展中空间 | appearance_body／object_place／career_work | 形态／场所锚点及竞争载体支持 | 最高 candidate；不得直断高大、大树、建筑或林业 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `YIN-BODY-LEG-HAIR-LIVER` | `symbol_carrier` | 腿部支撑、头发、肝胆与木性伸展功能 | appearance_body | 身体专题、位置与多锚点 | 不得诊断腿伤、脱发、肝胆疾病或体型 | `bazi_course` |
-| `YIN-ANIMAL-TIGER-CAT` | `symbol_carrier` | 虎、猫及相关动物／生肖场景 | object_place／family_relationship | 明确动物／生肖题并有场景锚点 | 不得类比出凶猛、威权或猫科人格 | `bazi_course` |
-| `YIN-CROSS-QIMEN` | `cross_system_context` | 艮位、厚土阻隔、鬼门、快速发展和需释放等跨体系线索 | 仅明确需要的相关 topic | 去除宫卦断验后仍可回接季节／形态者才保留 | source-only context；不得进入结构、灵异结论或固定断验 | `cross_system_common_symbol` |
-
-具体领导、教师、创业者、林业、建筑、开发行业及灵异事件均须另走领域载体或相应专题，不由寅卡独立晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定寅是否旺、甲丙戊谁主事、司令值、寅亥合／寅申冲／寅巳刑害／火局是否成立，也不能决定领导力、职业、体型、肝胆疾病、迁移或事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -160,7 +140,7 @@
 - provenance：`current_synthesis`
 
 ### S1｜《千里命稿》原典
-- 文件：`external-source://qianli-minggao-pdf`；`skill/bazi-structure-dynamics/references/qianli-minggao-fidelity-full.md`
+- 文件：`external-source://qianli-minggao-pdf`；`千里命稿（高保真整理版）.md`
 - 核读：地支篇寅条、人元问答及人元力量分析
 - 支持：寅属阳木、东方、正月、立春至惊蛰、藏甲丙戊；月支人元有层级
 - 边界：合冲刑害会局进入 Structure；藏气不等量、亦不自动外显
@@ -180,7 +160,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-earthly-branches-note`
 - 可迁移：孟春生长、戊—丙—甲气序、实体根基、体量与发展／输出条件
 - 不迁移：宫卦、奇门关系、旺衰、固定人格和断验
 - provenance：`cross_system_common_symbol`
@@ -188,11 +168,3 @@
 ### S5｜当前架构归纳
 - 内容：把寅整理为孟春发动复合场，建立甲丙戊逐气接口、冬春过渡与七轴 runtime units
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否把寅作为复合春场，而不等同甲木、大树或领导？
-2. 能否区分甲丙戊静态等级与戊丙甲司令时序？
-3. 一气透出时能否只重算相关节点，不整体发动三气？
-4. 能否正常使用腿、头发、肝胆、虎猫、树林等候选而不直断？
-5. 能否把生长过量写成有条件的徒长／拥塞，而非“木旺必坏”？

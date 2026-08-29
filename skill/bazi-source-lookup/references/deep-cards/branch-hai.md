@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支亥；五行、月令、节气、藏干、司令及关系事实由 Reader 提供
 - `role`: 孟冬入水场、壬甲复合接口与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [壬, 甲]
@@ -145,34 +143,15 @@
 7. `carrier_comparison`：江海、溪泉、网络、液体流程、资源流、潜在生长或文化联想为何当前一个更匹配；
 8. `timing_boundary`：后天触发命中壬还是甲，重算哪些边、持续到何时。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `HAI-FIELD-EARLYWINTER-WATER` | `semantic_core` | 孟冬、北方水季、冷气入口、归集、开放连接与复合水场 | 全部相关 topic | Reader 确认亥节点；query 明确需要场、季节、通道或容器 | 只解释机制；不得重算月令、旺衰、调候、关系或吉凶 | `bazi_primary＋current_synthesis` |
-| `HAI-POLARITY-BODY-USE` | `semantic_core` | 季节／支体偏阴寒，藏壬与命理作用分类呈“体阴用阳”的层次 | behavior_personality／learning_cognition／career_work／family_relationship | 查询确实涉及隐显、收束／流动或发动方式，且有相应人物／领域体 | 只说明太极层次；不得从阴阳标签推出性别、性格、主动被动或事件 | `bazi_primary＋bazi_course＋current_synthesis` |
-| `HAI-STATE-MANIFESTATION` | `state_modifier` | 场在、逐气在、用起、果显及 retained／concentrated／redirected／damaged 的表达切换 | 全部相关 topic | 引用 branch_manifestation_handoff 与 post-relation state | 只继承状态；不得自行判合冲刑害、木局、水方或结果兑现 | `current_synthesis` |
-| `HAI-QI-REN-MAIN` | `state_modifier` | 壬本气的库存、根气、环境供给、待时与已审计流通接口 | 全部相关 topic | Reader 的壬节点存在；Structure 给出 gate、边、通量与承接 | 只解释已裁功能；本气不等于自动强旺、得用、奔腾或外显 | `bazi_primary＋current_synthesis` |
-| `HAI-QI-JIA-MIDDLE` | `state_modifier` | 甲中气作为生长库存、根气、受生条件与未来发动接口 | 全部相关 topic | Reader 的甲节点存在；Structure 给出温度、可用度、透出／触发、位置与承接 | 只解释已裁功能；不得直推领导、教育、子女、植物或现实成长成果 | `bazi_primary＋current_synthesis` |
-| `HAI-COMMANDER-WU-JIA-REN` | `state_modifier` | 亥月戊七、甲五、壬十八的司令过渡 | 结构冻结后的月令解释／timing | Reader 的 month_command 有节气偏移、来源与采用口径 | 只解释已选司令；不得把戊补进静态藏干、改写 qi_rank 或机械按日数定命 | `bazi_commentary` |
-| `HAI-ACTION-GATHER-CONNECT` | `semantic_core` | 多源归集、开放连接、持续流通、输送、交换与广域容纳 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship | 相应人物／领域体、有效通道、边界、落点与持续路线成立 | 只说明过程；不得直推聪明、奔放、无边界人格、物流／网络／水务岗位 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `HAI-PROCESS-WATER-HOLDS-GROWTH` | `semantic_core` | 水场保存甲木生机，待温度、位置、出口与承接后进入下一阶段 | learning_cognition／career_work／wealth_resource／family_relationship／object_place | 甲节点相关且 growth_bridge 的温度、去处与现实载体均有收据 | 只到 mechanism；不得直推怀孕、子女、教育、领导、创业或项目成功 | `bazi_primary＋cross_system_common_symbol＋current_synthesis` |
-| `HAI-SHAPE-OPEN-WATERWAY` | `symbol_carrier` | 江河湖海、溪泉、开放水面、入口、连续水路、港口与液体容器 | appearance_body／object_place／career_work／wealth_resource | 水体／通道功能、位置环境与竞争载体共同支持 | 最高 candidate；不得由一个亥字直断大海、港口、远行、航运、水务或住宅 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `HAI-BODY-WATER-CIRCULATION` | `symbol_carrier` | 肾、泌尿、体液、血液循环及水液代谢查询 | appearance_body | 身体专题、对应位置、关系后状态与多重锚点 | 最高 candidate；不得诊断肤色、血液病、痰湿、肾病或泌尿疾病 | `bazi_course＋current_synthesis` |
-| `HAI-WORDPLAY-SHOCK-TEMPLE` | `symbol_carrier` | “亥／骇”惊骇谐音及“海量—佛法—寺院”文化联想 | object_place／family_relationship | 明确语言、宗教或场所问题，且有至少一项独立场景／柱位锚点 | 最高 candidate、默认不加载；不得直推胆小、事故、信佛、出家或寺院事件 | `bazi_course` |
-| `HAI-CROSS-QIMEN` | `cross_system_context` | 种子／核、五湖归聚、冷气入口、静态背景与奔流功能反差等跨体系线索 | 仅明确需要的相关 topic | 去除宫星门神、关系技法和断验后，仍能回接季节、水形或壬甲容器 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-具体航运、水务、饮品／发酵、盐业、洗浴、卫生排水、研究、互联网、宗教身份、寺院事件和任何“项目孵化成功”，不设为亥卡可独立激活的复合载体。它们必须由领域载体模块结合十神功能、柱位、完整路线、现实接口、承载与竞争候选另行晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定亥是否旺、是否需火、壬甲谁实际主事、戊甲壬何者司令、寅亥是否合、亥卯未是否成局、巳亥冲或亥亥自刑结果、某人是否安静奔放、是否从事水务航运、是否信佛出家，或任何疾病与事件。上述判断分别返回 Reader、Structure Core、Topic Lens、领域载体与身体专题。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行与地支共同底座
 
-- 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
+- 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`earthly-branches-core.md`
 - 支持：水曰润下；地支作为季节场与复合容器；场在、气在、用起、果显四层显化
 - provenance：`current_synthesis`（五行核心回溯《尚书·洪范》与本项目已核来源）
 
@@ -203,7 +182,7 @@
 
 ### S4｜奇门共同符号材料
 
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-earthly-branches-note`
 - 可迁移：润下、孟冬、种子／核、五湖归聚、冷气入口、阴水环境、壬甲容器与静态背景／奔流功能的状态反差
 - 不迁移：“参与必出成绩”、固定欲望／自刑人格、宫星门神、六合无合化、三合三会、击刑和奇门断验
 - provenance：`cross_system_common_symbol`
@@ -212,12 +191,3 @@
 
 - 内容：把亥整理为孟冬入水、归集连接与水中保存生机的复合场；分开支体／作用阴阳、壬甲静态接口与戊甲壬司令；建立冬令三支对照、四层显化、七轴与 runtime units
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否把亥作为孟冬复合水场处理，而不把它缩写成壬水、大海或固定奔流？
-2. 模型能否保留“支体／季节偏阴”和“藏壬、作用分类作阳”的不同太极点，而不强行选一个标签？
-3. 模型能否区分亥藏壬甲与亥月戊甲壬司令，不把戊补进静态藏干？
-4. 壬或甲被透清／触发时，模型能否只重算实际命中的节点与边，不把两气整体发动？
-5. 模型能否把“水中有生机”保留为待温度、位置和出口的机制，不直推教育、领导、子女或项目成功？
-6. 模型能否正常使用江河湖海、水类场所、惊骇和寺院等候选，同时维持正确权重与领域桥接？

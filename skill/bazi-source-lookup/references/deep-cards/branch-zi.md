@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支子；五行、月令、节气、藏干、司令及关系事实由 Reader 提供
 - `role`: 仲冬水场、单一藏气接口与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [癸]
@@ -134,33 +132,15 @@
 6. `carrier_comparison`：水道、内部系统、资源流、作息场景、动物／字义等候选为何当前一个更匹配；
 7. `timing_boundary`：若由岁运／他人激活，注明 overlay 范围、expiry 及重算内容。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `ZI-FIELD-MIDWINTER-WATER` | `semantic_core` | 仲冬、北方、寒水、低位、集中、潜藏与等待转机的季节场 | 全部相关 topic | Reader 确认子节点；query 明确需要场、季节或容器 | 只解释机制；不得重算月令、旺衰、调候、关系或吉凶 | `bazi_primary＋current_synthesis` |
-| `ZI-POLARITY-BODY-USE` | `semantic_core` | 命理分类作阴，同时保留“体阳用阴”与冬至转机的不同太极点 | behavior_personality／learning_cognition／career_work／family_relationship | 查询确实涉及隐显、收束与发动方式，且有相应人物／领域体 | 只说明层次；不得由阴阳标签推出性别、性格、主动被动或事件 | `bazi_primary＋cross_system_common_symbol＋current_synthesis` |
-| `ZI-STATE-MANIFESTATION` | `state_modifier` | 场在、气在、用起、果显及 retained／concentrated／redirected／damaged 的表达切换 | 全部相关 topic | 引用 branch_manifestation_handoff 与 post-relation state | 只继承状态；不得自行判透清、合冲刑害、水局或结果兑现 | `current_synthesis` |
-| `ZI-QI-GUI-MAIN` | `state_modifier` | 子中癸本气的库存、根气、环境供给、待时或 direct-action 接口 | 全部相关 topic | Reader 隐藏节点存在；Structure 给出逐节点 gate、边、通量与承接 | 只解释已裁功能；本气不等于必然发用，不得把子与癸互换 | `bazi_primary＋current_synthesis` |
-| `ZI-COMMANDER-REN-GUI` | `state_modifier` | 子月壬十、癸二十的司令过渡 | 结构冻结后的月令解释／timing | Reader 的 month_command 有节气偏移、来源与采用口径 | 只解释已选司令；不得把壬写入静态藏干或机械按日数定命 | `bazi_commentary` |
-| `ZI-ACTION-GATHER-GERMINATE` | `semantic_core` | 收集、内部蓄积、等待条件、在收束中酝酿下一轮发动 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship | person／topic anchor 与 repeated-and-stable 或持续路线成立 | 只说明过程；不得直推聪明、心细、隐秘、消沉、研究或管理身份 | `cross_system_common_symbol＋current_synthesis` |
-| `ZI-SHAPE-WATER-NIGHT` | `symbol_carrier` | 夜半、北方、低处、暗处、寒凉、湿润、连续水路与内部循环形态 | appearance_body／object_place／career_work | 形态／环境题、位置功能及竞争载体共同支持 | 最高 candidate；不得由一个子字直断外貌、住宅、夜班、水务或疾病 | `bazi_primary＋bazi_course＋current_synthesis` |
-| `ZI-BODY-FLUID-LOWER-PATH` | `symbol_carrier` | 体液、水液代谢、泌尿及下部通道查询 | appearance_body | 身体专题、对应位置、关系后状态及多重锚点 | 最高 candidate；不得诊断泌尿、肾脏、寒湿或生殖疾病 | `bazi_course＋current_synthesis` |
-| `ZI-RELATION-CHILD-WORD` | `relational_carrier` | “子”字的孩子联想 | family_relationship | 明确子女题；六亲用神、宫位／柱位、相关节点与路线先锁定 | 最高 candidate；不得以子支替代子女用神或断子女数量、性别、事件 | `bazi_course` |
-| `ZI-ZODIAC-RAT` | `symbol_carrier` | 鼠类、夜行动物及生肖场景候选 | object_place／family_relationship | 问题确涉及动物／生肖／物件，且有额外形态或场景锚点 | 最高 candidate；不得从鼠类比推出心细、机警、偷盗或固定人格 | `bazi_course` |
-| `ZI-CROSS-QIMEN` | `cross_system_context` | 阳气始萌、植物萌芽与坎位等跨体系检索线索 | 仅明确需要的相关 topic | 去除奇门宫星门神及关系技法后，仍能回接季节或共同符号 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-具体研究、物流、水务、夜班、数据系统、儿童身份及家庭事件，不设为子卡可独立激活的复合载体。它们必须由领域载体模块结合十神功能、柱位、结构路线、现实接口、持续性和竞争场景另行晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定子是否旺、寒水是否需火、癸是否直接发用、壬癸何者司令、子丑是否合化、申子辰是否成局、子午冲结果、某人是否聪明心细、是否有子女、是否从事水务物流，或任何疾病与事件。上述判断分别返回 Reader、Structure Core、Topic Lens、领域载体与身体专题。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行与地支共同底座
 
-- 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
+- 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`earthly-branches-core.md`
 - 支持：水曰润下；地支作为季节场与复合容器；场在、气在、用起、果显四层显化
 - provenance：`current_synthesis`（五行核心回溯《尚书·洪范》与本项目已核来源）
 
@@ -191,7 +171,7 @@
 
 ### S4｜奇门共同符号材料
 
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`Note\05_地支地支辨析_note.md`
 - 可迁移：润下、仲冬、北方、阳气始萌、消长循环与地支作为季节容器的检索线索
 - 不迁移：坎宫断验、宫星门神、击刑、六合无合化、奇门三会与固定人格吉凶
 - provenance：`cross_system_common_symbol`
@@ -200,12 +180,3 @@
 
 - 内容：把子整理为仲冬集中水场；分开支体／季节转机、癸本气与壬癸司令；建立四层显化、七轴与 runtime units
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否把子作为仲冬水场处理，而不把它缩写成一枚癸水天干？
-2. 模型能否同时保留“命理作阴”“体阳用阴”和冬至转机，而不拿一个标签覆盖全部层次？
-3. 模型能否区分子藏癸与子月壬癸司令，不把壬补进静态藏干？
-4. 癸不透时，模型能否保留场、库存、根气与待时接口，同时不虚构 direct-action edge？
-5. 模型能否把“半夜、鼠、孩子”保留为可用候选，又不升级成固定人格、子女用神或事件？
-6. 出现流年／他人触发时，模型能否重算相关功能与期限，而不把临时显性写回原局？

@@ -1,5 +1,120 @@
 # Changelog
 
+## [2.0.0-rc.2] - 2026-08-29
+
+### Summary
+
+rc.2 是一次以实际断盘质量和运行成本为中心的破坏性瘦身。rc.1 虽然建立了完整的语义门、producer／auditor 隔离和可追溯收据，但真实运行暴露出新的主要问题：大量 token、文件和时间花在证明流程已经完成，最终报告仍可能只有抽象机制、性格画像和防御性保留。
+
+本版删除旧审计屎山，把默认流程重建为：
+
+```text
+Reader → Structure → user Scope gate
+→ sealed reading pack → fresh-context reader-writer
+```
+
+事实与结构仍由上游收束；取象、现实载体比较、结果判断和散文写作重新合并到同一个无历史上下文 writer 中。这样既保留四柱、旺衰、格局和用神的正确性边界，也避免判断在 Topic Lens、scene kernels、findings、Composition 和 pure Render 之间反复压缩。
+
+### Why this release exists
+
+rc.1 的问题不是审计文件本身占多少磁盘，而是审计合同反向塑造了生产过程：
+
+- 每个专题先拆 packet、kernel、finding、coverage 和 receipt，导致模型把注意力用于填字段；
+- producer 与 auditor 为每个 topic 重复加载材料，运行时间随专题和年份快速膨胀；
+- Render 被限制为纯翻译层，无法在成文时继续进行十神—干支取象和载体比较；
+- 中间层压缩后只剩“压力、支持、承载、边界”等抽象词，报告看起来完整，实际仍像性格测试；
+- case-specific few-shot 会显著提高同盘文字表现，却破坏盲测有效性；
+- Scope 阶段没有真正阻塞，用户只说“看看这个盘”时，Agent 会自行扩展成完整原局、感情、健康和岁运；
+- audit PASS、文件数量和字段齐全无法证明最终断语有用。
+
+### Removed — redundant audit pipeline
+
+- 公开 `skill/` 从 **138 个文件降至 68 个文件**。
+- 删除默认运行中的 audit state、active artifact manifest、freeze／hash receipt 和多层 activation 状态。
+- 删除逐专题 Deep Card runtime packet、material disposition、carrier resolution 与 cross-topic signature。
+- 删除 per-topic scene-kernel producer／independent auditor job 目录和相关 schema。
+- 删除 finding／judgment／question closure、coverage receipt、Render markers、Reader 分卷与 delivery scan。
+- 删除逐年 census／overlay／process 三件套；岁运改为固定结构变化后由 writer 自然成文。
+- 删除不再参与运行的 validator、test fixture 和硬编码集合等值检查。
+- 删除 active Render 中的同盘 few-shot、negative few-shot 和旧反套话规则；公开包不再携带任何命例样章。
+- `bazi-finding-audit` 收窄为显式调用的语义法证工具，不再是普通报告依赖。
+
+这些删除不影响四柱、十神、藏干、司令、合冲刑害、格局与用神的基本正确性检查。
+
+### Changed — scope and routing
+
+- 显式调用 `$bazi-reader` 时，只生成事实产物并停止；“断一下／看看／分析一下”不再自动升级成完整报告。
+- 新增真正的用户 Scope gate。命主、本人／代看、专题、岁运范围或必要性别口径不清时，流程必须提问并结束当前 turn。
+- 用户回答前不得创建 `report-scope.yaml`、Topic Lens、reading notebook、Composition 或报告。
+- 禁止仅凭大运顺逆推定性别后直接书写感情和六亲。
+- 用户已经把范围说清时直接记录，不重复询问。
+
+### Added — sealed reading pack
+
+- 新增 `reading-pack/`，固定 `handoff.md`、`chart-stage1.yaml`、`structure-notebook.md`、`report-scope.yaml`、`source-notes.md` 和相关 `materials/`。
+- pack 只复制本盘实际相关的五行、十神、天干、地支、藏干和岁运材料。
+- pack 明确排除旧报告、旧 findings、用户纠错、预期答案、经历材料、Topic Lens、reading notebook、Composition、few-shot、审计文件和其他 case。
+- 经用户授权加入经历时必须标为 `non-blind`，不得宣称前向盲断。
+- 新增可复用的 fresh-context handoff 提示，要求只传 pack 路径和输出路径，不转发父 session 的对话摘要。
+
+### Changed — Render becomes Reader-Writer
+
+- `bazi-render` 不再是“只能翻译 Composition”的纯语言层。
+- 新 Render 仅在 sealed pack 已存在时运行，并在一个干净上下文中独立完成：
+  - 十神主链与竞争路线理解；
+  - 天干动作、地支场景、藏干参与和柱位范围组合；
+  - 学历、专业性质、技术动作、权责、名声、收入、变动和关系结果判断；
+  - 现实载体家族比较与主次排序；
+  - 大运流年在保留原局保证下的自然成文；
+  - 少标题、连续中文断盘。
+- writer 自由决定章节、标题、段落顺序和详略，不使用固定问答、统一段落字段或内部审计语言。
+- 父窗口只检查盘面事实、确认范围、排除材料和高风险确定化，不按预期答案重写正文。
+- 需要重写时废弃当前稿并启动新的 clean writer，不在原上下文累加长篇纠错。
+
+### Changed — optional diagnostic skills
+
+- `bazi-topic-lens` 改为可选专题诊断，只在用户要求内容地图、复杂限定专题或 fresh report 明显漏层时使用。
+- `bazi-imagery-composition` 改为可选推导底稿，用于查看十神—干支组合过程或补充 reading pack。
+- 普通完整报告不再默认创建 `topic-map.md`、`reading-notebook.md`、`timing-notebook.md` 或 `composition.md`。
+- `bazi-source-lookup` 现在同时服务 Structure 和 reading pack，只提供规则、符号材料和未排名候选，不替 writer 预写生活答案。
+- `bazi-structure-core` 只固定技术结构和下游接口，不提前写家庭、学历、职业或婚姻 verdict。
+
+### Interpretation quality
+
+- 保留“十神关系链＋天干动作＋地支场景＋藏干参与＋柱位范围”的核心取象方法。
+- 允许 writer 在成文过程中继续摊开、比较、排序和合成现实载体，避免结构材料被过早压平。
+- 报告目标仍然是现实层级、领域性质、动作材料、载体家族、结果、代价和反转，而不是只报旺衰或性格标签。
+- 陌生合成盘前向测试在无 few-shot、无旧报告、无 Topic Lens／Composition 的条件下，仍能自行形成教育层级、专业资格、职业家族、财富路径、关系权责和创作载体等详细判断。
+
+### Public packaging and privacy
+
+- 所有本机绝对路径替换为仓库相对路径或 `external-source://...` 标识。
+- 清除维护者专名、命例 ID、thread ID、case 目录、临时 reading pack 和前向测试产物。
+- 公开包不包含出生资料、subject context、用户经历、旧报告或已知答案。
+
+### Validation
+
+- 8/8 Skills 通过 `quick_validate.py`。
+- Markdown 本地引用缺失 0。
+- 公共包扫描未发现本机盘符、用户命例 ID、thread ID、few-shot 或旧 runtime 文件名。
+- 独立 Scope gate 测试确认显式 Reader 只交付事实并询问后续范围。
+- 独立 fresh writer 测试使用 `fork_turns="none"`，只读取 sealed pack，并生成完整多专题报告。
+
+### Breaking changes and migration
+
+- rc.1 的 scope、Lens、runtime、scene kernels、findings、Composition、Render receipt 和 delivery artifacts 不再构成 rc.2 的默认完成链。
+- `bazi-render` 的职责发生反转：从纯翻译层改为 clean-context reader-writer。
+- 旧 case 不应把已有 Composition 或 findings 直接送入新 Render；应重新固定 facts、structure、scope 和 reading pack。
+- 没有 fresh-context agent 能力时，完整报告流程停在 reading pack，由用户在新任务中继续。
+- 如果外部集成依赖旧 schema 或 validator，需要继续使用 rc.1 分支，或自行迁移到新的七项默认产物。
+
+### Known limitations and positioning
+
+- reading pack 仍需完整读取本盘相关 Deep Cards；上游 Source 阶段是当前主要耗时，后续将在不牺牲报告质量的前提下继续测试压缩空间。
+- 八字更适合分析结构性质、成事路线、职业类型与推运；它不保证从原局稳定盲断博士、离婚或精确职业身份等高特异度履历。
+- 若主要目标是高精度还原具体人生领域和事件，传统术数使用者可优先考虑紫微斗数，再以八字补充结构与时间判断。
+- 本项目属于传统文化文本研究与解释工具，不是经科学验证的预测系统，也不构成医疗、法律或财务建议。
+
 ## [2.0.0-rc.1] - 2026-08-12
 
 ### Summary
@@ -125,7 +240,7 @@
 - 公开包删除本机盘符、私有目录、命例路径、thread ID、known facts 和维护者个人名状态。
 - 外部课程／笔记只保留稳定来源 ID、portable scope 与 excluded scope；原文件不随仓库提交。
 - `.gitignore` 继续隔离 forward tests、case artifacts、private、subject context 和本地覆盖文件。
-- 发布扫描明确检查 Windows 用户目录、`E:\My Grimoire`、命例 ID、临时截图、AppData、blind-run answers、`__pycache__` 与 `.pyc`。
+- 发布扫描明确检查维护者本机目录、命例 ID、临时截图、AppData、blind-run answers、`__pycache__` 与 `.pyc`。
 
 ### Validation and release status
 

@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支辰；五行、月令、节气、藏干、司令、墓库身份及关系事实由 Reader／Structure Core 提供
 - `role`: 季春湿土过渡场、戊乙癸复合接口与现实载体候选；不负责重算藏气等级、司令、开库、合局、旺衰或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [戊, 乙, 癸]
@@ -132,30 +130,11 @@
 
 每次调用至少记录 Reader 中辰、戊乙癸 qi_rank、司令与表源；本题使用的季春／湿土／水库／换挡维度；戊乙癸逐气参与层；直接功能的 gate、边、通量和承接；若使用水库，引用 Structure 的墓库身份、开合、受损、释放与结果去处；再比较土地、水体、容器、提取流程、身体位置和生肖等载体。异表只留 source receipt，不改运行事实。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `CHEN-FIELD-LATESPRING-EARTH` | `semantic_core` | 季春、含水土、木季收束、换挡、混合介质与复合容器 | 全部相关 topic | Reader 确认辰节点；query 需要场／季节／介质 | 只解释机制；不得重算旺衰、调候、关系或吉凶 | `bazi_primary＋current_synthesis` |
-| `CHEN-ACTION-MIX-SEPARATE-TRANSITION` | `semantic_core` | 承载、混合、培育、分层、过滤、提取、中转和流程换挡 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship | 人物／领域体、材料流入流出与持续路线成立 | 不得直推管理、化工、地产、实验、供应链或网络职业 | `bazi_course＋current_synthesis` |
-| `CHEN-STATE-MANIFESTATION` | `state_modifier` | 四层显化及湿润／泥泞／干裂／沉积／释放状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判合冲刑、开库、成局或结果 | `current_synthesis` |
-| `CHEN-QI-WU-MAIN` | `state_modifier` | 戊本气的土体、边界、承载与转化接口 | 全部相关 topic | Reader 戊节点及 Structure gate／边／通量 | 本气不等于独占整支、压水木或自动得用 | `bazi_primary＋current_synthesis` |
-| `CHEN-QI-YI-MIDDLE` | `state_modifier` | 依 Reader 口径的乙中气：春木余势、根气与穿行接口 | 全部相关 topic | Reader 乙节点及 Structure 可用度／去处 | 不得因异表私改 residual，也不得直推植物、疏土或成长成果 | `bazi_primary＋current_synthesis` |
-| `CHEN-QI-GUI-RESIDUAL` | `state_modifier` | 依 Reader 口径的癸余气：水分、储水、根气与待时接口 | 全部相关 topic | Reader 癸节点及 Structure 墓库／可用度／承接 | 不得因异表私改 middle，不得自动开库、得水或发财 | `bazi_primary＋current_synthesis` |
-| `CHEN-COMMANDER-YI-GUI-WU` | `state_modifier` | 辰月乙九、癸三、戊十八司令过渡 | 月令解释／timing | Reader month_command 有节气偏移与表源 | 不改写 static qi_rank，不按日数机械定命 | `bazi_commentary` |
-| `CHEN-STORAGE-ROLE-WATER` | `state_modifier` | 辰作为水墓／库时的收藏、暂存、释放与改道机制 | career_work／wealth_resource／object_place | Structure 确认墓库身份、关系后状态、节点与释放范围 | 只到 mechanism；不得直推开库、财库、水务、化工或事件 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `CHEN-SHAPE-MOIST-LAND-CONTAINER` | `symbol_carrier` | 湿土、田园、浅滩、土岭、低洼地、蓄水和混合过滤容器 | appearance_body／object_place／career_work | 介质／形态／场所锚点与竞争载体支持 | 最高 candidate；不得直断房产、农地、水库、化工场所或体型 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `CHEN-BODY-TRUNK-STORAGE` | `symbol_carrier` | 腹部、腰、肩、消化承接、水液储存和躯干支撑候选 | appearance_body | 身体专题、位置与多锚点 | 不得诊断腹腰肩疾病、湿病、消化或水液问题 | `bazi_course` |
-| `CHEN-ZODIAC-DRAGON` | `symbol_carrier` | 龙及生肖／图形场景 | object_place／family_relationship | 明确动物／生肖／物件题并有额外锚点 | 不得类比出权贵、神秘、飞腾、成功或固定人格 | `bazi_course` |
-| `CHEN-CROSS-QIMEN` | `cross_system_context` | 东南／巽、木火分野、风、航空、网络及戊癸乙异表线索 | 仅明确需要的相关 topic | 只作追溯；去除宫卦与断验后仍能回接共同符号 | source-only context；不得改写 Reader、进入结构或职业断验 | `cross_system_common_symbol` |
-
-具体农业、地产、仓储、化工、实验提纯、供应链、航空、互联网及房产／财库事件均须另走领域载体，不由辰卡独立晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定辰是否旺、戊乙癸谁主事、qi_rank 异表取舍、司令值、水库是否开、申子辰局、辰酉合、辰戌冲、卯辰害或自刑结果，也不能决定地产化工职业、房产财富、人格、体貌、疾病与事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -163,7 +142,7 @@
 - provenance：`current_synthesis`
 
 ### S1｜《千里命稿》原典
-- 文件：`external-source://qianli-minggao-pdf`；`skill/bazi-structure-dynamics/references/qianli-minggao-fidelity-full.md`
+- 文件：`external-source://qianli-minggao-pdf`；`千里命稿（高保真整理版）.md`
 - 核读：地支篇辰条、人元问答与力量分析
 - 支持：辰属阳土、三月、清明至立夏、藏戊乙癸；人元有层级
 - 边界：合冲刑害、水局与开库进入 Structure；表中藏序由 Reader 继承
@@ -183,7 +162,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-earthly-branches-note`
 - 可迁移：季春、湿土、水库、木火过渡、培育、舒展与乙—癸—戊气序
 - 来源分歧：本／中／余表列戊／癸／乙，与 Reader 戊／乙／癸不同；仅登记，不迁移为事实
 - 不迁移：宫卦、奇门关系、旺衰、固定人格与断验
@@ -192,11 +171,3 @@
 ### S5｜当前架构归纳
 - 内容：把辰整理为季春含水土复合容器，分开静态 qi_rank、司令与水库身份，并建立七轴 runtime units
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否把辰作为季春复合土场，而不直接等同戊土、水库或地产？
-2. 能否继承 Reader 戊乙癸，同时把原本／奇门的等级差异留在来源层？
-3. 能否区分静态藏气、乙癸戊司令和水库关系后身份？
-4. 一气透出或冲会触发时，能否只重算实际节点而不整体开库？
-5. 能否使用土地、浅滩、化工提取、龙、身体位置等候选而不直断？

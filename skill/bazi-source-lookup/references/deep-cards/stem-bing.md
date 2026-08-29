@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阳火；确定性事实由 Reader 提供
 - `role`: 丙的本象与载体候选，不负责判断丙在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -132,28 +130,11 @@
 5. `carrier_rank`：candidate／supported／preferred／assertable；
 6. `alternative_carriers`：太阳、传播、能源、舞台等竞争载体中，为什么当前一个更符合本题。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `BING-CORE-OPEN-LIGHT` | `semantic_core` | 开放、外布的环境性光热：升温、照明、显露、扩散、激发并推动转化 | 全部相关 topic | 丙在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、作用边、丙辛关系或把阳火等同强火／实克 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `BING-STATE-SWITCH` | `state_modifier` | 得时得源、受遮、散失、过曝、调温、承接或形质转化时的表达切换 | 全部相关 topic | 引用 post-relation state、来源、承载、通路与 condition | 只继承状态；不得自行裁水火、土晦、木火过盛、合化或损伤程度 | `bazi_commentary＋current_synthesis` |
-| `BING-ACTION-ILLUMINATE-SPREAD` | `semantic_core` | 照亮、说清、显化、公开、传播、激发和带动整体环境 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成外向、热情、爱表现或领导人格 | `bazi_course＋current_synthesis` |
-| `BING-SHAPE-BRIGHT-WARM` | `symbol_carrier` | 明亮、鲜明、暖红、有光、可见度高、动作富节律 | appearance_body／object_place | 身体或物件锚点、形态承载与全盘竞争象明确 | 最高 candidate；桥接后由 Composition 升级，不得直断漂亮、红脸、耀眼或一定出名 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `BING-BODY-LIGHT-HEAT` | `symbol_carrier` | 心血循环、眼目、体温、炎热反应及身体的光热／供能功能 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个丙字诊断心脏、眼睛、血液或具体热病 | `bazi_course＋current_synthesis` |
-| `BING-OBJECT-ENERGY-LIGHT` | `symbol_carrier` | 日光、火焰、灯光、炉灶、屏幕、影像、发热供电装置及明亮／炎热／公开空间 | object_place／career_work | 功能、形态、环境或材料与本题直接相关 | 最高 candidate；不得从物件直推传媒、舞台、能源、电力、烹饪或冶炼行业 | `bazi_course＋current_synthesis` |
-| `BING-WORK-PRESENT-ENERGIZE` | `semantic_core` | 公开呈现、传播说明、供能发热、激发带动与工艺转化 | learning_cognition／career_work | 丙参与相关 process／axis，且作用有现实接口与可用持续性 | 只提供学习／工作性质；不得直接推出教师、媒体人、演员或能源从业者 | `bazi_course＋current_synthesis` |
-| `BING-CROSS-QIMEN` | `cross_system_context` | 威严、光明、艳丽、烈、紫赤、抑扬等共同形态候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接火形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-传媒、舞台、能源、电力、烹饪、冶炼、化工、教学及正式公共角色不设为丙卡可直接激活的复合职业／身份 unit。Topic 明确询问相关领域时，它们只能由 Source Lookup 按 `domain_carrier_request` 编成 candidate leads，再由 Domain Carrier Resolver 结合关系功能、位置、路线、日主承载、持续性和结果接口比较。
-
-上表的 activation requirements 是本次查询的准入条件，不是固定打分表。明亮、暖红、公开呈现或供能转化有充分锚点时可以正常升级；不得为避免刻板联想，机械添加与已成立证据无关的“但是”。
-
 ## 10. Cannot decide
 
 本卡不能单独决定丙是否旺、是否为用、是否有名、是否外向、是否从事传媒／能源、是否患心眼疾病，也不能单独决定丙辛之间的实际克制、合化、损伤程度或吉凶。跨体系象意不能重判八字结构。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行共同底座
 
@@ -188,7 +169,7 @@
 
 ### S4｜奇门天干课程
 
-- 文件：`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-heavenly-stems-note`
 - 完整读取：全文；本轮复核丙火及状态补充的完整范围
 - 可迁移：威严、光明、艳丽、烈、紫赤、抑扬，以及得令辉煌、失令灰槁的共同形态／状态候选
 - 不迁移：固定道德人格、奇门宫位神煞、五合四冲、合化、起局与具体断验
@@ -198,13 +179,4 @@
 
 - 内容：把融和之气解释为开放外布的环境性光热；拆分光热、显化、转化、节律、外形身体、职业物件路线；建立七条 Topic axes 与性格专用桥
 - provenance：`current_synthesis`
-- 审阅：核心、丙丁配对、状态边界及七轴方向已由人工维护者于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，具体职业／身份仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否以开放外布的光热过程解释丙，再选择太阳、传播、能源或舞台等现实载体？
-2. 模型能否区分丙的环境性外布与丁的媒介／焦点传续，而不简化成大火与小火、强与弱？
-3. 性格题中，模型是否要求人物锚点与反复稳定证据，而不把单个丙直接写成外向、热情或爱出风头？
-4. 丙与金、水、土相遇时，模型能否区分调节、遮晦、气势变化与形质损伤，并继承 Structure Core 的实际裁决？
-5. 职业和财富题中，模型是否先说明传播、供能、转化或资源动员的性质，再列行业与收入载体？
-6. 模型是否会误把奇门神煞、宫位、道德人格或合冲化规则带进八字结构？
+- 审阅：核心、丙丁配对、状态边界及七轴方向已由 maintainer 于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，具体职业／身份仍只作领域候选线索
