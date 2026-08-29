@@ -1,4 +1,4 @@
 interface:
-  display_name: "八字取象与组合"
-  short_description: "把十神链与干支柱位合成可核对象核"
-  default_prompt: "Use $bazi-imagery-composition to preserve frozen processes, build complete ten-god chains, combine them with stems, branches, hidden stems, and pillar roles into auditable scene kernels, then produce kernel-driven findings, coverage receipts, and prose composition."
+  display_name: "八字取象诊断"
+  short_description: "按需深拆十神干支推导与现实载体"
+  default_prompt: "Use $bazi-imagery-composition only when an explicit diagnostic reading notebook or focused imagery analysis is needed."

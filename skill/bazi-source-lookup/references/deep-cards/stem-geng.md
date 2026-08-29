@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阳金；确定性事实由 Reader 提供
 - `role`: 庚的本象与载体候选，不负责判断庚在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -132,28 +130,11 @@
 5. `carrier_rank`：candidate／supported／preferred／assertable；
 6. `alternative_carriers`：肃杀、改革、法律、机械、道路等竞争载体中，为什么当前一个更符合本题。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `GENG-CORE-CULL-REFORM` | `semantic_core` | 从革在总体过程中的收敛、筛除、裁断、改制、换轨与硬边界执行 | 全部相关 topic | 庚在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、作用边、乙庚合或把肃杀等同毁灭／实质砍尽 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `GENG-STATE-SWITCH` | `state_modifier` | 得清、受炼、成器、开路、过切、脆折、被埋或执行通路不足时的表达切换 | 全部相关 topic | 引用 post-relation state、对象、材料、温度、通路与 condition | 只继承状态；不得自行裁熔损、埋金、得水清、木被砍尽或损伤程度 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `GENG-ACTION-DECIDE-EXECUTE` | `semantic_core` | 筛选、取舍、裁断、清障、执行、开路、终止旧路径并让边界生效 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成果断、霸道、凶狠、军警型或宁折不弯 | `bazi_commentary＋current_synthesis` |
-| `GENG-SHAPE-HARD-ANGULAR` | `symbol_carrier` | 骨架、棱角、硬直线条、轮廓分明、动作利落和刚劲质感 | appearance_body／object_place | 身体或物件锚点、形态承载与全盘竞争象明确 | 最高 candidate；不得由一个庚字直断高大、刚硬、鼻直或长相凶 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `GENG-BODY-CONTRACT-BOUNDARY` | `symbol_carrier` | 肺、呼吸系统、骨骼、牙齿、皮肤边界及身体收敛功能 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个庚字诊断肺病、骨伤、牙病或具体疾病 | `bazi_course＋current_synthesis` |
-| `GENG-OBJECT-TOOLS-INFRA` | `symbol_carrier` | 刀斧、钢铁、机械、车辆、道路、矿山、切割设备及大型工业加工空间 | object_place／career_work | 对象、尺度、材料、开路／裁切功能与本题直接相关 | 最高 candidate；不得从物件直推机械、交通、矿山、军警、司法或工程行业 | `bazi_course＋current_synthesis` |
-| `GENG-WORK-REFORM-ENFORCE` | `semantic_core` | 改革、强制边界、风险处置、工程切割、验收及标准落地 | learning_cognition／career_work | 庚参与相关 process／axis，且权限、对象、执行通路与现实接口成立 | 只提供学习／工作性质；不得直接推出法官、警察、军人、工程师或改革者身份 | `bazi_course＋current_synthesis` |
-| `GENG-CROSS-QIMEN` | `cross_system_context` | 急锐、硬直、刚劲、收杀及得时／失令等共同动作形态候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接金形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-司法、执法、军警、交通、机械、矿山、道路工程、风险处置及正式裁决者／改革者身份，不设为庚卡可直接激活的复合职业／身份 unit。它们只能由 Source Lookup 按 `domain_carrier_request` 编成 candidate leads，再由 Domain Carrier Resolver 结合权责关系、位置、路线、执行权限、日主承载、持续性和结果接口比较。
-
-上表的 activation requirements 是本次查询的准入条件，不是固定打分表。棱角、刀斧、改革执行或硬边界有充分锚点时可以正常升级；气／质只帮助检查作用对象，不得抽成“同阴阳才实克”或“阳克阴只作形式抑制”的普遍规则。
-
 ## 10. Cannot decide
 
 本卡不能单独决定庚是否旺、是否为用、是否凶狠果断、是否从事司法／军警／机械，也不能单独决定乙庚合、甲庚作用、疾病、离婚、改革成败、财富损益或唯一物件场所。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行共同底座
 
@@ -188,7 +169,7 @@
 
 ### S4｜奇门共同符号材料
 
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-heavenly-stems-note`
 - 完整读取：两份全文；本轮复核从革、庚辛象意与状态范围
 - 可迁移：收杀、变革、刚劲、急锐、硬直、得时／失令与形貌行业候选
 - 不迁移：太白、白虎、天狱、宫位、荧入太白、奇门合化、固定人格、吉凶和刑杀断验
@@ -198,13 +179,4 @@
 
 - 内容：把庚归纳为总体收敛、裁断、边界执行和改制；将道路、司法、军警、机械分别改为须由开路、执行、角色与工业功能激活的载体候选；建立七条 Topic axes
 - provenance：`current_synthesis`
-- 审阅：核心、庚辛配对、气／质非绝对原则及七轴方向已由人工维护者于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，法律／军警／机械等仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否从从革与肃杀过程解释庚，再选择改革、法律、机械、道路或刀斧等载体？
-2. 模型能否把肃杀理解成收敛与换轨的一种功能，而不自动升级成毁灭、凶狠或离婚？
-3. 性格题中是否要求人物锚点与稳定重复证据，而不把庚直接写成霸道、果断、军警型？
-4. 庚与木、火、水、土相遇时，模型是否区分作用对象、加工条件和状态，而不机械执行诗诀？
-5. 财富和职业题中是否保留领域体，只让庚解释清理、改制、执行与载体性质？
-6. 模型是否会误把奇门太白白虎、宫位、刑杀吉凶和合化口径带进八字结构？
+- 审阅：核心、庚辛配对、气／质非绝对原则及七轴方向已由 maintainer 于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，法律／军警／机械等仍只作领域候选线索

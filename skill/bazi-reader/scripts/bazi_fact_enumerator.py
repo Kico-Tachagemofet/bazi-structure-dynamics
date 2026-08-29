@@ -431,23 +431,6 @@ def enumerate_chart(pillars: list[str]) -> dict:
     stem_pair_checks = visible_stem_pair_checks(pillars)
     stem_combinations, shared_stem_combinations = stem_candidates(pillars)
     branches = branch_candidates(pillars)
-    expected_nodes = 4 + sum(len(HIDDEN_STEMS[pillar[1]]) for pillar in pillars)
-    audit = {
-        "four_pillars_present": len(pillars) == 4,
-        "node_count_expected": expected_nodes,
-        "node_count_actual": len(nodes),
-        "all_nodes_present": len(nodes) == expected_nodes,
-        "all_six_stem_position_pairs_checked": len(stem_pair_checks),
-        "all_six_branch_position_pairs_checked": len(branches["pair_checks"]),
-        "self_punishment_scan_completed": True,
-        "punishment_group_scan_completed": True,
-        "group_scan_completed": True,
-        "shared_node_scan_completed": True,
-    }
-    audit["verdict"] = "PASS" if (
-        audit["all_nodes_present"]
-        and audit["all_six_branch_position_pairs_checked"] == 6
-    ) else "FAIL"
     return {
         "schema_version": "1.0",
         "scope": "facts_and_candidates_only",
@@ -462,15 +445,6 @@ def enumerate_chart(pillars: list[str]) -> dict:
         "elemental_candidate_edges": elemental_edges,
         "same_element_candidate_pairs": same_element_pairs,
         "branch_candidates": branches,
-        "coverage_audit": audit,
-        "prohibited_inferences": [
-            "strength",
-            "combination_transformation",
-            "branch_formation_success",
-            "pattern",
-            "favorable_or_unfavorable",
-            "event_imagery",
-        ],
     }
 
 

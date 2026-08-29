@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阴火；确定性事实由 Reader 提供
 - `role`: 丁的本象与载体候选，不负责判断丁在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -137,28 +135,11 @@
 5. `carrier_rank`：candidate／supported／preferred／assertable；
 6. `alternative_carriers`：灯烛、炉火、技艺、舞台焦点等竞争载体中，为什么当前一个更符合本题。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `DING-CORE-MEDIATED-FIRE` | `semantic_core` | 光热借薪材、媒介或焦点得到承载与传续：聚焦、续燃、温养、显影并促成形质转化 | 全部相关 topic | 丁在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、作用边、丁壬／癸丁关系或把阴火等同弱小／幕后 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `DING-STATE-SWITCH` | `state_modifier` | 薪媒连续、中断、集中改质、闷烧、过热、受水调节或隐藏时的表达切换 | 全部相关 topic | 引用 post-relation state、薪源／媒介、温度、时间、通路与 condition | 只继承状态；不得自行裁合冲、木多生火、熄灭、改质或损伤程度 | `bazi_commentary＋current_synthesis` |
-| `DING-ACTION-FOCUS-SUSTAIN` | `semantic_core` | 聚焦、维持、传递、温养、显影、照料细部和反复打磨 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成温柔、细心、敏感、执着或神秘人格 | `bazi_commentary＋current_synthesis` |
-| `DING-SHAPE-CLEAR-FOCAL` | `symbol_carrier` | 清亮、精细、暖色／淡红、目光聚焦、局部有光、动作细致有节律 | appearance_body／object_place | 身体或物件锚点、形态承载与全盘竞争象明确 | 最高 candidate；桥接后由 Composition 升级，不得直断漂亮、秀气、目光锐利或微弱 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `DING-BODY-FOCAL-HEAT` | `symbol_carrier` | 心血循环、眼目、体温、炎热反应及身体的局部光热／持续供能功能 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个丁字诊断心脏、眼睛、血液或具体热病 | `bazi_course＋current_synthesis` |
-| `DING-OBJECT-HEARTH-TOOLS` | `symbol_carrier` | 灯烛、火苗、香火、炉灶、窑炉、工作灯、发热／烧制工具及集中加工空间 | object_place／career_work | 媒介、功能、温度、形态或场所与本题直接相关 | 最高 candidate；不得从物件直推美容、陶瓷、绘画、表演、焊接、照明或烹饪行业 | `bazi_course＋current_synthesis` |
-| `DING-WORK-REFINE-TRANSFORM` | `semantic_core` | 集中照明、持续加热、显影、精细加工、烧制、熟化和以技艺改变形质 | learning_cognition／career_work | 丁参与相关 process／axis，且媒介、持续性与现实接口成立 | 只提供学习／工作性质；不得直接推出厨师、美容师、陶艺师、画家、演员或焊工 | `bazi_course＋current_synthesis` |
-| `DING-CROSS-QIMEN` | `cross_system_context` | 淡红、清亮、秀扬、便捷及得时显明／失令暗昧等共同形态状态候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接火形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-美容、陶瓷、绘画、表演、焊接、照明、烹饪及正式照料者／技术者身份不设为丁卡可直接激活的复合职业／身份 unit。Topic 明确询问相关领域时，它们只能由 Source Lookup 按 `domain_carrier_request` 编成 candidate leads，再由 Domain Carrier Resolver 结合关系功能、位置、路线、日主承载、持续性和结果接口比较。
-
-上表的 activation requirements 是本次查询的准入条件，不是固定打分表。清亮精细、聚焦维持或持续改质有充分锚点时可以正常升级；不得为避免刻板联想，机械添加与已成立证据无关的“但是”。
-
 ## 10. Cannot decide
 
 本卡不能单独决定丁是否旺、是否为用、是否温柔细心、是否具有灵性或艺术天赋、是否从事美容／烹饪／表演、是否患心眼疾病，也不能单独决定丁壬合、癸丁冲及丁对庚辛的实际作用、合化、损伤程度或吉凶。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行共同底座
 
@@ -193,7 +174,7 @@
 
 ### S4｜奇门天干课程
 
-- 文件：`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-heavenly-stems-note`
 - 完整读取：全文；本轮复核丁火与状态补充的完整范围
 - 可迁移：淡红、清亮、秀扬、便捷，以及得时能显明、失令暗昧的共同形态／状态候选
 - 不迁移：星之精、六丁玉女、逃亡潜身、奇门吉凶、宫位神煞、五合四冲、合化、固定人格与具体断验
@@ -203,13 +184,4 @@
 
 - 内容：把薪傅之火解释为光热借薪材／媒介／焦点承载并传续；拆分传续、聚焦显影、温养改质、媒介技艺、外形身体与物件场所路线；建立七条 Topic axes
 - provenance：`current_synthesis`
-- 审阅：核心、丙丁配对、气／质作用边界及七轴方向已由人工维护者于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，具体职业／身份仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否以薪材／媒介承载的光热过程解释丁，再选择灯烛、炉火、技艺、舞台或精细加工等载体？
-2. 模型能否理解丁并不天然微弱，在持续供给与集中热量下也能改变材料形质？
-3. 性格题中，模型是否要求人物锚点与反复稳定证据，而不把单个丁直接写成温柔、细心、神秘、忠孝或斤斤计较？
-4. 丁与金、水、木相遇时，模型能否区分燃料、媒介、气势与形质作用，并继承 Structure Core 的实际裁决？
-5. 职业和财富题中，模型是否先说明聚焦、续燃、精细加工或价值转化的性质，再列具体载体？
-6. 模型是否会误把奇门六丁玉女、宫位神煞、课程断验或拟人化道德文辞带进八字结构与人格定案？
+- 审阅：核心、丙丁配对、气／质作用边界及七轴方向已由 maintainer 于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，具体职业／身份仍只作领域候选线索

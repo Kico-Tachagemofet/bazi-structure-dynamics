@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阳土；确定性事实由 Reader 提供
 - `role`: 戊的本象与载体候选，不负责判断戊在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -130,29 +128,11 @@
 5. `carrier_rank`：candidate／supported／preferred／assertable；
 6. `alternative_carriers`：山、墙、堤、平台、仓储等竞争载体中，为什么当前一个更符合本题。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `WU-CORE-LARGE-CARRIER` | `semantic_core` | 稼穑在较大尺度上的总体承载场、体量、主边界与开合：安置、聚集、支撑、阻隔、导流和沉淀 | 全部相关 topic | 戊在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、作用边、制水、合化或把阳土等同强硬／高位 | `bazi_commentary＋current_synthesis` |
-| `WU-STATE-SWITCH` | `state_modifier` | 水热适中、燥硬、湿重冲散、体量过盛、开放、封闭或有无通路时的表达切换 | 全部相关 topic | 引用 post-relation state、干湿、体量、位置、通路与 condition | 只继承状态；不得自行裁板结、塌陷、埋金、疏土、堤岸或损伤程度 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `WU-ACTION-SUPPORT-BOUNDARY` | `semantic_core` | 支撑、承重、安置、划界、筑界、开合并组织总体结构 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成可靠、忠厚、固执、控制或权威人格 | `bazi_commentary＋current_synthesis` |
-| `WU-SHAPE-MASS-STABLE` | `symbol_carrier` | 高厚、宽阔、方圆、块体、轮廓稳定、骨肉有承载感和较强体量感 | appearance_body／object_place | 身体或物件锚点、尺度／形态承载与全盘竞争象明确 | 最高 candidate；不得由一个戊字直断高大、肥厚、厚脸或权威；高山须高低／尺度对照 | `bazi_course＋current_synthesis` |
-| `WU-BODY-DIGEST-CARRIER` | `symbol_carrier` | 脾胃、消化、肌肉、皮肤及身体承载／代谢功能 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个戊字诊断脾胃、皮肤、肥胖或具体疾病 | `bazi_course＋current_synthesis` |
-| `WU-OBJECT-MASS-BOUNDARY` | `symbol_carrier` | 山体、墙体、平台、地基、仓库、停车场、广场及大型土石构造 | object_place／career_work／wealth_resource | 体量、边界、承重、空间或功能与本题直接相关 | 最高 candidate；不得从物件直推房产、建筑、土地、矿产、仓储或大型机构 | `bazi_course＋current_synthesis` |
-| `WU-WATER-BOUNDARY` | `relational_carrier` | 水流与足够体量、位置、边界构成关系时的堤岸、蓄水、岸线或导流候选 | object_place／career_work／wealth_resource | 已冻结水土关系、边界位置、体量与通路同时成立 | 最高 candidate；不得执行“戊见水必堤／必能镇水”，具体场景另过 Domain Carrier Resolver | `bazi_primary＋bazi_course＋current_synthesis` |
-| `WU-WORK-INFRA-PLATFORM` | `semantic_core` | 建基础、承重、划界、配置平台／仓储／大体量资源和进行风险阻隔 | learning_cognition／career_work | 戊参与相关 process／axis，且作用有现实接口与可用持续性 | 只提供学习／工作性质；不得直接推出建筑、地产、矿业、仓储或平台管理岗位 | `bazi_course＋current_synthesis` |
-| `WU-CROSS-QIMEN` | `cross_system_context` | 烈燥、涩深、卤粗、体量及得时／失令等共同质地状态候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接土形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-建筑、基建、房地产、土地、矿产、水泥石材、仓储、大型场地运营及正式家主／权威角色，不设为戊卡可直接激活的复合职业／身份 unit。房屋仍先锁定原有领域体与十神关系；即使争产，房屋用神仍是财，竞争者／夺财一侧才由比劫等关系功能表达，不能让戊卡或忌神替换用神。
-
-上表的 activation requirements 是本次查询的准入条件，不是固定打分表。高厚、平台、堤岸或承载型工作有充分锚点时可以正常升级；不得为避免刻板联想，机械添加与已成立证据无关的“但是”。
-
 ## 10. Cannot decide
 
 本卡不能单独决定戊是否旺、是否为用、是否可靠固执、是否高大肥厚、是否从事地产建筑，也不能单独决定戊癸合、戊土制水、房产用神、财富水平、疾病或具体场所。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行共同底座
 
@@ -187,7 +167,7 @@
 
 ### S4｜奇门共同符号材料
 
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-heavenly-stems-note`
 - 完整读取：两份全文；本轮复核土爰稼穑、戊己土象意与状态范围
 - 可迁移：承载、生化、长养、中央转换、烈燥、涩深、体量与得时／失令候选
 - 不迁移：青龙、天武之神、宫位、奇门合化、发令屠戮、固定道德人格与断验
@@ -197,13 +177,4 @@
 
 - 内容：把戊归纳为较大尺度总体承载场、边界和开合；将高山、堤坝、房产分别改为须由对照、水关系和领域体激活的载体候选；建立七条 Topic axes
 - provenance：`current_synthesis`
-- 审阅：核心、戊己配对、关系激活原则及七轴方向已由人工维护者于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，房产／职业／权威身份仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否从稼穑与总体承载解释戊，再选择山、墙、堤、平台或仓库等载体？
-2. 模型能否只在戊己高低对照时增强高山、在水与边界成立时增强堤岸，而不固定套象？
-3. 性格题中是否要求人物锚点与稳定重复证据，而不把戊直接写成忠厚、固执或有权威？
-4. 房产与财富题中，模型是否保留原有领域体／用神，只让戊解释承载形态？
-5. 干湿、木水金火参与时，模型是否回读结构状态，而不把固重、燥土或制水写成永恒属性？
-6. 模型是否会误把奇门青龙、天武、宫位与合化断验带进八字结构？
+- 审阅：核心、戊己配对、关系激活原则及七轴方向已由 maintainer 于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，房产／职业／权威身份仍只作领域候选线索

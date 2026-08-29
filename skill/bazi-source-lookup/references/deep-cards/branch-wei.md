@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 地支未；五行、月令、节气、藏干、司令、墓库身份及关系事实由 Reader／Structure Core 提供
 - `role`: 季夏燥暖土场、己丁乙接口、成熟收藏机制与现实载体候选；不负责重算月令、司令、旺衰、合冲刑害、会局、开库、透干激活或事件
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 - `branch_manifestation_contract`: field-qi-function-result-v1
 - `static_hidden_stems_authority`: Reader
 - `static_hidden_stems`: [己, 丁, 乙]
@@ -135,32 +133,11 @@
 
 每次调用至少记录 Reader 中未、己丁乙 qi_rank、未月司令和表源；本题使用的是季夏土场、余热熟化、植物材料、木库、味道／同音还是容器维度；对应藏气处于 field／qi／function／result 哪一层；若用木库，必须引用 Structure 的身份、开合／受损、释放范围、before／after 通量和下游；再比较食品、园艺、储存、土地、身体、动物等载体。具体财产题先锁定财产体和用忌，不得由场景象替换。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `WEI-FIELD-LATESUMMER-EARTH` | `semantic_core` | 季夏、燥暖土、余热入土、熟化、成味、沉降与换季整理 | 全部相关 topic | Reader 确认未节点；query 需要季节／场机制 | 只解释机制；不得重算旺衰、调候、墓库或吉凶 | `bazi_primary＋current_synthesis` |
-| `WEI-ACTION-RIPEN-SETTLE-STORE` | `semantic_core` | 培育成熟、成味、吸收、归整、收藏、保存与阶段交接 | behavior_personality／learning_cognition／career_work／wealth_resource／family_relationship／object_place | 领域体、材料、时间、容器和出口成立 | 不得直推温顺、农业、食品、仓储、公务、房产或成熟结果 | `bazi_course＋current_synthesis` |
-| `WEI-STATE-MANIFESTATION` | `state_modifier` | 四层显化及成熟／焦燥／黏滞／积压／待时状态 | 全部相关 topic | 引用 branch_manifestation_handoff | 不得自行判开库、三气齐发、成果或事件 | `current_synthesis` |
-| `WEI-QI-JI-MAIN` | `state_modifier` | 己本气的土体、培育、吸收、边界、沉降与承载接口 | 全部相关 topic | Reader 己节点及 Structure gate／边／通量 | 本气不等于土地、稳定、照顾、农业或自动得用 | `bazi_primary＋current_synthesis` |
-| `WEI-QI-DING-MIDDLE` | `state_modifier` | 依 Reader 口径的丁中气：余热、熟化、干燥与待时火性接口 | 全部相关 topic | Reader 丁节点及 Structure 可用度／去处 | 不因异表改称 residual，不得直推火库、食品成熟或焦燥 | `bazi_primary＋current_synthesis` |
-| `WEI-QI-YI-RESIDUAL` | `state_modifier` | 依 Reader 口径的乙余气：植物材料、根气、纤维、成果与待时接口 | 全部相关 topic | Reader 乙节点及 Structure 墓库／可用度／去处 | 不因异表改称 middle，不得直推乙入墓、木死、园艺或财库 | `bazi_primary＋current_synthesis` |
-| `WEI-COMMANDER-DING-YI-JI` | `state_modifier` | 未月丁九、乙三、己十八司令过渡 | 月令解释／timing | Reader month_command 有节气偏移与表源 | 不改写 static qi_rank，不按日数机械定命 | `bazi_commentary` |
-| `WEI-STORAGE-ROLE-WOOD` | `state_modifier` | 未作木墓／库时的收藏、保护、暂存、压缩、释放与改道机制 | career_work／wealth_resource／family_relationship／object_place | Structure 确认墓库身份、关系后状态、节点与释放范围 | 只到 mechanism；不得直推开库、木死、财库、房产、争产或事件 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `WEI-SHAPE-DRY-WARM-CONTAINER` | `symbol_carrier` | 燥暖、土黄、圆厚、丰满、院落、园圃、粮食与干燥容器 | appearance_body／object_place／career_work | 形态／介质／场所锚点及竞争载体支持 | 最高 candidate；不得直断体型、土地、房屋、农业或仓储职业 | `bazi_course＋current_synthesis` |
-| `WEI-WORDPLAY-TASTE-STOMACH` | `symbol_carrier` | “未—味—胃”的同音桥：成熟味道、食物、胃与腹部容器 | appearance_body／object_place／career_work | 明确饮食／身体／物件题且至少一个独立锚点 | 必须降权；不得单凭同音诊断胃病、贪吃、食品业或事件 | `bazi_course＋cross_system_common_symbol` |
-| `WEI-OBJECT-COURTYARD-ORCHARD` | `symbol_carrier` | 院落、果园、园圃、田地、粮仓、成熟食物与果实 | object_place／career_work／wealth_resource | 场所／材料／产品功能及位置共振 | 最高 candidate；不得直推房产、土地所有权、农业或餐饮职业 | `bazi_course＋current_synthesis` |
-| `WEI-ANIMAL-SHEEP-DONKEY` | `symbol_carrier` | 羊、驴及相关动物／物件候选 | object_place／family_relationship | 明确动物／生肖题和场景锚点 | 不得类比出温顺、劳碌、固执、肥胖或六亲身份 | `bazi_course` |
-| `WEI-BODY-SPLEEN-STOMACH-METABOLISM` | `symbol_carrier` | 脾、胃、腹部、消化吸收与代谢候选 | appearance_body | 身体专题、位置与多锚点；同音只作辅助 | 不得诊断胃炎、糖尿病、脾胃病、肥胖或固定体质 | `bazi_course＋current_synthesis` |
-| `WEI-CROSS-QIMEN` | `cross_system_context` | 己乙丁异序、季夏成熟成味及状态随关系变化等线索 | 仅明确需要的相关 topic | 去除宫卦、奇门关系和断验后仍可回接共同符号 | source-only context；不得改写 Reader、木库、结构、职业或人格 | `cross_system_common_symbol` |
-
-农业、食品、餐饮、园艺、仓储、土地、公务及任何财库／房产／争产／疾病事件均须另走领域载体或事件审计，不由未卡独立晋级。
-
 ## 10. Cannot decide
 
 本卡不能单独决定未是否旺、己丁乙谁主事、异表层级取舍、未是否作为木墓／库及怎样开合释放、午未合／丑未冲／丑未戌刑／亥卯未局是否成立，也不能决定人格、职业、体貌、疾病、食物、房产、财库、争产与事件。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`；`skill/bazi-source-lookup/references/deep-cards/earthly-branches-core.md`
@@ -188,7 +165,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-05-earthly-branches`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-earthly-branches-note`
 - 可迁移：稼穑、季夏、火势下降、成熟成味及土场随湿热条件改变
 - 来源分歧：奇门表列己乙丁，与 Reader 己丁乙不同；只登记，不迁移为运行事实
 - 不迁移：宫卦、奇门关系、旺衰、固定人格与断验
@@ -197,11 +174,3 @@
 ### S5｜当前架构归纳
 - 内容：把未整理为余热进入土体后的熟化收藏场，分开己丁乙静态接口、丁乙己司令与 Structure 控制的木库身份
 - provenance：`current_synthesis`
-
-## 12. Forward-test questions
-
-1. 模型能否区分未场与己天干，并把成熟理解为条件过程而非既成好结果？
-2. 能否继承 Reader 己丁乙，同时把奇门己乙丁异序留在来源层？
-3. 能否区分静态藏干、丁乙己司令、木库身份和岁运透干激活？
-4. 面对冲合透干时，能否只重算实际节点与释放范围，不整体开库或断乙木死亡？
-5. 能否使用食物、胃、院落、果园、羊驴等候选而不直推疾病、职业、房产或争产？

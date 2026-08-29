@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阴土；确定性事实由 Reader 提供
 - `role`: 己的本象与载体候选，不负责判断己在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -130,29 +128,11 @@
 5. `carrier_rank`：candidate／supported／preferred／assertable；
 6. `alternative_carriers`：田园、低地、容器、档案、服务系统等竞争载体中，为什么当前一个更符合本题。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `JI-CORE-FINE-MEDIUM` | `semantic_core` | 稼穑在细密介质与内部空间中的接纳、蓄藏、混合、培养、熟化和整理 | 全部相关 topic | 己在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、作用边、纳水、合化或把阴土等同弱小／低位／服务 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `JI-STATE-SWITCH` | `state_modifier` | 水热通气适中、寒湿泥滞、焦干、介质太薄、蓄藏过载或有无出口时的表达切换 | 全部相关 topic | 引用 post-relation state、干湿、厚度、通气、出口与 condition | 只继承状态；不得自行裁培木、润金、纳水、埋金、成熟或损伤程度 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `JI-ACTION-ABSORB-CULTIVATE` | `semantic_core` | 接纳、吸收、分类、记录、蓄藏、培养、熟化并维持内部运转 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成温顺、母性、服务型、心软或城府深 | `bazi_commentary＋current_synthesis` |
-| `JI-SHAPE-ROUND-FINE` | `symbol_carrier` | 圆润、柔厚、细密、贴地、轮廓柔和、皮肉承载或腹部感 | appearance_body／object_place | 身体或物件锚点、尺度／形态承载与全盘竞争象明确 | 最高 candidate；不得由一个己字直断肥胖、低矮、柔弱或女性化 | `bazi_course＋current_synthesis` |
-| `JI-BODY-DIGEST-ABSORB` | `symbol_carrier` | 脾胃、腹部、消化吸收、肌肉、皮肤及体液／营养转化功能 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个己字诊断脾胃、腹部、脓液、肥胖或具体疾病 | `bazi_course＋current_synthesis` |
-| `JI-OBJECT-SOIL-CONTAINER` | `symbol_carrier` | 土壤、田园、盆器、培养基、储藏间、档案柜、容器及内部操作空间 | object_place／career_work／wealth_resource | 培养、储藏、材料、位置或功能与本题直接相关 | 最高 candidate；不得从物件直推农业、食品、秘书、档案、行政、服务或房产行业 | `bazi_course＋current_synthesis` |
-| `JI-TERRAIN-STORAGE` | `relational_carrier` | 地势对照下的平地／低地，以及收藏、地下、终结锚点共同支持时的墓藏／墓园候选 | object_place／wealth_resource／family_relationship | 低地须戊己／地势对照；墓藏须收藏＋地下＋终结或明确场所查询 | 最高 candidate；不得由己直接断低位、家中墓地、不动产或死亡事件 | `bazi_course＋current_synthesis` |
-| `JI-WORK-ORGANIZE-CULTIVATE` | `semantic_core` | 培养、储藏、内部整理、记录、运营、后勤、营养处理和日常维护 | learning_cognition／career_work | 己参与相关 process／axis，且作用有现实接口与可用持续性 | 只提供学习／工作性质；不得直接推出农民、秘书、行政、档案员、餐饮或照料岗位 | `bazi_course＋current_synthesis` |
-| `JI-CROSS-QIMEN` | `cross_system_context` | 博厚、沉静、顺柔、陶镕器皿及得时／失令等共同形态状态候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接土形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-农业园艺、食品、餐饮后端、档案、行政运营、仓储细管、土地、照料服务及秘书／照料者身份，不设为己卡可直接激活的复合职业／身份 unit。房屋仍先锁定原有领域体与十神关系；即使争产，房屋用神仍是财，竞争者／夺财一侧才由比劫等关系功能表达，不能让己卡或忌神替换用神。
-
-上表的 activation requirements 是本次查询的准入条件，不是固定打分表。圆润、田园、低地、墓藏或内部运转型工作有充分锚点时可以正常升级；不得为避免刻板联想，机械添加与已成立证据无关的“但是”。
-
 ## 10. Cannot decide
 
 本卡不能单独决定己是否旺、是否为用、是否温顺包容、是否肥胖、是否从事农业／秘书／服务业，也不能单独决定甲己合、己土纳水、房产用神、财富水平、疾病、墓地或具体家庭角色。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行共同底座
 
@@ -187,7 +167,7 @@
 
 ### S4｜奇门共同符号材料
 
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-heavenly-stems-note`
 - 完整读取：两份全文；本轮复核土爰稼穑、戊己土象意与状态范围
 - 可迁移：承载、生化、长养、蓄藏、博厚、沉静、顺柔、陶镕器皿与得时／失令候选
 - 不迁移：六合之神、坤德、宫位、说合修城、奇门合化、固定道德人格与断验
@@ -197,13 +177,4 @@
 
 - 内容：把己归纳为细密培养介质、内部接纳与蓄藏；将田园、低地、墓地、服务分别改为须由培养题、地势对照、收藏地下题和工作功能激活的载体候选；建立七条 Topic axes
 - provenance：`current_synthesis`
-- 审阅：核心、戊己配对、关系激活原则及七轴方向已由人工维护者于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，房产／职业／照料身份仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否从稼穑与细密培养介质解释己，再选择田园、低地、容器、档案或服务系统等载体？
-2. 模型能否区分纳水、镇水、培木、泥滞等状态，而不把己固定为湿土、软弱或不怕水木？
-3. 性格题中是否要求人物锚点与稳定重复证据，而不把己直接写成母性、温顺、服务型或城府深？
-4. 房产、墓地与财富题中，模型是否保留原有领域体／用神，只让己解释介质、储藏与场所形态？
-5. 模型能否只在戊己地势对照时增强低地，在收藏／地下／终结题支持时才增强墓地？
-6. 模型是否会误把奇门六合、坤德、宫位、合化和固定人格带进八字结构？
+- 审阅：核心、戊己配对、关系激活原则及七轴方向已由 maintainer 于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，房产／职业／照料身份仍只作领域候选线索

@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阴木；确定性事实由 Reader 提供
 - `role`: 乙的本象与载体候选，不负责判断乙在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -158,29 +156,11 @@
 
 禁止的是没有桥接便把物象绑定成命主身份；不是禁止提出纤细、漂亮、花草、编辑、设计、辅助岗位或中医药等有效候选。没有真实竞争证据时，也不要为显得谨慎机械制造“但是”。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `YI-CORE-FORM-QI` | `semantic_core` | 承接木之生气，使输入凝成、组织并显出具体形态 | 全部相关 topic | 乙在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、边、路线或把形质等同静止／被动 | `bazi_primary＋current_synthesis` |
-| `YI-STATE-SWITCH` | `state_modifier` | 得根、得支点、不能凝形、受整、受损、枝蔓过多时的表达切换 | 全部相关 topic | 引用 post-relation state、承载与 condition | 只继承状态；不得自行裁藤萝系甲、成形、牵缠或损伤 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `YI-ACTION-ADAPT-LINK` | `semantic_core` | 柔曲、绕阻、衔接、编织、保持连续并完成细部 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成固定性格 | `bazi_commentary＋current_synthesis` |
-| `YI-SHAPE-FLEX-FINE` | `symbol_carrier` | 修长、纤细、柔韧、曲线、细节精致、姿态灵活 | appearance_body／object_place | 身体或物件锚点、形态承载与全盘竞争象明确 | 最高 candidate；桥接后由 Composition 升级，不得直断具体体形、漂亮或柔弱 | `bazi_course＋current_synthesis` |
-| `YI-MATERIAL-PLANT-FIBER` | `symbol_carrier` | 枝叶、藤蔓、花草、禾苗、药草、纤维、纸张、织物、绳线与连接件 | object_place／career_work | 材料、形状或功能与本题直接相关 | 最高 candidate；不得从材料直推园艺、纺织、中医药或审美行业 | `bazi_course＋current_synthesis` |
-| `YI-BODY-FLEX-TISSUE` | `symbol_carrier` | 筋、四肢、柔韧、生长舒展与枝末／细部组织功能 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个乙字诊断肝胆、筋伤或具体疾病 | `bazi_course＋current_synthesis` |
-| `YI-WORK-REFINE-LINK` | `semantic_core` | 细化、编辑、协调、连接资源、维护、润色、设计接口和在限制中找路径 | learning_cognition／career_work | 乙参与相关 process／axis，且该作用有持续性与现实接口 | 只提供学习／工作性质；不得直接推出编辑、设计、教育、中医药或辅助岗位 | `bazi_course＋current_synthesis` |
-| `YI-ROLE-SUPPORT` | `relational_carrier` | 衔接、维护连续或辅助完成主线的人物／分工候选 | family_relationship／career_work | topic body、关系功能、柱位、实际分工与参与节点均已锁定 | 最高 candidate；正式身份／岗位另过 Domain Carrier Resolver，不得由阴木绑定辅助者 | `bazi_course＋current_synthesis` |
-| `YI-CROSS-QIMEN` | `cross_system_context` | 润、曲、碧、婉转、柔嫩等共同形态候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接木形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-园艺、纺织、文字编辑、设计装饰、中医药、教育辅导及正式辅助岗位不设为乙卡可直接激活的复合职业 unit。Topic 明确询问职业时，它们只能由 Source Lookup 按 `domain_carrier_request` 编成 candidate leads，再由 Domain Carrier Resolver 结合关系功能、位置、路线、日主承载、持续性和结果接口比较。
-
-上表的 activation requirements 是“本次是否允许把该单元送入 Composition”的必要入口，不是固定打分表，也不表示未入选单元在其他题目中永远无效。形态、材料与工作性质有充分锚点时可以正常升级；不得为防刻板而把它们一概压回模糊措辞。
-
 ## 10. Cannot decide
 
 本卡不能单独决定乙是否柔弱、是否依附、是否漂亮、是否为用、是否成化、格局吉凶、疾病、职业、关系模式或唯一现实载体。它也不能以“藤萝系甲”预设甲乙必然形成支点关系。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜《千里命稿》原典
 
@@ -209,7 +189,7 @@
 
 ### S3｜奇门天干课程
 
-- 文件：`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-heavenly-stems-note`
 - 完整读取：全文；本轮复核甲乙木、配神速查与状态补充的完整范围
 - 可迁移：润、曲、碧、婉转、柔嫩，以及得时繁华、失令枯朽的共同形态／状态候选
 - 不迁移：天德之神、卯宫震位、固定品德人格、奇门五合四冲、合化与具体断验
@@ -219,13 +199,4 @@
 
 - 内容：以承气成形为核心；划分成形、植物、柔曲连接、细部加工、身体、行业人物和奇门旁支路线；加入相对太极点与“以质论乙坚于甲”的反弱化校正
 - provenance：`current_synthesis`
-- 审阅：承气成形、柔不等于弱、藤萝系甲降为关系状态、有效候选保留，已由人工维护者于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，具体职业／身份仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否先解释乙怎样承气成形，再选择花草、编辑、设计、中医药或其他现实载体？
-2. 模型能否理解“乙为形质”是甲乙内部层级，同时记得甲乙相对地支仍属天干流行之气？
-3. 模型是否会把柔曲写成韧性与成形路径，而非自动判成软弱、依附或无主见？
-4. 出现甲乙关系时，模型是否先回读结构，再决定是有效支点、协作、占用还是牵缠？
-5. 外形锚点充分时，模型能否明确说纤细柔长、细而有韧性，而不机械添加空洞转折？
-6. 性格、学习、财富与家庭题中，模型能否先锁定人物／领域体，再调用乙的成形与连接过程，而不是把乙直接写成固定人格、理财方式或六亲身份？
+- 审阅：承气成形、柔不等于弱、藤萝系甲降为关系状态、有效候选保留，已由 maintainer 于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，具体职业／身份仍只作领域候选线索

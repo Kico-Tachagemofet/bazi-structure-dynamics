@@ -1,6 +1,6 @@
 # 若境清《千里命稿》讲解 02：旺衰、格局（1）（讲义全文）
 
-> 来源文件：`external-source://ruojing-qianli-course/02`
+> 来源文件：`external-source://ruojing-qianli-course-02`
 > 本文件按 Word 正文顺序机械抽取；不删节、不摘要。原段落序号用于回查。
 
 <!-- paragraph 1; style: Heading 2 -->

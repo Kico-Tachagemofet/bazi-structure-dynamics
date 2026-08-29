@@ -1,6 +1,6 @@
 # 《千里命稿》原典索引
 
-仓库高保真整理版：`skill/bazi-structure-dynamics/references/qianli-minggao-fidelity-full.md`
+本地高保真整理版：`skill/bazi-structure-dynamics/references/qianli-minggao-fidelity-full.md`
 
 ## 强制区分摘要与原本
 

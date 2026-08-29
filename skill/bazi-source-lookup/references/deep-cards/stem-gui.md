@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阴水；确定性事实由 Reader 提供
 - `role`: 癸的本象与载体候选，不负责判断癸在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -129,28 +127,11 @@
 5. `carrier_rank`：candidate／supported／preferred／assertable；
 6. `alternative_carriers`：雨露、井泉、地下水、内部系统、细密信息、储备等竞争载体中，为什么当前一个更符合本题。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `GUI-CORE-DISTRIBUTED-INFILTRATION` | `semantic_core` | 润下以细微、分布式方式进入介质：渗透、浸润、吸收、凝聚、潜藏、渐积及隐显循环 | 全部相关 topic | 癸在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、作用边、戊癸合化／辰引动或把阴水等同小水／弱水／秘密 | `bazi_primary＋bazi_commentary＋current_synthesis` |
-| `GUI-STATE-SWITCH` | `state_modifier` | 可渗透、被吸收、渐积成库、凝结、蒸发、受困、饱和、慢漏或无收集条件时的表达切换 | 全部相关 topic | 引用 post-relation state、来源、介质、容器、温度、出口与 condition | 只继承状态；细微不等于结果小；不得自行裁合化、慢性问题、隐秘事件或损伤程度 | `bazi_commentary＋current_synthesis` |
-| `GUI-ACTION-OBSERVE-ACCUMULATE` | `semantic_core` | 观察细节、吸收信息、留存线索、逐层深入、凝聚材料并渐进形成判断 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成内向、聪明、心机深、秘密多或鬼祟人格 | `bazi_commentary＋current_synthesis` |
-| `GUI-SHAPE-FINE-MOIST` | `symbol_carrier` | 细润、柔和、含蓄、局部湿润、线条细密、目光较深及内部层次感 | appearance_body／object_place | 身体或物件锚点、形态承载与全盘竞争象明确 | 最高 candidate；不得由一个癸字直断柔弱、漂亮、阴沉、眼神深或内向 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `GUI-BODY-INTERNAL-FLUID` | `symbol_carrier` | 肾、泌尿、内分泌、体液、水液代谢及内部循环功能 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个癸字诊断肾病、内分泌病、泌尿病或慢性疾病 | `bazi_course＋current_synthesis` |
-| `GUI-OBJECT-SEEPAGE-CONTAINER` | `symbol_carrier` | 雨露、水滴、井泉、地下水、地下室、暗渠、细管、储液容器、渗滤系统及内部信息库 | object_place／career_work／wealth_resource | 介质、容器、温度、渗透／凝聚／储存功能与本题直接相关 | 最高 candidate；不得从物件直推地下工程、液体处理、医学、调查、咨询或数据行业 | `bazi_course＋current_synthesis` |
-| `GUI-WORK-RESEARCH-INTERNAL` | `semantic_core` | 细节观察、证据积累、研究调查、数据处理、内部系统、液体处理和渐进判断 | learning_cognition／career_work／wealth_resource | 癸参与相关 process／axis，且材料、容器／系统、表达出口与现实持续性成立 | 只提供学习／工作／资源积累性质；不得直接推出研究员、侦探、医生、咨询师或数据岗位 | `bazi_course＋current_synthesis` |
-| `GUI-CROSS-QIMEN` | `cross_system_context` | 深、细、润、地下、流动、浑浊／含杂质等共同形态环境候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接水形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-研究、调查、咨询、数据、液体处理、内分泌／内部系统、地下工程及正式侦探／医生等身份，不设为癸卡可直接激活的复合职业／身份 unit。它们只能由 Source Lookup 按 `domain_carrier_request` 编成 candidate leads，再由 Domain Carrier Resolver 结合关系功能、位置、路线、专业资格、日主承载、持续性和表达／结果出口比较。
-
-上表的 activation requirements 是本次查询的准入条件，不是固定打分表。细润形态、井泉地下、细密研究或长期积累有充分锚点时可以正常升级；不得为防止“癸＝小水／秘密”而否认其形成大水体、深层影响或明确现实载体的可能。
-
 ## 10. Cannot decide
 
 本卡不能单独决定癸是否旺、是否为用、是否软弱、是否内向、是否多谋或从事侦查研究，也不能单独决定戊癸合化、辰能否引动水局、疾病、暗财、秘密、情绪状态或唯一物件场所。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`
@@ -179,7 +160,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-heavenly-stems-note`
 - 可迁移：润下、渗透、流动、细润、深层、地下、浑浊／含杂质等形态和环境候选
 - 不迁移：宫位、神煞、吉凶、固定人格、奇门组合、合化口径与“淫／柔险”等道德化标签
 - provenance：`cross_system_common_symbol`
@@ -187,13 +168,4 @@
 ### S5｜当前架构归纳
 - 内容：把癸归纳为细微、分布式的渗透、浸润、凝聚和潜藏过程；把雨露、井泉、地下空间和细密信息保留为载体；建立七条 Topic axes
 - provenance：`current_synthesis`
-- 审阅：核心、壬癸配对、七轴方向及非大小／动静／内外向二分已由人工维护者于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，研究／医学／地下系统等仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否先从润下与细微渗透解释癸，再选择雨露、井泉、地下水、内部系统或细密信息等载体？
-2. 模型能否理解癸的细微是作用方式而非规模、力量和人格弱小，允许持续积累形成大水体或深层影响？
-3. 模型能否区分壬癸的优先过程，而不冻成大／小、动／静、外向／内向？
-4. 性格题中是否要求人物锚点和稳定重复证据，而不把癸直接写成内向、聪明、心机、秘密或鬼鬼祟祟？
-5. 财富、职业和关系题中是否保留领域体，只让癸解释渗透、积累、留存和内部循环方式？
-6. 模型能否把得龙、戊癸合化、疾病和奇门组合留给对应结构层，不由本象卡越权裁决？
+- 审阅：核心、壬癸配对、七轴方向及非大小／动静／内外向二分已由 maintainer 于 2026-08-08 同意；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，研究／医学／地下系统等仍只作领域候选线索

@@ -2,11 +2,9 @@
 
 - `version`: 0.3
 - `status`: approved
-- `review_state`: runtime_approved_by_human_2026-08-10
 - `symbol_fact`: 阳水；确定性事实由 Reader 提供
 - `role`: 壬的本象与载体候选，不负责判断壬在本盘是否有力、可用或成格
 - `structural_authority`: none
-- `runtime_contract`: unit_permissions_v0.1
 
 ## 1. Core process
 
@@ -131,28 +129,11 @@
 5. `carrier_rank`：candidate／supported／preferred／assertable；
 6. `alternative_carriers`：江河、物流、贸易、交通、管网、信息网络等竞争载体中，为什么当前一个更符合本题。
 
-## 9. Runtime unit map
-
-| unit_id | unit_class | 对应内容 | allowed_topics | activation requirements | claim ceiling／forbidden promotions | source_layer |
-|---|---|---|---|---|---|---|
-| `REN-CORE-NETWORK-FLOW` | `semantic_core` | 润下在开放、连续、跨节点通路中的汇集、连接、运输、调度、周转、冲刷与分配 | 全部相关 topic | 壬在已冻结 axis／pillar 中实际相关 | 只解释机制；不得重算旺衰、作用边、丁壬合或把阳水等同大水／奔腾／泛滥 | `bazi_commentary＋current_synthesis` |
-| `REN-STATE-SWITCH` | `state_modifier` | 有源畅通、有路无落点、边界不足、方向不清、通路牵扯、受阻改道或过量溢出时的表达切换 | 全部相关 topic | 引用 post-relation state、源、边界、方向、通道、出口、落点与 condition | 只继承状态；流动／迁移／多线连接本身不构成失衡；不得自行裁制水、泛滥、耗散或关系不稳 | `bazi_commentary＋current_synthesis` |
-| `REN-ACTION-CONNECT-DISPATCH` | `semantic_core` | 连接、汇流、转运、调度、跨场景适配、分配、疏导和改道 | behavior_personality／learning_cognition／career_work／family_relationship | 相应人物／领域体已锁定，且动作由冻结 axis 反复或持续承载 | 只说明动作与过程；没有 person anchor 与 repeated-and-stable 不得升成外向、聪明、多动、滥情或漂泊人格 | `bazi_commentary＋current_synthesis` |
-| `REN-SHAPE-FLUID-CONTINUOUS` | `symbol_carrier` | 流动圆转、线条连续、水润、动作转换自然及声音连贯舒展 | appearance_body／object_place | 身体或物件锚点、形态／声音承载与全盘竞争象明确 | 最高 candidate；不得由一个壬字直断圆胖、水润、声音好听或经常迁移 | `bazi_course＋cross_system_common_symbol＋current_synthesis` |
-| `REN-BODY-FLUID-CIRCULATION` | `symbol_carrier` | 肾、泌尿、耳、体液、水液代谢及循环传递功能 | appearance_body | 身体专题、相应身体锚点与关系后状态共同支持 | 最高 candidate；不得由一个壬字诊断肾病、泌尿病、水肿或具体疾病 | `bazi_course＋current_synthesis` |
-| `REN-OBJECT-ROUTE-NETWORK` | `symbol_carrier` | 江河海洋、船舶港口、管道泵站、交通线、物流仓配、通信线路、数据网络及跨节点平台 | object_place／career_work／wealth_resource | 源—路—节点—出口—落点链条、规模与功能和本题直接相关 | 最高 candidate；不得从物件直推航运、物流、贸易、交通、通信或平台行业 | `bazi_course＋current_synthesis` |
-| `REN-WORK-ROUTE-DISPATCH` | `semantic_core` | 运输、周转、供应链、资源调度、跨部门沟通、研究整合与信息分发 | learning_cognition／career_work／wealth_resource | 壬参与相关 process／axis，且通道、接口、落点与现实持续性成立 | 只提供学习／工作／资源流转性质；不得直接推出物流、贸易、旅行、通信或平台岗位 | `bazi_course＋current_synthesis` |
-| `REN-CROSS-QIMEN` | `cross_system_context` | 江河湖海、流动、渗透、声音舒展及运输等共同符号候选 | 仅明确需要的相关 topic | 去除奇门专属组件后仍可回接水形／状态 | source-only context；不得转发为 selected unit、进入八字结构或具体断验 | `cross_system_common_symbol` |
-
-航运、物流、交通、贸易、旅行、供应链、通信、平台网络、研究整合及正式协调者／调度者身份，不设为壬卡可直接激活的复合职业／身份 unit。它们只能由 Source Lookup 按 `domain_carrier_request` 编成 candidate leads，再由 Domain Carrier Resolver 结合关系功能、位置、路线、接口权限、日主承载、持续性和结果落点比较。
-
-上表的 activation requirements 是本次查询的准入条件，不是固定打分表。流动线条、交通网络、资源调度或跨来源联结有充分锚点时可以正常升级；只有边界、方向、落点或通路关系确有问题时，才允许把无边界联想、缺乏方向感和难以收束写成负面状态。
-
 ## 10. Cannot decide
 
 本卡不能单独决定壬是否旺、是否为用、是否泛滥、是否漂泊、是否善交际或从事物流贸易，也不能单独决定丁壬合、壬与戊己土的实际作用、疾病、迁移、财富流动、关系稳定性或唯一物件场所。
 
-## 11. Source receipts
+## 11. Sources
 
 ### S0｜五行共同底座
 - 文件：`skill/bazi-source-lookup/references/deep-cards/five-elements-core.md`
@@ -181,7 +162,7 @@
 - provenance：`bazi_course`
 
 ### S4｜奇门共同符号材料
-- 文件：`external-source://qimen-note-03-five-elements`；`external-source://qimen-note-04-heavenly-stems`
+- 文件：`external-source://qimen-five-elements-note`；`external-source://qimen-heavenly-stems-note`
 - 可迁移：润下、流动、渗透、江河湖海、声音舒展、运输与流动型行业候选
 - 不迁移：宫位、神煞、吉凶、固定人格、奇门组合与合化断验
 - provenance：`cross_system_common_symbol`
@@ -189,13 +170,4 @@
 ### S5｜当前架构归纳
 - 内容：把壬归纳为开放、连续、跨节点的流通过程；将负面状态明确为边界不足、方向不清、落点未定、通路牵扯、阻塞或容量失配所造成的到处游移与难以收束；建立七条 Topic axes
 - provenance：`current_synthesis`
-- 审阅：核心、壬癸配对与七轴方向已由人工维护者于 2026-08-08 同意；负面状态表述随后按人工维护者意见修订为无边界或缺乏方向感所造成的到处流动、难以收束；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经人工维护者授权升为 runtime approved，物流／贸易／平台等仍只作领域候选线索
-
-## 12. Forward-test questions
-
-1. 模型能否先从润下与跨节点流通解释壬，再选择江河、物流、贸易、交通或信息网络等载体？
-2. 模型能否识别无边界与缺乏方向感这两类失衡，使“到处流动、难以收束”成为状态结果，而不是把多线连接本身直接判坏？
-3. 模型能否区分壬癸的优先过程，而不冻成大／小、动／静、外向／内向？
-4. 性格题中是否要求人物锚点和稳定重复证据，而不把壬直接写成聪明、外向、多动或漂泊？
-5. 财富、职业和关系题中是否保留领域体，只让壬解释渠道、周转、连接和调度方式？
-6. 壬与土、火、木、金相遇时，模型是否读取源—路—边界—出口—落点，而不机械执行五行诗诀？
+- 审阅：核心、壬癸配对与七轴方向已由 maintainer 于 2026-08-08 同意；负面状态表述随后按 maintainer 意见修订为无边界或缺乏方向感所造成的到处流动、难以收束；2026-08-09 接入 unit map 与 compiled-runtime 防火墙；2026-08-10 经 maintainer 授权升为 runtime approved，物流／贸易／平台等仍只作领域候选线索

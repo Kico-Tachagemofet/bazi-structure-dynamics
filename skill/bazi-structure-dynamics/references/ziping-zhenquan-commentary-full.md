@@ -1,6 +1,6 @@
 # 《子平真诠评注》全文
 
-> 来源文件：`external-source://ziping-zhenquan-commentary-text`
+> 来源文件：`external-source://ziping-zhenquan-commentary-source`
 > 本文件只做编码与换行规范化，不删节、不摘要、不合并原文与评注。
 
 子平真诠评注 
