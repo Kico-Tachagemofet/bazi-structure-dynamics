@@ -344,6 +344,8 @@ def branch_candidates(pillars: list[str]) -> dict:
                 "adjacent": distance == 1,
                 "status": "candidate",
             }
+            if relation_type == "break":
+                item["doctrinal_support"] = "none_in_ziping_qianli"
             if result:
                 item["result_or_subtype"] = result
             relations.append(item)
@@ -445,6 +447,7 @@ def enumerate_chart(pillars: list[str]) -> dict:
         "elemental_candidate_edges": elemental_edges,
         "same_element_candidate_pairs": same_element_pairs,
         "branch_candidates": branches,
+        "unsourced_relation_types": ["break"],
     }
 
 
@@ -452,7 +455,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Enumerate Bazi facts and relation candidates without interpretation."
     )
-    parser.add_argument("pillars", nargs=4, help="Four pillars, for example 戊寅 丙辰 壬寅 庚戌")
+    parser.add_argument("pillars", nargs=4, help="Four pillars, for example 甲子 丙寅 戊辰 庚申")
     parser.add_argument("--compact", action="store_true", help="Emit compact JSON")
     args = parser.parse_args()
     try:

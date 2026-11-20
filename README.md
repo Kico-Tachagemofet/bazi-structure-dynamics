@@ -1,10 +1,10 @@
 # Bazi Structure Dynamics
 
-一套面向 Codex 的四柱八字多 Skill 工作流。它先把四柱事实、旺衰承载、格局、十神竞争和用神路线收束清楚，再把固定材料交给无历史上下文的独立 reader-writer，由它在同一个写作过程里完成取象、现实判断和中文断盘。
+一套面向 AI Coding Agent（Codex / Claude Code / Antigravity 等）的四柱八字多 Skill 工作流。它先把四柱事实、旺衰承载、格局、十神竞争和用神路线收束清楚，再把固定材料交给无历史上下文的独立 reader-writer，由它在同一个写作过程里完成取象、现实判断和中文断盘。
 
-当前版本：**2.0.0-rc.2**
+当前版本：**2.0.0-rc.3**
 
-本版是一次大幅瘦身重构。旧版把大量精力消耗在 audit state、freeze、hash、coverage receipt、runtime packet、scene-kernel job、逐专题 producer／auditor 和 Render validator 上，运行时间很长，最后的正文却仍可能像性格测试。rc.2 删除了这套冗余审计屎山，把重点重新放回两件事：结构算对，以及报告真的能断出人生层级、现实载体、结果、代价和岁运变化。
+2.0 系列是一次彻底的瘦身与质变重构：rc.2 砍掉了旧版的审计地狱（audit state、freeze、hash、coverage receipt、scene-kernel job、逐专题 producer／auditor 等冗余屎山）；**rc.3 进一步将全部 25 张 Deep Cards 瘦身 82.9%（v0.4）**，清除了卡片和文档中残留的旧架构指令冲突、互联网 PM 黑话单文化模板与单一命例过拟合，并补强了燥湿传力、墓库冲合藏干胜负裁决与多步大运连贯弧线。
 
 ## 默认流程
 
@@ -169,25 +169,25 @@ Deep Cards 是取象候选材料，不决定旺衰、格局或事件。其他术
 
 ## 验证
 
-rc.2 已完成：
+rc.3 已完成：
 
-- 8/8 `quick_validate.py`；
-- Skill Markdown 引用检查；
-- 本机路径、命例 ID、thread ID 与 few-shot 扫描；
-- 显式 Reader 范围门前向测试；
-- 无历史上下文 sealed-pack writer 前向测试。
+- 全部 25 张 Deep Cards v0.4 索引与版本一致性核对（`deep-card-index.yaml` v0.6，25/25 命中、0 孤儿卡）；
+- 全仓库 Markdown 本地引用检查（0 死链）；
+- 本机路径、命例 ID、旧架构遗留词（`compiled-runtime`、`unit map`、`freeze`、`receipt` 等）污染扫描通过；
+- `bazi_fact_enumerator.py` 回归测试通过（含 `break` 支破 `doctrinal_support: "none_in_ziping_qianli"` 标注与干支阴阳奇偶校验）；
+- 干净上下文（`reading-pack` 隔离）前向盲断测试验证。
 
-静态 validator 只能证明 Skill 结构与引用有效，不能证明命理判断为客观事实。后续仍应使用未讨论的新命例测试实际报告质量。
+静态检查只能证明 Skill 结构、引用与枚举有效，不能证明命理判断为客观事实。后续仍应持续使用反差命例检验跨盘区分度与实际报告质量。
 
-## 从 rc.1 升级
+## 升级说明
 
-rc.2 是破坏性工作流变更：
-
-- 旧的 Topic Lens、runtime packets、scene kernels、findings、Composition 和 Render receipts 不再是默认输入；
-- 旧报告不能冒充 sealed-pack fresh reading；
-- 显式 Reader 调用不再自动进入完整流水线；
-- `bazi-render` 从纯翻译层改为 fresh reader-writer；
-- 同盘 few-shot 已从公开运行时删除；
-- 旧 case 建议保留归档，按新版事实、结构、scope 和 reading pack 重建。
+- **从 rc.2 升级到 rc.3**：直接替换 `skill/` 目录即可。流程和 7 项默认产物完全兼容，Deep Cards 体积下降 82.9%，上游 Source 阶段与下游 Writer 上下文开销显著降低。
+- **从 rc.1 升级**：rc.2/rc.3 是破坏性工作流变更：
+  - 旧的 Topic Lens、runtime packets、scene kernels、findings、Composition 和 Render receipts 不再是默认输入；
+  - 旧报告不能冒充 sealed-pack fresh reading；
+  - 显式 Reader 调用不再自动进入完整流水线；
+  - `bazi-render` 从纯翻译层改为 fresh reader-writer；
+  - 同盘 few-shot 已从公开运行时删除；
+  - 旧 case 建议保留归档，按新版事实、结构、scope 和 reading pack 重建。
 
 完整变更见 [CHANGELOG](CHANGELOG.md)。

@@ -1,5 +1,58 @@
 # Changelog
 
+## [2.0.0-rc.3] - 2026-11-20
+
+### Summary
+
+rc.3 完成了 rc.2 遗留的“后半段瘦身与除垢”：重写全部 25 张 Deep Cards（体积锐减 **82.9%**），彻底清除跨文档旧架构指令冲突、白领 PM 黑话模板污染和单一命例过拟合，同时补强了燥湿传力、墓库冲合藏干不对称胜负裁决与大运连贯弧线。
+
+### Why this release exists
+
+rc.2 虽然砍掉了 138 文件的审计地狱，但实盘盲测和跨模型对照暴露出四处未清干净的病灶：
+
+- **25 张 Deep Cards 仍是旧时代的官僚长文**：每张约 180–220 行、总计 4,458 行，其中七成以上是法条式禁令、旧流程术语（`compiled-runtime`、`Topic Lens`、`finding`、`收据`）和互联网项目经理黑话（“复杂材料、收口、归档、流程治理、兜底、边界、交付”），极易把模型（尤其是爱偷懒套模板的模型）诱导成“换张完全相反的盘也写出同一篇职场 HR 周报”；
+- **残留的旧版文档打架**：`deep-card-schema.md` 仍写着“Render 不重新读卡取象”，`deep-card-index.yaml` 与 `chart-stage1-schema.md` 仍引用已删掉的旧环节与 `chart-stage1-audit.md`；
+- **通用方法论文档残留单盘过拟合**：`interaction-network.md`、`pattern-functional-roles.md`、`semantic-verdict-contract.md` 带有早期针对个别命例调优的定制话术；
+- **关键结构机制缺少显式落点**：燥湿寒暖对生扶通道的真实阻断（“有接口”≠“稳定主通道”）、辰戌丑未冲中藏干按月令／同党／外援分项判胜负、以及多步大运前后承接与敏感引动流年，此前主要靠模型临时自觉，缺少结构层显式约束。
+
+### Changed — Deep Cards v0.4（瘦身 82.9%）
+
+- 重写全部 **25 张 Deep Cards**（3 张总卡 + 10 天干 + 12 地支）至 `version: 0.4`：
+  - 总行数从 **4,458 行（151,371 字符，均 178.3 行/卡）** 压缩至 **764 行（29,485 字符，均 30.6 行/卡）**，**精简 82.9%**；
+  - 统一收束为高密度 5 段式取象底座：本象／季节场域与对比 → 旺相／受制／合冲状态变化 → 古今跨阶层现实载体 → 十神／柱位转向提示 → 常见误判提醒；
+  - 严格保留 Reader 静态藏干与徐评月令司令的双轨标注；
+  - 删除全部旧架构术语、防御性官僚套话与白领运营单文化词汇。
+- 更新 `deep-card-index.yaml` 至 `v0.6`、`deep-card-schema.md` 至 `v0.4`，彻底对齐 `reading-pack/materials/` → `$bazi-render` 的轻量读取契约。
+
+### Changed — Structure Core 与方法论去过拟合
+
+- 升级 `bazi-structure-core/SKILL.md`：
+  - 新增**燥湿寒暖与实际传力检验**（区分“原局有生扶接口”与“原局已是稳定主通道”，纳入燥土脆金、湿土晦火、寒水冻木、旺火熔金等条件）；
+  - 新增**地支／墓库冲合的藏干不对称胜负裁决**（依《千里命稿》比较月令、同党众寡与外援，禁止笼统“一冲全出”）；
+  - 要求岁运输出**前运 → 当前运 → 下步运的连续弧线**与**敏感引动流年**，重申不在结构底稿预写生活结论。
+- 清理 `interaction-network.md`、`pattern-functional-roles.md`、`semantic-verdict-contract.md` 中的单盘过拟合话术，补全主流十神格局（食伤制杀／生财、官杀印、财印、伤官配印／见官等）的通用竞争分析框架。
+
+### Changed — Render 反模板与明确断语纪律
+
+- 升级 `bazi-render/SKILL.md`：
+  - 明令禁止把不同命盘塌缩成白领 PM 黑话模板；
+  - 禁止五五开“好版本／坏版本”两头堵，要求按原局力量和岁运倾向先给主判断，再写触发与翻转条件；
+  - 要求覆盖跨阶层、古今对照的真实载体与动态岁运曲线，并增加交付前干支事实、藏干与十二长生自检。
+
+### Fixed — 文档口径与枚举器来源标注
+
+- 更新 `chart-stage1-schema.md`：将已废弃的独立 `chart-stage1-audit.md` 改为当前内置的 `fact_check` 口径。
+- 更新 `validation-protocol.md`：顶部增加可选协议适用范围说明，避免日常解盘误入 `freeze / receipt / Topic Lens` 重流程。
+- 修复 `bazi_fact_enumerator.py` 与 `source-index.md`：为地支 `break`（支破）关系显式标注 `doctrinal_support: "none_in_ziping_qianli"` 及顶层 `unsourced_relation_types: ["break"]`，并同步修正《千里命稿》索引中并无“支破”专节的标注。
+
+### Validation
+
+- 全部 25 张 Deep Cards 索引、版本（`v0.4`）与磁盘文件 100% 一致（0 缺失、0 孤儿卡）。
+- 全仓库 Markdown 相对链接检查 0 死链。
+- 公开包隐私与遗留词扫描通过（0 本机盘符、0 命例信息、0 旧 runtime 冲突残留）。
+- `bazi_fact_enumerator.py` 多盘回归测试通过（含 `break` 来源标注与非法阴阳干支拦截）。
+- 完成无历史上下文 `reading-pack` 前向盲断实测验收。
+
 ## [2.0.0-rc.2] - 2026-08-29
 
 ### Summary

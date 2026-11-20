@@ -1,8 +1,8 @@
-schema_version: "0.5"
+schema_version: "0.6"
 index_id: bazi-deep-card-index
 purpose: >-
-  为五行、十天干、十二地支与十神关系提供可推导、按需加载的取象底座；
-  帮助 Source Lookup 把已成立的结构具体化为动作、形态、载体与现实候选；
+  为五行、十天干、十二地支与十神关系提供简洁、可推导、按需加载的取象底座；
+  帮助 Source Lookup 与 Fresh Reader-Writer 把已成立的结构具体化为生活画面、动作与跨领域现实载体；
   不承担旺衰、合化、格局、用神或事件裁决。
 
 schema_ref: deep-card-schema.md
@@ -12,28 +12,40 @@ load_policy:
   order:
     - reader_facts
     - structure_notebook
-    - topic_map
+    - report_scope
     - five_elements_core
     - earthly_branches_core_when_a_branch_is_queried
     - relevant_stem_and_branch_cards
-    - ten_gods_core_when_relation_or_carrier_is_needed
-    - source_lookup_writes_one_source_notes_file
-    - imagery_composition
+    - ten_gods_core
+    - source_lookup_updates_source_notes_and_seals_reading_pack
+    - fresh_reader_writer_bazi_render
   guards:
     - deep_cards_interpret_the_existing_structure_not_recalculate_it
-    - structural_edges_come_from_structure_notebook
+    - structural_edges_and_transmission_come_from_structure_notebook
     - cross_system_material_stays_at_common_symbolic_context
-    - specific_roles_jobs_and_events_require_multi_symbol_topic_bridges
-    - carrier_ranking_compares_competing_explanations
+    - specific_roles_jobs_and_events_require_multi_symbol_and_pillar_synthesis
     - hidden_stems_are_read_with_branch_state_and_pillar_context
+    - avoid_collapsing_diverse_charts_into_generic_white_collar_templates
 
 handoff_policy:
-  source_lookup_reads: relevant_full_cards
-  imagery_composition_reads: source_notes
-  render_reads:
-    - reading_notebook
-    - timing_notebook_when_present
-    - composition
+  default_pipeline:
+    source_lookup_reads: relevant_full_cards
+    source_lookup_writes:
+      - source-notes.md
+      - reading-pack/materials/*
+    render_reads:
+      - reading-pack/handoff.md
+      - reading-pack/chart-stage1.yaml
+      - reading-pack/structure-notebook.md
+      - reading-pack/report-scope.yaml
+      - reading-pack/source-notes.md
+      - reading-pack/materials/*
+  optional_diagnostics:
+    topic_lens_writes: topic-map.md
+    imagery_composition_writes:
+      - reading-notebook.md
+      - timing-notebook.md
+      - composition.md
 
 shared_layers:
   - layer_id: DC-EARTHLY-BRANCHES-CORE
@@ -45,29 +57,26 @@ shared_layers:
 
 source_layers:
   - bazi_primary
+  - bazi_commentary
   - bazi_course
   - cross_system_common_symbol
   - current_synthesis
 
 cross_system_source_pool:
   - source_id: QIMEN-NOTE-03-FIVE-ELEMENTS
-    path: 'external-source://qimen-five-elements-note'
-    read_status: fully_read
+    ref: "external-source://qimen-notes/03_five_elements"
     portable_scope:
       - five_elements_as_operating_processes
       - 曲直_炎上_稼穑_从革_润下
-      - examples_derived_from_properties
     excluded_scope:
       - qimen_palace_star_door_spirit
       - qimen_strength_and_divination_verdicts
       - fixed_personality_appearance_industry_lists
 
   - source_id: QIMEN-NOTE-04-HEAVENLY-STEMS
-    path: 'external-source://qimen-heavenly-stems-note'
-    read_status: fully_read
+    ref: "external-source://qimen-notes/04_heavenly_stems"
     portable_scope:
       - stem_as_yinyang_times_five_element_process
-      - paired_stem_contrast_candidates
       - state_dependent_imagery
     excluded_scope:
       - qimen_stem_deities_and_palaces
@@ -75,19 +84,17 @@ cross_system_source_pool:
       - qimen_five_combinations_clashes_and_transformation_rules
 
   - source_id: QIMEN-NOTE-05-EARTHLY-BRANCHES
-    path: 'external-source://qimen-earthly-branches-note'
-    read_status: fully_read
+    ref: "external-source://qimen-notes/05_earthly_branches"
     portable_scope:
       - branch_as_seasonal_field_and_container
       - twelve_stage_growth_decline_sequence_as_imagery_candidate
-      - yinyang_five_element_and_hidden_stem_dimensions_for_source_queries
     excluded_scope:
       - qimen_branch_verdicts_and_palace_relations
       - qimen_击刑_and_合五行_rules
       - 六合无合化_as_bazi_rule
     authority_note: >-
       藏干、司令、六合三合刑冲墓库等八字事实与裁决必须回到项目内八字原典和结构来源；
-      本笔记只为后续十二地支卡提供共同符号候选与检索线索。
+      跨体系笔记只提供共同符号参考，不改写八字规则。
 
 cards:
   - card_id: DC-FIVE-ELEMENTS-CORE
@@ -213,23 +220,3 @@ cards:
     symbol: 十神
     status: approved
     path: deep-cards/ten-gods-core.md
-
-review_sequence:
-  - DC-FIVE-ELEMENTS-CORE
-  - DC-EARTHLY-BRANCHES-CORE
-  - DC-STEM-JIA
-  - DC-STEM-YI
-  - DC-TEN-GODS-CORE
-  - remaining_heavenly_stems_in_pairs
-  - DC-BRANCH-ZI
-  - DC-BRANCH-CHOU
-  - DC-BRANCH-HAI
-  - DC-BRANCH-YIN
-  - DC-BRANCH-MAO
-  - DC-BRANCH-CHEN
-  - DC-BRANCH-SI
-  - DC-BRANCH-WU
-  - DC-BRANCH-WEI
-  - DC-BRANCH-SHEN
-  - DC-BRANCH-YOU
-  - DC-BRANCH-XU
