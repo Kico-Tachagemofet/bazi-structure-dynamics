@@ -2,9 +2,9 @@
 
 一套面向 AI Coding Agent（Codex / Claude Code / Antigravity 等）的四柱八字多 Skill 工作流。它先把四柱事实、旺衰承载、格局、十神竞争和用神路线收束清楚，再把固定材料交给无历史上下文的独立 reader-writer，由它在同一个写作过程里完成取象、现实判断和中文断盘。
 
-当前版本：**2.0.0-rc.3**
+当前版本：**2.0.0**（正式版）
 
-2.0 系列是一次彻底的瘦身与质变重构：rc.2 砍掉了旧版的审计地狱（audit state、freeze、hash、coverage receipt、scene-kernel job、逐专题 producer／auditor 等冗余屎山）；**rc.3 进一步将全部 25 张 Deep Cards 瘦身 82.9%（v0.4）**，清除了卡片和文档中残留的旧架构指令冲突、互联网 PM 黑话单文化模板与单一命例过拟合，并补强了燥湿传力、墓库冲合藏干胜负裁决与多步大运连贯弧线。
+2.0 正式版是一次彻底的瘦身与质变重构：砍掉了旧版“先建唯一基线、再哈希备份、冒烟过 89 个门禁、全量 dry-run 再出验收矩阵”式的 DevOps 审计屎山（audit state、freeze、hash、coverage receipt、scene-kernel job、逐专题 producer／auditor 等 70 个冗余文件），并将全部 **25 张 Deep Cards 瘦身 82.9%（v0.4）**，清除了旧架构指令冲突、白领 PM 黑话单文化模板与单一命例过拟合，补强了燥湿传力、墓库冲合藏干胜负裁决与多步大运连贯弧线。在完成严格零污染的单盘与双盘盲测验收后，由 `v2.0.0-rc.3` 正式毕业发布为 `v2.0.0`。
 
 ## 默认流程
 
@@ -169,20 +169,21 @@ Deep Cards 是取象候选材料，不决定旺衰、格局或事件。其他术
 
 ## 验证
 
-rc.3 已完成：
+`2.0.0` 正式版已完成：
 
 - 全部 25 张 Deep Cards v0.4 索引与版本一致性核对（`deep-card-index.yaml` v0.6，25/25 命中、0 孤儿卡）；
 - 全仓库 Markdown 本地引用检查（0 死链）；
 - 本机路径、命例 ID、旧架构遗留词（`compiled-runtime`、`unit map`、`freeze`、`receipt` 等）污染扫描通过；
 - `bazi_fact_enumerator.py` 回归测试通过（含 `break` 支破 `doctrinal_support: "none_in_ziping_qianli"` 标注与干支阴阳奇偶校验）；
-- 干净上下文（`reading-pack` 隔离）前向盲断测试验证。
+- 多轮无历史上下文隔离子代理（`reading-pack` 封包）前向盲断验收（覆盖单盘与双轨合盘时间窗口交叉验证，转录审计零信息泄露）。
 
 静态检查只能证明 Skill 结构、引用与枚举有效，不能证明命理判断为客观事实。后续仍应持续使用反差命例检验跨盘区分度与实际报告质量。
 
 ## 升级说明
 
-- **从 rc.2 升级到 rc.3**：直接替换 `skill/` 目录即可。流程和 7 项默认产物完全兼容，Deep Cards 体积下降 82.9%，上游 Source 阶段与下游 Writer 上下文开销显著降低。
-- **从 rc.1 升级**：rc.2/rc.3 是破坏性工作流变更：
+- **从 `v2.0.0-rc.3` 升级到 `v2.0.0`**：核心 Skill 与 25 张 Deep Cards 完全一致，直接升级版本与文档即可无缝过渡。
+- **从 `rc.2` 升级到 `v2.0.0`**：直接替换 `skill/` 目录即可。流程和 7 项默认产物完全兼容，Deep Cards 体积下降 82.9%，上游 Source 阶段与下游 Writer 上下文开销显著降低。
+- **从 `v1.0.0` / `rc.1` 升级**：2.0 是破坏性工作流变更：
   - 旧的 Topic Lens、runtime packets、scene kernels、findings、Composition 和 Render receipts 不再是默认输入；
   - 旧报告不能冒充 sealed-pack fresh reading；
   - 显式 Reader 调用不再自动进入完整流水线；
